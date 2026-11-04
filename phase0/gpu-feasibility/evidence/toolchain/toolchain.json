@@ -1,0 +1,156 @@
+﻿{
+    "scope":  "Native Windows toolchain inventory; no rendering qualification",
+    "timestamp_utc":  "2026-11-04T01:17:39.0357290Z",
+    "status":  "PASS",
+    "graphics":  "NOT TESTED",
+    "os":  {
+               "Caption":  "Microsoft Windows 11 Pro",
+               "Version":  "10.0.26300",
+               "OSArchitecture":  "64-bit"
+           },
+    "gpus":  [
+                 {
+                     "Name":  "NVIDIA GeForce RTX 2060",
+                     "DriverVersion":  "32.0.16.1742"
+                 },
+                 {
+                     "Name":  "Intel(R) UHD Graphics 630",
+                     "DriverVersion":  "25.20.100.6519"
+                 }
+             ],
+    "visual_studio":  [
+                          {
+                              "installationPath":  "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools",
+                              "installationVersion":  "17.14.37827.9",
+                              "productId":  "Microsoft.VisualStudio.Product.BuildTools"
+                          }
+                      ],
+    "tools":  [
+                  {
+                      "name":  "cmake.exe",
+                      "paths":  [
+                                    "C:\\Program Files\\CMake\\bin\\cmake.exe"
+                                ]
+                  },
+                  {
+                      "name":  "ninja.exe",
+                      "paths":  [
+
+                                ]
+                  },
+                  {
+                      "name":  "clang-cl.exe",
+                      "paths":  [
+
+                                ]
+                  },
+                  {
+                      "name":  "cl.exe",
+                      "paths":  [
+
+                                ]
+                  },
+                  {
+                      "name":  "git.exe",
+                      "paths":  [
+                                    "C:\\Program Files\\Git\\cmd\\git.exe"
+                                ]
+                  },
+                  {
+                      "name":  "python.exe",
+                      "paths":  [
+                                    "%USERPROFILE%\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe"
+                                ]
+                  },
+                  {
+                      "name":  "cargo.exe",
+                      "paths":  [
+
+                                ]
+                  },
+                  {
+                      "name":  "rustc.exe",
+                      "paths":  [
+
+                                ]
+                  },
+                  {
+                      "name":  "vulkaninfo.exe",
+                      "paths":  [
+                                    "C:\\WINDOWS\\system32\\vulkaninfo.exe"
+                                ]
+                  },
+                  {
+                      "name":  "nvidia-smi.exe",
+                      "paths":  [
+                                    "C:\\WINDOWS\\system32\\nvidia-smi.exe"
+                                ]
+                  },
+                  {
+                      "name":  "wpr.exe",
+                      "paths":  [
+                                    "C:\\WINDOWS\\system32\\wpr.exe"
+                                ]
+                  },
+                  {
+                      "name":  "xperf.exe",
+                      "paths":  [
+                                    "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\xperf.exe"
+                                ]
+                  },
+                  {
+                      "name":  "VC\\Tools\\Llvm\\x64\\bin\\clang-cl.exe",
+                      "paths":  [
+
+                                ]
+                  },
+                  {
+                      "name":  "VC\\Tools\\Llvm\\bin\\clang-cl.exe",
+                      "paths":  [
+
+                                ]
+                  },
+                  {
+                      "name":  "Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe",
+                      "paths":  [
+                                    "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe"
+                                ]
+                  },
+                  {
+                      "name":  "Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja.exe",
+                      "paths":  [
+                                    "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja.exe"
+                                ]
+                  },
+                  {
+                      "name":  "Common7\\Tools\\VsDevCmd.bat",
+                      "paths":  [
+                                    "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\Tools\\VsDevCmd.bat"
+                                ]
+                  },
+                  {
+                      "name":  "VC\\Auxiliary\\Build\\vcvars64.bat",
+                      "paths":  [
+                                    "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Auxiliary\\Build\\vcvars64.bat"
+                                ]
+                  },
+                  {
+                      "name":  "MSVC compiler directories",
+                      "paths":  [
+                                    "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207"
+                                ]
+                  },
+                  {
+                      "name":  "Standalone LLVM",
+                      "paths":  [
+
+                                ]
+                  }
+              ],
+    "vulkan_sdk":  null,
+    "vulkan_loader":  {
+                          "FullName":  "C:\\WINDOWS\\System32\\vulkan-1.dll",
+                          "FileVersion":  "1.4.341.0"
+                      },
+    "reason":  "Inventory completed only; build and hardware rendering gates are separate"
+}

@@ -1,0 +1,65 @@
+﻿{
+    "scope":  "Read-only Windows API/device inventory, not a rendering workload",
+    "timestamp_utc":  "2026-11-04T01:25:47.8386044Z",
+    "status":  "PASS",
+    "gfxstream_selected_adapter":  null,
+    "hardware_execution":  "NOT TESTED",
+    "commands":  [
+                     {
+                         "argv":  [
+                                      "--summary"
+                                  ],
+                         "sha256":  "da2aac11acf19302362d6dc0223524e69992d39a18de96c63e5e0c3dc278a735",
+                         "tool":  "C:\\WINDOWS\\system32\\vulkaninfo.exe",
+                         "exit_code":  0
+                     },
+                     {
+                         "argv":  [
+                                      "--query-gpu=name,pci.bus_id,driver_version",
+                                      "--format=csv,noheader"
+                                  ],
+                         "sha256":  "4eba0acb47d0707aa0901d52e94b340823c12b773b820dde9a8abc9b3a36782f",
+                         "tool":  "C:\\WINDOWS\\system32\\nvidia-smi.exe",
+                         "exit_code":  0
+                     }
+                 ],
+    "os":  {
+               "Caption":  "Microsoft Windows 11 Pro",
+               "Version":  "10.0.26300"
+           },
+    "gpus":  [
+                 {
+                     "Name":  "NVIDIA GeForce RTX 2060",
+                     "DriverVersion":  "32.0.16.1742"
+                 },
+                 {
+                     "Name":  "Intel(R) UHD Graphics 630",
+                     "DriverVersion":  "25.20.100.6519"
+                 }
+             ],
+    "library_discovery":  [
+                              {
+                                  "paths":  [
+                                                "C:\\WINDOWS\\system32\\vulkan-1.dll",
+                                                "C:\\WINDOWS\\System32\\vulkan-1.dll"
+                                            ],
+                                  "scope":  "PATH and System32 search only; not runtime module loading",
+                                  "name":  "vulkan-1.dll"
+                              },
+                              {
+                                  "paths":  [
+
+                                            ],
+                                  "scope":  "PATH and System32 search only; not runtime module loading",
+                                  "name":  "libEGL.dll"
+                              },
+                              {
+                                  "paths":  [
+
+                                            ],
+                                  "scope":  "PATH and System32 search only; not runtime module loading",
+                                  "name":  "libGLESv2.dll"
+                              }
+                          ],
+    "reason":  "Inventory only; device/API strings do not prove Gfxstream hardware execution"
+}

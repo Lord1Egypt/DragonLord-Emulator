@@ -1,0 +1,96 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later */
+/* Test scaffold only. The callback body is extracted unchanged at build time. */
+#include <stdint.h>
+#include <stddef.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "qemu/queue.h"
+#include "standard-headers/linux/virtio_gpu.h"
+#include "rutabaga_gfx_ffi.h"
+
+struct virtio_gpu_ctrl_command {
+    struct virtio_gpu_ctrl_hdr cmd_hdr;
+    QTAILQ_ENTRY(virtio_gpu_ctrl_command) next;
+};
+typedef struct VirtIOGPU {
+    QTAILQ_HEAD(, virtio_gpu_ctrl_command) fenceq;
+} VirtIOGPU;
+struct VirtIOGPURutabaga { VirtIOGPU gpu; };
+struct rutabaga_aio_data {
+    struct VirtIOGPURutabaga *vr;
+    struct rutabaga_fence fence;
+};
+#define VIRTIO_GPU(p) ((VirtIOGPU *)(p))
+#define g_free(p) free(p)
+static unsigned completed;
+static uint32_t completed_contexts[8];
+static void trace_virtio_gpu_fence_resp(uint64_t id) { (void)id; }
+static void virtio_gpu_ctrl_response_nodata(VirtIOGPU *g,
+        struct virtio_gpu_ctrl_command *cmd, uint32_t response) {
+    (void)g; (void)response;
+    if (completed >= 8) abort();
+    completed_contexts[completed++] = cmd->cmd_hdr.ctx_id;
+}
+
+/* @UPSTREAM_CALLBACK@ */
+
+static void enqueue(VirtIOGPU *g, uint32_t flags, uint32_t ctx,
+                    uint8_t ring, uint64_t id) {
+    struct virtio_gpu_ctrl_command *cmd = calloc(1, sizeof(*cmd));
+    if (!cmd) abort();
+    cmd->cmd_hdr.flags = flags;
+    cmd->cmd_hdr.ctx_id = ctx;
+    cmd->cmd_hdr.ring_idx = ring;
+    cmd->cmd_hdr.fence_id = id;
+    QTAILQ_INSERT_TAIL(&g->fenceq, cmd, next);
+}
+static bool run_case(const char *name, uint32_t target_flags,
+                     uint32_t target_ctx, uint8_t target_ring,
+                     uint64_t target_id, bool multi, unsigned expected) {
+    struct VirtIOGPURutabaga vr = {0};
+    QTAILQ_INIT(&vr.gpu.fenceq);
+    enqueue(&vr.gpu, target_flags, target_ctx, target_ring, target_id);
+    if (multi) enqueue(&vr.gpu, target_flags, 2, target_ring, target_id);
+    struct rutabaga_aio_data *data = calloc(1, sizeof(*data));
+    if (!data) abort();
+    data->vr = &vr;
+    data->fence.flags = RUTABAGA_FLAG_FENCE | RUTABAGA_FLAG_INFO_RING_IDX;
+    data->fence.ctx_id = 1;
+    data->fence.ring_idx = 0;
+    data->fence.fence_id = 7;
+    completed = 0;
+    memset(completed_contexts, 0, sizeof(completed_contexts));
+    virtio_gpu_rutabaga_aio_cb(data);
+    bool passed = completed == expected;
+    for (unsigned i = 0; i < completed; ++i) {
+        if (completed_contexts[i] != 1) passed = false;
+    }
+    printf("{\"case\":\"%s\",\"expected_completed\":%u,\"actual_completed\":%u,"
+           "\"other_context_completed\":%s,\"status\":\"%s\"}\n",
+           name, expected, completed,
+           (completed && completed_contexts[completed - 1] != 1) ? "true" : "false",
+           passed ? "PASS" : "FAIL");
+    while (!QTAILQ_EMPTY(&vr.gpu.fenceq)) {
+        struct virtio_gpu_ctrl_command *cmd = QTAILQ_FIRST(&vr.gpu.fenceq);
+        QTAILQ_REMOVE(&vr.gpu.fenceq, cmd, next);
+        free(cmd);
+    }
+    return passed;
+}
+int main(void) {
+    const uint32_t flags = RUTABAGA_FLAG_FENCE | RUTABAGA_FLAG_INFO_RING_IDX;
+    unsigned failures = 0;
+    failures += !run_case("same_context_same_ring",flags,1,0,7,false,1);
+    failures += !run_case("different_context_same_ring",flags,2,0,7,false,0);
+    failures += !run_case("different_ring",flags,1,1,7,false,0);
+    failures += !run_case("future_fence",flags,1,0,8,false,0);
+    failures += !run_case("different_timeline_mode",RUTABAGA_FLAG_FENCE,1,0,7,false,0);
+    failures += !run_case("two_contexts_same_ring",flags,1,0,6,true,1);
+    /* Exercise allocation, queue removal and scaffold cleanup repeatedly.
+     * This is NOT renderer/device create-destroy or reset coverage. */
+    for (unsigned i = 0; i < 20; ++i)
+        failures += !run_case("repeated_callback_scaffold",flags,1,0,7,false,1);
+    return failures ? 1 : 0;
+}

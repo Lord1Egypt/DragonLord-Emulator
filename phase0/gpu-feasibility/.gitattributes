@@ -1,0 +1,3 @@
+evidence/** -text -whitespace
+tools/*.py text eol=lf
+tools/*.ps1 text eol=lf

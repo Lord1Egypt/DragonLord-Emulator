@@ -1,0 +1,289 @@
+{
+  "scope": "Source identities and file hashes only; not compiled runtime proof",
+  "timestamp_utc": "2026-11-04T01:29:25.318354+00:00",
+  "sources": [
+    {
+      "repository": "qemu",
+      "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+      "path": "VERSION",
+      "url": "https://gitlab.com/qemu-project/qemu/-/blob/005c61c0ef6f6ae615283440b4bb7be51b2c6ddd/VERSION",
+      "bytes": 7,
+      "sha256": "3948a9c905c8968e4141cd3316099acbc6e598b1b97440c46d85647983ffbb41"
+    },
+    {
+      "repository": "qemu",
+      "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+      "path": "meson.build",
+      "url": "https://gitlab.com/qemu-project/qemu/-/blob/005c61c0ef6f6ae615283440b4bb7be51b2c6ddd/meson.build",
+      "bytes": 185169,
+      "sha256": "7d45b715ca8e740d787eee6d4a1e8ae4a7456aecfe16dda2a7d32a0f2cc10591"
+    },
+    {
+      "repository": "qemu",
+      "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+      "path": "hw/display/meson.build",
+      "url": "https://gitlab.com/qemu-project/qemu/-/blob/005c61c0ef6f6ae615283440b4bb7be51b2c6ddd/hw/display/meson.build",
+      "bytes": 6888,
+      "sha256": "36fb16a74d50369756313baaecee09b687139effa5bfa3aed03e2e61025e6abd"
+    },
+    {
+      "repository": "qemu",
+      "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+      "path": "hw/display/virtio-gpu-rutabaga.c",
+      "url": "https://gitlab.com/qemu-project/qemu/-/blob/005c61c0ef6f6ae615283440b4bb7be51b2c6ddd/hw/display/virtio-gpu-rutabaga.c",
+      "bytes": 36909,
+      "sha256": "808fd2cc677a268be0a235bbefb704e43707cb3a786fa813d73e727f9de47df3"
+    },
+    {
+      "repository": "qemu",
+      "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+      "path": "include/hw/virtio/virtio-gpu.h",
+      "url": "https://gitlab.com/qemu-project/qemu/-/blob/005c61c0ef6f6ae615283440b4bb7be51b2c6ddd/include/hw/virtio/virtio-gpu.h",
+      "bytes": 13960,
+      "sha256": "18c4fba0aae9fa0fb81691566964ec590cb167a6cd546d029093ce82aa7a9d69"
+    },
+    {
+      "repository": "qemu",
+      "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+      "path": "include/qemu/queue.h",
+      "url": "https://gitlab.com/qemu-project/qemu/-/blob/005c61c0ef6f6ae615283440b4bb7be51b2c6ddd/include/qemu/queue.h",
+      "bytes": 29156,
+      "sha256": "7e9b631e83757ac14f0bc251860eeba82540ac1ac72d2d959681a00a50248f67"
+    },
+    {
+      "repository": "qemu",
+      "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+      "path": "include/standard-headers/linux/virtio_gpu.h",
+      "url": "https://gitlab.com/qemu-project/qemu/-/blob/005c61c0ef6f6ae615283440b4bb7be51b2c6ddd/include/standard-headers/linux/virtio_gpu.h",
+      "bytes": 12127,
+      "sha256": "93d832a5cfd7390c448ce2e81950da42d806736b13bfdeaf7611cc252d39b651"
+    },
+    {
+      "repository": "qemu",
+      "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+      "path": "LICENSE",
+      "url": "https://gitlab.com/qemu-project/qemu/-/blob/005c61c0ef6f6ae615283440b4bb7be51b2c6ddd/LICENSE",
+      "bytes": 1177,
+      "sha256": "139c64b7a9ae62858ff969aae622ecfcf4f1519655bd92d2e70a1a2fb615690e"
+    },
+    {
+      "repository": "gfxstream",
+      "commit": "94240f814c0097a63027ae680ea4bec7b0cb25f7",
+      "path": "README.md",
+      "url": "https://github.com/google/gfxstream/blob/94240f814c0097a63027ae680ea4bec7b0cb25f7/README.md",
+      "bytes": 3249,
+      "sha256": "0f73d36cf0a9609561114d283ab45c4143e0ba67e8d5304d3fb1499b0adc734b"
+    },
+    {
+      "repository": "gfxstream",
+      "commit": "94240f814c0097a63027ae680ea4bec7b0cb25f7",
+      "path": "CMakeLists.txt",
+      "url": "https://github.com/google/gfxstream/blob/94240f814c0097a63027ae680ea4bec7b0cb25f7/CMakeLists.txt",
+      "bytes": 6466,
+      "sha256": "9ff5e828f77b98f721353c05a533abc7e4eed70aa0f869fdcf6dcfdec5789667"
+    },
+    {
+      "repository": "gfxstream",
+      "commit": "94240f814c0097a63027ae680ea4bec7b0cb25f7",
+      "path": "host/CMakeLists.txt",
+      "url": "https://github.com/google/gfxstream/blob/94240f814c0097a63027ae680ea4bec7b0cb25f7/host/CMakeLists.txt",
+      "bytes": 11979,
+      "sha256": "08d3fe2aa5355b8ab2508f652509f3518c72dfd0e554a177db152feb861268ab"
+    },
+    {
+      "repository": "gfxstream",
+      "commit": "94240f814c0097a63027ae680ea4bec7b0cb25f7",
+      "path": "third_party/CMakeLists.txt",
+      "url": "https://github.com/google/gfxstream/blob/94240f814c0097a63027ae680ea4bec7b0cb25f7/third_party/CMakeLists.txt",
+      "bytes": 4295,
+      "sha256": "f8b78ab60df8a1a3c49b4ec3376ddb890f5a47772b016f514b60a2d3b89dc434"
+    },
+    {
+      "repository": "gfxstream",
+      "commit": "94240f814c0097a63027ae680ea4bec7b0cb25f7",
+      "path": "toolchain/cmake/SetWin32TestEnvironment.cmake.in",
+      "url": "https://github.com/google/gfxstream/blob/94240f814c0097a63027ae680ea4bec7b0cb25f7/toolchain/cmake/SetWin32TestEnvironment.cmake.in",
+      "bytes": 511,
+      "sha256": "0df07aa9d3a25cedaed70159583984ebf8c37c657bc94c23833e6b7c0d3cafbd"
+    },
+    {
+      "repository": "gfxstream",
+      "commit": "94240f814c0097a63027ae680ea4bec7b0cb25f7",
+      "path": "host/vulkan/vulkan_dispatch.cpp",
+      "url": "https://github.com/google/gfxstream/blob/94240f814c0097a63027ae680ea4bec7b0cb25f7/host/vulkan/vulkan_dispatch.cpp",
+      "bytes": 21249,
+      "sha256": "9403f2023e424ab288a12faa769c2208ecac22817cfe2379f71187d194f8c01b"
+    },
+    {
+      "repository": "gfxstream",
+      "commit": "94240f814c0097a63027ae680ea4bec7b0cb25f7",
+      "path": "host/vulkan/vk_common_operations.cpp",
+      "url": "https://github.com/google/gfxstream/blob/94240f814c0097a63027ae680ea4bec7b0cb25f7/host/vulkan/vk_common_operations.cpp",
+      "bytes": 239086,
+      "sha256": "76f3e2f0e8a2a4e3b365d217c16b3b77c1e6b493705471e31e64c0f0a9b79963"
+    },
+    {
+      "repository": "gfxstream",
+      "commit": "94240f814c0097a63027ae680ea4bec7b0cb25f7",
+      "path": "host/include/gfxstream/virtio-gpu-gfxstream-renderer.h",
+      "url": "https://github.com/google/gfxstream/blob/94240f814c0097a63027ae680ea4bec7b0cb25f7/host/include/gfxstream/virtio-gpu-gfxstream-renderer.h",
+      "bytes": 10820,
+      "sha256": "97e1e29ccc8c87ad0b85f4859b5efdd2b8dbaff6d391c25d66aa9ac4c9ed523d"
+    },
+    {
+      "repository": "gfxstream",
+      "commit": "94240f814c0097a63027ae680ea4bec7b0cb25f7",
+      "path": "common/testenv/graphics_test_environment.cpp",
+      "url": "https://github.com/google/gfxstream/blob/94240f814c0097a63027ae680ea4bec7b0cb25f7/common/testenv/graphics_test_environment.cpp",
+      "bytes": 6694,
+      "sha256": "bf48e59164b3a00eb7a9998f4e358293cad23f3196d80cf84658bdeb3213fe55"
+    },
+    {
+      "repository": "gfxstream",
+      "commit": "94240f814c0097a63027ae680ea4bec7b0cb25f7",
+      "path": "LICENSE",
+      "url": "https://github.com/google/gfxstream/blob/94240f814c0097a63027ae680ea4bec7b0cb25f7/LICENSE",
+      "bytes": 11357,
+      "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd"
+    },
+    {
+      "repository": "rutabaga",
+      "commit": "4f2bcaf71a6497583362ed664d9fe21cc5043049",
+      "path": "README.md",
+      "url": "https://github.com/magma-gpu/rutabaga_gfx/blob/4f2bcaf71a6497583362ed664d9fe21cc5043049/README.md",
+      "bytes": 5009,
+      "sha256": "91cabc8ec1ccc6c92312a7123f3cd81a9d8fa114c5180641e935281f2f04d710"
+    },
+    {
+      "repository": "rutabaga",
+      "commit": "4f2bcaf71a6497583362ed664d9fe21cc5043049",
+      "path": "Cargo.toml",
+      "url": "https://github.com/magma-gpu/rutabaga_gfx/blob/4f2bcaf71a6497583362ed664d9fe21cc5043049/Cargo.toml",
+      "bytes": 1128,
+      "sha256": "11b42c60843ecbceccfcad351472ec728a76011cf391e481d95841b6a0a144c2"
+    },
+    {
+      "repository": "rutabaga",
+      "commit": "4f2bcaf71a6497583362ed664d9fe21cc5043049",
+      "path": "rust-toolchain.toml",
+      "url": "https://github.com/magma-gpu/rutabaga_gfx/blob/4f2bcaf71a6497583362ed664d9fe21cc5043049/rust-toolchain.toml",
+      "bytes": 90,
+      "sha256": "fa87c8e4441aa11f0eb89fee2ea443e85c126cb81fdad9f635a50ef65c7f8d30"
+    },
+    {
+      "repository": "rutabaga",
+      "commit": "4f2bcaf71a6497583362ed664d9fe21cc5043049",
+      "path": "build.rs",
+      "url": "https://github.com/magma-gpu/rutabaga_gfx/blob/4f2bcaf71a6497583362ed664d9fe21cc5043049/build.rs",
+      "bytes": 3862,
+      "sha256": "a47b3dc087ab2d3985c3b50212368f5fb3a9c5f203517eae971fcbc814554cd9"
+    },
+    {
+      "repository": "rutabaga",
+      "commit": "4f2bcaf71a6497583362ed664d9fe21cc5043049",
+      "path": "meson.build",
+      "url": "https://github.com/magma-gpu/rutabaga_gfx/blob/4f2bcaf71a6497583362ed664d9fe21cc5043049/meson.build",
+      "bytes": 1823,
+      "sha256": "cc4d9de76bbf165e92999f841384425f40413d2b86421679c0c4c987d3036e79"
+    },
+    {
+      "repository": "rutabaga",
+      "commit": "4f2bcaf71a6497583362ed664d9fe21cc5043049",
+      "path": "ffi/meson.build",
+      "url": "https://github.com/magma-gpu/rutabaga_gfx/blob/4f2bcaf71a6497583362ed664d9fe21cc5043049/ffi/meson.build",
+      "bytes": 706,
+      "sha256": "88729c99b643e452e8812766ba55de69dd0e2d1632a3bd127b5739173bca9d2d"
+    },
+    {
+      "repository": "rutabaga",
+      "commit": "4f2bcaf71a6497583362ed664d9fe21cc5043049",
+      "path": "ffi/src/lib.rs",
+      "url": "https://github.com/magma-gpu/rutabaga_gfx/blob/4f2bcaf71a6497583362ed664d9fe21cc5043049/ffi/src/lib.rs",
+      "bytes": 21752,
+      "sha256": "2b3a60b0dfcb10470bd9a7e170591974427115658a66cf7466e586f120d05107"
+    },
+    {
+      "repository": "rutabaga",
+      "commit": "4f2bcaf71a6497583362ed664d9fe21cc5043049",
+      "path": "ffi/src/include/rutabaga_gfx_ffi.h",
+      "url": "https://github.com/magma-gpu/rutabaga_gfx/blob/4f2bcaf71a6497583362ed664d9fe21cc5043049/ffi/src/include/rutabaga_gfx_ffi.h",
+      "bytes": 11757,
+      "sha256": "f4c446179fa6b49fcb251eef28e73553dce74602a822f7f994324482d4da5612"
+    },
+    {
+      "repository": "rutabaga",
+      "commit": "4f2bcaf71a6497583362ed664d9fe21cc5043049",
+      "path": "src/gfxstream.rs",
+      "url": "https://github.com/magma-gpu/rutabaga_gfx/blob/4f2bcaf71a6497583362ed664d9fe21cc5043049/src/gfxstream.rs",
+      "bytes": 36612,
+      "sha256": "701843593b7495bfaa7993ca95e8203bbde1e6a2c3d9b49ac576de4d634df530"
+    },
+    {
+      "repository": "rutabaga",
+      "commit": "4f2bcaf71a6497583362ed664d9fe21cc5043049",
+      "path": "src/rutabaga_core.rs",
+      "url": "https://github.com/magma-gpu/rutabaga_gfx/blob/4f2bcaf71a6497583362ed664d9fe21cc5043049/src/rutabaga_core.rs",
+      "bytes": 56233,
+      "sha256": "7e60584a44f39bb664e3580014bd58b9017d1d64ee9830c49830ee6a3e239716"
+    },
+    {
+      "repository": "rutabaga",
+      "commit": "4f2bcaf71a6497583362ed664d9fe21cc5043049",
+      "path": "src/rutabaga_utils.rs",
+      "url": "https://github.com/magma-gpu/rutabaga_gfx/blob/4f2bcaf71a6497583362ed664d9fe21cc5043049/src/rutabaga_utils.rs",
+      "bytes": 21326,
+      "sha256": "9d41d67cd96bb5085d9f4fd809cfa60635a465e6220c0fd45deb50dadfce4961"
+    },
+    {
+      "repository": "rutabaga",
+      "commit": "4f2bcaf71a6497583362ed664d9fe21cc5043049",
+      "path": "src/rutabaga_gralloc/system_gralloc.rs",
+      "url": "https://github.com/magma-gpu/rutabaga_gfx/blob/4f2bcaf71a6497583362ed664d9fe21cc5043049/src/rutabaga_gralloc/system_gralloc.rs",
+      "bytes": 1821,
+      "sha256": "667ececad1d24b990ed69e0c6a8fc60f55fd2864a6a2bcf91ab22cf33617adb9"
+    },
+    {
+      "repository": "rutabaga",
+      "commit": "4f2bcaf71a6497583362ed664d9fe21cc5043049",
+      "path": "third_party/mesa3d/src/virtio/magma-gpu-rs/lib/util/sys/windows/shm.rs",
+      "url": "https://github.com/magma-gpu/rutabaga_gfx/blob/4f2bcaf71a6497583362ed664d9fe21cc5043049/third_party/mesa3d/src/virtio/magma-gpu-rs/lib/util/sys/windows/shm.rs",
+      "bytes": 1520,
+      "sha256": "bcd740d750aa4116b28b231fe45ac142e7c225042086ab8c26d0fb2d986b0052"
+    },
+    {
+      "repository": "rutabaga",
+      "commit": "4f2bcaf71a6497583362ed664d9fe21cc5043049",
+      "path": "third_party/mesa3d/src/virtio/magma-gpu-rs/lib/util/sys/windows/memory_mapping.rs",
+      "url": "https://github.com/magma-gpu/rutabaga_gfx/blob/4f2bcaf71a6497583362ed664d9fe21cc5043049/third_party/mesa3d/src/virtio/magma-gpu-rs/lib/util/sys/windows/memory_mapping.rs",
+      "bytes": 1029,
+      "sha256": "48f02d7b490d4182e3988c7b29ad4c57428171facd9ea4b9ef2950677abb3c09"
+    },
+    {
+      "repository": "rutabaga",
+      "commit": "4f2bcaf71a6497583362ed664d9fe21cc5043049",
+      "path": "third_party/mesa3d/src/virtio/magma-gpu-rs/lib/util/sys/windows/descriptor.rs",
+      "url": "https://github.com/magma-gpu/rutabaga_gfx/blob/4f2bcaf71a6497583362ed664d9fe21cc5043049/third_party/mesa3d/src/virtio/magma-gpu-rs/lib/util/sys/windows/descriptor.rs",
+      "bytes": 2055,
+      "sha256": "d1c2e9ef04c66aa2bd97c011115d5d585dd2b52e9d4f8d0e21c750ce1a193bb8"
+    },
+    {
+      "repository": "rutabaga",
+      "commit": "4f2bcaf71a6497583362ed664d9fe21cc5043049",
+      "path": "LICENSE",
+      "url": "https://github.com/magma-gpu/rutabaga_gfx/blob/4f2bcaf71a6497583362ed664d9fe21cc5043049/LICENSE",
+      "bytes": 1539,
+      "sha256": "0fc4bdcfde77da140a55a68268f55a8cd045d7b9fbf86c5fd8b2bc5cf233e959"
+    }
+  ],
+  "qemu_release_page": {
+    "url": "https://www.qemu.org/download/",
+    "sha256": "eb8321d24cb887854e120d2ede4cc6576138bf16fdd405ed0355651c08bd42da",
+    "observed_current_release": "11.1.3"
+  },
+  "aosp_gfxstream_tag": {
+    "url": "https://android.googlesource.com/platform/hardware/google/gfxstream/+/refs/tags/android-16.0.0_r4?format=JSON",
+    "commit": "7e9d595b097b23f5fa5c114088245c819e29a9af",
+    "tree": "d3f3d6204f486a46a2af25fbce99af18db55fe46",
+    "response_sha256": "208d91c85db0b0abf26d0e7f4ea11c3535927b8c8c525089dde8855eed521944"
+  }
+}

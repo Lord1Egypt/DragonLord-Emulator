@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "scope": "Linux diagnostic boot only",
+  "status": "BLOCKED",
+  "accelerator": "whpx",
+  "hardware": {
+    "timestamp_utc": "2026-11-04T01:27:46.687225+00:00",
+    "platform": "Linux",
+    "release": "6.18.54.1-microsoft-standard-WSL2",
+    "machine": "x86_64",
+    "logical_cpu_count": 12,
+    "device_access": {
+      "/dev/kvm": {
+        "exists": false,
+        "read_write": false
+      },
+      "/dev/dri": {
+        "exists": false,
+        "read_write": false
+      },
+      "/dev/dxg": {
+        "exists": false,
+        "read_write": false
+      }
+    },
+    "tools": {
+      "cc": "/usr/bin/cc",
+      "make": "/usr/bin/make",
+      "pkg-config": "/usr/bin/pkg-config",
+      "adb": "/usr/bin/adb",
+      "vulkaninfo": null,
+      "powershell.exe": "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe"
+    }
+  },
+  "android16": "NOT_TESTED",
+  "gpu": "NOT_TESTED",
+  "kernelsu": "NOT_TESTED",
+  "reason": "Native Windows WHPX execution unavailable in this process; WSL is not a WHPX test host"
+}
+test_accessible_kvm_can_proceed_to_runtime_test (test_experiment.EvidenceGateTests.test_accessible_kvm_can_proceed_to_runtime_test) ... ok
+test_authenticated_command_response_can_qualify_diagnostic_only (test_experiment.EvidenceGateTests.test_authenticated_command_response_can_qualify_diagnostic_only) ... ok
+test_bad_download_is_not_promoted_to_verified_artifact (test_experiment.EvidenceGateTests.test_bad_download_is_not_promoted_to_verified_artifact) ... ok
+test_blocked_smoke_cannot_claim_android_or_gpu_pass (test_experiment.EvidenceGateTests.test_blocked_smoke_cannot_claim_android_or_gpu_pass) ... ok
+test_echoed_command_does_not_establish_guest_readiness (test_experiment.EvidenceGateTests.test_echoed_command_does_not_establish_guest_readiness) ... ok
+test_hardware_command_has_one_accelerator_and_snapshot_disk (test_experiment.EvidenceGateTests.test_hardware_command_has_one_accelerator_and_snapshot_disk) ... ok
+test_marker_requires_returned_architecture (test_experiment.EvidenceGateTests.test_marker_requires_returned_architecture) ... ok
+test_missing_kvm_blocks_instead_of_falling_back (test_experiment.EvidenceGateTests.test_missing_kvm_blocks_instead_of_falling_back) ... ok
+test_whpx_never_qualifies_under_wsl_or_linux (test_experiment.EvidenceGateTests.test_whpx_never_qualifies_under_wsl_or_linux) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.125s
+
+OK
