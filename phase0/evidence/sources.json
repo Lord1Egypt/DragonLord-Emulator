@@ -1,0 +1,126 @@
+[
+  {
+    "url": "https://gitlab.com/qemu-project/qemu/-/blob/v11.1.3/VERSION",
+    "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+    "sha256": "3948a9c905c8968e4141cd3316099acbc6e598b1b97440c46d85647983ffbb41",
+    "kind": "source_inspected"
+  },
+  {
+    "url": "https://gitlab.com/qemu-project/qemu/-/blob/v11.1.3/LICENSE",
+    "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+    "sha256": "139c64b7a9ae62858ff969aae622ecfcf4f1519655bd92d2e70a1a2fb615690e",
+    "kind": "source_inspected"
+  },
+  {
+    "url": "https://gitlab.com/qemu-project/qemu/-/blob/v11.1.3/meson.build",
+    "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+    "sha256": "7d45b715ca8e740d787eee6d4a1e8ae4a7456aecfe16dda2a7d32a0f2cc10591",
+    "kind": "source_inspected"
+  },
+  {
+    "url": "https://gitlab.com/qemu-project/qemu/-/blob/v11.1.3/include/hw/virtio/virtio.h",
+    "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+    "sha256": "cc8ba9ca318699188bc3760b4cd9a7eca96cce94a209abea475af560cb1c4625",
+    "kind": "source_inspected"
+  },
+  {
+    "url": "https://gitlab.com/qemu-project/qemu/-/blob/v11.1.3/include/qom/object.h",
+    "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+    "sha256": "21cfad12d326d74a269e82324a93053161b41d78309a686bf9408f3f08dac5f0",
+    "kind": "source_inspected"
+  },
+  {
+    "url": "https://gitlab.com/qemu-project/qemu/-/blob/v11.1.3/include/qemu/atomic.h",
+    "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+    "sha256": "899788e917bc6855479128a7d319786789446fdbb7cb85b2209124857358e968",
+    "kind": "source_inspected"
+  },
+  {
+    "url": "https://gitlab.com/qemu-project/qemu/-/blob/v11.1.3/include/standard-headers/linux/virtio_ids.h",
+    "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+    "sha256": "e9957fd3ce022c978b4d06e6e222e74d9cb4697d17cda4001608b635c9516c0f",
+    "kind": "source_inspected"
+  },
+  {
+    "url": "https://gitlab.com/qemu-project/qemu/-/blob/v11.1.3/hw/display/virtio-gpu-pci.c",
+    "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+    "sha256": "df4b962d9b8ef37b1d716d4b659c120ced58c2ad977e5dfd082ea8fe285f7417",
+    "kind": "source_inspected"
+  },
+  {
+    "url": "https://gitlab.com/qemu-project/qemu/-/blob/v11.1.3/hw/display/virtio-gpu-rutabaga.c",
+    "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+    "sha256": "808fd2cc677a268be0a235bbefb704e43707cb3a786fa813d73e727f9de47df3",
+    "kind": "source_inspected"
+  },
+  {
+    "url": "https://gitlab.com/qemu-project/qemu/-/blob/v11.1.3/docs/system/devices/virtio/virtio-gpu.rst",
+    "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+    "sha256": "939ee0119249e56ff0c6311c610815f481050789e8b8f9082dec74ddd962aebd",
+    "kind": "source_inspected"
+  },
+  {
+    "url": "https://gitlab.com/qemu-project/qemu/-/blob/v11.1.3/tests/functional/x86_64/test_tuxrun.py",
+    "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+    "sha256": "b7d809933b30a76615969c8c7c3bff7e41e429008a0a0b31736ee1cf2655c8f9",
+    "kind": "source_inspected"
+  },
+  {
+    "url": "https://android.googlesource.com/device/google/cuttlefish/+/4d368849922b04124e66b1aad48f93b3209f3c8d/shared/BoardConfig.mk",
+    "commit": "4d368849922b04124e66b1aad48f93b3209f3c8d",
+    "sha256": "fbd623e445acaa3f94d7173ce5caa880abfebe28d6787fc9fb5093ea0605c5d7",
+    "kind": "source_inspected"
+  },
+  {
+    "url": "https://android.googlesource.com/device/google/cuttlefish/+/4d368849922b04124e66b1aad48f93b3209f3c8d/shared/graphics/device_vendor.mk",
+    "commit": "4d368849922b04124e66b1aad48f93b3209f3c8d",
+    "sha256": "aaca0033829b1c239e894146d91cf10d37c832915ce1f040a11be514945e8fe8",
+    "kind": "source_inspected"
+  },
+  {
+    "url": "https://android.googlesource.com/device/google/cuttlefish/+/4d368849922b04124e66b1aad48f93b3209f3c8d/AndroidProducts.mk",
+    "commit": "4d368849922b04124e66b1aad48f93b3209f3c8d",
+    "sha256": "20fd7172104365e9bc7522d2252820e05b49e87ce80933943cc4c8b380057e5c",
+    "kind": "source_inspected"
+  },
+  {
+    "url": "https://android.googlesource.com/device/google/cuttlefish/+/4d368849922b04124e66b1aad48f93b3209f3c8d/vsoc_x86_64_only/phone/aosp_cf.mk",
+    "commit": "4d368849922b04124e66b1aad48f93b3209f3c8d",
+    "sha256": "d3cb6e7285bebc1048b94d717769efabe4d6dd9117b5eb810eed7f68c96ba2cd",
+    "kind": "source_inspected"
+  },
+  {
+    "url": "https://android.googlesource.com/device/google/cuttlefish/+/4d368849922b04124e66b1aad48f93b3209f3c8d/vsoc_x86_64/BoardConfig.mk",
+    "commit": "4d368849922b04124e66b1aad48f93b3209f3c8d",
+    "sha256": "8ca0068ef3b775d1c5d9839d1dd5e9a5e96599f05920be939683f53e62a648d9",
+    "kind": "source_inspected"
+  },
+  {
+    "url": "https://www.qemu.org/download/",
+    "kind": "documentation_only_not_runtime_evidence"
+  },
+  {
+    "url": "https://source.android.com/docs/devices/cuttlefish/gpu",
+    "kind": "documentation_only_not_runtime_evidence"
+  },
+  {
+    "url": "https://docs.mesa3d.org/drivers/venus.html",
+    "kind": "documentation_only_not_runtime_evidence"
+  },
+  {
+    "url": "https://kernelsu.org/guide/x86_64-support",
+    "kind": "documentation_only_not_runtime_evidence"
+  },
+  {
+    "url": "https://www.gnu.org/licenses/license-list.html#apache2",
+    "kind": "documentation_only_not_runtime_evidence"
+  },
+  {
+    "url": "https://perfetto.dev/docs/data-sources/frametimeline",
+    "kind": "documentation_only_not_runtime_evidence"
+  },
+  {
+    "url": "https://github.com/GameTechDev/PresentMon",
+    "kind": "documentation_only_not_runtime_evidence"
+  }
+]

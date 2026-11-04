@@ -1,0 +1,6 @@
+ninja: Jobserver mode detected: rR -j6 --jobserver-auth=3,4
+ninja: warning: Jobserver 'pipe' mode detected, a pool that implements 'fifo' mode would be more reliable!
+ninja: error: Could not initialize jobserver: Invalid file descriptors
+ninja: no work to do.
+/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/qemu-build-linux/pyvenv/bin/meson introspect --targets --tests --benchmarks | /home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/qemu-build-linux/pyvenv/bin/python3.13 -B scripts/mtest2make.py > Makefile.mtest
+[1/4] Generating qemu-version.h with a custom command (wrapped by meson to capture output)

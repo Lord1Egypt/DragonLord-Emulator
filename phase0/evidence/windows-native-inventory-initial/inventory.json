@@ -1,0 +1,36 @@
+﻿{
+    "timestamp_utc":  "2026-11-04T01:00:24.7922343Z",
+    "scope":  "Native Windows hardware and QEMU capability inventory only",
+    "status":  "BLOCKED",
+    "whpx_boot":  "NOT_TESTED",
+    "gpu_runtime":  "NOT_TESTED",
+    "android16":  "NOT_TESTED",
+    "kernelsu":  "NOT_TESTED",
+    "os":  {
+               "Caption":  "Microsoft Windows 11 Pro",
+               "Version":  "10.0.26300",
+               "OSArchitecture":  "64-bit"
+           },
+    "cpu":  {
+                "Name":  "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
+                "NumberOfCores":  6,
+                "NumberOfLogicalProcessors":  12,
+                "VirtualizationFirmwareEnabled":  false
+            },
+    "gpus":  [
+                 {
+                     "Name":  "NVIDIA GeForce RTX 2060",
+                     "DriverVersion":  "32.0.16.1742",
+                     "AdapterRAM":  4293918720
+                 },
+                 {
+                     "Name":  "Intel(R) UHD Graphics 630",
+                     "DriverVersion":  "25.20.100.6519",
+                     "AdapterRAM":  1073741824
+                 }
+             ],
+    "whpx_dll_present":  true,
+    "qemu_sha256":  "16c854418f0251adee38b8bd1468017ec003524e146fe6e705436870408af15d",
+    "qemu_version":  "QEMU emulator version 11.1.3 (v11.1.3)\r\nCopyright (c) 2003-2026 Fabrice Bellard and the QEMU Project developers\r\n",
+    "reason":  "WARNING: [Loader Message] Code 0 : windows_read_data_files_in_registry: Registry lookup failed to get layer manifest files."
+}

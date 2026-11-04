@@ -1,0 +1,22 @@
+{
+    "os":  {
+               "Caption":  "Microsoft Windows 11 Pro",
+               "Version":  "10.0.26300"
+           },
+    "gpus":  [
+                 {
+                     "Name":  "NVIDIA GeForce RTX 2060",
+                     "DriverVersion":  "32.0.16.1742"
+                 },
+                 {
+                     "Name":  "Intel(R) UHD Graphics 630",
+                     "DriverVersion":  "25.20.100.6519"
+                 }
+             ],
+    "whpx_dll":  true,
+    "qemu_path":  [
+
+                  ],
+    "msys64":  false,
+    "visual_studio":  true
+}

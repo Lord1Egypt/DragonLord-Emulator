@@ -1,0 +1,5 @@
+In file included from /home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_pci.c:11:
+/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/legacy-api-include/direct-express/direct_express_pci.h:8:10: fatal error: hw/qdev-properties.h: No such file or directory
+    8 | #include "hw/qdev-properties.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.

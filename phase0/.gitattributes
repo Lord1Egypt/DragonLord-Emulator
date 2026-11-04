@@ -1,0 +1,4 @@
+# Preserve captured evidence bytes and console line endings across host checkouts.
+evidence/** -text -whitespace
+tools/*.py text eol=lf
+tools/*.ps1 text eol=lf

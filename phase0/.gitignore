@@ -1,0 +1,5 @@
+.work/
+results/
+__pycache__/
+!evidence/**/*.log
+evidence/**/tmp/

@@ -1,0 +1,50 @@
+{
+  "scope": "Android guest evidence only",
+  "android16_boot": "BLOCKED",
+  "gpu_acceleration": "UNVERIFIED",
+  "kernelsu": "UNVERIFIED",
+  "serial": "phase0-no-device",
+  "commands": {
+    "boot_completed": {
+      "exit": 1,
+      "sha256": "823e1bc4986afdc43dcae31a0525d11152b814e63bd96779e66606cd5332e200"
+    },
+    "release": {
+      "exit": 1,
+      "sha256": "92e037a58a526ad558ce5b880219f49082977d3765cc9a6e8a681a0292cafe88"
+    },
+    "sdk": {
+      "exit": 1,
+      "sha256": "92e037a58a526ad558ce5b880219f49082977d3765cc9a6e8a681a0292cafe88"
+    },
+    "fingerprint": {
+      "exit": 1,
+      "sha256": "92e037a58a526ad558ce5b880219f49082977d3765cc9a6e8a681a0292cafe88"
+    },
+    "architecture": {
+      "exit": 1,
+      "sha256": "92e037a58a526ad558ce5b880219f49082977d3765cc9a6e8a681a0292cafe88"
+    },
+    "kernel": {
+      "exit": 1,
+      "sha256": "92e037a58a526ad558ce5b880219f49082977d3765cc9a6e8a681a0292cafe88"
+    },
+    "selinux": {
+      "exit": 1,
+      "sha256": "92e037a58a526ad558ce5b880219f49082977d3765cc9a6e8a681a0292cafe88"
+    },
+    "surfaceflinger": {
+      "exit": 1,
+      "sha256": "92e037a58a526ad558ce5b880219f49082977d3765cc9a6e8a681a0292cafe88"
+    },
+    "graphics_allocator": {
+      "exit": 1,
+      "sha256": "92e037a58a526ad558ce5b880219f49082977d3765cc9a6e8a681a0292cafe88"
+    },
+    "boot_log": {
+      "exit": 1,
+      "sha256": "92e037a58a526ad558ce5b880219f49082977d3765cc9a6e8a681a0292cafe88"
+    }
+  },
+  "reason": "ADB guest unavailable or required commands failed"
+}

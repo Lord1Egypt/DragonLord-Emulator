@@ -1,0 +1,16 @@
+{
+  "scope": "clean upstream CPU/serial build",
+  "status": "BLOCKED",
+  "timestamp_utc": "2026-11-03T21:11:20.104651+00:00",
+  "host_profile": "windows",
+  "source": {
+    "version": "11.1.3",
+    "tag": "v11.1.3",
+    "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+    "repository": "https://gitlab.com/qemu-project/qemu.git",
+    "release_date": "2026-10-28",
+    "release_source": "https://www.qemu.org/download/"
+  },
+  "gpu_acceleration": "NOT_TESTED",
+  "reason": "Run in native Windows MSYS2 MINGW64 with WHPX SDK headers"
+}

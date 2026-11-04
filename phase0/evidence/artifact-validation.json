@@ -1,0 +1,10 @@
+{
+  "scope": "Artifact and harness validation, not graphics qualification",
+  "python_syntax": "PASS",
+  "json_parse": "PASS",
+  "harness_tests": 9,
+  "harness_result": "PASS",
+  "powershell_syntax": "PASS (native Windows parser, both scripts)",
+  "main_legacy_preservation": "PASS",
+  "graphics_android_kernelsu": "UNVERIFIED"
+}

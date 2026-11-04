@@ -1,0 +1,6 @@
+[1/8] Generating qemu-version.h with a custom command (wrapped by meson to capture output)
+[2/6] Compiling C object libqemu-x86_64-softmmu.a.p/accel_whpx_whpx-accel-ops.c.obj
+[3/6] Compiling C object libqemu-x86_64-softmmu.a.p/target_i386_whpx_whpx-apic.c.obj
+[4/6] Compiling C object libqemu-x86_64-softmmu.a.p/accel_whpx_whpx-common.c.obj
+[5/6] Compiling C object libqemu-x86_64-softmmu.a.p/target_i386_whpx_whpx-all.c.obj
+[6/6] Linking target qemu-system-x86_64.exe

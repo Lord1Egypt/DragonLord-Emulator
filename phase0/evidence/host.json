@@ -1,0 +1,29 @@
+{
+  "timestamp_utc": "2026-11-03T21:11:19.953580+00:00",
+  "platform": "Linux",
+  "release": "6.18.54.1-microsoft-standard-WSL2",
+  "machine": "x86_64",
+  "logical_cpu_count": 12,
+  "device_access": {
+    "/dev/kvm": {
+      "exists": false,
+      "read_write": false
+    },
+    "/dev/dri": {
+      "exists": false,
+      "read_write": false
+    },
+    "/dev/dxg": {
+      "exists": false,
+      "read_write": false
+    }
+  },
+  "tools": {
+    "cc": "/usr/bin/cc",
+    "make": "/usr/bin/make",
+    "pkg-config": "/usr/bin/pkg-config",
+    "adb": "/usr/bin/adb",
+    "vulkaninfo": null,
+    "powershell.exe": "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe"
+  }
+}

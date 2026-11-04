@@ -1,0 +1,1 @@
+qemu-system-x86_64: -drive file=/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/assets/rootfs.ext4,format=raw,if=none,id=phase0disk,snapshot=on: Could not open temporary file '/var/tmp/vl.OIYTX3': Read-only file system

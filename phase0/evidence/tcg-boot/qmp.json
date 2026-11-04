@@ -1,0 +1,21 @@
+{
+  "greeting": {
+    "QMP": {
+      "version": {
+        "qemu": {
+          "micro": 3,
+          "minor": 1,
+          "major": 11
+        },
+        "package": "v11.1.3"
+      },
+      "capabilities": [
+        "oob"
+      ]
+    }
+  },
+  "status": {
+    "status": "running",
+    "running": true
+  }
+}
