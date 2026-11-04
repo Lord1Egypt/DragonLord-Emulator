@@ -1,0 +1,394 @@
+﻿2026-11-04T04:28:13.5242551Z Current runner version: '2.338.2'
+2026-11-04T04:28:13.5264059Z ##[group]Runner Image Provisioner
+2026-11-04T04:28:13.5264764Z Hosted Compute Agent
+2026-11-04T04:28:13.5265385Z Version: 20261021.618
+2026-11-04T04:28:13.5265919Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-11-04T04:28:13.5266578Z Build Date: 2026-10-21T00:45:21Z
+2026-11-04T04:28:13.5267330Z Worker ID: {11f6bc06-0fb7-414f-96aa-f9ee1ea5c0cf}
+2026-11-04T04:28:13.5267762Z Region: centralus
+2026-11-04T04:28:13.5268140Z Cloud: Azure
+2026-11-04T04:28:13.5268464Z ##[endgroup]
+2026-11-04T04:28:13.5269607Z ##[group]Operating System
+2026-11-04T04:28:13.5270011Z Ubuntu
+2026-11-04T04:28:13.5270319Z 24.04.5
+2026-11-04T04:28:13.5270652Z LTS
+2026-11-04T04:28:13.5270960Z ##[endgroup]
+2026-11-04T04:28:13.5271272Z ##[group]Runner Image
+2026-11-04T04:28:13.5271690Z Image: ubuntu-24.04
+2026-11-04T04:28:13.5272056Z Version: 20261025.353.1
+2026-11-04T04:28:13.5272797Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-04T04:28:13.5273647Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353
+2026-11-04T04:28:13.5274261Z ##[endgroup]
+2026-11-04T04:28:13.5274898Z ##[group]GITHUB_TOKEN Permissions
+2026-11-04T04:28:13.5276148Z Contents: read
+2026-11-04T04:28:13.5276479Z Metadata: read
+2026-11-04T04:28:13.5277220Z ##[endgroup]
+2026-11-04T04:28:13.5278508Z Secret source: Actions
+2026-11-04T04:28:13.5279065Z Cache mode: write
+2026-11-04T04:28:13.5279584Z Prepare workflow directory
+2026-11-04T04:28:13.5501340Z Prepare all required actions
+2026-11-04T04:28:13.5530674Z Getting action download info
+2026-11-04T04:28:13.8088955Z Download action repository 'actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09' (SHA:fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09)
+2026-11-04T04:28:13.9278319Z Download action repository 'actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1' (SHA:ece7cb06caefa5fff74198d8649806c4678c61a1)
+2026-11-04T04:28:14.0429105Z Download action repository 'actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4' (SHA:330a01c490aca151604b8cf639adc76d48f6c5d4)
+2026-11-04T04:28:14.2312119Z Complete job name: Corrected fence acceptance (baseline FAIL retained)
+2026-11-04T04:28:14.2813666Z ##[group]Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+2026-11-04T04:28:14.2814442Z with:
+2026-11-04T04:28:14.2814775Z   persist-credentials: false
+2026-11-04T04:28:14.2815232Z   repository: Lord1Egypt/DragonLord-Emulator
+2026-11-04T04:28:14.2817895Z   token: ***
+2026-11-04T04:28:14.2818117Z   ssh-strict: true
+2026-11-04T04:28:14.2818344Z   ssh-user: git
+2026-11-04T04:28:14.2818566Z   clean: true
+2026-11-04T04:28:14.2818801Z   sparse-checkout-cone-mode: true
+2026-11-04T04:28:14.2819071Z   fetch-depth: 1
+2026-11-04T04:28:14.2819297Z   fetch-tags: false
+2026-11-04T04:28:14.2819529Z   show-progress: true
+2026-11-04T04:28:14.2819759Z   lfs: false
+2026-11-04T04:28:14.2819971Z   submodules: false
+2026-11-04T04:28:14.2820204Z   set-safe-directory: true
+2026-11-04T04:28:14.2820487Z   allow-unsafe-pr-checkout: false
+2026-11-04T04:28:14.2820903Z ##[endgroup]
+2026-11-04T04:28:14.4974054Z Syncing repository: Lord1Egypt/DragonLord-Emulator
+2026-11-04T04:28:14.4975513Z ##[group]Getting Git version info
+2026-11-04T04:28:14.4976162Z Working directory is '/home/runner/work/DragonLord-Emulator/DragonLord-Emulator'
+2026-11-04T04:28:14.4977030Z [command]/usr/bin/git version
+2026-11-04T04:28:14.5058781Z git version 2.56.0
+2026-11-04T04:28:14.5072026Z ##[endgroup]
+2026-11-04T04:28:14.5081842Z Temporarily overriding HOME='/home/runner/work/_temp/ce540e0f-603c-4ee0-9fc1-571e4d46ab07' before making global git config changes
+2026-11-04T04:28:14.5082966Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-04T04:28:14.5085156Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/DragonLord-Emulator/DragonLord-Emulator
+2026-11-04T04:28:14.5131854Z Deleting the contents of '/home/runner/work/DragonLord-Emulator/DragonLord-Emulator'
+2026-11-04T04:28:14.5138348Z ##[group]Initializing the repository
+2026-11-04T04:28:14.5138980Z [command]/usr/bin/git init /home/runner/work/DragonLord-Emulator/DragonLord-Emulator
+2026-11-04T04:28:14.5219772Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-04T04:28:14.5220587Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-04T04:28:14.5221126Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-04T04:28:14.5221508Z hint: call:
+2026-11-04T04:28:14.5221721Z hint:
+2026-11-04T04:28:14.5222006Z hint: 	git config --global init.defaultBranch <name>
+2026-11-04T04:28:14.5222328Z hint:
+2026-11-04T04:28:14.5222696Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-04T04:28:14.5223235Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-04T04:28:14.5223616Z hint:
+2026-11-04T04:28:14.5223829Z hint: 	git branch -m <name>
+2026-11-04T04:28:14.5224156Z hint:
+2026-11-04T04:28:14.5224554Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-04T04:28:14.5227799Z Initialized empty Git repository in /home/runner/work/DragonLord-Emulator/DragonLord-Emulator/.git/
+2026-11-04T04:28:14.5243552Z [command]/usr/bin/git remote add origin https://github.com/Lord1Egypt/DragonLord-Emulator
+2026-11-04T04:28:14.5276962Z ##[endgroup]
+2026-11-04T04:28:14.5277395Z ##[group]Disabling automatic garbage collection
+2026-11-04T04:28:14.5279862Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-04T04:28:14.5305802Z ##[endgroup]
+2026-11-04T04:28:14.5306185Z ##[group]Setting up auth
+2026-11-04T04:28:14.5311034Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-04T04:28:14.5341889Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-04T04:28:14.5685136Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-04T04:28:14.5722358Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-04T04:28:14.5917302Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-04T04:28:14.5950564Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-04T04:28:14.6130630Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-04T04:28:14.6168719Z ##[endgroup]
+2026-11-04T04:28:14.6169265Z ##[group]Fetching the repository
+2026-11-04T04:28:14.6177994Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +4a19985396e2fe1d4d444247ad6c53e5964024b6:refs/remotes/pull/1/merge
+2026-11-04T04:28:15.9283156Z From https://github.com/Lord1Egypt/DragonLord-Emulator
+2026-11-04T04:28:15.9284319Z  * [new ref]         4a19985396e2fe1d4d444247ad6c53e5964024b6 -> pull/1/merge
+2026-11-04T04:28:15.9286497Z ##[endgroup]
+2026-11-04T04:28:15.9287340Z ##[group]Determining the checkout info
+2026-11-04T04:28:15.9288102Z ##[endgroup]
+2026-11-04T04:28:15.9293200Z [command]/usr/bin/git sparse-checkout disable
+2026-11-04T04:28:15.9348119Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-04T04:28:15.9383994Z ##[group]Checking out the ref
+2026-11-04T04:28:15.9385630Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/1/merge
+2026-11-04T04:28:16.3798471Z Note: switching to 'refs/remotes/pull/1/merge'.
+2026-11-04T04:28:16.3798934Z 
+2026-11-04T04:28:16.3799193Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-11-04T04:28:16.3799714Z changes and commit them, and you can discard any commits you make in this
+2026-11-04T04:28:16.3800590Z state without impacting any branches by switching back to a branch.
+2026-11-04T04:28:16.3800902Z 
+2026-11-04T04:28:16.3801176Z If you want to create a new branch to retain commits you create, you may
+2026-11-04T04:28:16.3801700Z do so (now or later) by using -c with the switch command. Example:
+2026-11-04T04:28:16.3801973Z 
+2026-11-04T04:28:16.3802119Z   git switch -c <new-branch-name>
+2026-11-04T04:28:16.3802347Z 
+2026-11-04T04:28:16.3802496Z Or undo this operation with:
+2026-11-04T04:28:16.3802680Z 
+2026-11-04T04:28:16.3802796Z   git switch -
+2026-11-04T04:28:16.3802973Z 
+2026-11-04T04:28:16.3803588Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-11-04T04:28:16.3803992Z 
+2026-11-04T04:28:16.3804640Z HEAD is now at 4a19985 Merge aabc06ff581b3691a86375ff429c8062b2a6c2fa into c5447ed4baf97d93e3a87c62534ed7d300d288de
+2026-11-04T04:28:16.3822551Z ##[endgroup]
+2026-11-04T04:28:16.3878189Z [command]/usr/bin/git log -1 --format=%H
+2026-11-04T04:28:16.3912736Z 4a19985396e2fe1d4d444247ad6c53e5964024b6
+2026-11-04T04:28:16.3927436Z ##[group]Removing auth
+2026-11-04T04:28:16.3928236Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-04T04:28:16.3968648Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-04T04:28:16.4169225Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-04T04:28:16.4374306Z http.https://github.com/.extraheader
+2026-11-04T04:28:16.4381702Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-04T04:28:16.4900328Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-04T04:28:16.5106247Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-04T04:28:16.5141721Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-04T04:28:16.5334023Z ##[endgroup]
+2026-11-04T04:28:16.5670055Z ##[group]Run actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+2026-11-04T04:28:16.5670331Z with:
+2026-11-04T04:28:16.5670477Z   python-version: 3.13
+2026-11-04T04:28:16.5670632Z   check-latest: false
+2026-11-04T04:28:16.5672189Z   token: ***
+2026-11-04T04:28:16.5672337Z   update-environment: true
+2026-11-04T04:28:16.5672506Z   allow-prereleases: false
+2026-11-04T04:28:16.5672661Z   freethreaded: false
+2026-11-04T04:28:16.5672813Z ##[endgroup]
+2026-11-04T04:28:16.6593675Z ##[group]Installed versions
+2026-11-04T04:28:16.6659302Z Successfully set up CPython (3.13.17)
+2026-11-04T04:28:16.6659783Z ##[endgroup]
+2026-11-04T04:28:16.6786031Z ##[group]Run python phase0/gpu-recovery/tools/fetch-probe-sources.py
+2026-11-04T04:28:16.6786672Z [36;1mpython phase0/gpu-recovery/tools/fetch-probe-sources.py[0m
+2026-11-04T04:28:16.6822001Z shell: /usr/bin/bash -e {0}
+2026-11-04T04:28:16.6822295Z env:
+2026-11-04T04:28:16.6822586Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T04:28:16.6823051Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+2026-11-04T04:28:16.6823490Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T04:28:16.6823883Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T04:28:16.6824281Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T04:28:16.6824680Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+2026-11-04T04:28:16.6825016Z ##[endgroup]
+2026-11-04T04:28:16.7517518Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-04T04:28:16.7518334Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-04T04:28:16.7519064Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-04T04:28:16.7519435Z hint: call:
+2026-11-04T04:28:16.7519641Z hint:
+2026-11-04T04:28:16.7519919Z hint: 	git config --global init.defaultBranch <name>
+2026-11-04T04:28:16.7520169Z hint:
+2026-11-04T04:28:16.7520380Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-04T04:28:16.7520694Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-04T04:28:16.7520931Z hint:
+2026-11-04T04:28:16.7521080Z hint: 	git branch -m <name>
+2026-11-04T04:28:16.7521243Z hint:
+2026-11-04T04:28:16.7521515Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-04T04:28:16.7521977Z Initialized empty Git repository in /home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/qemu-11.1.3/.git/
+2026-11-04T04:28:20.4925171Z From https://gitlab.com/qemu-project/qemu
+2026-11-04T04:28:20.4925737Z  * branch            005c61c0ef6f6ae615283440b4bb7be51b2c6ddd -> FETCH_HEAD
+2026-11-04T04:28:21.0645527Z HEAD is now at 005c61c Update version for 11.1.3 release
+2026-11-04T04:28:21.1140091Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-04T04:28:21.1140653Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-04T04:28:21.1141087Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-04T04:28:21.1141400Z hint: call:
+2026-11-04T04:28:21.1141558Z hint:
+2026-11-04T04:28:21.1141799Z hint: 	git config --global init.defaultBranch <name>
+2026-11-04T04:28:21.1142062Z hint:
+2026-11-04T04:28:21.1142295Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-04T04:28:21.1142557Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-04T04:28:21.1142762Z hint:
+2026-11-04T04:28:21.1142873Z hint: 	git branch -m <name>
+2026-11-04T04:28:21.1143135Z hint:
+2026-11-04T04:28:21.1143429Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-04T04:28:21.1144532Z Initialized empty Git repository in /home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/rutabaga-gpu-feasibility/.git/
+2026-11-04T04:28:21.5647662Z From https://github.com/magma-gpu/rutabaga_gfx
+2026-11-04T04:28:21.5648243Z  * branch            4f2bcaf71a6497583362ed664d9fe21cc5043049 -> FETCH_HEAD
+2026-11-04T04:28:21.5787659Z HEAD is now at 4f2bcaf rutabaga_gfx: cross_domain: Support sending AhbInfo over VIRTGPU_BLOB
+2026-11-04T04:28:21.5855291Z qemu-11.1.3: 005c61c0ef6f6ae615283440b4bb7be51b2c6ddd
+2026-11-04T04:28:21.5855728Z rutabaga-gpu-feasibility: 4f2bcaf71a6497583362ed664d9fe21cc5043049
+2026-11-04T04:28:21.5940922Z ##[group]Run python phase0/gpu-recovery/tools/test-fence-overlay.py --output phase0/results/ci-fence-overlay
+2026-11-04T04:28:21.5941380Z [36;1mpython phase0/gpu-recovery/tools/test-fence-overlay.py --output phase0/results/ci-fence-overlay[0m
+2026-11-04T04:28:21.5958723Z shell: /usr/bin/bash -e {0}
+2026-11-04T04:28:21.5958862Z env:
+2026-11-04T04:28:21.5959018Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T04:28:21.5959248Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+2026-11-04T04:28:21.5959473Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T04:28:21.5959693Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T04:28:21.5959941Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T04:28:21.5960145Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+2026-11-04T04:28:21.5960319Z ##[endgroup]
+2026-11-04T04:28:21.9085912Z {
+2026-11-04T04:28:21.9086475Z   "scope": "Source callback host-unit overlay; GPU/actual device reset NOT TESTED",
+2026-11-04T04:28:21.9087018Z   "status": "PASS",
+2026-11-04T04:28:21.9087202Z   "suites": [
+2026-11-04T04:28:21.9087368Z     {
+2026-11-04T04:28:21.9087840Z       "name": "unmodified-original26",
+2026-11-04T04:28:21.9088479Z       "compile_argv": [
+2026-11-04T04:28:21.9088695Z         "cc",
+2026-11-04T04:28:21.9088806Z         "-std=gnu11",
+2026-11-04T04:28:21.9088920Z         "-Wall",
+2026-11-04T04:28:21.9089025Z         "-Wextra",
+2026-11-04T04:28:21.9089184Z         "-Werror",
+2026-11-04T04:28:21.9089413Z         "-I/home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/qemu-11.1.3/include",
+2026-11-04T04:28:21.9089856Z         "-I/home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/rutabaga-gpu-feasibility/ffi/src/include",
+2026-11-04T04:28:21.9090353Z         "/home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-rcjsi3_f/unmodified-original26.c",
+2026-11-04T04:28:21.9090696Z         "-o",
+2026-11-04T04:28:21.9090982Z         "/home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-rcjsi3_f/unmodified-original26"
+2026-11-04T04:28:21.9091327Z       ],
+2026-11-04T04:28:21.9091445Z       "compile_exit_code": 0,
+2026-11-04T04:28:21.9091672Z       "callback_sha256": "1608fce69368e4d3229e2383c91bba253693f767698d7a5702b35bc0e898d976",
+2026-11-04T04:28:21.9092031Z       "template_sha256": "a8a0b22b7354fdd3a109e8a06e0c9623714d5427fb58709a733180512b130ca4",
+2026-11-04T04:28:21.9092296Z       "execute_argv": [
+2026-11-04T04:28:21.9092592Z         "/home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-rcjsi3_f/unmodified-original26"
+2026-11-04T04:28:21.9092920Z       ],
+2026-11-04T04:28:21.9093034Z       "execute_exit_code": 1,
+2026-11-04T04:28:21.9093251Z       "binary_sha256": "a97fb28f961caa40b2edd446afdf00f7a932f173728210533127a4ad9cfbdeae",
+2026-11-04T04:28:21.9093505Z       "cases": 26,
+2026-11-04T04:28:21.9093621Z       "failed": [
+2026-11-04T04:28:21.9093764Z         "different_context_same_ring",
+2026-11-04T04:28:21.9093965Z         "two_contexts_same_ring"
+2026-11-04T04:28:21.9094090Z       ],
+2026-11-04T04:28:21.9094197Z       "correctness": "FAIL"
+2026-11-04T04:28:21.9094321Z     },
+2026-11-04T04:28:21.9094416Z     {
+2026-11-04T04:28:21.9094527Z       "name": "unmodified-extended",
+2026-11-04T04:28:21.9094667Z       "compile_argv": [
+2026-11-04T04:28:21.9094870Z         "cc",
+2026-11-04T04:28:21.9095025Z         "-std=gnu11",
+2026-11-04T04:28:21.9095134Z         "-Wall",
+2026-11-04T04:28:21.9095237Z         "-Wextra",
+2026-11-04T04:28:21.9095380Z         "-Werror",
+2026-11-04T04:28:21.9095592Z         "-I/home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/qemu-11.1.3/include",
+2026-11-04T04:28:21.9096007Z         "-I/home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/rutabaga-gpu-feasibility/ffi/src/include",
+2026-11-04T04:28:21.9096631Z         "/home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-rcjsi3_f/unmodified-extended.c",
+2026-11-04T04:28:21.9097241Z         "-o",
+2026-11-04T04:28:21.9097521Z         "/home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-rcjsi3_f/unmodified-extended"
+2026-11-04T04:28:21.9097854Z       ],
+2026-11-04T04:28:21.9097978Z       "compile_exit_code": 0,
+2026-11-04T04:28:21.9098199Z       "callback_sha256": "1608fce69368e4d3229e2383c91bba253693f767698d7a5702b35bc0e898d976",
+2026-11-04T04:28:21.9098535Z       "template_sha256": "fda480182a1bbc1c39b9d041c57a1ad07cfbd7809dfd57cf56d4fc955dc21591",
+2026-11-04T04:28:21.9098789Z       "execute_argv": [
+2026-11-04T04:28:21.9099081Z         "/home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-rcjsi3_f/unmodified-extended"
+2026-11-04T04:28:21.9099406Z       ],
+2026-11-04T04:28:21.9099518Z       "execute_exit_code": 1,
+2026-11-04T04:28:21.9099737Z       "binary_sha256": "a4d018084b96caec211018ded0604ad1381e1278ce10e2a7bd32599e2a518055",
+2026-11-04T04:28:21.9099981Z       "cases": 12,
+2026-11-04T04:28:21.9100097Z       "failed": [
+2026-11-04T04:28:21.9100221Z         "four_context_ring_pairs",
+2026-11-04T04:28:21.9100372Z         "unknown_context_cannot_retire",
+2026-11-04T04:28:21.9100675Z         "queue_reset_new_context_rejects_old_signal"
+2026-11-04T04:28:21.9100832Z       ],
+2026-11-04T04:28:21.9100943Z       "correctness": "FAIL"
+2026-11-04T04:28:21.9101073Z     },
+2026-11-04T04:28:21.9101176Z     {
+2026-11-04T04:28:21.9101296Z       "name": "corrected-original26",
+2026-11-04T04:28:21.9101478Z       "compile_argv": [
+2026-11-04T04:28:21.9101683Z         "cc",
+2026-11-04T04:28:21.9101799Z         "-std=gnu11",
+2026-11-04T04:28:21.9101927Z         "-Wall",
+2026-11-04T04:28:21.9102039Z         "-Wextra",
+2026-11-04T04:28:21.9102155Z         "-Werror",
+2026-11-04T04:28:21.9102379Z         "-I/home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/qemu-11.1.3/include",
+2026-11-04T04:28:21.9102789Z         "-I/home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/rutabaga-gpu-feasibility/ffi/src/include",
+2026-11-04T04:28:21.9103269Z         "/home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-rcjsi3_f/corrected-original26.c",
+2026-11-04T04:28:21.9103714Z         "-o",
+2026-11-04T04:28:21.9104105Z         "/home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-rcjsi3_f/corrected-original26"
+2026-11-04T04:28:21.9104458Z       ],
+2026-11-04T04:28:21.9104615Z       "compile_exit_code": 0,
+2026-11-04T04:28:21.9104947Z       "callback_sha256": "6eeb71423c7068701c1fea533364e286d5e9bcb0393216f4754ec5d4396cfeb6",
+2026-11-04T04:28:21.9105436Z       "template_sha256": "a8a0b22b7354fdd3a109e8a06e0c9623714d5427fb58709a733180512b130ca4",
+2026-11-04T04:28:21.9106080Z       "execute_argv": [
+2026-11-04T04:28:21.9106532Z         "/home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-rcjsi3_f/corrected-original26"
+2026-11-04T04:28:21.9107319Z       ],
+2026-11-04T04:28:21.9107490Z       "execute_exit_code": 0,
+2026-11-04T04:28:21.9107813Z       "binary_sha256": "f4b7f02251fe0096b3699570da185fd2aef783af9fff696f201f44e2c72bafb8",
+2026-11-04T04:28:21.9108161Z       "cases": 26,
+2026-11-04T04:28:21.9108349Z       "failed": [],
+2026-11-04T04:28:21.9108526Z       "correctness": "PASS"
+2026-11-04T04:28:21.9108710Z     },
+2026-11-04T04:28:21.9108858Z     {
+2026-11-04T04:28:21.9109026Z       "name": "corrected-extended",
+2026-11-04T04:28:21.9109238Z       "compile_argv": [
+2026-11-04T04:28:21.9109411Z         "cc",
+2026-11-04T04:28:21.9109568Z         "-std=gnu11",
+2026-11-04T04:28:21.9109734Z         "-Wall",
+2026-11-04T04:28:21.9109890Z         "-Wextra",
+2026-11-04T04:28:21.9110049Z         "-Werror",
+2026-11-04T04:28:21.9110549Z         "-I/home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/qemu-11.1.3/include",
+2026-11-04T04:28:21.9111173Z         "-I/home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/rutabaga-gpu-feasibility/ffi/src/include",
+2026-11-04T04:28:21.9111692Z         "/home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-rcjsi3_f/corrected-extended.c",
+2026-11-04T04:28:21.9111993Z         "-o",
+2026-11-04T04:28:21.9112257Z         "/home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-rcjsi3_f/corrected-extended"
+2026-11-04T04:28:21.9112549Z       ],
+2026-11-04T04:28:21.9112654Z       "compile_exit_code": 0,
+2026-11-04T04:28:21.9112866Z       "callback_sha256": "6eeb71423c7068701c1fea533364e286d5e9bcb0393216f4754ec5d4396cfeb6",
+2026-11-04T04:28:21.9113172Z       "template_sha256": "fda480182a1bbc1c39b9d041c57a1ad07cfbd7809dfd57cf56d4fc955dc21591",
+2026-11-04T04:28:21.9113396Z       "execute_argv": [
+2026-11-04T04:28:21.9113675Z         "/home/runner/work/DragonLord-Emulator/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-rcjsi3_f/corrected-extended"
+2026-11-04T04:28:21.9113960Z       ],
+2026-11-04T04:28:21.9114063Z       "execute_exit_code": 0,
+2026-11-04T04:28:21.9114270Z       "binary_sha256": "58fcbd175a9d8e08055337f164f7532a72f1605d3bb17b76fb8d14f139d2d763",
+2026-11-04T04:28:21.9114579Z       "cases": 12,
+2026-11-04T04:28:21.9114684Z       "failed": [],
+2026-11-04T04:28:21.9114801Z       "correctness": "PASS"
+2026-11-04T04:28:21.9114920Z     }
+2026-11-04T04:28:21.9115014Z   ],
+2026-11-04T04:28:21.9115150Z   "source_commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+2026-11-04T04:28:21.9115357Z   "upstream_fix": "dbb53a7caa04d4e12e93f83511640247a2fd49d6",
+2026-11-04T04:28:21.9115627Z   "original_source_sha256": "808fd2cc677a268be0a235bbefb704e43707cb3a786fa813d73e727f9de47df3",
+2026-11-04T04:28:21.9115946Z   "patched_source_sha256": "680ee771863a50eeeb77ffa452ea57b60d7d079362933817125134fe0876c1ed",
+2026-11-04T04:28:21.9116246Z   "patch_sha256": "1126c30202e1ae567c08c816e4b271c60ad423f1d26f2be47c0ea4a12c68db7d",
+2026-11-04T04:28:21.9116464Z   "source_preserved": true,
+2026-11-04T04:28:21.9116902Z   "reason": "Correction suites pass; original correctness FAIL remains explicitly recorded, as a differential negative control"
+2026-11-04T04:28:21.9117335Z }
+2026-11-04T04:28:21.9175947Z ##[group]Run import json, os
+2026-11-04T04:28:21.9176126Z [36;1mimport json, os[0m
+2026-11-04T04:28:21.9176259Z [36;1mfrom pathlib import Path[0m
+2026-11-04T04:28:21.9176438Z [36;1mp=Path('phase0/results/ci-fence-overlay/result.json')[0m
+2026-11-04T04:28:21.9176660Z [36;1mwith open(os.environ['GITHUB_STEP_SUMMARY'],'a') as out:[0m
+2026-11-04T04:28:21.9177144Z [36;1m    out.write('## Source callback acceptance only\nGPU, WHPX sharing and actual device reset: NOT TESTED.\n')[0m
+2026-11-04T04:28:21.9177407Z [36;1m    if p.exists():[0m
+2026-11-04T04:28:21.9177549Z [36;1m        d=json.loads(p.read_text())[0m
+2026-11-04T04:28:21.9177700Z [36;1m        for s in d['suites']:[0m
+2026-11-04T04:28:21.9177945Z [36;1m            out.write(f"- {s['name']}: {s.get('correctness','FAIL')} ({len(s.get('failed',[]))} failing cases)\n")[0m
+2026-11-04T04:28:21.9178187Z [36;1m    else:[0m
+2026-11-04T04:28:21.9178388Z [36;1m        out.write('No result: FAIL/BLOCKED; inspect the failed step.\n')[0m
+2026-11-04T04:28:21.9181081Z shell: /opt/hostedtoolcache/Python/3.13.17/x64/bin/python {0}
+2026-11-04T04:28:21.9181262Z env:
+2026-11-04T04:28:21.9181402Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T04:28:21.9181621Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+2026-11-04T04:28:21.9181839Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T04:28:21.9182037Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T04:28:21.9182236Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T04:28:21.9182438Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+2026-11-04T04:28:21.9182610Z ##[endgroup]
+2026-11-04T04:28:21.9472856Z ##[group]Run actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4
+2026-11-04T04:28:21.9473081Z with:
+2026-11-04T04:28:21.9473250Z   name: fence-source-results-4a19985396e2fe1d4d444247ad6c53e5964024b6
+2026-11-04T04:28:21.9473467Z   path: phase0/results/ci-fence-overlay/
+2026-11-04T04:28:21.9473628Z   if-no-files-found: error
+2026-11-04T04:28:21.9473757Z   retention-days: 14
+2026-11-04T04:28:21.9473875Z   compression-level: 6
+2026-11-04T04:28:21.9473996Z   overwrite: false
+2026-11-04T04:28:21.9474112Z   include-hidden-files: false
+2026-11-04T04:28:21.9474238Z env:
+2026-11-04T04:28:21.9474376Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T04:28:21.9474599Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+2026-11-04T04:28:21.9474818Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T04:28:21.9475025Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T04:28:21.9475242Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T04:28:21.9475446Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+2026-11-04T04:28:21.9475613Z ##[endgroup]
+2026-11-04T04:28:22.1296204Z (node:2287) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-04T04:28:22.1297505Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-04T04:28:22.1388846Z With the provided path, there will be 11 files uploaded
+2026-11-04T04:28:22.1389323Z Artifact name is valid!
+2026-11-04T04:28:22.1389473Z Root directory input is valid!
+2026-11-04T04:28:22.4316390Z Beginning upload of artifact content to blob storage
+2026-11-04T04:28:22.4515109Z (node:2287) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-04T04:28:22.6598330Z Uploaded bytes 3725
+2026-11-04T04:28:22.7040241Z Finished uploading artifact content to blob storage!
+2026-11-04T04:28:22.7040848Z SHA256 digest of uploaded artifact zip is 370f13c589213fd5bafe970f7c957da109ee3cb5a17086cdf26fbd1ffdc448bf
+2026-11-04T04:28:22.7042085Z Finalizing artifact upload
+2026-11-04T04:28:23.1607637Z Artifact fence-source-results-4a19985396e2fe1d4d444247ad6c53e5964024b6.zip successfully finalized. Artifact ID 13295931917
+2026-11-04T04:28:23.1608824Z Artifact fence-source-results-4a19985396e2fe1d4d444247ad6c53e5964024b6 has been successfully uploaded! Final size is 3725 bytes. Artifact ID is 13295931917
+2026-11-04T04:28:23.1609777Z Artifact download URL: https://github.com/Lord1Egypt/DragonLord-Emulator/actions/runs/41773385571/artifacts/13295931917
+2026-11-04T04:28:23.1771786Z Post job cleanup.
+2026-11-04T04:28:23.2675700Z Post job cleanup.
+2026-11-04T04:28:23.3236821Z [command]/usr/bin/git version
+2026-11-04T04:28:23.3268923Z git version 2.56.0
+2026-11-04T04:28:23.3292383Z Temporarily overriding HOME='/home/runner/work/_temp/6f692b11-bb0a-4336-b5f6-0792a1059e3b' before making global git config changes
+2026-11-04T04:28:23.3293088Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-04T04:28:23.3294636Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/DragonLord-Emulator/DragonLord-Emulator
+2026-11-04T04:28:23.3325609Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-04T04:28:23.3352750Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-04T04:28:23.3580879Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-04T04:28:23.3618642Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-04T04:28:23.3846430Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-04T04:28:23.3895007Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-04T04:28:23.4284352Z Cleaning up orphan processes
+2026-11-04T04:28:23.4534782Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

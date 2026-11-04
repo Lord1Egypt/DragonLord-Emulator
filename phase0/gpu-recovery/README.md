@@ -6,7 +6,7 @@ Read the [technical report](REPORT.md), [exact reproduction instructions](REPROD
 
 | Acceptance | Outcome |
 |---|---|
-| Modern CI | PASS at first recovery milestone; final revision checked separately |
+| Modern CI | PASS at `aabc06f`: [hosted run 41773385571](https://github.com/Lord1Egypt/DragonLord-Emulator/actions/runs/41773385571), all three jobs |
 | Upstream context-ID fence correction | PASS: corrected 26 historical +12 extended; original failures retained |
 | Native Gfxstream compilation | PASS with isolated, hashed build overlays |
 | Actual hardware rendering | PASS for host-only Gfxstream Vulkan compositor on RTX 2060 |

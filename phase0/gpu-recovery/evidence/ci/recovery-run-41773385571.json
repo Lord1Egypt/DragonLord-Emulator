@@ -1,0 +1,33 @@
+{
+  "conclusion": "success",
+  "event": "pull_request",
+  "head_branch": "phase0/architecture-feasibility",
+  "head_sha": "aabc06ff581b3691a86375ff429c8062b2a6c2fa",
+  "html_url": "https://github.com/Lord1Egypt/DragonLord-Emulator/actions/runs/41773385571",
+  "id": 41773385571,
+  "path": ".github/workflows/phase0-validation.yml",
+  "run_attempt": 1,
+  "status": "completed",
+  "checkout_merge_sha": "4a19985396e2fe1d4d444247ad6c53e5964024b6",
+  "checkout_tree_sha": "6f4d18a3d6cabfae968efefdc5800e4399780208",
+  "head_tree_sha": "6f4d18a3d6cabfae968efefdc5800e4399780208",
+  "checkout_tree_matches_head": true,
+  "jobs": [
+    {
+      "id": 126388035374,
+      "name": "Evidence and harness (windows-2025)",
+      "conclusion": "success"
+    },
+    {
+      "id": 126388035584,
+      "name": "Evidence and harness (ubuntu-24.04)",
+      "conclusion": "success"
+    },
+    {
+      "id": 126388035617,
+      "name": "Corrected fence acceptance (baseline FAIL retained)",
+      "conclusion": "success"
+    }
+  ],
+  "scope": "Hosted harness/evidence/source-callback validation only; GPU correctness outcomes remain independent"
+}
