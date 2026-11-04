@@ -1,0 +1,124 @@
+{
+  "scope": "Source callback host-unit overlay; GPU/actual device reset NOT TESTED",
+  "status": "PASS",
+  "suites": [
+    {
+      "name": "unmodified-original26",
+      "compile_argv": [
+        "cc",
+        "-std=gnu11",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-I/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/qemu-11.1.3/include",
+        "-I/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/rutabaga-gpu-feasibility/ffi/src/include",
+        "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-7ovbxu63/unmodified-original26.c",
+        "-o",
+        "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-7ovbxu63/unmodified-original26"
+      ],
+      "compile_exit_code": 0,
+      "callback_sha256": "1608fce69368e4d3229e2383c91bba253693f767698d7a5702b35bc0e898d976",
+      "template_sha256": "a8a0b22b7354fdd3a109e8a06e0c9623714d5427fb58709a733180512b130ca4",
+      "execute_argv": [
+        "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-7ovbxu63/unmodified-original26"
+      ],
+      "execute_exit_code": 1,
+      "binary_sha256": "a97fb28f961caa40b2edd446afdf00f7a932f173728210533127a4ad9cfbdeae",
+      "cases": 26,
+      "failed": [
+        "different_context_same_ring",
+        "two_contexts_same_ring"
+      ],
+      "correctness": "FAIL"
+    },
+    {
+      "name": "unmodified-extended",
+      "compile_argv": [
+        "cc",
+        "-std=gnu11",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-I/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/qemu-11.1.3/include",
+        "-I/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/rutabaga-gpu-feasibility/ffi/src/include",
+        "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-7ovbxu63/unmodified-extended.c",
+        "-o",
+        "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-7ovbxu63/unmodified-extended"
+      ],
+      "compile_exit_code": 0,
+      "callback_sha256": "1608fce69368e4d3229e2383c91bba253693f767698d7a5702b35bc0e898d976",
+      "template_sha256": "fda480182a1bbc1c39b9d041c57a1ad07cfbd7809dfd57cf56d4fc955dc21591",
+      "execute_argv": [
+        "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-7ovbxu63/unmodified-extended"
+      ],
+      "execute_exit_code": 1,
+      "binary_sha256": "a4d018084b96caec211018ded0604ad1381e1278ce10e2a7bd32599e2a518055",
+      "cases": 12,
+      "failed": [
+        "four_context_ring_pairs",
+        "unknown_context_cannot_retire",
+        "queue_reset_new_context_rejects_old_signal"
+      ],
+      "correctness": "FAIL"
+    },
+    {
+      "name": "corrected-original26",
+      "compile_argv": [
+        "cc",
+        "-std=gnu11",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-I/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/qemu-11.1.3/include",
+        "-I/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/rutabaga-gpu-feasibility/ffi/src/include",
+        "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-7ovbxu63/corrected-original26.c",
+        "-o",
+        "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-7ovbxu63/corrected-original26"
+      ],
+      "compile_exit_code": 0,
+      "callback_sha256": "6eeb71423c7068701c1fea533364e286d5e9bcb0393216f4754ec5d4396cfeb6",
+      "template_sha256": "a8a0b22b7354fdd3a109e8a06e0c9623714d5427fb58709a733180512b130ca4",
+      "execute_argv": [
+        "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-7ovbxu63/corrected-original26"
+      ],
+      "execute_exit_code": 0,
+      "binary_sha256": "f4b7f02251fe0096b3699570da185fd2aef783af9fff696f201f44e2c72bafb8",
+      "cases": 26,
+      "failed": [],
+      "correctness": "PASS"
+    },
+    {
+      "name": "corrected-extended",
+      "compile_argv": [
+        "cc",
+        "-std=gnu11",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-I/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/qemu-11.1.3/include",
+        "-I/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/rutabaga-gpu-feasibility/ffi/src/include",
+        "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-7ovbxu63/corrected-extended.c",
+        "-o",
+        "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-7ovbxu63/corrected-extended"
+      ],
+      "compile_exit_code": 0,
+      "callback_sha256": "6eeb71423c7068701c1fea533364e286d5e9bcb0393216f4754ec5d4396cfeb6",
+      "template_sha256": "fda480182a1bbc1c39b9d041c57a1ad07cfbd7809dfd57cf56d4fc955dc21591",
+      "execute_argv": [
+        "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-recovery/fence-overlay-7ovbxu63/corrected-extended"
+      ],
+      "execute_exit_code": 0,
+      "binary_sha256": "58fcbd175a9d8e08055337f164f7532a72f1605d3bb17b76fb8d14f139d2d763",
+      "cases": 12,
+      "failed": [],
+      "correctness": "PASS"
+    }
+  ],
+  "source_commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+  "upstream_fix": "dbb53a7caa04d4e12e93f83511640247a2fd49d6",
+  "original_source_sha256": "808fd2cc677a268be0a235bbefb704e43707cb3a786fa813d73e727f9de47df3",
+  "patched_source_sha256": "680ee771863a50eeeb77ffa452ea57b60d7d079362933817125134fe0876c1ed",
+  "patch_sha256": "1126c30202e1ae567c08c816e4b271c60ad423f1d26f2be47c0ea4a12c68db7d",
+  "source_preserved": true,
+  "reason": "Correction suites pass; original correctness FAIL remains explicitly recorded, as a differential negative control"
+}

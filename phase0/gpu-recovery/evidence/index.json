@@ -1,0 +1,122 @@
+{
+  "schema": 1,
+  "scope": "Phase0.6 first CI/fence milestone; native GPU/ABI/lifecycle NOT TESTED",
+  "reviewed_base": "6c1a0604dcfc63d7efa84fea73b065d9aa8920b5",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 120,
+      "sha256": "2c1cce4a87bdf8d7a25a6fb26b473677f63119e7844a3418eff9814162ca099d"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 19,
+      "sha256": "5e3314d69a3584715ee63c0a30a09a09fcc4b0217ec394f3c10640c8754159a0"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5169,
+      "sha256": "040d2657485cae6ff43fc83cae47f349cd9a542eae19fe84af696d2826531e3b"
+    },
+    {
+      "path": "evidence/ci/legacy-failure-analysis.json",
+      "bytes": 652,
+      "sha256": "fde18eeae46ba9c06abfdebd66625e7af689849792254807b8dc80eb7721f861"
+    },
+    {
+      "path": "evidence/ci/legacy-job-126330694303.log",
+      "bytes": 65995,
+      "sha256": "091a4d587c87947f4541745e163fa405462cdba186247ea6b2568c2fc35c8169"
+    },
+    {
+      "path": "evidence/fence-overlay/corrected-extended-compile.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/fence-overlay/corrected-extended.log",
+      "bytes": 722,
+      "sha256": "93e57edb237bb732aa9ce96d735e5aae2930e25ab8278d04f44ca1183ad926b3"
+    },
+    {
+      "path": "evidence/fence-overlay/corrected-original26-compile.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/fence-overlay/corrected-original26.log",
+      "bytes": 3344,
+      "sha256": "67c82dc1cfc215d9b319189d755e260474ded5521c60be850043ea4f12177148"
+    },
+    {
+      "path": "evidence/fence-overlay/patch-apply.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/fence-overlay/patch-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/fence-overlay/result.json",
+      "bytes": 5759,
+      "sha256": "c1813605a92cd2814002aa5c53688340bbaff47f15e63075b5cff3757a64ea5c"
+    },
+    {
+      "path": "evidence/fence-overlay/unmodified-extended-compile.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/fence-overlay/unmodified-extended.log",
+      "bytes": 722,
+      "sha256": "54ce981453855743ecb85d2ed6618021b73677f8252d94c067e788b4b805c55e"
+    },
+    {
+      "path": "evidence/fence-overlay/unmodified-original26-compile.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/fence-overlay/unmodified-original26.log",
+      "bytes": 3342,
+      "sha256": "55f016dc2ce2843912b1dc9d01d617181770b541786eb2c156305d75d0baf871"
+    },
+    {
+      "path": "evidence/upstream-fence-identity.json",
+      "bytes": 599,
+      "sha256": "96e4425a3e00975f721e4220223ed0dc6cefb62ea4909b51b150bdc5e3e452bf"
+    },
+    {
+      "path": "tests/fence_extended.c.in",
+      "bytes": 5506,
+      "sha256": "fda480182a1bbc1c39b9d041c57a1ad07cfbd7809dfd57cf56d4fc955dc21591"
+    },
+    {
+      "path": "tests/test_integrity.py",
+      "bytes": 1891,
+      "sha256": "7f7495ada0833920e07abe6111b9d7d97103f9dde7babceacbf2160c0d9047d1"
+    },
+    {
+      "path": "tools/fetch-probe-sources.py",
+      "bytes": 1365,
+      "sha256": "b5cc6c8885a2467eccfe297fe5b0006c55eece9dffdfbd22e080fee3415933ee"
+    },
+    {
+      "path": "tools/test-fence-overlay.py",
+      "bytes": 7384,
+      "sha256": "c8091031a4e5e54f13797175113738a1a4114e1c67e7b07dd0b8404740430c04"
+    },
+    {
+      "path": "tools/verify-evidence.py",
+      "bytes": 1580,
+      "sha256": "94c4cd05b9c52a315220f6890b1cb7fc9af57047c4e08280ba5c7dd1bd69d84b"
+    },
+    {
+      "path": "upstream-fence-fix.patch",
+      "bytes": 1373,
+      "sha256": "1126c30202e1ae567c08c816e4b271c60ad423f1d26f2be47c0ea4a12c68db7d"
+    }
+  ]
+}

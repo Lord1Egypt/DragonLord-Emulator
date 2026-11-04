@@ -1,0 +1,16 @@
+{
+  "run_id": 41755551737,
+  "job_id": 126330694303,
+  "url": "https://github.com/Lord1Egypt/DragonLord-Emulator/actions/runs/41755551737",
+  "conclusion": "failure",
+  "complete_decoded_log_lines": 852,
+  "log_sha256": "091a4d587c87947f4541745e163fa405462cdba186247ea6b2568c2fc35c8169",
+  "failed_step": "msys2/setup-msys2",
+  "unavailable_targets": [
+    "mingw-w64-x86_64-tools-git",
+    "mingw-w64-x86_64-winstorecompat-git",
+    "mingw-w64-x86_64-libmangle-git"
+  ],
+  "compilation": "NOT TESTED (step skipped)",
+  "resolution": "Manual legacy workflow with UCRT64 and direct development dependencies; no continue-on-error. Modern CI separate."
+}

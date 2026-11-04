@@ -1,0 +1,852 @@
+﻿2026-11-04T01:39:36.6664058Z Current runner version: '2.338.2'
+2026-11-04T01:39:36.6685921Z ##[group]Runner Image Provisioner
+2026-11-04T01:39:36.6686583Z Hosted Compute Agent
+2026-11-04T01:39:36.6687083Z Version: 20261021.618
+2026-11-04T01:39:36.6688055Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-11-04T01:39:36.6688694Z Build Date: 2026-10-21T00:45:21Z
+2026-11-04T01:39:36.6689258Z Worker ID: {94fa8abf-775f-4fc5-b133-b171cc39bab2}
+2026-11-04T01:39:36.6689823Z Region: westus3
+2026-11-04T01:39:36.6690353Z Cloud: Azure
+2026-11-04T01:39:36.6690812Z ##[endgroup]
+2026-11-04T01:39:36.6692076Z ##[group]Operating System
+2026-11-04T01:39:36.6692586Z Microsoft Windows Server 2025
+2026-11-04T01:39:36.6693279Z 10.0.26100
+2026-11-04T01:39:36.6693665Z Datacenter
+2026-11-04T01:39:36.6694085Z ##[endgroup]
+2026-11-04T01:39:36.6694527Z ##[group]Runner Image
+2026-11-04T01:39:36.6695187Z Image: windows-2025-vs2026
+2026-11-04T01:39:36.6695679Z Version: 20261030.294.1
+2026-11-04T01:39:36.6697108Z Included Software: https://github.com/actions/runner-images/blob/win25-vs2026/20261030.294/images/windows/Windows2025-VS2026-Readme.md
+2026-11-04T01:39:36.6698441Z Image Release: https://github.com/actions/runner-images/releases/tag/win25-vs2026%2F20261030.294
+2026-11-04T01:39:36.6699409Z ##[endgroup]
+2026-11-04T01:39:36.6701790Z ##[group]GITHUB_TOKEN Permissions
+2026-11-04T01:39:36.6704169Z Contents: read
+2026-11-04T01:39:36.6704663Z Metadata: read
+2026-11-04T01:39:36.6705093Z Packages: read
+2026-11-04T01:39:36.6705532Z ##[endgroup]
+2026-11-04T01:39:36.6707348Z Secret source: Actions
+2026-11-04T01:39:36.6709978Z Cache mode: write
+2026-11-04T01:39:36.6710603Z Prepare workflow directory
+2026-11-04T01:39:36.7132164Z Prepare all required actions
+2026-11-04T01:39:36.7173283Z Getting action download info
+2026-11-04T01:39:37.0253586Z Download action repository 'actions/checkout@v3' (SHA:a37ce9120846195fa4ece8f58b268e6043cb2f26)
+2026-11-04T01:39:37.1447698Z Download action repository 'msys2/setup-msys2@v2' (SHA:ec48f7c5447b3140e2b088413ae3a55687bccb6e)
+2026-11-04T01:39:37.6895154Z Complete job name: build
+2026-11-04T01:39:37.8912573Z ##[group]Run actions/checkout@v3
+2026-11-04T01:39:37.8913487Z with:
+2026-11-04T01:39:37.8913828Z   submodules: recursive
+2026-11-04T01:39:37.8914251Z   repository: Lord1Egypt/DragonLord-Emulator
+2026-11-04T01:39:37.8917866Z   token: ***
+2026-11-04T01:39:37.8918585Z   ssh-strict: true
+2026-11-04T01:39:37.8918948Z   persist-credentials: true
+2026-11-04T01:39:37.8919329Z   clean: true
+2026-11-04T01:39:37.8919677Z   sparse-checkout-cone-mode: true
+2026-11-04T01:39:37.8920091Z   fetch-depth: 1
+2026-11-04T01:39:37.8920425Z   fetch-tags: false
+2026-11-04T01:39:37.8920787Z   lfs: false
+2026-11-04T01:39:37.8921134Z   set-safe-directory: true
+2026-11-04T01:39:37.8921542Z   allow-unsafe-pr-checkout: false
+2026-11-04T01:39:37.8922169Z ##[endgroup]
+2026-11-04T01:39:38.2141940Z (node:6376) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-04T01:39:38.2143962Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-04T01:39:38.2221460Z Syncing repository: Lord1Egypt/DragonLord-Emulator
+2026-11-04T01:39:38.2223370Z ##[group]Getting Git version info
+2026-11-04T01:39:38.2224386Z Working directory is 'D:\a\DragonLord-Emulator\DragonLord-Emulator'
+2026-11-04T01:39:38.2963349Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-11-04T01:39:38.6559475Z git version 2.56.0.windows.4
+2026-11-04T01:39:38.6603708Z ##[endgroup]
+2026-11-04T01:39:38.6619522Z Temporarily overriding HOME='D:\a\_temp\5dcbd142-da0f-4bfd-b63c-525a7dd54e72' before making global git config changes
+2026-11-04T01:39:38.6622028Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-04T01:39:38.6626523Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\DragonLord-Emulator\DragonLord-Emulator
+2026-11-04T01:39:38.7171173Z Deleting the contents of 'D:\a\DragonLord-Emulator\DragonLord-Emulator'
+2026-11-04T01:39:38.7176999Z ##[group]Initializing the repository
+2026-11-04T01:39:38.7185491Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\DragonLord-Emulator\DragonLord-Emulator
+2026-11-04T01:39:38.8232179Z Initialized empty Git repository in D:/a/DragonLord-Emulator/DragonLord-Emulator/.git/
+2026-11-04T01:39:38.8272277Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/Lord1Egypt/DragonLord-Emulator
+2026-11-04T01:39:38.8896349Z ##[endgroup]
+2026-11-04T01:39:38.8897817Z ##[group]Disabling automatic garbage collection
+2026-11-04T01:39:38.8900811Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-11-04T01:39:38.9198737Z ##[endgroup]
+2026-11-04T01:39:38.9200009Z ##[group]Setting up auth
+2026-11-04T01:39:38.9206318Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-11-04T01:39:38.9505248Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-11-04T01:39:40.6384334Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-04T01:39:40.6726430Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-11-04T01:39:41.1423968Z [command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-11-04T01:39:41.1750132Z ##[endgroup]
+2026-11-04T01:39:41.1750808Z ##[group]Fetching the repository
+2026-11-04T01:39:41.1760212Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +107b56645057e7c100b3f960a73f1bc036e899cb:refs/remotes/pull/1/merge
+2026-11-04T01:39:42.5610103Z remote: Enumerating objects: 7869, done.        
+2026-11-04T01:39:42.5610617Z remote: Counting objects:   0% (1/7869)        
+2026-11-04T01:39:42.5610929Z remote: Counting objects:   1% (79/7869)        
+2026-11-04T01:39:42.5611241Z remote: Counting objects:   2% (158/7869)        
+2026-11-04T01:39:42.5611497Z remote: Counting objects:   3% (237/7869)        
+2026-11-04T01:39:42.5611759Z remote: Counting objects:   4% (315/7869)        
+2026-11-04T01:39:42.5612012Z remote: Counting objects:   5% (394/7869)        
+2026-11-04T01:39:42.5612286Z remote: Counting objects:   6% (473/7869)        
+2026-11-04T01:39:42.5612618Z remote: Counting objects:   7% (551/7869)        
+2026-11-04T01:39:42.5613025Z remote: Counting objects:   8% (630/7869)        
+2026-11-04T01:39:42.5613278Z remote: Counting objects:   9% (709/7869)        
+2026-11-04T01:39:42.5613536Z remote: Counting objects:  10% (787/7869)        
+2026-11-04T01:39:42.5613816Z remote: Counting objects:  11% (866/7869)        
+2026-11-04T01:39:42.5614079Z remote: Counting objects:  12% (945/7869)        
+2026-11-04T01:39:42.5614374Z remote: Counting objects:  13% (1023/7869)        
+2026-11-04T01:39:42.5614680Z remote: Counting objects:  14% (1102/7869)        
+2026-11-04T01:39:42.5614937Z remote: Counting objects:  15% (1181/7869)        
+2026-11-04T01:39:42.5615191Z remote: Counting objects:  16% (1260/7869)        
+2026-11-04T01:39:42.5615445Z remote: Counting objects:  17% (1338/7869)        
+2026-11-04T01:39:42.5615703Z remote: Counting objects:  18% (1417/7869)        
+2026-11-04T01:39:42.5616002Z remote: Counting objects:  19% (1496/7869)        
+2026-11-04T01:39:42.5616251Z remote: Counting objects:  20% (1574/7869)        
+2026-11-04T01:39:42.5616520Z remote: Counting objects:  21% (1653/7869)        
+2026-11-04T01:39:42.5616842Z remote: Counting objects:  22% (1732/7869)        
+2026-11-04T01:39:42.5617141Z remote: Counting objects:  23% (1810/7869)        
+2026-11-04T01:39:42.5617926Z remote: Counting objects:  24% (1889/7869)        
+2026-11-04T01:39:42.5618179Z remote: Counting objects:  25% (1968/7869)        
+2026-11-04T01:39:42.5618432Z remote: Counting objects:  26% (2046/7869)        
+2026-11-04T01:39:42.5618679Z remote: Counting objects:  27% (2125/7869)        
+2026-11-04T01:39:42.5618926Z remote: Counting objects:  28% (2204/7869)        
+2026-11-04T01:39:42.5619174Z remote: Counting objects:  29% (2283/7869)        
+2026-11-04T01:39:42.5619423Z remote: Counting objects:  30% (2361/7869)        
+2026-11-04T01:39:42.5619681Z remote: Counting objects:  31% (2440/7869)        
+2026-11-04T01:39:42.5619944Z remote: Counting objects:  32% (2519/7869)        
+2026-11-04T01:39:42.5620224Z remote: Counting objects:  33% (2597/7869)        
+2026-11-04T01:39:42.5620476Z remote: Counting objects:  34% (2676/7869)        
+2026-11-04T01:39:42.5620721Z remote: Counting objects:  35% (2755/7869)        
+2026-11-04T01:39:42.5620968Z remote: Counting objects:  36% (2833/7869)        
+2026-11-04T01:39:42.5621230Z remote: Counting objects:  37% (2912/7869)        
+2026-11-04T01:39:42.5621480Z remote: Counting objects:  38% (2991/7869)        
+2026-11-04T01:39:42.5621732Z remote: Counting objects:  39% (3069/7869)        
+2026-11-04T01:39:42.5621983Z remote: Counting objects:  40% (3148/7869)        
+2026-11-04T01:39:42.5622244Z remote: Counting objects:  41% (3227/7869)        
+2026-11-04T01:39:42.5622499Z remote: Counting objects:  42% (3305/7869)        
+2026-11-04T01:39:42.5622756Z remote: Counting objects:  43% (3384/7869)        
+2026-11-04T01:39:42.5623013Z remote: Counting objects:  44% (3463/7869)        
+2026-11-04T01:39:42.5623276Z remote: Counting objects:  45% (3542/7869)        
+2026-11-04T01:39:42.5623534Z remote: Counting objects:  46% (3620/7869)        
+2026-11-04T01:39:42.5623792Z remote: Counting objects:  47% (3699/7869)        
+2026-11-04T01:39:42.5624055Z remote: Counting objects:  48% (3778/7869)        
+2026-11-04T01:39:42.5624308Z remote: Counting objects:  49% (3856/7869)        
+2026-11-04T01:39:42.5624917Z remote: Counting objects:  50% (3935/7869)        
+2026-11-04T01:39:42.5625182Z remote: Counting objects:  51% (4014/7869)        
+2026-11-04T01:39:42.5625438Z remote: Counting objects:  52% (4092/7869)        
+2026-11-04T01:39:42.5625688Z remote: Counting objects:  53% (4171/7869)        
+2026-11-04T01:39:42.5625942Z remote: Counting objects:  54% (4250/7869)        
+2026-11-04T01:39:42.5626196Z remote: Counting objects:  55% (4328/7869)        
+2026-11-04T01:39:42.5626442Z remote: Counting objects:  56% (4407/7869)        
+2026-11-04T01:39:42.5626716Z remote: Counting objects:  57% (4486/7869)        
+2026-11-04T01:39:42.5627269Z remote: Counting objects:  58% (4565/7869)        
+2026-11-04T01:39:42.5627586Z remote: Counting objects:  59% (4643/7869)        
+2026-11-04T01:39:42.5627844Z remote: Counting objects:  60% (4722/7869)        
+2026-11-04T01:39:42.5628095Z remote: Counting objects:  61% (4801/7869)        
+2026-11-04T01:39:42.5628398Z remote: Counting objects:  62% (4879/7869)        
+2026-11-04T01:39:42.5628660Z remote: Counting objects:  63% (4958/7869)        
+2026-11-04T01:39:42.5628916Z remote: Counting objects:  64% (5037/7869)        
+2026-11-04T01:39:42.5629166Z remote: Counting objects:  65% (5115/7869)        
+2026-11-04T01:39:42.5629424Z remote: Counting objects:  66% (5194/7869)        
+2026-11-04T01:39:42.5629670Z remote: Counting objects:  67% (5273/7869)        
+2026-11-04T01:39:42.5629923Z remote: Counting objects:  68% (5351/7869)        
+2026-11-04T01:39:42.5630168Z remote: Counting objects:  69% (5430/7869)        
+2026-11-04T01:39:42.5630423Z remote: Counting objects:  70% (5509/7869)        
+2026-11-04T01:39:42.5630675Z remote: Counting objects:  71% (5587/7869)        
+2026-11-04T01:39:42.5630923Z remote: Counting objects:  72% (5666/7869)        
+2026-11-04T01:39:42.5631166Z remote: Counting objects:  73% (5745/7869)        
+2026-11-04T01:39:42.5631411Z remote: Counting objects:  74% (5824/7869)        
+2026-11-04T01:39:42.5631780Z remote: Counting objects:  75% (5902/7869)        
+2026-11-04T01:39:42.5632028Z remote: Counting objects:  76% (5981/7869)        
+2026-11-04T01:39:42.5632277Z remote: Counting objects:  77% (6060/7869)        
+2026-11-04T01:39:42.5632528Z remote: Counting objects:  78% (6138/7869)        
+2026-11-04T01:39:42.5632779Z remote: Counting objects:  79% (6217/7869)        
+2026-11-04T01:39:42.5633026Z remote: Counting objects:  80% (6296/7869)        
+2026-11-04T01:39:42.5633270Z remote: Counting objects:  81% (6374/7869)        
+2026-11-04T01:39:42.5633520Z remote: Counting objects:  82% (6453/7869)        
+2026-11-04T01:39:42.5633775Z remote: Counting objects:  83% (6532/7869)        
+2026-11-04T01:39:42.5634026Z remote: Counting objects:  84% (6610/7869)        
+2026-11-04T01:39:42.5634277Z remote: Counting objects:  85% (6689/7869)        
+2026-11-04T01:39:42.5634527Z remote: Counting objects:  86% (6768/7869)        
+2026-11-04T01:39:42.5634778Z remote: Counting objects:  87% (6847/7869)        
+2026-11-04T01:39:42.5635028Z remote: Counting objects:  88% (6925/7869)        
+2026-11-04T01:39:42.5635277Z remote: Counting objects:  89% (7004/7869)        
+2026-11-04T01:39:42.5635525Z remote: Counting objects:  90% (7083/7869)        
+2026-11-04T01:39:42.5635776Z remote: Counting objects:  91% (7161/7869)        
+2026-11-04T01:39:42.5636020Z remote: Counting objects:  92% (7240/7869)        
+2026-11-04T01:39:42.5636276Z remote: Counting objects:  93% (7319/7869)        
+2026-11-04T01:39:42.5636522Z remote: Counting objects:  94% (7397/7869)        
+2026-11-04T01:39:42.5636767Z remote: Counting objects:  95% (7476/7869)        
+2026-11-04T01:39:42.5637020Z remote: Counting objects:  96% (7555/7869)        
+2026-11-04T01:39:42.5637273Z remote: Counting objects:  97% (7633/7869)        
+2026-11-04T01:39:42.5637530Z remote: Counting objects:  98% (7712/7869)        
+2026-11-04T01:39:42.5637781Z remote: Counting objects:  99% (7791/7869)        
+2026-11-04T01:39:42.5638159Z remote: Counting objects: 100% (7869/7869)        
+2026-11-04T01:39:42.5638431Z remote: Counting objects: 100% (7869/7869), done.        
+2026-11-04T01:39:42.5638712Z remote: Compressing objects:   0% (1/6481)        
+2026-11-04T01:39:42.5638976Z remote: Compressing objects:   1% (65/6481)        
+2026-11-04T01:39:42.5639256Z remote: Compressing objects:   2% (130/6481)        
+2026-11-04T01:39:42.5639524Z remote: Compressing objects:   3% (195/6481)        
+2026-11-04T01:39:42.5639795Z remote: Compressing objects:   4% (260/6481)        
+2026-11-04T01:39:42.5640066Z remote: Compressing objects:   5% (325/6481)        
+2026-11-04T01:39:42.5640331Z remote: Compressing objects:   6% (389/6481)        
+2026-11-04T01:39:42.5640601Z remote: Compressing objects:   7% (454/6481)        
+2026-11-04T01:39:42.5640866Z remote: Compressing objects:   8% (519/6481)        
+2026-11-04T01:39:42.5641123Z remote: Compressing objects:   9% (584/6481)        
+2026-11-04T01:39:42.5641391Z remote: Compressing objects:  10% (649/6481)        
+2026-11-04T01:39:42.5641655Z remote: Compressing objects:  11% (713/6481)        
+2026-11-04T01:39:42.5641912Z remote: Compressing objects:  12% (778/6481)        
+2026-11-04T01:39:42.5642171Z remote: Compressing objects:  13% (843/6481)        
+2026-11-04T01:39:42.5642432Z remote: Compressing objects:  14% (908/6481)        
+2026-11-04T01:39:42.5642689Z remote: Compressing objects:  15% (973/6481)        
+2026-11-04T01:39:42.5642966Z remote: Compressing objects:  16% (1037/6481)        
+2026-11-04T01:39:42.5643236Z remote: Compressing objects:  17% (1102/6481)        
+2026-11-04T01:39:42.5643809Z remote: Compressing objects:  18% (1167/6481)        
+2026-11-04T01:39:42.5644158Z remote: Compressing objects:  19% (1232/6481)        
+2026-11-04T01:39:42.5644458Z remote: Compressing objects:  20% (1297/6481)        
+2026-11-04T01:39:42.5644742Z remote: Compressing objects:  21% (1362/6481)        
+2026-11-04T01:39:42.5645040Z remote: Compressing objects:  22% (1426/6481)        
+2026-11-04T01:39:42.5645532Z remote: Compressing objects:  23% (1491/6481)        
+2026-11-04T01:39:42.5645801Z remote: Compressing objects:  24% (1556/6481)        
+2026-11-04T01:39:42.5646083Z remote: Compressing objects:  25% (1621/6481)        
+2026-11-04T01:39:42.5646347Z remote: Compressing objects:  26% (1686/6481)        
+2026-11-04T01:39:42.5646607Z remote: Compressing objects:  27% (1750/6481)        
+2026-11-04T01:39:42.5646869Z remote: Compressing objects:  28% (1815/6481)        
+2026-11-04T01:39:42.5647126Z remote: Compressing objects:  29% (1880/6481)        
+2026-11-04T01:39:42.5647734Z remote: Compressing objects:  30% (1945/6481)        
+2026-11-04T01:39:42.5647998Z remote: Compressing objects:  31% (2010/6481)        
+2026-11-04T01:39:42.5648268Z remote: Compressing objects:  32% (2074/6481)        
+2026-11-04T01:39:42.5648533Z remote: Compressing objects:  33% (2139/6481)        
+2026-11-04T01:39:42.5648797Z remote: Compressing objects:  34% (2204/6481)        
+2026-11-04T01:39:42.5649073Z remote: Compressing objects:  35% (2269/6481)        
+2026-11-04T01:39:42.5649334Z remote: Compressing objects:  36% (2334/6481)        
+2026-11-04T01:39:42.5649598Z remote: Compressing objects:  37% (2398/6481)        
+2026-11-04T01:39:42.5649861Z remote: Compressing objects:  38% (2463/6481)        
+2026-11-04T01:39:42.5650122Z remote: Compressing objects:  39% (2528/6481)        
+2026-11-04T01:39:42.5650386Z remote: Compressing objects:  40% (2593/6481)        
+2026-11-04T01:39:42.5650648Z remote: Compressing objects:  41% (2658/6481)        
+2026-11-04T01:39:42.5650917Z remote: Compressing objects:  42% (2723/6481)        
+2026-11-04T01:39:42.5651184Z remote: Compressing objects:  43% (2787/6481)        
+2026-11-04T01:39:42.5651448Z remote: Compressing objects:  44% (2852/6481)        
+2026-11-04T01:39:42.5651710Z remote: Compressing objects:  45% (2917/6481)        
+2026-11-04T01:39:42.5651972Z remote: Compressing objects:  46% (2982/6481)        
+2026-11-04T01:39:42.5652328Z remote: Compressing objects:  47% (3047/6481)        
+2026-11-04T01:39:42.5652593Z remote: Compressing objects:  48% (3111/6481)        
+2026-11-04T01:39:42.5652869Z remote: Compressing objects:  49% (3176/6481)        
+2026-11-04T01:39:42.5653147Z remote: Compressing objects:  50% (3241/6481)        
+2026-11-04T01:39:42.5653416Z remote: Compressing objects:  51% (3306/6481)        
+2026-11-04T01:39:42.5653690Z remote: Compressing objects:  52% (3371/6481)        
+2026-11-04T01:39:42.5653956Z remote: Compressing objects:  53% (3435/6481)        
+2026-11-04T01:39:42.5654219Z remote: Compressing objects:  54% (3500/6481)        
+2026-11-04T01:39:42.5654481Z remote: Compressing objects:  55% (3565/6481)        
+2026-11-04T01:39:42.5654746Z remote: Compressing objects:  56% (3630/6481)        
+2026-11-04T01:39:42.5655012Z remote: Compressing objects:  57% (3695/6481)        
+2026-11-04T01:39:42.5655274Z remote: Compressing objects:  58% (3759/6481)        
+2026-11-04T01:39:42.5655557Z remote: Compressing objects:  59% (3824/6481)        
+2026-11-04T01:39:42.5655821Z remote: Compressing objects:  60% (3889/6481)        
+2026-11-04T01:39:42.5656089Z remote: Compressing objects:  61% (3954/6481)        
+2026-11-04T01:39:42.5656353Z remote: Compressing objects:  62% (4019/6481)        
+2026-11-04T01:39:42.5656615Z remote: Compressing objects:  63% (4084/6481)        
+2026-11-04T01:39:42.5656879Z remote: Compressing objects:  64% (4148/6481)        
+2026-11-04T01:39:42.5657151Z remote: Compressing objects:  65% (4213/6481)        
+2026-11-04T01:39:42.5657409Z remote: Compressing objects:  66% (4278/6481)        
+2026-11-04T01:39:42.5657671Z remote: Compressing objects:  67% (4343/6481)        
+2026-11-04T01:39:42.5657931Z remote: Compressing objects:  68% (4408/6481)        
+2026-11-04T01:39:42.5658197Z remote: Compressing objects:  69% (4472/6481)        
+2026-11-04T01:39:42.5658465Z remote: Compressing objects:  70% (4537/6481)        
+2026-11-04T01:39:42.5659306Z remote: Compressing objects:  71% (4602/6481)        
+2026-11-04T01:39:42.5659580Z remote: Compressing objects:  72% (4667/6481)        
+2026-11-04T01:39:42.5659839Z remote: Compressing objects:  73% (4732/6481)        
+2026-11-04T01:39:42.5660100Z remote: Compressing objects:  74% (4796/6481)        
+2026-11-04T01:39:42.5660359Z remote: Compressing objects:  75% (4861/6481)        
+2026-11-04T01:39:42.5660618Z remote: Compressing objects:  76% (4926/6481)        
+2026-11-04T01:39:42.5660876Z remote: Compressing objects:  77% (4991/6481)        
+2026-11-04T01:39:42.5661141Z remote: Compressing objects:  78% (5056/6481)        
+2026-11-04T01:39:42.5661403Z remote: Compressing objects:  79% (5120/6481)        
+2026-11-04T01:39:42.5661655Z remote: Compressing objects:  80% (5185/6481)        
+2026-11-04T01:39:42.5661917Z remote: Compressing objects:  81% (5250/6481)        
+2026-11-04T01:39:42.5662183Z remote: Compressing objects:  82% (5315/6481)        
+2026-11-04T01:39:42.5662441Z remote: Compressing objects:  83% (5380/6481)        
+2026-11-04T01:39:42.5662712Z remote: Compressing objects:  84% (5445/6481)        
+2026-11-04T01:39:42.5662974Z remote: Compressing objects:  85% (5509/6481)        
+2026-11-04T01:39:42.5663233Z remote: Compressing objects:  86% (5574/6481)        
+2026-11-04T01:39:42.5663505Z remote: Compressing objects:  87% (5639/6481)        
+2026-11-04T01:39:42.5663767Z remote: Compressing objects:  88% (5704/6481)        
+2026-11-04T01:39:42.5664025Z remote: Compressing objects:  89% (5769/6481)        
+2026-11-04T01:39:42.5664284Z remote: Compressing objects:  90% (5833/6481)        
+2026-11-04T01:39:42.5664545Z remote: Compressing objects:  91% (5898/6481)        
+2026-11-04T01:39:42.5664801Z remote: Compressing objects:  92% (5963/6481)        
+2026-11-04T01:39:42.5665060Z remote: Compressing objects:  93% (6028/6481)        
+2026-11-04T01:39:42.5665316Z remote: Compressing objects:  94% (6093/6481)        
+2026-11-04T01:39:42.5665576Z remote: Compressing objects:  95% (6157/6481)        
+2026-11-04T01:39:42.5666180Z remote: Compressing objects:  96% (6222/6481)        
+2026-11-04T01:39:42.5666450Z remote: Compressing objects:  97% (6287/6481)        
+2026-11-04T01:39:42.5666716Z remote: Compressing objects:  98% (6352/6481)        
+2026-11-04T01:39:42.5666981Z remote: Compressing objects:  99% (6417/6481)        
+2026-11-04T01:39:42.5667244Z remote: Compressing objects: 100% (6481/6481)        
+2026-11-04T01:39:42.5667874Z remote: Compressing objects: 100% (6481/6481), done.        
+2026-11-04T01:39:42.7551356Z Receiving objects:   0% (1/7869)
+2026-11-04T01:39:42.8057794Z Receiving objects:   1% (79/7869)
+2026-11-04T01:39:42.8562189Z Receiving objects:   2% (158/7869)
+2026-11-04T01:39:42.8627087Z Receiving objects:   3% (237/7869)
+2026-11-04T01:39:42.8671539Z Receiving objects:   4% (315/7869)
+2026-11-04T01:39:42.8682652Z Receiving objects:   5% (394/7869)
+2026-11-04T01:39:42.9105938Z Receiving objects:   6% (473/7869)
+2026-11-04T01:39:42.9159704Z Receiving objects:   7% (551/7869)
+2026-11-04T01:39:42.9197909Z Receiving objects:   8% (630/7869)
+2026-11-04T01:39:42.9248752Z Receiving objects:   9% (709/7869)
+2026-11-04T01:39:42.9290354Z Receiving objects:  10% (787/7869)
+2026-11-04T01:39:42.9387612Z Receiving objects:  11% (866/7869)
+2026-11-04T01:39:42.9591512Z Receiving objects:  12% (945/7869)
+2026-11-04T01:39:42.9592503Z Receiving objects:  13% (1023/7869)
+2026-11-04T01:39:42.9655721Z Receiving objects:  14% (1102/7869)
+2026-11-04T01:39:42.9786504Z Receiving objects:  15% (1181/7869)
+2026-11-04T01:39:42.9845526Z Receiving objects:  16% (1260/7869)
+2026-11-04T01:39:42.9919216Z Receiving objects:  17% (1338/7869)
+2026-11-04T01:39:42.9975148Z Receiving objects:  18% (1417/7869)
+2026-11-04T01:39:43.0030439Z Receiving objects:  19% (1496/7869)
+2026-11-04T01:39:43.0096221Z Receiving objects:  20% (1574/7869)
+2026-11-04T01:39:43.0215327Z Receiving objects:  21% (1653/7869)
+2026-11-04T01:39:43.0260867Z Receiving objects:  22% (1732/7869)
+2026-11-04T01:39:43.0343593Z Receiving objects:  23% (1810/7869)
+2026-11-04T01:39:43.0389126Z Receiving objects:  24% (1889/7869)
+2026-11-04T01:39:43.0462498Z Receiving objects:  25% (1968/7869)
+2026-11-04T01:39:43.0508813Z Receiving objects:  26% (2046/7869)
+2026-11-04T01:39:43.0595599Z Receiving objects:  27% (2125/7869)
+2026-11-04T01:39:43.0647099Z Receiving objects:  28% (2204/7869)
+2026-11-04T01:39:43.0678536Z Receiving objects:  29% (2283/7869)
+2026-11-04T01:39:43.0776522Z Receiving objects:  30% (2361/7869)
+2026-11-04T01:39:43.0855416Z Receiving objects:  31% (2440/7869)
+2026-11-04T01:39:43.0871802Z Receiving objects:  32% (2519/7869)
+2026-11-04T01:39:43.0890418Z Receiving objects:  33% (2597/7869)
+2026-11-04T01:39:43.0905298Z Receiving objects:  34% (2676/7869)
+2026-11-04T01:39:43.0932557Z Receiving objects:  35% (2755/7869)
+2026-11-04T01:39:43.0948751Z Receiving objects:  36% (2833/7869)
+2026-11-04T01:39:43.0968641Z Receiving objects:  37% (2912/7869)
+2026-11-04T01:39:43.1004365Z Receiving objects:  38% (2991/7869)
+2026-11-04T01:39:43.1029628Z Receiving objects:  39% (3069/7869)
+2026-11-04T01:39:43.1068112Z Receiving objects:  40% (3148/7869)
+2026-11-04T01:39:43.1113685Z Receiving objects:  41% (3227/7869)
+2026-11-04T01:39:43.1165960Z Receiving objects:  42% (3305/7869)
+2026-11-04T01:39:43.1190030Z Receiving objects:  43% (3384/7869)
+2026-11-04T01:39:43.1207432Z Receiving objects:  44% (3463/7869)
+2026-11-04T01:39:43.1223988Z Receiving objects:  45% (3542/7869)
+2026-11-04T01:39:43.1252548Z Receiving objects:  46% (3620/7869)
+2026-11-04T01:39:43.1285506Z Receiving objects:  47% (3699/7869)
+2026-11-04T01:39:43.1365425Z Receiving objects:  48% (3778/7869)
+2026-11-04T01:39:43.2305526Z Receiving objects:  49% (3856/7869)
+2026-11-04T01:39:43.2543838Z Receiving objects:  50% (3935/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.2800289Z Receiving objects:  51% (4014/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.2818503Z Receiving objects:  52% (4092/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.2923976Z Receiving objects:  53% (4171/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.2964632Z Receiving objects:  54% (4250/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.3002059Z Receiving objects:  55% (4328/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.3027002Z Receiving objects:  56% (4407/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.3052495Z Receiving objects:  57% (4486/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.3230495Z Receiving objects:  58% (4565/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.3297581Z Receiving objects:  59% (4643/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.3381308Z Receiving objects:  60% (4722/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.3501464Z Receiving objects:  61% (4801/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.3622374Z Receiving objects:  62% (4879/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.3708249Z Receiving objects:  63% (4958/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.3807427Z Receiving objects:  64% (5037/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.3901488Z Receiving objects:  65% (5115/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.3921892Z Receiving objects:  66% (5194/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.3939183Z Receiving objects:  67% (5273/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.3958715Z Receiving objects:  68% (5351/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.3970521Z Receiving objects:  69% (5430/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.3972801Z Receiving objects:  70% (5509/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.3996820Z Receiving objects:  71% (5587/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.3999981Z Receiving objects:  72% (5666/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4000456Z Receiving objects:  73% (5745/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4146880Z Receiving objects:  74% (5824/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4195444Z Receiving objects:  75% (5902/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4240590Z Receiving objects:  76% (5981/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4262291Z Receiving objects:  77% (6060/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4306763Z Receiving objects:  78% (6138/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4326847Z Receiving objects:  79% (6217/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4351053Z Receiving objects:  80% (6296/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4382862Z Receiving objects:  81% (6374/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4418363Z Receiving objects:  82% (6453/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4467614Z Receiving objects:  83% (6532/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4511502Z Receiving objects:  84% (6610/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4520188Z Receiving objects:  85% (6689/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4534427Z Receiving objects:  86% (6768/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4542948Z Receiving objects:  87% (6847/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4547893Z Receiving objects:  88% (6925/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4554549Z Receiving objects:  89% (7004/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4571000Z Receiving objects:  90% (7083/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4579719Z Receiving objects:  91% (7161/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4592655Z Receiving objects:  92% (7240/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4616547Z Receiving objects:  93% (7319/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4626358Z Receiving objects:  94% (7397/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4645860Z Receiving objects:  95% (7476/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4693592Z Receiving objects:  96% (7555/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4751473Z Receiving objects:  97% (7633/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4809409Z Receiving objects:  98% (7712/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4852210Z Receiving objects:  99% (7791/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4853147Z remote: Total 7869 (delta 1211), reused 7865 (delta 1210), pack-reused 0 (from 0)        
+2026-11-04T01:39:43.4856876Z Receiving objects: 100% (7869/7869), 10.04 MiB | 20.06 MiB/s
+2026-11-04T01:39:43.4857574Z Receiving objects: 100% (7869/7869), 30.16 MiB | 35.62 MiB/s, done.
+2026-11-04T01:39:43.4880823Z Resolving deltas:   0% (0/1211)
+2026-11-04T01:39:43.4881924Z Resolving deltas:   1% (13/1211)
+2026-11-04T01:39:43.4884078Z Resolving deltas:   2% (25/1211)
+2026-11-04T01:39:43.4886817Z Resolving deltas:   3% (37/1211)
+2026-11-04T01:39:43.4890143Z Resolving deltas:   4% (49/1211)
+2026-11-04T01:39:43.4890949Z Resolving deltas:   5% (61/1211)
+2026-11-04T01:39:43.4894891Z Resolving deltas:   6% (73/1211)
+2026-11-04T01:39:43.4895215Z Resolving deltas:   7% (85/1211)
+2026-11-04T01:39:43.4903789Z Resolving deltas:   8% (97/1211)
+2026-11-04T01:39:43.4905246Z Resolving deltas:   9% (109/1211)
+2026-11-04T01:39:43.4910031Z Resolving deltas:  10% (123/1211)
+2026-11-04T01:39:43.4913392Z Resolving deltas:  11% (134/1211)
+2026-11-04T01:39:43.4922483Z Resolving deltas:  12% (146/1211)
+2026-11-04T01:39:43.4939347Z Resolving deltas:  13% (158/1211)
+2026-11-04T01:39:43.4939729Z Resolving deltas:  14% (170/1211)
+2026-11-04T01:39:43.4950645Z Resolving deltas:  15% (182/1211)
+2026-11-04T01:39:43.4951209Z Resolving deltas:  16% (194/1211)
+2026-11-04T01:39:43.4951658Z Resolving deltas:  17% (206/1211)
+2026-11-04T01:39:43.4952035Z Resolving deltas:  18% (218/1211)
+2026-11-04T01:39:43.4952327Z Resolving deltas:  19% (231/1211)
+2026-11-04T01:39:43.4952616Z Resolving deltas:  20% (243/1211)
+2026-11-04T01:39:43.4952892Z Resolving deltas:  21% (255/1211)
+2026-11-04T01:39:43.4953961Z Resolving deltas:  22% (267/1211)
+2026-11-04T01:39:43.4954294Z Resolving deltas:  23% (279/1211)
+2026-11-04T01:39:43.4954783Z Resolving deltas:  24% (291/1211)
+2026-11-04T01:39:43.4955081Z Resolving deltas:  25% (303/1211)
+2026-11-04T01:39:43.4955369Z Resolving deltas:  26% (315/1211)
+2026-11-04T01:39:43.4955658Z Resolving deltas:  27% (327/1211)
+2026-11-04T01:39:43.4955945Z Resolving deltas:  28% (340/1211)
+2026-11-04T01:39:43.4956237Z Resolving deltas:  29% (352/1211)
+2026-11-04T01:39:43.4956527Z Resolving deltas:  30% (364/1211)
+2026-11-04T01:39:43.4956815Z Resolving deltas:  31% (376/1211)
+2026-11-04T01:39:43.4957106Z Resolving deltas:  32% (388/1211)
+2026-11-04T01:39:43.4957649Z Resolving deltas:  33% (400/1211)
+2026-11-04T01:39:43.4957937Z Resolving deltas:  34% (412/1211)
+2026-11-04T01:39:43.4958235Z Resolving deltas:  35% (424/1211)
+2026-11-04T01:39:43.4965473Z Resolving deltas:  36% (436/1211)
+2026-11-04T01:39:43.4974870Z Resolving deltas:  37% (450/1211)
+2026-11-04T01:39:43.4981327Z Resolving deltas:  38% (461/1211)
+2026-11-04T01:39:43.4984029Z Resolving deltas:  39% (473/1211)
+2026-11-04T01:39:43.4985919Z Resolving deltas:  40% (485/1211)
+2026-11-04T01:39:43.4988443Z Resolving deltas:  41% (497/1211)
+2026-11-04T01:39:43.4989774Z Resolving deltas:  42% (509/1211)
+2026-11-04T01:39:43.4992806Z Resolving deltas:  43% (521/1211)
+2026-11-04T01:39:43.4994432Z Resolving deltas:  44% (533/1211)
+2026-11-04T01:39:43.4996989Z Resolving deltas:  45% (545/1211)
+2026-11-04T01:39:43.5000741Z Resolving deltas:  46% (558/1211)
+2026-11-04T01:39:43.5005741Z Resolving deltas:  47% (570/1211)
+2026-11-04T01:39:43.5009566Z Resolving deltas:  48% (582/1211)
+2026-11-04T01:39:43.5013445Z Resolving deltas:  49% (594/1211)
+2026-11-04T01:39:43.5015018Z Resolving deltas:  50% (606/1211)
+2026-11-04T01:39:43.5016781Z Resolving deltas:  51% (618/1211)
+2026-11-04T01:39:43.5017150Z Resolving deltas:  52% (630/1211)
+2026-11-04T01:39:43.5019140Z Resolving deltas:  53% (642/1211)
+2026-11-04T01:39:43.5020490Z Resolving deltas:  54% (654/1211)
+2026-11-04T01:39:43.5022549Z Resolving deltas:  55% (667/1211)
+2026-11-04T01:39:43.5034266Z Resolving deltas:  56% (679/1211)
+2026-11-04T01:39:43.5045509Z Resolving deltas:  57% (691/1211)
+2026-11-04T01:39:43.5069460Z Resolving deltas:  58% (703/1211)
+2026-11-04T01:39:43.5077036Z Resolving deltas:  59% (715/1211)
+2026-11-04T01:39:43.5079447Z Resolving deltas:  60% (727/1211)
+2026-11-04T01:39:43.5083585Z Resolving deltas:  61% (739/1211)
+2026-11-04T01:39:43.5085726Z Resolving deltas:  62% (751/1211)
+2026-11-04T01:39:43.5088001Z Resolving deltas:  63% (763/1211)
+2026-11-04T01:39:43.5090449Z Resolving deltas:  64% (776/1211)
+2026-11-04T01:39:43.5092970Z Resolving deltas:  65% (788/1211)
+2026-11-04T01:39:43.5095059Z Resolving deltas:  66% (800/1211)
+2026-11-04T01:39:43.5097995Z Resolving deltas:  67% (812/1211)
+2026-11-04T01:39:43.5102451Z Resolving deltas:  68% (824/1211)
+2026-11-04T01:39:43.5106061Z Resolving deltas:  69% (836/1211)
+2026-11-04T01:39:43.5107933Z Resolving deltas:  70% (849/1211)
+2026-11-04T01:39:43.5108996Z Resolving deltas:  71% (860/1211)
+2026-11-04T01:39:43.5110319Z Resolving deltas:  72% (872/1211)
+2026-11-04T01:39:43.5111385Z Resolving deltas:  73% (885/1211)
+2026-11-04T01:39:43.5112869Z Resolving deltas:  74% (898/1211)
+2026-11-04T01:39:43.5114337Z Resolving deltas:  75% (909/1211)
+2026-11-04T01:39:43.5115094Z Resolving deltas:  76% (921/1211)
+2026-11-04T01:39:43.5116752Z Resolving deltas:  77% (933/1211)
+2026-11-04T01:39:43.5120381Z Resolving deltas:  78% (945/1211)
+2026-11-04T01:39:43.5123408Z Resolving deltas:  79% (957/1211)
+2026-11-04T01:39:43.5126453Z Resolving deltas:  80% (969/1211)
+2026-11-04T01:39:43.5129622Z Resolving deltas:  81% (981/1211)
+2026-11-04T01:39:43.5133353Z Resolving deltas:  82% (994/1211)
+2026-11-04T01:39:43.5136891Z Resolving deltas:  83% (1006/1211)
+2026-11-04T01:39:43.5139716Z Resolving deltas:  84% (1018/1211)
+2026-11-04T01:39:43.5143448Z Resolving deltas:  85% (1030/1211)
+2026-11-04T01:39:43.5146544Z Resolving deltas:  86% (1042/1211)
+2026-11-04T01:39:43.5148478Z Resolving deltas:  87% (1054/1211)
+2026-11-04T01:39:43.5150861Z Resolving deltas:  88% (1066/1211)
+2026-11-04T01:39:43.5153032Z Resolving deltas:  89% (1078/1211)
+2026-11-04T01:39:43.5155708Z Resolving deltas:  90% (1090/1211)
+2026-11-04T01:39:43.5157842Z Resolving deltas:  91% (1103/1211)
+2026-11-04T01:39:43.5159771Z Resolving deltas:  92% (1115/1211)
+2026-11-04T01:39:43.5162052Z Resolving deltas:  93% (1127/1211)
+2026-11-04T01:39:43.5164299Z Resolving deltas:  94% (1139/1211)
+2026-11-04T01:39:43.5166612Z Resolving deltas:  95% (1151/1211)
+2026-11-04T01:39:43.5169415Z Resolving deltas:  96% (1163/1211)
+2026-11-04T01:39:43.5172120Z Resolving deltas:  97% (1175/1211)
+2026-11-04T01:39:43.5173631Z Resolving deltas:  98% (1187/1211)
+2026-11-04T01:39:43.5179012Z Resolving deltas:  99% (1199/1211)
+2026-11-04T01:39:43.5180923Z Resolving deltas: 100% (1211/1211)
+2026-11-04T01:39:43.5181210Z Resolving deltas: 100% (1211/1211), done.
+2026-11-04T01:39:43.6525401Z From https://github.com/Lord1Egypt/DragonLord-Emulator
+2026-11-04T01:39:43.6525880Z  * [new ref]         107b56645057e7c100b3f960a73f1bc036e899cb -> pull/1/merge
+2026-11-04T01:39:43.6560874Z ##[endgroup]
+2026-11-04T01:39:43.6561298Z ##[group]Determining the checkout info
+2026-11-04T01:39:43.6563372Z ##[endgroup]
+2026-11-04T01:39:43.6563762Z ##[group]Checking out the ref
+2026-11-04T01:39:43.6570186Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force refs/remotes/pull/1/merge
+2026-11-04T01:39:44.8113146Z Updating files:  52% (4043/7632)
+2026-11-04T01:39:44.9667510Z Updating files:  53% (4045/7632)
+2026-11-04T01:39:44.9800780Z Updating files:  54% (4122/7632)
+2026-11-04T01:39:44.9977292Z Updating files:  55% (4198/7632)
+2026-11-04T01:39:45.0208031Z Updating files:  56% (4274/7632)
+2026-11-04T01:39:45.0385239Z Updating files:  57% (4351/7632)
+2026-11-04T01:39:45.0596459Z Updating files:  58% (4427/7632)
+2026-11-04T01:39:45.0798247Z Updating files:  59% (4503/7632)
+2026-11-04T01:39:45.0964153Z Updating files:  60% (4580/7632)
+2026-11-04T01:39:45.1177275Z Updating files:  61% (4656/7632)
+2026-11-04T01:39:45.1426370Z Updating files:  62% (4732/7632)
+2026-11-04T01:39:45.1551707Z Updating files:  63% (4809/7632)
+2026-11-04T01:39:45.1668043Z Updating files:  64% (4885/7632)
+2026-11-04T01:39:45.1812232Z Updating files:  65% (4961/7632)
+2026-11-04T01:39:45.1941222Z Updating files:  66% (5038/7632)
+2026-11-04T01:39:45.2039058Z Updating files:  67% (5114/7632)
+2026-11-04T01:39:45.2135556Z Updating files:  68% (5190/7632)
+2026-11-04T01:39:45.2227811Z Updating files:  69% (5267/7632)
+2026-11-04T01:39:45.2325416Z Updating files:  70% (5343/7632)
+2026-11-04T01:39:45.2425063Z Updating files:  71% (5419/7632)
+2026-11-04T01:39:45.2518838Z Updating files:  72% (5496/7632)
+2026-11-04T01:39:45.2613617Z Updating files:  73% (5572/7632)
+2026-11-04T01:39:45.2872930Z Updating files:  74% (5648/7632)
+2026-11-04T01:39:45.3007625Z Updating files:  75% (5724/7632)
+2026-11-04T01:39:45.3134618Z Updating files:  76% (5801/7632)
+2026-11-04T01:39:45.3256221Z Updating files:  77% (5877/7632)
+2026-11-04T01:39:45.3390460Z Updating files:  78% (5953/7632)
+2026-11-04T01:39:45.3512927Z Updating files:  79% (6030/7632)
+2026-11-04T01:39:45.3654954Z Updating files:  80% (6106/7632)
+2026-11-04T01:39:45.3786094Z Updating files:  81% (6182/7632)
+2026-11-04T01:39:45.3923655Z Updating files:  82% (6259/7632)
+2026-11-04T01:39:45.4059846Z Updating files:  83% (6335/7632)
+2026-11-04T01:39:45.4203973Z Updating files:  84% (6411/7632)
+2026-11-04T01:39:45.4332232Z Updating files:  85% (6488/7632)
+2026-11-04T01:39:45.4452561Z Updating files:  86% (6564/7632)
+2026-11-04T01:39:45.4567884Z Updating files:  87% (6640/7632)
+2026-11-04T01:39:45.4681809Z Updating files:  88% (6717/7632)
+2026-11-04T01:39:45.4792672Z Updating files:  89% (6793/7632)
+2026-11-04T01:39:45.4943576Z Updating files:  90% (6869/7632)
+2026-11-04T01:39:45.5082537Z Updating files:  91% (6946/7632)
+2026-11-04T01:39:45.5215445Z Updating files:  92% (7022/7632)
+2026-11-04T01:39:45.5359319Z Updating files:  93% (7098/7632)
+2026-11-04T01:39:45.5483217Z Updating files:  94% (7175/7632)
+2026-11-04T01:39:45.5614435Z Updating files:  95% (7251/7632)
+2026-11-04T01:39:45.5771117Z Updating files:  96% (7327/7632)
+2026-11-04T01:39:45.5929038Z Updating files:  97% (7404/7632)
+2026-11-04T01:39:45.6095928Z Updating files:  98% (7480/7632)
+2026-11-04T01:39:45.6244874Z Updating files:  99% (7556/7632)
+2026-11-04T01:39:45.6245244Z Updating files: 100% (7632/7632)
+2026-11-04T01:39:45.6245539Z Updating files: 100% (7632/7632), done.
+2026-11-04T01:39:45.6385611Z Note: switching to 'refs/remotes/pull/1/merge'.
+2026-11-04T01:39:45.6385911Z 
+2026-11-04T01:39:45.6386066Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-11-04T01:39:45.6386419Z changes and commit them, and you can discard any commits you make in this
+2026-11-04T01:39:45.6386771Z state without impacting any branches by switching back to a branch.
+2026-11-04T01:39:45.6386969Z 
+2026-11-04T01:39:45.6387120Z If you want to create a new branch to retain commits you create, you may
+2026-11-04T01:39:45.6387468Z do so (now or later) by using -c with the switch command. Example:
+2026-11-04T01:39:45.6387653Z 
+2026-11-04T01:39:45.6387764Z   git switch -c <new-branch-name>
+2026-11-04T01:39:45.6387899Z 
+2026-11-04T01:39:45.6387968Z Or undo this operation with:
+2026-11-04T01:39:45.6388089Z 
+2026-11-04T01:39:45.6388146Z   git switch -
+2026-11-04T01:39:45.6388239Z 
+2026-11-04T01:39:45.6388397Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-11-04T01:39:45.6388616Z 
+2026-11-04T01:39:45.6388875Z HEAD is now at 107b566 Merge 6c1a0604dcfc63d7efa84fea73b065d9aa8920b5 into c5447ed4baf97d93e3a87c62534ed7d300d288de
+2026-11-04T01:39:45.6476623Z ##[endgroup]
+2026-11-04T01:39:45.6477133Z ##[group]Setting up auth for fetching submodules
+2026-11-04T01:39:45.6484323Z [command]"C:\Program Files\Git\bin\git.exe" config --global http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-11-04T01:39:45.6803412Z [command]"C:\Program Files\Git\bin\git.exe" config --global --unset-all url.https://github.com/.insteadOf
+2026-11-04T01:39:45.7106736Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add url.https://github.com/.insteadOf git@github.com:
+2026-11-04T01:39:45.7421377Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add url.https://github.com/.insteadOf org-99746359@github.com:
+2026-11-04T01:39:45.7721939Z ##[endgroup]
+2026-11-04T01:39:45.7722455Z ##[group]Fetching submodules
+2026-11-04T01:39:45.7722891Z [command]"C:\Program Files\Git\bin\git.exe" submodule sync --recursive
+2026-11-04T01:39:46.2868366Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 submodule update --init --force --depth=1 --recursive
+2026-11-04T01:39:46.7603154Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local gc.auto 0"
+2026-11-04T01:39:47.2170301Z ##[endgroup]
+2026-11-04T01:39:47.2170915Z ##[group]Persisting credentials for submodules
+2026-11-04T01:39:47.2179442Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'url\.https\:\/\/github\.com\/\.insteadOf' && git config --local --unset-all 'url.https://github.com/.insteadOf' || :\""
+2026-11-04T01:39:47.6778356Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local 'http.https://github.com/.extraheader' 'AUTHORIZATION: basic ***' && git config --local --show-origin --name-only --get-regexp remote.origin.url\""
+2026-11-04T01:39:48.1520330Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --add 'url.https://github.com/.insteadOf' 'git@github.com:'"
+2026-11-04T01:39:48.6289811Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --add 'url.https://github.com/.insteadOf' 'org-99746359@github.com:'"
+2026-11-04T01:39:49.1017585Z ##[endgroup]
+2026-11-04T01:39:49.1326318Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format='%H'
+2026-11-04T01:39:49.1599738Z '107b56645057e7c100b3f960a73f1bc036e899cb'
+2026-11-04T01:39:49.1949954Z ##[group]Run msys2/setup-msys2@v2
+2026-11-04T01:39:49.1950215Z with:
+2026-11-04T01:39:49.1950364Z   msystem: MINGW64
+2026-11-04T01:39:49.1950516Z   update: true
+2026-11-04T01:39:49.1951834Z   install: base-devel git mingw-w64-x86_64-binutils mingw-w64-x86_64-crt-git mingw-w64-x86_64-headers-git mingw-w64-x86_64-gcc-libs mingw-w64-x86_64-gcc mingw-w64-x86_64-gdb mingw-w64-x86_64-make mingw-w64-x86_64-tools-git mingw-w64-x86_64-pkg-config mingw-w64-x86_64-winpthreads-git mingw-w64-x86_64-libwinpthread-git mingw-w64-x86_64-winstorecompat-git mingw-w64-x86_64-libmangle-git mingw-w64-x86_64-pixman mingw-w64-x86_64-SDL2 mingw-w64-x86_64-glib2 mingw-w64-x86_64-capstone mingw-w64-x86_64-glfw
+2026-11-04T01:39:49.1953215Z   path-type: minimal
+2026-11-04T01:39:49.1953378Z   release: true
+2026-11-04T01:39:49.1953537Z   platform-check-severity: fatal
+2026-11-04T01:39:49.1953724Z   cache: true
+2026-11-04T01:39:49.1953876Z ##[endgroup]
+2026-11-04T01:39:49.3136791Z ##[warning][msystem-mingw64] MINGW64 is deprecated. Migrate to UCRT64 or CLANG64. To acknowledge and suppress this warning, add 'msystem-mingw64' to 'suppress-deprecation-warnings'.
+2026-11-04T01:39:49.3145072Z ##[group]Downloading MSYS2...
+2026-11-04T01:39:50.5502631Z ##[endgroup]
+2026-11-04T01:39:50.5503304Z ##[group]Extracting MSYS2...
+2026-11-04T01:39:50.5517050Z [command]C:\hostedtoolcache\windows\msys2-installer\0.0.20260927\x64\base.exe -y
+2026-11-04T01:39:50.7500990Z 
+2026-11-04T01:39:50.7501864Z 7-Zip SFX 26.02 ZS v1.5.7 R1 (x64) : Copyright (c) 1999- Igor Pavlov, 2016- Tino Reichardt, 2022- Sergey G. Brester : 2026-06-27
+2026-11-04T01:39:50.7502461Z 
+2026-11-04T01:39:50.7502793Z Extracting archive: C:\hostedtoolcache\windows\msys2-installer\0.0.20260927\x64\base.exe
+2026-11-04T01:39:50.7504093Z --
+2026-11-04T01:39:50.7504645Z Path = C:\hostedtoolcache\windows\msys2-installer\0.0.20260927\x64\base.exe
+2026-11-04T01:39:50.7505067Z Type = 7z
+2026-11-04T01:39:50.7505176Z 
+2026-11-04T01:39:50.9464927Z   0%
+2026-11-04T01:39:50.9465184Z     
+2026-11-04T01:39:51.1489907Z   0% 954 - msys64\usr\lib\terminfo\61\aaa-48-rv
+2026-11-04T01:39:51.1490249Z                                                
+2026-11-04T01:39:51.3533461Z   1% 1694 - msys64\usr\lib\terminfo\64\dm3025
+2026-11-04T01:39:51.3533826Z                                              
+2026-11-04T01:39:51.6557825Z   1% 2482 - msys64\usr\lib\terminfo\6f\opennt-25-w-vt
+2026-11-04T01:39:51.6558274Z                                                      
+2026-11-04T01:39:51.8514417Z   1% 3064 - msys64\usr\lib\terminfo\74\tvi912c-vb-mc
+2026-11-04T01:39:51.8514765Z                                                     
+2026-11-04T01:39:52.0549201Z   2% 3720 - msys64\usr\lib\terminfo\78\xterms
+2026-11-04T01:39:52.0550010Z                                              
+2026-11-04T01:39:52.2587215Z   3% 4462 - msys64\usr\share\bash-completion\completions-core\reportbug.bash
+2026-11-04T01:39:52.2587671Z                                                                             
+2026-11-04T01:39:52.4609715Z   6% 5172 - msys64\usr\share\doc\xz\api\globals_enum.html
+2026-11-04T01:39:52.4610024Z                                                          
+2026-11-04T01:39:52.6644993Z  16% 5713 - msys64\usr\share\locale\fr\LC_MESSAGES\pacman-scripts.mo
+2026-11-04T01:39:52.6645884Z                                                                     
+2026-11-04T01:39:52.8669821Z  28% 6141 - msys64\usr\share\locale\sl\LC_MESSAGES\tar.mo
+2026-11-04T01:39:52.8670115Z                                                          
+2026-11-04T01:39:53.2398348Z  36% 6655 - msys64\usr\share\man\man1\gpg-connect-agent.1.gz
+2026-11-04T01:39:53.2398679Z                                                             
+2026-11-04T01:39:53.4301677Z  36% 6704 - msys64\usr\share\man\man1\locate.1.gz
+2026-11-04T01:39:53.4302295Z                                                  
+2026-11-04T01:39:53.6329964Z  36% 7308 - msys64\usr\share\man\man3\CURLOPT_HSTSWRITEDATA.3.gz
+2026-11-04T01:39:53.6334067Z                                                                 
+2026-11-04T01:39:53.8358572Z  37% 7984 - msys64\usr\share\man\man3\key_defined.3x.gz
+2026-11-04T01:39:53.8359095Z                                                        
+2026-11-04T01:39:54.0389369Z  38% 8599 - msys64\usr\share\man\man3\time.3am.gz
+2026-11-04T01:39:54.0389788Z                                                  
+2026-11-04T01:39:54.2423516Z  44% 9205 - msys64\usr\share\terminfo\61\adm3a
+2026-11-04T01:39:54.2424229Z                                               
+2026-11-04T01:39:54.4472476Z  44% 9884 - msys64\usr\share\terminfo\64\diablo630
+2026-11-04T01:39:54.4473805Z                                                   
+2026-11-04T01:39:54.6482182Z  44% 10122 - msys64\usr\share\terminfo\68\hp2621a-a
+2026-11-04T01:39:54.6482912Z                                                    
+2026-11-04T01:39:54.8515705Z  45% 10703 - msys64\usr\share\terminfo\6f\origibmpc3
+2026-11-04T01:39:54.8516182Z                                                     
+2026-11-04T01:39:55.0547210Z  45% 11246 - msys64\usr\share\terminfo\74\tvi912b-p
+2026-11-04T01:39:55.0547684Z                                                    
+2026-11-04T01:39:55.2604542Z  45% 11852 - msys64\usr\share\terminfo\78\xterm+nopcfkeys
+2026-11-04T01:39:55.2608921Z                                                          
+2026-11-04T01:39:55.4628324Z  46% 12565 - msys64\usr\share\zoneinfo\posix\Africa\El_Aaiun
+2026-11-04T01:39:55.4629035Z                                                             
+2026-11-04T01:39:55.6777143Z  46% 13083 - msys64\usr\share\zoneinfo\posix\Pacific\Galapagos
+2026-11-04T01:39:55.6777899Z                                                               
+2026-11-04T01:39:55.8683679Z  46% 13578 - msys64\usr\share\zoneinfo\right\Europe\Berlin
+2026-11-04T01:39:55.8684177Z                                                           
+2026-11-04T01:39:56.0702502Z  47% 14013 - msys64\var\lib\pacman\local\pacman-mirrors-20260129-1\files
+2026-11-04T01:39:56.0703478Z                                                                         
+2026-11-04T01:39:56.2744284Z  63% 14289 - msys64\usr\bin\msys-expat-1.dll
+2026-11-04T01:39:56.2744909Z                                             
+2026-11-04T01:39:56.3227027Z  91% 14458 - msys64\usr\bin\unlzma.exe
+2026-11-04T01:39:56.3227451Z                                       
+2026-11-04T01:39:56.3227716Z Everything is Ok
+2026-11-04T01:39:56.3253133Z ##[endgroup]
+2026-11-04T01:39:56.3253797Z ##[group]Disable Key Refresh...
+2026-11-04T01:39:56.3507648Z ##[endgroup]
+2026-11-04T01:39:56.3509892Z ##[group]Restoring package cache...
+2026-11-04T01:39:56.7842931Z Cache restore for msys2-pkgs-upd:true-conf:306331f7, got undefined
+2026-11-04T01:39:56.7843449Z Cache restore for msys2-pkgs-upd:true-conf:306331f7, got undefined
+2026-11-04T01:39:56.7844106Z ##[endgroup]
+2026-11-04T01:39:56.7844513Z ##[group]Starting MSYS2 for the first time...
+2026-11-04T01:39:56.9644532Z [command]C:\Windows\system32\cmd.exe /D /S /C D:\a\_temp\setup-msys2\msys2.cmd -c "'uname' '-a'"
+2026-11-04T01:39:57.4928897Z [1;32mMSYS2 is starting for the first time. Executing the initial setup.[1;0m
+2026-11-04T01:39:57.5736516Z Copying skeleton files.
+2026-11-04T01:39:57.5737011Z These files are for the users to personalise their msys2 experience.
+2026-11-04T01:39:57.5737357Z 
+2026-11-04T01:39:57.5737522Z They will never be overwritten nor automatically updated.
+2026-11-04T01:39:57.5737776Z 
+2026-11-04T01:39:57.6274147Z './.bashrc' -> '/home/runneradmin/.bashrc'
+2026-11-04T01:39:57.6414676Z './.bash_profile' -> '/home/runneradmin/.bash_profile'
+2026-11-04T01:39:57.6557154Z './.profile' -> '/home/runneradmin/.profile'
+2026-11-04T01:39:57.7203976Z 'C:\Windows\system32\drivers\etc\hosts' -> '/etc/hosts'
+2026-11-04T01:39:57.7645358Z 'C:\Windows\system32\drivers\etc\protocol' -> '/etc/protocols'
+2026-11-04T01:39:57.8122466Z 'C:\Windows\system32\drivers\etc\services' -> '/etc/services'
+2026-11-04T01:39:57.8869020Z 'C:\Windows\system32\drivers\etc\networks' -> '/etc/networks'
+2026-11-04T01:39:58.0649172Z gpg: /etc/pacman.d/gnupg/trustdb.gpg: trustdb created
+2026-11-04T01:39:58.0712714Z gpg: no ultimately trusted keys found
+2026-11-04T01:39:58.3435683Z gpg: starting migration from earlier GnuPG versions
+2026-11-04T01:39:58.4012948Z gpg: porting secret keys from '/etc/pacman.d/gnupg/secring.gpg' to gpg-agent
+2026-11-04T01:39:58.4015215Z gpg: migration succeeded
+2026-11-04T01:39:58.4229779Z ==> Generating pacman master key. This may take some time.
+2026-11-04T01:39:58.4423582Z gpg: Generating pacman keyring master key...
+2026-11-04T01:39:59.8928119Z gpg: directory '/etc/pacman.d/gnupg/openpgp-revocs.d' created
+2026-11-04T01:39:59.9148298Z gpg: revocation certificate stored as '/etc/pacman.d/gnupg/openpgp-revocs.d/2E862C9299CC4FB7F64B7CE99487DE0FA35D3E08.rev'
+2026-11-04T01:39:59.9148765Z gpg: Done
+2026-11-04T01:39:59.9328057Z ==> Updating trust database...
+2026-11-04T01:39:59.9663055Z gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+2026-11-04T01:39:59.9663573Z gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+2026-11-04T01:40:00.0728289Z ==> Appending keys from msys2.gpg...
+2026-11-04T01:40:00.5925636Z ==> Locally signing trusted keys in keyring...
+2026-11-04T01:40:01.1256622Z   -> Locally signed 5 keys.
+2026-11-04T01:40:01.1404488Z ==> Importing owner trust values...
+2026-11-04T01:40:01.1591325Z gpg: setting ownertrust to 4
+2026-11-04T01:40:01.1591684Z gpg: setting ownertrust to 4
+2026-11-04T01:40:01.1592414Z gpg: setting ownertrust to 4
+2026-11-04T01:40:01.1592599Z gpg: setting ownertrust to 4
+2026-11-04T01:40:01.1592787Z gpg: setting ownertrust to 4
+2026-11-04T01:40:01.1852755Z ==> Disabling revoked keys in keyring...
+2026-11-04T01:40:01.4239838Z   -> Disabled 4 keys.
+2026-11-04T01:40:01.4378798Z ==> Updating trust database...
+2026-11-04T01:40:01.4753456Z gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+2026-11-04T01:40:01.4780384Z gpg: depth: 0  valid:   1  signed:   5  trust: 0-, 0q, 0n, 0m, 0f, 1u
+2026-11-04T01:40:01.4811687Z gpg: depth: 1  valid:   5  signed:   7  trust: 0-, 0q, 0n, 5m, 0f, 0u
+2026-11-04T01:40:01.4823656Z gpg: depth: 2  valid:   4  signed:   2  trust: 4-, 0q, 0n, 0m, 0f, 0u
+2026-11-04T01:40:01.4826839Z gpg: next trustdb check due at 2027-02-10
+2026-11-04T01:40:01.5174066Z pacman-key (pacman) 6.1.0
+2026-11-04T01:40:01.5174933Z Copyright (c) 2010-2024 Pacman Development Team <pacman-dev@lists.archlinux.org>.
+2026-11-04T01:40:01.5175582Z 
+2026-11-04T01:40:01.5327728Z This is free software; see the source for copying conditions.
+2026-11-04T01:40:01.5330189Z There is NO WARRANTY, to the extent permitted by law.
+2026-11-04T01:40:01.7522928Z [1;32mInitial setup complete. MSYS2 is now ready to use.[1;0m
+2026-11-04T01:40:01.7694769Z MINGW64_NT-10.0-26100 runnervmhao91 3.6.10-c770e1b9.x86_64 2026-09-26 06:38 UTC x86_64 Msys
+2026-11-04T01:40:01.7756012Z ##[endgroup]
+2026-11-04T01:40:01.7756525Z ##[group]Disable CheckSpace...
+2026-11-04T01:40:01.8330247Z [command]C:\Windows\system32\cmd.exe /D /S /C D:\a\_temp\setup-msys2\msys2.cmd -c "'sed' '-i' 's/^CheckSpace/#CheckSpace/g' '/etc/pacman.conf'"
+2026-11-04T01:40:02.0293457Z ##[endgroup]
+2026-11-04T01:40:02.0293914Z ##[group]Updating packages...
+2026-11-04T01:40:02.1070488Z [command]C:\Windows\system32\cmd.exe /D /S /C D:\a\_temp\setup-msys2\msys2.cmd -c "'pacman' '--noconfirm' '-Syuu' '--overwrite' '*'"
+2026-11-04T01:40:02.8639528Z :: Synchronizing package databases...
+2026-11-04T01:40:05.0935232Z  clangarm64 downloading...
+2026-11-04T01:40:05.0935504Z  mingw32 downloading...
+2026-11-04T01:40:05.0935692Z  mingw64 downloading...
+2026-11-04T01:40:05.0935873Z  ucrt64 downloading...
+2026-11-04T01:40:05.0936035Z  clang64 downloading...
+2026-11-04T01:40:05.0936202Z  msys downloading...
+2026-11-04T01:40:05.5559558Z :: Starting core system upgrade...
+2026-11-04T01:40:05.6968688Z warning: terminate other MSYS2 programs before proceeding
+2026-11-04T01:40:05.6969497Z resolving dependencies...
+2026-11-04T01:40:05.7056076Z looking for conflicting packages...
+2026-11-04T01:40:05.7073306Z 
+2026-11-04T01:40:05.7073780Z Packages (4) bash-5.3.20-2  filesystem-2026.10.18-3  msys2-runtime-3.6.12-1  pacman-6.1.0-29
+2026-11-04T01:40:05.7074255Z 
+2026-11-04T01:40:05.7074369Z Total Download Size:    9.98 MiB
+2026-11-04T01:40:05.7074667Z Total Installed Size:  54.05 MiB
+2026-11-04T01:40:05.7074979Z Net Upgrade Size:      -0.14 MiB
+2026-11-04T01:40:05.7075188Z 
+2026-11-04T01:40:05.7075346Z :: Proceed with installation? [Y/n] 
+2026-11-04T01:40:05.7075679Z :: Retrieving packages...
+2026-11-04T01:40:06.2278702Z  pacman-6.1.0-29-x86_64 downloading...
+2026-11-04T01:40:06.2279100Z  bash-5.3.20-2-x86_64 downloading...
+2026-11-04T01:40:06.2279329Z  msys2-runtime-3.6.12-1-x86_64 downloading...
+2026-11-04T01:40:06.2279802Z  filesystem-2026.10.18-3-x86_64 downloading...
+2026-11-04T01:40:06.2280087Z checking keyring...
+2026-11-04T01:40:06.2739328Z checking package integrity...
+2026-11-04T01:40:06.8354768Z loading package files...
+2026-11-04T01:40:06.8426292Z checking for file conflicts...
+2026-11-04T01:40:06.8426934Z :: Processing package changes...
+2026-11-04T01:40:06.8427286Z upgrading bash...
+2026-11-04T01:40:06.9695514Z upgrading filesystem...
+2026-11-04T01:40:07.0076463Z upgrading msys2-runtime...
+2026-11-04T01:40:07.1414574Z upgrading pacman...
+2026-11-04T01:40:07.4293534Z :: To complete this update all MSYS2 processes including this terminal will be closed. Confirm to proceed [Y/n] 
+2026-11-04T01:40:07.6408659Z ##[endgroup]
+2026-11-04T01:40:07.6408995Z ##[group]Killing remaining tasks...
+2026-11-04T01:40:07.6872672Z [command]C:\Windows\system32\taskkill.exe /F /FI "MODULES eq msys-2.0.dll"
+2026-11-04T01:40:07.7819101Z 
+2026-11-04T01:40:07.7819584Z INFO: No tasks running with the specified criteria.
+2026-11-04T01:40:07.7857195Z ##[endgroup]
+2026-11-04T01:40:07.7857508Z ##[group]Final system upgrade...
+2026-11-04T01:40:07.8344441Z [command]C:\Windows\system32\cmd.exe /D /S /C D:\a\_temp\setup-msys2\msys2.cmd -c "'pacman' '--noconfirm' '-Syuu' '--overwrite' '*'"
+2026-11-04T01:40:08.5943363Z :: Synchronizing package databases...
+2026-11-04T01:40:09.4422748Z  clangarm64 downloading...
+2026-11-04T01:40:09.4423088Z  mingw32 downloading...
+2026-11-04T01:40:09.4423336Z  mingw64 downloading...
+2026-11-04T01:40:09.4423588Z  ucrt64 downloading...
+2026-11-04T01:40:09.4423840Z  clang64 downloading...
+2026-11-04T01:40:09.4424087Z  msys downloading...
+2026-11-04T01:40:09.8897599Z :: Starting core system upgrade...
+2026-11-04T01:40:10.0270286Z  there is nothing to do
+2026-11-04T01:40:10.0270644Z :: Starting full system upgrade...
+2026-11-04T01:40:10.0504712Z resolving dependencies...
+2026-11-04T01:40:10.0579524Z looking for conflicting packages...
+2026-11-04T01:40:10.0628628Z 
+2026-11-04T01:40:10.0630141Z Packages (15) brotli-1.2.1-1  bsdtar-3.8.11-1  ca-certificates-20260816-3  curl-8.23.0-1  dash-0.5.13.5-1  gcc-libs-16.2.0-1  libcurl-8.23.0-1  libexpat-2.9.0-1  libopenssl-3.6.5-1  libpcre2_8-10.49-1  libreadline-8.3.006-2  libsqlite-3.54.1-1  nano-9.3-1  openssl-3.6.5-1  tzcode-2026f-1
+2026-11-04T01:40:10.0631043Z 
+2026-11-04T01:40:10.0631118Z Total Download Size:    8.36 MiB
+2026-11-04T01:40:10.0631311Z Total Installed Size:  23.91 MiB
+2026-11-04T01:40:10.0631493Z Net Upgrade Size:       0.22 MiB
+2026-11-04T01:40:10.0631620Z 
+2026-11-04T01:40:10.0631741Z :: Proceed with installation? [Y/n] 
+2026-11-04T01:40:10.0631944Z :: Retrieving packages...
+2026-11-04T01:40:11.4910903Z  libopenssl-3.6.5-1-x86_64 downloading...
+2026-11-04T01:40:11.4911215Z  gcc-libs-16.2.0-1-x86_64 downloading...
+2026-11-04T01:40:11.4911433Z  curl-8.23.0-1-x86_64 downloading...
+2026-11-04T01:40:11.4911636Z  libsqlite-3.54.1-1-x86_64 downloading...
+2026-11-04T01:40:11.4912035Z  nano-9.3-1-x86_64 downloading...
+2026-11-04T01:40:11.4912336Z  openssl-3.6.5-1-x86_64 downloading...
+2026-11-04T01:40:11.4912659Z  libcurl-8.23.0-1-x86_64 downloading...
+2026-11-04T01:40:11.4913409Z  ca-certificates-20260816-3-any downloading...
+2026-11-04T01:40:11.4913769Z  libreadline-8.3.006-2-x86_64 downloading...
+2026-11-04T01:40:11.4913993Z  brotli-1.2.1-1-x86_64 downloading...
+2026-11-04T01:40:11.4914187Z  bsdtar-3.8.11-1-x86_64 downloading...
+2026-11-04T01:40:11.4914381Z  tzcode-2026f-1-x86_64 downloading...
+2026-11-04T01:40:11.4914579Z  libpcre2_8-10.49-1-x86_64 downloading...
+2026-11-04T01:40:11.4914786Z  dash-0.5.13.5-1-x86_64 downloading...
+2026-11-04T01:40:11.4915001Z  libexpat-2.9.0-1-x86_64 downloading...
+2026-11-04T01:40:11.4915196Z checking keyring...
+2026-11-04T01:40:11.5377896Z checking package integrity...
+2026-11-04T01:40:13.1886562Z loading package files...
+2026-11-04T01:40:13.2187196Z checking for file conflicts...
+2026-11-04T01:40:13.2221586Z :: Running pre-transaction hooks...
+2026-11-04T01:40:13.2222089Z (1/1) Removing old entries from the info directory file...
+2026-11-04T01:40:13.3732551Z :: Processing package changes...
+2026-11-04T01:40:13.3732951Z upgrading gcc-libs...
+2026-11-04T01:40:13.3919516Z upgrading brotli...
+2026-11-04T01:40:13.4023640Z upgrading libexpat...
+2026-11-04T01:40:13.4061946Z upgrading libopenssl...
+2026-11-04T01:40:13.4284284Z upgrading bsdtar...
+2026-11-04T01:40:13.4354689Z upgrading openssl...
+2026-11-04T01:40:13.5288550Z upgrading libpcre2_8...
+2026-11-04T01:40:13.5332245Z upgrading ca-certificates...
+2026-11-04T01:40:14.0426536Z upgrading libcurl...
+2026-11-04T01:40:14.0483397Z upgrading curl...
+2026-11-04T01:40:14.4321111Z upgrading dash...
+2026-11-04T01:40:14.5366437Z upgrading libreadline...
+2026-11-04T01:40:14.5649845Z upgrading libsqlite...
+2026-11-04T01:40:14.5734264Z upgrading nano...
+2026-11-04T01:40:14.6654953Z upgrading tzcode...
+2026-11-04T01:40:16.2746488Z :: Running post-transaction hooks...
+2026-11-04T01:40:16.2746805Z (1/1) Updating the info directory file...
+2026-11-04T01:40:16.5765441Z ##[endgroup]
+2026-11-04T01:40:16.5765958Z ##[group]Installing additional packages through pacman...
+2026-11-04T01:40:16.6398218Z [command]C:\Windows\system32\cmd.exe /D /S /C D:\a\_temp\setup-msys2\msys2.cmd -c "'pacman' '--noconfirm' '-S' '--needed' '--overwrite' '*' 'base-devel' 'git' 'mingw-w64-x86_64-binutils' 'mingw-w64-x86_64-crt-git' 'mingw-w64-x86_64-headers-git' 'mingw-w64-x86_64-gcc-libs' 'mingw-w64-x86_64-gcc' 'mingw-w64-x86_64-gdb' 'mingw-w64-x86_64-make' 'mingw-w64-x86_64-tools-git' 'mingw-w64-x86_64-pkg-config' 'mingw-w64-x86_64-winpthreads-git' 'mingw-w64-x86_64-libwinpthread-git' 'mingw-w64-x86_64-winstorecompat-git' 'mingw-w64-x86_64-libmangle-git' 'mingw-w64-x86_64-pixman' 'mingw-w64-x86_64-SDL2' 'mingw-w64-x86_64-glib2' 'mingw-w64-x86_64-capstone' 'mingw-w64-x86_64-glfw'"
+2026-11-04T01:40:17.4138895Z error: target not found: mingw-w64-x86_64-tools-git
+2026-11-04T01:40:17.4150982Z error: target not found: mingw-w64-x86_64-winstorecompat-git
+2026-11-04T01:40:17.4156318Z error: target not found: mingw-w64-x86_64-libmangle-git
+2026-11-04T01:40:17.4512007Z ##[error]Error: The process 'C:\Windows\system32\cmd.exe' failed with exit code 1
+2026-11-04T01:40:17.4873586Z Post job cleanup.
+2026-11-04T01:40:17.5653748Z (node:2408) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-04T01:40:17.5654334Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-04T01:40:17.6159544Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-11-04T01:40:17.6446856Z git version 2.56.0.windows.4
+2026-11-04T01:40:17.6505407Z Temporarily overriding HOME='D:\a\_temp\20ecef6c-4b52-42cc-8be2-33796b243dca' before making global git config changes
+2026-11-04T01:40:17.6506297Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-04T01:40:17.6513103Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\DragonLord-Emulator\DragonLord-Emulator
+2026-11-04T01:40:17.6853108Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-11-04T01:40:17.7186529Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-11-04T01:40:18.2359353Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-04T01:40:18.2676186Z http.https://github.com/.extraheader
+2026-11-04T01:40:18.2734639Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all http.https://github.com/.extraheader
+2026-11-04T01:40:18.3088784Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-11-04T01:40:18.8316194Z Cleaning up orphan processes
+2026-11-04T01:40:18.8915649Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v3. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

@@ -1,0 +1,12 @@
+{"case":"four_context_ring_pairs","status":"PASS"}
+{"case":"sequence_retires_only_lower_or_equal","status":"PASS"}
+{"case":"duplicate_callback_does_not_complete_twice","status":"PASS"}
+{"case":"older_then_current_callback","status":"PASS"}
+{"case":"out_of_order_callback_after_retirement","status":"PASS"}
+{"case":"empty_queue_callback","status":"PASS"}
+{"case":"unknown_context_cannot_retire","status":"PASS"}
+{"case":"highest_virtio_ring_isolated","status":"PASS"}
+{"case":"global_callback_does_not_retire_context_fence","status":"PASS"}
+{"case":"full_width_fence_sequence","status":"PASS"}
+{"case":"late_callback_after_queue_reset","status":"PASS"}
+{"case":"queue_reset_new_context_rejects_old_signal","status":"PASS"}

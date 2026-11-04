@@ -1,0 +1,10 @@
+{
+  "upstream_fix": "dbb53a7caa04d4e12e93f83511640247a2fd49d6",
+  "upstream_source": "https://gitlab.com/qemu-project/qemu/-/commit/dbb53a7caa04d4e12e93f83511640247a2fd49d6",
+  "verified_mirror": "https://github.com/qemu/qemu/commit/dbb53a7caa04d4e12e93f83511640247a2fd49d6",
+  "baseline_commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+  "baseline_callback_file_sha256": "808fd2cc677a268be0a235bbefb704e43707cb3a786fa813d73e727f9de47df3",
+  "baseline_fix_present": false,
+  "patch_sha256": "1126c30202e1ae567c08c816e4b271c60ad423f1d26f2be47c0ea4a12c68db7d",
+  "working_source_pristine": true
+}
