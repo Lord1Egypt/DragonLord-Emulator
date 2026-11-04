@@ -1,0 +1,11 @@
+--- a/host/vulkan/vk_common_operations.cpp
++++ b/host/vulkan/vk_common_operations.cpp
+@@ -1935,7 +1935,7 @@
+                 "Ensure host allocations are aligned to "
+                 "avoid VMM errors when mapping.");
+             GFXSTREAM_INFO("Enabling VulkanAllocateHostMemory: %s",
+-                           mFeatures.VulkanAllocateHostMemory.getReason());
++                           mFeatures.VulkanAllocateHostMemory.getReason().c_str());
+         }
+     }
+ #endif

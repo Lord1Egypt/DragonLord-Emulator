@@ -1,0 +1,7 @@
+C:\DLGPU\p06-20261104\experiments\abi_probe.c(21,16): error: static assertion failed due to requirement 'sizeof (((struct rutabaga_fence *)0)->ring_idx) == 1': C ring field must match actual Rust u8
+   21 | _Static_assert(sizeof(((struct rutabaga_fence*)0)->ring_idx)==1,"C ring field must match actual Rust u8");
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\DLGPU\p06-20261104\experiments\abi_probe.c(21,61): note: expression evaluates to '4 == 1'
+   21 | _Static_assert(sizeof(((struct rutabaga_fence*)0)->ring_idx)==1,"C ring field must match actual Rust u8");
+      |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+1 error generated.

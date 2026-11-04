@@ -1,0 +1,9 @@
+﻿{
+    "scope":  "Pinned native Windows standalone Gfxstream build attempt",
+    "timestamp_utc":  "2026-11-04T01:18:24.1820846Z",
+    "status":  "BLOCKED",
+    "rendering":  "NOT TESTED",
+    "hardware_execution":  "NOT TESTED",
+    "qemu_integration":  "NOT TESTED",
+    "reason":  "Pinned Gfxstream source must be pristine"
+}

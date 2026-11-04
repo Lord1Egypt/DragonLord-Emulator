@@ -1,0 +1,126 @@
+﻿{
+    "scope":  "Native Windows pinned Gfxstream compilation; GPU NOT TESTED",
+    "timestamp_utc":  "2026-11-04T03:55:49.6288073Z",
+    "status":  "PASS",
+    "hardware_rendering":  "NOT TESTED",
+    "independent_gpu_verification":  "NOT TESTED",
+    "commands":  [
+                     {
+                         "argv":  [
+                                      "--version"
+                                  ],
+                         "exit_code":  0,
+                         "timed_out":  false,
+                         "executable":  "C:\\DLGPU\\p06-20261104\\tools\\clang+llvm-23.1.5-x86_64-pc-windows-msvc\\bin\\clang-cl.exe"
+                     },
+                     {
+                         "argv":  [
+                                      "-S",
+                                      "C:\\DLGPU\\p06-20261104\\src\\hardware\\google\\gfxstream",
+                                      "-B",
+                                      "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3",
+                                      "-G",
+                                      "Ninja",
+                                      "-DCMAKE_MAKE_PROGRAM=C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja.exe",
+                                      "-DCMAKE_C_COMPILER=C:\\DLGPU\\p06-20261104\\tools\\clang+llvm-23.1.5-x86_64-pc-windows-msvc\\bin\\clang-cl.exe",
+                                      "-DCMAKE_CXX_COMPILER=C:\\DLGPU\\p06-20261104\\tools\\clang+llvm-23.1.5-x86_64-pc-windows-msvc\\bin\\clang-cl.exe",
+                                      "-DCMAKE_BUILD_TYPE=Release",
+                                      "-DBUILD_STANDALONE=ON",
+                                      "-DENABLE_VKCEREAL_TESTS=ON",
+                                      "-DASTC_CPU_DECODING=OFF",
+                                      "-DGFXSTREAM_ENABLE_HOST_TRACING=OFF",
+                                      "-DCMAKE_C_FLAGS=/DWIN32_LEAN_AND_MEAN",
+                                      "-DCMAKE_CXX_FLAGS=/DWIN32_LEAN_AND_MEAN"
+                                  ],
+                         "exit_code":  0,
+                         "timed_out":  false,
+                         "executable":  "C:\\Program Files\\CMake\\bin\\cmake.exe"
+                     },
+                     {
+                         "argv":  [
+                                      "--build",
+                                      "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3",
+                                      "--target",
+                                      "gfxstream_backend",
+                                      "OpenglRender_unittests",
+                                      "Vulkan_unittests",
+                                      "--parallel",
+                                      "2"
+                                  ],
+                         "exit_code":  0,
+                         "timed_out":  false,
+                         "executable":  "C:\\Program Files\\CMake\\bin\\cmake.exe"
+                     }
+                 ],
+    "source_commit":  "94240f814c0097a63027ae680ea4bec7b0cb25f7",
+    "source_overlay":  {
+                           "scope":  "One-line local build/safety correction; not upstream acceptance or a renderer port",
+                           "baseline_commit":  "94240f814c0097a63027ae680ea4bec7b0cb25f7",
+                           "patch_sha256":  "7c93abde082d824aa60ac4e0dac8474d987604f891ab9eca1277a923123c0fff",
+                           "files":  [
+                                         {
+                                             "path":  "host/vulkan/vk_common_operations.cpp",
+                                             "original_sha256":  "76f3e2f0e8a2a4e3b365d217c16b3b77c1e6b493705471e31e64c0f0a9b79963",
+                                             "patched_sha256":  "92f9049cbb5e5e812e63abe14a25f9fffa596149091816b5da907735cb6ab170"
+                                         }
+                                     ]
+                       },
+    "source_directory":  "C:\\DLGPU\\p06-20261104\\src\\hardware\\google\\gfxstream",
+    "build_directory":  "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3",
+    "environment_scope":  "VS build variables in child processes only; no global PATH changes",
+    "library_directories":  [
+                                "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\lib\\x64",
+                                "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\lib\\um\\x64",
+                                "C:\\Program Files (x86)\\Windows Kits\\10\\lib\\10.0.26100.0\\ucrt\\x64",
+                                "C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.26100.0\\\\um\\x64"
+                            ],
+    "include_directories":  [
+                                "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\include",
+                                "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Auxiliary\\VS\\include",
+                                "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.26100.0\\ucrt",
+                                "C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\um",
+                                "C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\shared",
+                                "C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\winrt",
+                                "C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.26100.0\\\\cppwinrt",
+                                "C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.8\\include\\um"
+                            ],
+    "tools":  [
+                  {
+                      "sha256":  "9eb660bd159bb79ae45110b4af67392bb510c9be3e91e01f3ba3c8254436fe3c",
+                      "path":  "C:\\Program Files\\CMake\\bin\\cmake.exe"
+                  },
+                  {
+                      "sha256":  "dd3634f32c562c92a2dc11e115df029a5abc5373f2ee6d640b26e2f68d656c01",
+                      "path":  "C:\\DLGPU\\p06-20261104\\tools\\clang+llvm-23.1.5-x86_64-pc-windows-msvc\\bin\\clang-cl.exe"
+                  },
+                  {
+                      "sha256":  "ff29bcb5f547174bae6b73c84278cce9b674e8ebc2f3c3926ab21030b33f34b8",
+                      "path":  "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja.exe"
+                  },
+                  {
+                      "sha256":  "17e7448d6f213cdd41d1e4d8385a403e364c2b09c55b2b645f1afaf404adf1a6",
+                      "path":  "C:\\DLGPU\\p06-20261104\\tools\\rust-1.88.0\\bin\\rustc.exe"
+                  },
+                  {
+                      "sha256":  "d9d1f16c0438e0e5e820b2bb40846e3cc6a023e0a835505c5c4b25664e46c3be",
+                      "path":  "C:\\DLGPU\\p06-20261104\\tools\\rust-1.88.0\\bin\\cargo.exe"
+                  }
+              ],
+    "configure_exit_code":  0,
+    "build_exit_code":  0,
+    "binaries":  [
+                     {
+                         "sha256":  "b8df95cc18ab1ae7494a21b4c7cd1ccc0f79b2910659bcebc5a69c25bd49a5b0",
+                         "name":  "gfxstream_backend.dll"
+                     },
+                     {
+                         "sha256":  "6f05d674af4202d0ca500620571643fdd6689de514c5c8f7bcc502f5ae752925",
+                         "name":  "OpenglRender_unittests.exe"
+                     },
+                     {
+                         "sha256":  "f9893bb32ac4699eb3f1b8970a8358ce447dbae837cc2225fe33d85317208c5b",
+                         "name":  "Vulkan_unittests.exe"
+                     }
+                 ],
+    "reason":  "Requested native library/tests compiled; rendering and physical GPU gates remain NOT TESTED"
+}

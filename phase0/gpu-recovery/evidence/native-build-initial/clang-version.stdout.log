@@ -1,0 +1,5 @@
+clang version 23.1.5 (https://github.com/llvm/llvm-project 392dfff97d29b59d77e5cac6d4b6ef2585fe7117)
+Target: x86_64-pc-windows-msvc
+Thread model: posix
+InstalledDir: C:\DLGPU\p06-20261104\tools\clang+llvm-23.1.5-x86_64-pc-windows-msvc\bin
+Build config: +alloc:rpmalloc

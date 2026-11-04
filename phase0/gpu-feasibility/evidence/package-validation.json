@@ -1,0 +1,69 @@
+{
+  "scope": "Package/evidence tooling validation; GPU regression gate remains FAIL",
+  "timestamp_utc": "2026-11-04T01:38:08.072761+00:00",
+  "python_syntax": {
+    "status": "PASS",
+    "files": 4
+  },
+  "powershell_syntax": {
+    "status": "PASS",
+    "files": 3,
+    "tool": "Windows PowerShell 5 parser"
+  },
+  "new_evidence_regressions": {
+    "status": "PASS",
+    "tests": 8,
+    "command": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "phase0/gpu-feasibility/tests",
+      "-v"
+    ],
+    "log": "evidence/evidence-tests.log"
+  },
+  "phase0_revalidation": {
+    "status": "PASS",
+    "indexed_artifacts": 77,
+    "original_harness_tests": 9,
+    "local_binary_hashes": 3,
+    "evidence": "evidence/phase0-validation/result.json",
+    "new_vm_boot": "NOT TESTED"
+  },
+  "native_runs": [
+    {
+      "script": "tools/probe-toolchain.ps1",
+      "wrapper_exit_code": 0,
+      "result": "evidence/toolchain/toolchain.json"
+    },
+    {
+      "script": "tools/collect-host.ps1",
+      "wrapper_exit_code": 0,
+      "result": "evidence/host/host.json"
+    },
+    {
+      "script": "tools/build-gfxstream.ps1",
+      "wrapper_exit_code": 2,
+      "configure_exit_code": 1,
+      "status": "BLOCKED",
+      "result": "evidence/gfxstream-configure-replay/result.json"
+    }
+  ],
+  "rutabaga_dependency_replay": {
+    "wrapper_exit_code": 2,
+    "configure_exit_code": 1,
+    "status": "BLOCKED"
+  },
+  "fence_correctness_probe": {
+    "status": "FAIL",
+    "compile_exit_code": 0,
+    "execute_exit_code": 1,
+    "passing_cases": 24,
+    "failing_cases": 2,
+    "scope": "Isolated unchanged callback on Linux; not Windows/GPU/VM"
+  },
+  "gpu_rendering_and_trace": "NOT TESTED",
+  "privacy_size_scan": "PASS (bounded text artifacts; known credential/private-profile patterns absent)"
+}

@@ -1,0 +1,113 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later */
+/* Source callback unit scaffold. No renderer, actual device reset or VM. */
+#include <stdint.h>
+#include <stddef.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "qemu/queue.h"
+#include "standard-headers/linux/virtio_gpu.h"
+#include "rutabaga_gfx_ffi.h"
+struct virtio_gpu_ctrl_command {
+    struct virtio_gpu_ctrl_hdr cmd_hdr;
+    QTAILQ_ENTRY(virtio_gpu_ctrl_command) next;
+};
+typedef struct VirtIOGPU { QTAILQ_HEAD(, virtio_gpu_ctrl_command) fenceq; } VirtIOGPU;
+struct VirtIOGPURutabaga { VirtIOGPU gpu; };
+struct rutabaga_aio_data { struct VirtIOGPURutabaga *vr; struct rutabaga_fence fence; };
+#define VIRTIO_GPU(p) ((VirtIOGPU *)(p))
+#define g_free(p) free(p)
+static struct virtio_gpu_ctrl_hdr returned[16];
+static unsigned completed;
+static void trace_virtio_gpu_fence_resp(uint64_t id) { (void)id; }
+static void virtio_gpu_ctrl_response_nodata(VirtIOGPU *g,
+        struct virtio_gpu_ctrl_command *cmd, uint32_t response) {
+    (void)g; (void)response;
+    if (completed >= 16) abort();
+    returned[completed++] = cmd->cmd_hdr;
+}
+/* @UPSTREAM_CALLBACK@ */
+static const uint32_t CONTEXT = RUTABAGA_FLAG_FENCE | RUTABAGA_FLAG_INFO_RING_IDX;
+static void enqueue(VirtIOGPU *g, uint32_t flags, uint32_t ctx,
+                    uint8_t ring, uint64_t id) {
+    struct virtio_gpu_ctrl_command *cmd = calloc(1, sizeof(*cmd));
+    if (!cmd) abort();
+    cmd->cmd_hdr = (struct virtio_gpu_ctrl_hdr){.flags=flags,.ctx_id=ctx,.ring_idx=ring,.fence_id=id};
+    QTAILQ_INSERT_TAIL(&g->fenceq,cmd,next);
+}
+static void signal_fence(struct VirtIOGPURutabaga *vr, uint32_t flags,
+                         uint32_t ctx, uint32_t ring, uint64_t id) {
+    struct rutabaga_aio_data *data=calloc(1,sizeof(*data));
+    if (!data) abort();
+    data->vr=vr;
+    data->fence=(struct rutabaga_fence){.flags=flags,.ctx_id=ctx,.ring_idx=ring,.fence_id=id};
+    virtio_gpu_rutabaga_aio_cb(data);
+}
+static void drain(VirtIOGPU *g) {
+    while (!QTAILQ_EMPTY(&g->fenceq)) {
+        struct virtio_gpu_ctrl_command *cmd=QTAILQ_FIRST(&g->fenceq);
+        QTAILQ_REMOVE(&g->fenceq,cmd,next);
+        free(cmd);
+    }
+}
+static unsigned queued(VirtIOGPU *g) {
+    unsigned n=0;
+    struct virtio_gpu_ctrl_command *cmd;
+    QTAILQ_FOREACH(cmd,&g->fenceq,next) ++n;
+    return n;
+}
+static bool report(const char *name, bool okay) {
+    printf("{\"case\":\"%s\",\"status\":\"%s\"}\n",name,okay?"PASS":"FAIL");
+    return okay;
+}
+int main(void) {
+    struct VirtIOGPURutabaga vr={0};
+    unsigned failures=0;
+    bool ok;
+#define START() do { QTAILQ_INIT(&vr.gpu.fenceq); completed=0; memset(returned,0,sizeof(returned)); } while(0)
+#define CHECK_CASE(name, condition) do { failures+=!report(name,(condition)); drain(&vr.gpu); } while(0)
+    START();
+    enqueue(&vr.gpu,CONTEXT,1,0,5); enqueue(&vr.gpu,CONTEXT,2,0,5);
+    enqueue(&vr.gpu,CONTEXT,1,1,5); enqueue(&vr.gpu,CONTEXT,2,1,5);
+    signal_fence(&vr,CONTEXT,2,1,5);
+    CHECK_CASE("four_context_ring_pairs", completed==1 && queued(&vr.gpu)==3 && returned[0].ctx_id==2 && returned[0].ring_idx==1);
+    START();
+    enqueue(&vr.gpu,CONTEXT,1,0,1); enqueue(&vr.gpu,CONTEXT,1,0,3); enqueue(&vr.gpu,CONTEXT,1,0,2);
+    signal_fence(&vr,CONTEXT,1,0,2);
+    CHECK_CASE("sequence_retires_only_lower_or_equal",completed==2 && queued(&vr.gpu)==1 && QTAILQ_FIRST(&vr.gpu.fenceq)->cmd_hdr.fence_id==3);
+    START();
+    enqueue(&vr.gpu,CONTEXT,1,0,7); signal_fence(&vr,CONTEXT,1,0,7); signal_fence(&vr,CONTEXT,1,0,7);
+    CHECK_CASE("duplicate_callback_does_not_complete_twice",completed==1 && queued(&vr.gpu)==0);
+    START();
+    enqueue(&vr.gpu,CONTEXT,1,0,8); signal_fence(&vr,CONTEXT,1,0,7); signal_fence(&vr,CONTEXT,1,0,8);
+    CHECK_CASE("older_then_current_callback",completed==1 && returned[0].fence_id==8 && queued(&vr.gpu)==0);
+    START();
+    enqueue(&vr.gpu,CONTEXT,1,0,7); signal_fence(&vr,CONTEXT,1,0,8); signal_fence(&vr,CONTEXT,1,0,6);
+    CHECK_CASE("out_of_order_callback_after_retirement",completed==1 && queued(&vr.gpu)==0);
+    START();
+    signal_fence(&vr,CONTEXT,1,0,7);
+    CHECK_CASE("empty_queue_callback",completed==0);
+    START();
+    enqueue(&vr.gpu,CONTEXT,1,0,7); signal_fence(&vr,CONTEXT,99,0,7);
+    CHECK_CASE("unknown_context_cannot_retire",completed==0 && queued(&vr.gpu)==1);
+    START();
+    enqueue(&vr.gpu,CONTEXT,1,63,7); signal_fence(&vr,CONTEXT,1,62,7); signal_fence(&vr,CONTEXT,1,63,7);
+    CHECK_CASE("highest_virtio_ring_isolated",completed==1 && returned[0].ring_idx==63);
+    START();
+    enqueue(&vr.gpu,RUTABAGA_FLAG_FENCE,1,0,5); enqueue(&vr.gpu,CONTEXT,1,0,5);
+    signal_fence(&vr,RUTABAGA_FLAG_FENCE,0,0,5);
+    CHECK_CASE("global_callback_does_not_retire_context_fence",completed==1 && returned[0].flags==RUTABAGA_FLAG_FENCE && queued(&vr.gpu)==1);
+    START();
+    enqueue(&vr.gpu,CONTEXT,1,0,UINT64_MAX); signal_fence(&vr,CONTEXT,1,0,UINT64_MAX-1);
+    ok=completed==0; signal_fence(&vr,CONTEXT,1,0,UINT64_MAX);
+    CHECK_CASE("full_width_fence_sequence",ok && completed==1 && queued(&vr.gpu)==0);
+    START();
+    enqueue(&vr.gpu,CONTEXT,1,0,7); drain(&vr.gpu); signal_fence(&vr,CONTEXT,1,0,7);
+    CHECK_CASE("late_callback_after_queue_reset",completed==0 && queued(&vr.gpu)==0);
+    START();
+    enqueue(&vr.gpu,CONTEXT,1,0,7); drain(&vr.gpu); enqueue(&vr.gpu,CONTEXT,2,0,7);
+    signal_fence(&vr,CONTEXT,1,0,7);
+    CHECK_CASE("queue_reset_new_context_rejects_old_signal",completed==0 && queued(&vr.gpu)==1);
+    return failures?1:0;
+}

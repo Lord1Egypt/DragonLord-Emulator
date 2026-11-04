@@ -1,0 +1,26 @@
+[
+  {
+    "filename": "libglib2.0-0t64_2.80.0-6ubuntu3.10_amd64.deb",
+    "sha256": "ff1b650f655b36dfe202fdbae6bb02b363c7257b6dd23e4f95ab61f716190df3"
+  },
+  {
+    "filename": "libglib2.0-dev_2.80.0-6ubuntu3.10_amd64.deb",
+    "sha256": "6d1d88d68192256603c0de05d084b8ef06ed9b16753215ec2c1ef9ef5fa15014"
+  },
+  {
+    "filename": "libpcre2-8-0_10.42-4ubuntu2.1_amd64.deb",
+    "sha256": "110a797a57673d3ee497a141cf988199258058c57525799c63194d81822529a0"
+  },
+  {
+    "filename": "libpcre2-dev_10.42-4ubuntu2.1_amd64.deb",
+    "sha256": "933ac2723142126b6e01b588803dc6fa15a26205468524548e14af3cd48027e9"
+  },
+  {
+    "filename": "libpixman-1-0_0.42.2-1build1_amd64.deb",
+    "sha256": "d9c2931c4c424615eeab9dd5ae08bfc608b84e803c1d3ccddf319270db213421"
+  },
+  {
+    "filename": "libpixman-1-dev_0.42.2-1build1_amd64.deb",
+    "sha256": "e2e8dca700dfa69f8b5f80df5ba5db2090b0cd5cd497a4351e82f5ada5dc94e8"
+  }
+]

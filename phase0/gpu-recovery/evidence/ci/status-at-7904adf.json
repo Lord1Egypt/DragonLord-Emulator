@@ -1,0 +1,22 @@
+{
+  "tested_commit": "7904adf57c39288bd0b157c6f1d34bbd489c9dbc",
+  "modern": {
+    "run_id": 41768493894,
+    "status": "PASS",
+    "jobs": [
+      126372407837,
+      126372408041,
+      126372408075
+    ],
+    "url": "https://github.com/Lord1Egypt/DragonLord-Emulator/actions/runs/41768493894"
+  },
+  "legacy_retry": {
+    "run_id": 41768674235,
+    "job_id": 126372988614,
+    "package_setup": "PASS",
+    "legacy_configure": "FAIL",
+    "reason": "ModuleNotFoundError: No module named 'pwd'",
+    "compilation": "NOT TESTED",
+    "url": "https://github.com/Lord1Egypt/DragonLord-Emulator/actions/runs/41768674235"
+  }
+}

@@ -1,0 +1,81 @@
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:42:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+   42 | Direct_Express_Call *alloc_one_call();
+      | ^~~~~~~~~~~~~~~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:44:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+   44 | Guest_Mem *alloc_one_guest_mem();
+      | ^~~~~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:68:22: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+   68 | Direct_Express_Call *alloc_one_call()
+      |                      ^~~~~~~~~~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c: In function ‘alloc_one_call’:
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:68:22: warning: old-style function definition [-Wold-style-definition]
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c: At top level:
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:94:12: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+   94 | Guest_Mem *alloc_one_guest_mem()
+      |            ^~~~~~~~~~~~~~~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c: In function ‘alloc_one_guest_mem’:
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:94:12: warning: old-style function definition [-Wold-style-definition]
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c: In function ‘guest_write’:
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:143:42: warning: format ‘%lx’ expects argument of type ‘long unsigned int’, but argument 2 has type ‘void *’ [-Wformat=]
+  143 |         printf("guest write error host %lx len %d %lld\n", host, guest->all_len, length);
+      |                                        ~~^                 ~~~~
+      |                                          |                 |
+      |                                          long unsigned int void *
+      |                                        %p
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:143:54: warning: format ‘%lld’ expects argument of type ‘long long int’, but argument 4 has type ‘size_t’ {aka ‘long unsigned int’} [-Wformat=]
+  143 |         printf("guest write error host %lx len %d %lld\n", host, guest->all_len, length);
+      |                                                   ~~~^                           ~~~~~~
+      |                                                      |                           |
+      |                                                      long long int               size_t {aka long unsigned int}
+      |                                                   %ld
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c: In function ‘host_guest_buffer_exchange’:
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:216:35: warning: comparison of distinct pointer types lacks a cast
+  216 |                     if (last_data != guest_data[guest_index].data)
+      |                                   ^~
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:218:35: warning: pointer targets in assignment from ‘unsigned char *’ to ‘char *’ differ in signedness [-Wpointer-sign]
+  218 |                         last_data = guest_data[guest_index].data;
+      |                                   ^
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c: In function ‘pack_call_from_queue’:
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:365:18: warning: assignment discards ‘volatile’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  365 |             call = packaging_call;
+      |                  ^
+In file included from /home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:15:
+/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/legacy-api-include/direct-express/express_log.h:16:19: warning: format ‘%d’ expects argument of type ‘int’, but argument 4 has type ‘long long unsigned int’ [-Wformat=]
+   16 | #define YELLOW(a) "\033[33m" a "\033[0m"
+      |                   ^~~~~~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:377:24: note: in expansion of macro ‘YELLOW’
+  377 |                 printf(YELLOW("fill para error first elem %u,%u remain_elem_num %d\n"), elem->elem.in_num, elem->elem.out_num, para_num);
+      |                        ^~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c: At top level:
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:459:17: error: conflicting types for ‘thread_context_create’; have ‘Thread_Context *(long long unsigned int,  long long unsigned int,  long long unsigned int,  Express_Device_Info *)’
+  459 | Thread_Context *thread_context_create(unsigned long long thread_id, unsigned long long type_id, unsigned long long len, Express_Device_Info *info)
+      |                 ^~~~~~~~~~~~~~~~~~~~~
+In file included from /home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:13:
+/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/legacy-api-include/direct-express/direct_express_distribute.h:185:17: note: previous declaration of ‘thread_context_create’ with type ‘Thread_Context *(uint64_t,  uint64_t,  uint64_t,  Express_Device_Info *)’ {aka ‘Thread_Context *(long unsigned int,  long unsigned int,  long unsigned int,  Express_Device_Info *)’}
+  185 | Thread_Context *thread_context_create(uint64_t thread_id, uint64_t type_id, uint64_t len, Express_Device_Info *info);
+      |                 ^~~~~~~~~~~~~~~~~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c: In function ‘call_distribute_thread’:
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:601:12: error: implicit declaration of function ‘atomic_cmpxchg’; did you mean ‘qatomic_cmpxchg’? [-Werror=implicit-function-declaration]
+  601 |     while (atomic_cmpxchg(&atomic_distribute_thread_running, 0, 1) != 0)
+      |            ^~~~~~~~~~~~~~
+      |            qatomic_cmpxchg
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:601:12: warning: nested extern declaration of ‘atomic_cmpxchg’ [-Wnested-externs]
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:640:13: error: implicit declaration of function ‘atomic_set’; did you mean ‘qatomic_set’? [-Werror=implicit-function-declaration]
+  640 |             atomic_set(&atomic_distribute_thread_running, 0);
+      |             ^~~~~~~~~~
+      |             qatomic_set
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:640:13: warning: nested extern declaration of ‘atomic_set’ [-Wnested-externs]
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:598:13: warning: unused variable ‘call_num’ [-Wunused-variable]
+  598 |     int64_t call_num = 0;
+      |             ^~~~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:597:13: warning: unused variable ‘spend_time_all’ [-Wunused-variable]
+  597 |     int64_t spend_time_all = 0;
+      |             ^~~~~~~~~~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:582:26: warning: unused variable ‘call’ [-Wunused-variable]
+  582 |     Direct_Express_Call *call = NULL;
+      |                          ^~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c: In function ‘push_free_callback’:
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express_distribute.c:838:95: warning: comparison between pointer and integer
+  838 |     } while (atomic_cmpxchg(&(call_recycle_queue[(t + 1) % (CALL_BUF_SIZE + 2)]), NULL, call) != NULL);
+      |                                                                                               ^~
+cc1: some warnings being treated as errors

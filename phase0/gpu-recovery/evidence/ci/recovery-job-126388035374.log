@@ -1,0 +1,319 @@
+﻿2026-11-04T04:28:13.6835206Z Current runner version: '2.338.2'
+2026-11-04T04:28:13.6855421Z ##[group]Runner Image Provisioner
+2026-11-04T04:28:13.6855934Z Hosted Compute Agent
+2026-11-04T04:28:13.6856299Z Version: 20261021.618
+2026-11-04T04:28:13.6856642Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-11-04T04:28:13.6857049Z Build Date: 2026-10-21T00:45:21Z
+2026-11-04T04:28:13.6857443Z Worker ID: {ff8be7eb-e205-4f72-a665-4b7b7bbb78f7}
+2026-11-04T04:28:13.6857828Z Region: centralus
+2026-11-04T04:28:13.6858180Z Cloud: Azure
+2026-11-04T04:28:13.6858468Z ##[endgroup]
+2026-11-04T04:28:13.6859216Z ##[group]Operating System
+2026-11-04T04:28:13.6859574Z Microsoft Windows Server 2025
+2026-11-04T04:28:13.6859893Z 10.0.26100
+2026-11-04T04:28:13.6860201Z Datacenter
+2026-11-04T04:28:13.6860483Z ##[endgroup]
+2026-11-04T04:28:13.6860773Z ##[group]Runner Image
+2026-11-04T04:28:13.6861098Z Image: windows-2025-vs2026
+2026-11-04T04:28:13.6861432Z Version: 20261030.294.1
+2026-11-04T04:28:13.6862418Z Included Software: https://github.com/actions/runner-images/blob/win25-vs2026/20261030.294/images/windows/Windows2025-VS2026-Readme.md
+2026-11-04T04:28:13.6863450Z Image Release: https://github.com/actions/runner-images/releases/tag/win25-vs2026%2F20261030.294
+2026-11-04T04:28:13.6864073Z ##[endgroup]
+2026-11-04T04:28:13.6864722Z ##[group]GITHUB_TOKEN Permissions
+2026-11-04T04:28:13.6866322Z Contents: read
+2026-11-04T04:28:13.6866624Z Metadata: read
+2026-11-04T04:28:13.6866957Z ##[endgroup]
+2026-11-04T04:28:13.6868395Z Secret source: Actions
+2026-11-04T04:28:13.6868921Z Cache mode: write
+2026-11-04T04:28:13.6869374Z Prepare workflow directory
+2026-11-04T04:28:13.7113670Z Prepare all required actions
+2026-11-04T04:28:13.7154850Z Getting action download info
+2026-11-04T04:28:13.9286326Z Download action repository 'actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09' (SHA:fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09)
+2026-11-04T04:28:14.0145893Z Download action repository 'actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1' (SHA:ece7cb06caefa5fff74198d8649806c4678c61a1)
+2026-11-04T04:28:14.2208027Z Complete job name: Evidence and harness (windows-2025)
+2026-11-04T04:28:14.3534654Z ##[group]Run git config --global core.autocrlf false
+2026-11-04T04:28:14.3535197Z [36;1mgit config --global core.autocrlf false[0m
+2026-11-04T04:28:14.4183327Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-11-04T04:28:14.4183974Z ##[endgroup]
+2026-11-04T04:28:15.1778286Z ##[group]Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+2026-11-04T04:28:15.1779143Z with:
+2026-11-04T04:28:15.1779517Z   fetch-depth: 0
+2026-11-04T04:28:15.1779932Z   persist-credentials: false
+2026-11-04T04:28:15.1780450Z   repository: Lord1Egypt/DragonLord-Emulator
+2026-11-04T04:28:15.1784839Z   token: ***
+2026-11-04T04:28:15.1785421Z   ssh-strict: true
+2026-11-04T04:28:15.1785814Z   ssh-user: git
+2026-11-04T04:28:15.1786206Z   clean: true
+2026-11-04T04:28:15.1786614Z   sparse-checkout-cone-mode: true
+2026-11-04T04:28:15.1787143Z   fetch-tags: false
+2026-11-04T04:28:15.1787546Z   show-progress: true
+2026-11-04T04:28:15.1787962Z   lfs: false
+2026-11-04T04:28:15.1788332Z   submodules: false
+2026-11-04T04:28:15.1788761Z   set-safe-directory: true
+2026-11-04T04:28:15.1789252Z   allow-unsafe-pr-checkout: false
+2026-11-04T04:28:15.1789776Z ##[endgroup]
+2026-11-04T04:28:15.2853661Z Syncing repository: Lord1Egypt/DragonLord-Emulator
+2026-11-04T04:28:15.2855253Z ##[group]Getting Git version info
+2026-11-04T04:28:15.2855699Z Working directory is 'D:\a\DragonLord-Emulator\DragonLord-Emulator'
+2026-11-04T04:28:15.3238070Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-11-04T04:28:15.3517217Z git version 2.56.0.windows.4
+2026-11-04T04:28:15.3554989Z ##[endgroup]
+2026-11-04T04:28:15.3565676Z Copying 'C:\Users\runneradmin\.gitconfig' to 'D:\a\_temp\61e8a78a-4bc0-404e-b52f-8816722890f5\.gitconfig'
+2026-11-04T04:28:15.3581051Z Temporarily overriding HOME='D:\a\_temp\61e8a78a-4bc0-404e-b52f-8816722890f5' before making global git config changes
+2026-11-04T04:28:15.3583852Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-04T04:28:15.3588619Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\DragonLord-Emulator\DragonLord-Emulator
+2026-11-04T04:28:15.3881973Z Deleting the contents of 'D:\a\DragonLord-Emulator\DragonLord-Emulator'
+2026-11-04T04:28:15.3886568Z ##[group]Initializing the repository
+2026-11-04T04:28:15.3893827Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\DragonLord-Emulator\DragonLord-Emulator
+2026-11-04T04:28:15.4672672Z Initialized empty Git repository in D:/a/DragonLord-Emulator/DragonLord-Emulator/.git/
+2026-11-04T04:28:15.4718290Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/Lord1Egypt/DragonLord-Emulator
+2026-11-04T04:28:15.5297619Z ##[endgroup]
+2026-11-04T04:28:15.5298916Z ##[group]Disabling automatic garbage collection
+2026-11-04T04:28:15.5303774Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-11-04T04:28:15.5591207Z ##[endgroup]
+2026-11-04T04:28:15.5592196Z ##[group]Setting up auth
+2026-11-04T04:28:15.5600350Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-11-04T04:28:15.5887166Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-11-04T04:28:16.9614748Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-04T04:28:16.9909514Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-11-04T04:28:17.4480696Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-04T04:28:17.4786202Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-11-04T04:28:17.9412790Z [command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-11-04T04:28:17.9746863Z ##[endgroup]
+2026-11-04T04:28:17.9749071Z ##[group]Fetching the repository
+2026-11-04T04:28:17.9760665Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/* +4a19985396e2fe1d4d444247ad6c53e5964024b6:refs/remotes/pull/1/merge
+2026-11-04T04:28:19.9422398Z From https://github.com/Lord1Egypt/DragonLord-Emulator
+2026-11-04T04:28:19.9422904Z  * [new branch]      main                                     -> origin/main
+2026-11-04T04:28:19.9423852Z  * [new branch]      phase0/architecture-feasibility          -> origin/phase0/architecture-feasibility
+2026-11-04T04:28:19.9424548Z  * [new ref]         4a19985396e2fe1d4d444247ad6c53e5964024b6 -> pull/1/merge
+2026-11-04T04:28:19.9464057Z ##[endgroup]
+2026-11-04T04:28:19.9464616Z ##[group]Determining the checkout info
+2026-11-04T04:28:19.9465047Z ##[endgroup]
+2026-11-04T04:28:19.9473481Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2026-11-04T04:28:19.9995761Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2026-11-04T04:28:20.0301197Z ##[group]Checking out the ref
+2026-11-04T04:28:20.0365221Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force refs/remotes/pull/1/merge
+2026-11-04T04:28:21.0865939Z Updating files:  85% (6746/7914)
+2026-11-04T04:28:21.0947668Z Updating files:  86% (6807/7914)
+2026-11-04T04:28:21.1029917Z Updating files:  87% (6886/7914)
+2026-11-04T04:28:21.1113053Z Updating files:  88% (6965/7914)
+2026-11-04T04:28:21.1193539Z Updating files:  89% (7044/7914)
+2026-11-04T04:28:21.1316412Z Updating files:  90% (7123/7914)
+2026-11-04T04:28:21.1411415Z Updating files:  91% (7202/7914)
+2026-11-04T04:28:21.1504708Z Updating files:  92% (7281/7914)
+2026-11-04T04:28:21.1605752Z Updating files:  93% (7361/7914)
+2026-11-04T04:28:21.1708984Z Updating files:  94% (7440/7914)
+2026-11-04T04:28:21.1808882Z Updating files:  95% (7519/7914)
+2026-11-04T04:28:21.1943546Z Updating files:  96% (7598/7914)
+2026-11-04T04:28:21.2066893Z Updating files:  97% (7677/7914)
+2026-11-04T04:28:21.2195926Z Updating files:  98% (7756/7914)
+2026-11-04T04:28:21.2308030Z Updating files:  99% (7835/7914)
+2026-11-04T04:28:21.2308295Z Updating files: 100% (7914/7914)
+2026-11-04T04:28:21.2308452Z Updating files: 100% (7914/7914), done.
+2026-11-04T04:28:21.2468506Z Note: switching to 'refs/remotes/pull/1/merge'.
+2026-11-04T04:28:21.2468783Z 
+2026-11-04T04:28:21.2469044Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-11-04T04:28:21.2469599Z changes and commit them, and you can discard any commits you make in this
+2026-11-04T04:28:21.2470058Z state without impacting any branches by switching back to a branch.
+2026-11-04T04:28:21.2470343Z 
+2026-11-04T04:28:21.2470543Z If you want to create a new branch to retain commits you create, you may
+2026-11-04T04:28:21.2470987Z do so (now or later) by using -c with the switch command. Example:
+2026-11-04T04:28:21.2471250Z 
+2026-11-04T04:28:21.2471411Z   git switch -c <new-branch-name>
+2026-11-04T04:28:21.2471574Z 
+2026-11-04T04:28:21.2471671Z Or undo this operation with:
+2026-11-04T04:28:21.2471825Z 
+2026-11-04T04:28:21.2471912Z   git switch -
+2026-11-04T04:28:21.2472025Z 
+2026-11-04T04:28:21.2472230Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-11-04T04:28:21.2472533Z 
+2026-11-04T04:28:21.2472877Z HEAD is now at 4a19985 Merge aabc06ff581b3691a86375ff429c8062b2a6c2fa into c5447ed4baf97d93e3a87c62534ed7d300d288de
+2026-11-04T04:28:21.2597031Z ##[endgroup]
+2026-11-04T04:28:21.2989881Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2026-11-04T04:28:21.3271861Z 4a19985396e2fe1d4d444247ad6c53e5964024b6
+2026-11-04T04:28:21.3315550Z ##[group]Removing auth
+2026-11-04T04:28:21.3322745Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-11-04T04:28:21.3620858Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-11-04T04:28:21.8689297Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-04T04:28:21.8986448Z http.https://github.com/.extraheader
+2026-11-04T04:28:21.9044279Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all http.https://github.com/.extraheader
+2026-11-04T04:28:21.9373862Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-11-04T04:28:22.3836420Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-04T04:28:22.4132114Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-11-04T04:28:22.8910523Z ##[endgroup]
+2026-11-04T04:28:22.9212890Z ##[group]Run actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+2026-11-04T04:28:22.9213163Z with:
+2026-11-04T04:28:22.9213284Z   python-version: 3.13
+2026-11-04T04:28:22.9213403Z   check-latest: false
+2026-11-04T04:28:22.9215229Z   token: ***
+2026-11-04T04:28:22.9215344Z   update-environment: true
+2026-11-04T04:28:22.9215480Z   allow-prereleases: false
+2026-11-04T04:28:22.9215613Z   freethreaded: false
+2026-11-04T04:28:22.9215907Z ##[endgroup]
+2026-11-04T04:28:23.0373704Z ##[group]Installed versions
+2026-11-04T04:28:23.0532498Z Successfully set up CPython (3.13.17)
+2026-11-04T04:28:23.0533007Z ##[endgroup]
+2026-11-04T04:28:23.0764017Z ##[group]Run python phase0/gpu-recovery/tools/verify-evidence.py --include-recovery
+2026-11-04T04:28:23.0764442Z [36;1mpython phase0/gpu-recovery/tools/verify-evidence.py --include-recovery[0m
+2026-11-04T04:28:23.0862864Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-11-04T04:28:23.0863076Z env:
+2026-11-04T04:28:23.0863250Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.13.17\x64
+2026-11-04T04:28:23.0863554Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.13.17\x64/lib/pkgconfig
+2026-11-04T04:28:23.0863812Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.17\x64
+2026-11-04T04:28:23.0864044Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.17\x64
+2026-11-04T04:28:23.0864269Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.17\x64
+2026-11-04T04:28:23.0864464Z ##[endgroup]
+2026-11-04T04:28:36.7578215Z phase0: PASS 77 artifacts (integrity only)
+2026-11-04T04:28:36.7578629Z phase0\gpu-feasibility: PASS 43 artifacts (integrity only)
+2026-11-04T04:28:36.7578871Z phase0\gpu-recovery: PASS 280 artifacts (integrity only)
+2026-11-04T04:28:36.8505961Z ##[group]Run python -m unittest discover -s phase0/tests -v
+2026-11-04T04:28:36.8506278Z [36;1mpython -m unittest discover -s phase0/tests -v[0m
+2026-11-04T04:28:36.8506566Z [36;1mpython -m unittest discover -s phase0/gpu-feasibility/tests -v[0m
+2026-11-04T04:28:36.8506938Z [36;1mpython -m unittest discover -s phase0/gpu-recovery/tests -v[0m
+2026-11-04T04:28:36.8556772Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-11-04T04:28:36.8556974Z env:
+2026-11-04T04:28:36.8557142Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.13.17\x64
+2026-11-04T04:28:36.8557401Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.13.17\x64/lib/pkgconfig
+2026-11-04T04:28:36.8557674Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.17\x64
+2026-11-04T04:28:36.8557899Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.17\x64
+2026-11-04T04:28:36.8558125Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.17\x64
+2026-11-04T04:28:36.8558344Z ##[endgroup]
+2026-11-04T04:28:37.8316099Z test_accessible_kvm_can_proceed_to_runtime_test (test_experiment.EvidenceGateTests.test_accessible_kvm_can_proceed_to_runtime_test) ... ok
+2026-11-04T04:28:37.8317294Z test_authenticated_command_response_can_qualify_diagnostic_only (test_experiment.EvidenceGateTests.test_authenticated_command_response_can_qualify_diagnostic_only) ... ok
+2026-11-04T04:28:37.8443644Z test_bad_download_is_not_promoted_to_verified_artifact (test_experiment.EvidenceGateTests.test_bad_download_is_not_promoted_to_verified_artifact) ... ok
+2026-11-04T04:28:37.9507472Z test_blocked_smoke_cannot_claim_android_or_gpu_pass (test_experiment.EvidenceGateTests.test_blocked_smoke_cannot_claim_android_or_gpu_pass) ... ok
+2026-11-04T04:28:37.9508472Z test_echoed_command_does_not_establish_guest_readiness (test_experiment.EvidenceGateTests.test_echoed_command_does_not_establish_guest_readiness) ... ok
+2026-11-04T04:28:37.9509407Z test_hardware_command_has_one_accelerator_and_snapshot_disk (test_experiment.EvidenceGateTests.test_hardware_command_has_one_accelerator_and_snapshot_disk) ... ok
+2026-11-04T04:28:37.9509952Z test_marker_requires_returned_architecture (test_experiment.EvidenceGateTests.test_marker_requires_returned_architecture) ... ok
+2026-11-04T04:28:37.9510652Z test_missing_kvm_blocks_instead_of_falling_back (test_experiment.EvidenceGateTests.test_missing_kvm_blocks_instead_of_falling_back) ... ok
+2026-11-04T04:28:37.9511154Z test_whpx_never_qualifies_under_wsl_or_linux (test_experiment.EvidenceGateTests.test_whpx_never_qualifies_under_wsl_or_linux) ... ok
+2026-11-04T04:28:37.9511470Z 
+2026-11-04T04:28:37.9511596Z ----------------------------------------------------------------------
+2026-11-04T04:28:37.9512043Z Ran 9 tests in 0.119s
+2026-11-04T04:28:37.9512125Z 
+2026-11-04T04:28:37.9512169Z OK
+2026-11-04T04:28:37.9512308Z {
+2026-11-04T04:28:37.9512402Z   "schema": 1,
+2026-11-04T04:28:37.9512556Z   "scope": "Linux diagnostic boot only",
+2026-11-04T04:28:37.9512712Z   "status": "BLOCKED",
+2026-11-04T04:28:37.9512835Z   "accelerator": "whpx",
+2026-11-04T04:28:37.9512956Z   "hardware": {
+2026-11-04T04:28:37.9513125Z     "timestamp_utc": "2026-11-04T04:28:37.844927+00:00",
+2026-11-04T04:28:37.9513293Z     "platform": "Linux",
+2026-11-04T04:28:37.9513417Z     "release": "2025Server",
+2026-11-04T04:28:37.9513541Z     "machine": "AMD64",
+2026-11-04T04:28:37.9513663Z     "logical_cpu_count": 4,
+2026-11-04T04:28:37.9513791Z     "device_access": {
+2026-11-04T04:28:37.9513903Z       "/dev/kvm": {
+2026-11-04T04:28:37.9514012Z         "exists": false,
+2026-11-04T04:28:37.9514130Z         "read_write": false
+2026-11-04T04:28:37.9514247Z       },
+2026-11-04T04:28:37.9514345Z       "/dev/dri": {
+2026-11-04T04:28:37.9514450Z         "exists": false,
+2026-11-04T04:28:37.9514565Z         "read_write": false
+2026-11-04T04:28:37.9514677Z       },
+2026-11-04T04:28:37.9514770Z       "/dev/dxg": {
+2026-11-04T04:28:37.9514874Z         "exists": false,
+2026-11-04T04:28:37.9516456Z         "read_write": false
+2026-11-04T04:28:37.9516619Z       }
+2026-11-04T04:28:37.9516731Z     },
+2026-11-04T04:28:37.9516901Z     "tools": {
+2026-11-04T04:28:37.9517038Z       "cc": "C:\\mingw64\\bin\\cc.EXE",
+2026-11-04T04:28:37.9517282Z       "make": "C:\\mingw64\\bin\\make.EXE",
+2026-11-04T04:28:37.9517494Z       "pkg-config": "C:\\Strawberry\\perl\\bin\\pkg-config.BAT",
+2026-11-04T04:28:37.9517676Z       "adb": null,
+2026-11-04T04:28:37.9517788Z       "vulkaninfo": null,
+2026-11-04T04:28:37.9518005Z       "powershell.exe": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+2026-11-04T04:28:37.9518220Z     }
+2026-11-04T04:28:37.9518308Z   },
+2026-11-04T04:28:37.9518416Z   "android16": "NOT_TESTED",
+2026-11-04T04:28:37.9518542Z   "gpu": "NOT_TESTED",
+2026-11-04T04:28:37.9518660Z   "kernelsu": "NOT_TESTED",
+2026-11-04T04:28:37.9518895Z   "reason": "Native Windows WHPX execution unavailable in this process; WSL is not a WHPX test host"
+2026-11-04T04:28:37.9519139Z }
+2026-11-04T04:28:38.0388536Z test_blocked_record_is_not_upgraded_by_console (test_evidence.EvidenceIntegrityTests.test_blocked_record_is_not_upgraded_by_console) ... ok
+2026-11-04T04:28:38.0402960Z test_command_echo_cannot_qualify_retained_boot (test_evidence.EvidenceIntegrityTests.test_command_echo_cannot_qualify_retained_boot) ... ok
+2026-11-04T04:28:38.0413683Z test_fallback_cannot_qualify_retained_boot (test_evidence.EvidenceIntegrityTests.test_fallback_cannot_qualify_retained_boot) ... ok
+2026-11-04T04:28:38.0426875Z test_index_cannot_escape_evidence_tree (test_evidence.EvidenceIntegrityTests.test_index_cannot_escape_evidence_tree) ... ok
+2026-11-04T04:28:38.0437381Z test_original_tcg_64bit_nonce_is_accepted (test_evidence.EvidenceIntegrityTests.test_original_tcg_64bit_nonce_is_accepted) ... ok
+2026-11-04T04:28:38.0448261Z test_original_windows_128bit_nonce_is_accepted (test_evidence.EvidenceIntegrityTests.test_original_windows_128bit_nonce_is_accepted) ... ok
+2026-11-04T04:28:38.0477299Z test_tampered_log_fails_hash_validation (test_evidence.EvidenceIntegrityTests.test_tampered_log_fails_hash_validation) ... ok
+2026-11-04T04:28:38.0488650Z test_wrong_returned_architecture_is_rejected (test_evidence.EvidenceIntegrityTests.test_wrong_returned_architecture_is_rejected) ... ok
+2026-11-04T04:28:38.0489111Z 
+2026-11-04T04:28:38.0489254Z ----------------------------------------------------------------------
+2026-11-04T04:28:38.0489537Z Ran 8 tests in 0.019s
+2026-11-04T04:28:38.0489615Z 
+2026-11-04T04:28:38.0489666Z OK
+2026-11-04T04:28:38.1275668Z test_duplicate_path_fails (test_integrity.IntegrityTests.test_duplicate_path_fails) ... ok
+2026-11-04T04:28:38.1290963Z test_exact_bytes_pass (test_integrity.IntegrityTests.test_exact_bytes_pass) ... ok
+2026-11-04T04:28:38.1309124Z test_line_ending_rewrite_fails (test_integrity.IntegrityTests.test_line_ending_rewrite_fails) ... ok
+2026-11-04T04:28:38.1325591Z test_parent_escape_fails (test_integrity.IntegrityTests.test_parent_escape_fails) ... ok
+2026-11-04T04:28:38.1417939Z test_empty_test_selection_is_not_rendering (test_renderer_qualification.QualificationTests.test_empty_test_selection_is_not_rendering) ... ok
+2026-11-04T04:28:38.1465398Z test_invalid_positive_counters_cannot_prove_hardware (test_renderer_qualification.QualificationTests.test_invalid_positive_counters_cannot_prove_hardware) ... ok
+2026-11-04T04:28:38.1524679Z test_real_invalid_software_counters_never_count_as_zero (test_renderer_qualification.QualificationTests.test_real_invalid_software_counters_never_count_as_zero) ... ok
+2026-11-04T04:28:38.1598063Z test_software_module_in_hardware_run_blocks_qualification (test_renderer_qualification.QualificationTests.test_software_module_in_hardware_run_blocks_qualification) ... ok
+2026-11-04T04:28:38.1650150Z test_wrong_pid_cannot_prove_hardware (test_renderer_qualification.QualificationTests.test_wrong_pid_cannot_prove_hardware) ... ok
+2026-11-04T04:28:38.1650673Z 
+2026-11-04T04:28:38.1651695Z ----------------------------------------------------------------------
+2026-11-04T04:28:38.1652026Z Ran 9 tests in 0.041s
+2026-11-04T04:28:38.1652156Z 
+2026-11-04T04:28:38.1652217Z OK
+2026-11-04T04:28:38.2802668Z ##[group]Run python -m pip install ruff==0.14.4
+2026-11-04T04:28:38.2802925Z [36;1mpython -m pip install ruff==0.14.4[0m
+2026-11-04T04:28:38.2853964Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-11-04T04:28:38.2854168Z env:
+2026-11-04T04:28:38.2854334Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.13.17\x64
+2026-11-04T04:28:38.2854601Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.13.17\x64/lib/pkgconfig
+2026-11-04T04:28:38.2854860Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.17\x64
+2026-11-04T04:28:38.2855108Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.17\x64
+2026-11-04T04:28:38.2855338Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.17\x64
+2026-11-04T04:28:38.2855523Z ##[endgroup]
+2026-11-04T04:28:41.5435531Z Collecting ruff==0.14.4
+2026-11-04T04:28:41.6059193Z   Downloading ruff-0.14.4-py3-none-win_amd64.whl.metadata (26 kB)
+2026-11-04T04:28:41.6442920Z Downloading ruff-0.14.4-py3-none-win_amd64.whl (13.6 MB)
+2026-11-04T04:28:41.8555661Z    ---------------------------------------- 13.6/13.6 MB 71.4 MB/s  0:00:00
+2026-11-04T04:28:42.0372772Z Installing collected packages: ruff
+2026-11-04T04:28:42.2088359Z Successfully installed ruff-0.14.4
+2026-11-04T04:28:42.2099514Z 
+2026-11-04T04:28:42.2100816Z [notice] A new release of pip is available: 26.2.2 -> 26.3
+2026-11-04T04:28:42.2101121Z [notice] To update, run: python.exe -m pip install --upgrade pip
+2026-11-04T04:28:42.3770421Z ##[group]Run python -m ruff check --select E9,F63,F7,F82 phase0/tools phase0/tests phase0/gpu-feasibility/tools phase0/gpu-feasibility/tests phase0/gpu-recovery/tools phase0/gpu-recovery/tests
+2026-11-04T04:28:42.3771319Z [36;1mpython -m ruff check --select E9,F63,F7,F82 phase0/tools phase0/tests phase0/gpu-feasibility/tools phase0/gpu-feasibility/tests phase0/gpu-recovery/tools phase0/gpu-recovery/tests[0m
+2026-11-04T04:28:42.3824300Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-11-04T04:28:42.3824522Z env:
+2026-11-04T04:28:42.3824694Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.13.17\x64
+2026-11-04T04:28:42.3824961Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.13.17\x64/lib/pkgconfig
+2026-11-04T04:28:42.3825229Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.17\x64
+2026-11-04T04:28:42.3825459Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.17\x64
+2026-11-04T04:28:42.3825763Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.17\x64
+2026-11-04T04:28:42.3826193Z ##[endgroup]
+2026-11-04T04:28:42.8405623Z All checks passed!
+2026-11-04T04:28:42.9342703Z ##[group]Run Get-ChildItem phase0 -Filter *.ps1 -Recurse | Where-Object { $_.FullName -notmatch '[\\/]\.work[\\/]' } | ForEach-Object {
+2026-11-04T04:28:42.9343277Z [36;1mGet-ChildItem phase0 -Filter *.ps1 -Recurse | Where-Object { $_.FullName -notmatch '[\\/]\.work[\\/]' } | ForEach-Object {[0m
+2026-11-04T04:28:42.9343595Z [36;1m  $tokens=$null; $parseErrors=$null[0m
+2026-11-04T04:28:42.9343912Z [36;1m  [void][System.Management.Automation.Language.Parser]::ParseFile($_.FullName,[ref]$tokens,[ref]$parseErrors)[0m
+2026-11-04T04:28:42.9344264Z [36;1m  if ($parseErrors.Count) { throw ($parseErrors | Out-String) }[0m
+2026-11-04T04:28:42.9344460Z [36;1m}[0m
+2026-11-04T04:28:42.9398807Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-11-04T04:28:42.9399022Z env:
+2026-11-04T04:28:42.9399193Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.13.17\x64
+2026-11-04T04:28:42.9399522Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.13.17\x64/lib/pkgconfig
+2026-11-04T04:28:42.9399777Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.17\x64
+2026-11-04T04:28:42.9400003Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.17\x64
+2026-11-04T04:28:42.9400226Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.13.17\x64
+2026-11-04T04:28:42.9400402Z ##[endgroup]
+2026-11-04T04:28:43.2915230Z Post job cleanup.
+2026-11-04T04:28:43.4301551Z Post job cleanup.
+2026-11-04T04:28:43.5449977Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-11-04T04:28:43.5714065Z git version 2.56.0.windows.4
+2026-11-04T04:28:43.5764418Z Copying 'C:\Users\runneradmin\.gitconfig' to 'D:\a\_temp\21264fd5-53d0-42d0-af8c-2d1487a0478e\.gitconfig'
+2026-11-04T04:28:43.5780034Z Temporarily overriding HOME='D:\a\_temp\21264fd5-53d0-42d0-af8c-2d1487a0478e' before making global git config changes
+2026-11-04T04:28:43.5780731Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-04T04:28:43.5789170Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\DragonLord-Emulator\DragonLord-Emulator
+2026-11-04T04:28:43.6086833Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-11-04T04:28:43.6387613Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-11-04T04:28:44.1405881Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-04T04:28:44.1702826Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-11-04T04:28:44.6425274Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-04T04:28:44.6728488Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-11-04T04:28:45.1523197Z Cleaning up orphan processes

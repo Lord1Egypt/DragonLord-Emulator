@@ -1,0 +1,39 @@
+From dbb53a7caa04d4e12e93f83511640247a2fd49d6 Mon Sep 17 00:00:00 2001
+From: Gurchetan Singh <gurchetan.singh.foss@gmail.com>
+Date: Mon, 12 Oct 2026 16:37:42 -0700
+Subject: [PATCH] virtio-gpu-rutabaga: make sure ctx_ids match
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The ctx_ids need to match as well as the ring ids for
+proper signaling.
+
+v2: add r-b tags
+
+Fixes: 1dcc6adbc168 ("gfxstream + rutabaga: add initial support for gfxstream")
+Signed-off-by: Gurchetan Singh <gurchetan.singh.foss@gmail.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+Message-ID: <20261012233742.6389-1-gurchetan.singh.foss@gmail.com>
+---
+ hw/display/virtio-gpu-rutabaga.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/hw/display/virtio-gpu-rutabaga.c b/hw/display/virtio-gpu-rutabaga.c
+index 3aafa4dc66..edf7b62703 100644
+--- a/hw/display/virtio-gpu-rutabaga.c
++++ b/hw/display/virtio-gpu-rutabaga.c
+@@ -902,7 +902,8 @@ virtio_gpu_rutabaga_aio_cb(void *opaque)
+         }
+ 
+         if (signaled_ctx_specific &&
+-           (cmd->cmd_hdr.ring_idx != fence_data.ring_idx)) {
++           ((cmd->cmd_hdr.ctx_id != fence_data.ctx_id) ||
++           (cmd->cmd_hdr.ring_idx != fence_data.ring_idx))) {
+             continue;
+         }
+ 
+-- 
+2.43.0
+

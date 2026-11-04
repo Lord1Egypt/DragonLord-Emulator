@@ -1,0 +1,64 @@
+{
+  "scope": "Standalone Gfxstream compositor only; no guest API streaming/QEMU/Android validation",
+  "hardware": {
+    "pixel_workload": "PASS",
+    "completed_tests": 90,
+    "identities": [
+      [
+        "NVIDIA GeForce RTX 2060",
+        "4318",
+        "7953",
+        "2",
+        "4211039",
+        "2588573696",
+        "1",
+        "f923010000000000"
+      ]
+    ],
+    "pid": 11428
+  },
+  "software": {
+    "pixel_workload": "PASS",
+    "completed_tests": 90,
+    "identities": [
+      [
+        "SwiftShader Device (Subzero)",
+        "6880",
+        "49374",
+        "4",
+        "4206592",
+        "20971520",
+        "0",
+        "0000000000000000"
+      ]
+    ],
+    "pid": 8252
+  },
+  "same_binary": true,
+  "software_fallback_excluded_in_hardware": true,
+  "hardware_selected_adapter_and_driver": "PASS",
+  "software_selected_CPU_and_driver": "PASS",
+  "matched_valid_positive_hardware_counter_samples": 6,
+  "valid_software_counter_samples": 0,
+  "vendor_DLL_also_loaded_in_software": true,
+  "software_counter_control": "FAIL",
+  "actual_hardware_rendering": "PASS",
+  "independent_gpu_verification": "FAIL",
+  "reason": "Strict independent gate requires matched positive hardware telemetry and a valid measured software control; invalid/no data is never zero.",
+  "ETW_hardware": {
+    "session": "DLGPU_61aea80a39984f7ca1a2b5a0bac1669f",
+    "status": "BLOCKED",
+    "start_exit_code": -2147024891,
+    "start_output": [
+      "xperf: error: DLGPU_61aea80a39984f7ca1a2b5a0bac1669f: Access is denied. (0x5)."
+    ]
+  },
+  "ETW_software": {
+    "session": "DLGPU_65badde181bb4ad58ac8765b7e4e5f5b",
+    "status": "BLOCKED",
+    "start_exit_code": -2147024891,
+    "start_output": [
+      "xperf: error: DLGPU_65badde181bb4ad58ac8765b7e4e5f5b: Access is denied. (0x5)."
+    ]
+  }
+}

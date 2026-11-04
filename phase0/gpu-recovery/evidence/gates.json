@@ -1,0 +1,25 @@
+{
+  "scope": "Phase0.6 recovery; runtime scopes must be read separately",
+  "reviewed_base": "6c1a0604dcfc63d7efa84fea73b065d9aa8920b5",
+  "verdict": "NO-GO",
+  "gates": {
+    "CI": "PASS at aabc06ff581b3691a86375ff429c8062b2a6c2fa; run41773385571",
+    "fence_correction": "PASS",
+    "native_gfxstream_compilation": "PASS",
+    "actual_hardware_rendering": "PASS (host compositor only)",
+    "independent_gpu_verification": "FAIL",
+    "rutabaga_ffi_abi_correctness": "BLOCKED (corrected boundary/core subtests PASS)",
+    "qemu_windows_integration": "BLOCKED",
+    "shared_memory_fence_lifecycle": "NOT TESTED (integrated)"
+  },
+  "runtime_artifacts": {
+    "hardware": "native/gfx-final-hardware/result.json",
+    "software": "native/gfx-final-software/result.json",
+    "qualifier": "renderer-qualification-final.json"
+  },
+  "reference_memory_tests": 14,
+  "abi_corrected_tests_per_ffi_DLL": 113,
+  "timeline_cpu_tests": 140,
+  "migration_approved": false,
+  "android_images_started": false
+}

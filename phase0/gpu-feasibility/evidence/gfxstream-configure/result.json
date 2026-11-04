@@ -1,0 +1,33 @@
+﻿{
+    "scope":  "Pinned native Windows standalone Gfxstream build attempt",
+    "timestamp_utc":  "2026-11-04T01:20:27.8442359Z",
+    "status":  "BLOCKED",
+    "rendering":  "NOT TESTED",
+    "hardware_execution":  "NOT TESTED",
+    "qemu_integration":  "NOT TESTED",
+    "native_git_status":  [
+                              " T .kokoro/continuous.cfg"
+                          ],
+    "source_commit":  "94240f814c0097a63027ae680ea4bec7b0cb25f7",
+    "cmake_path":  "C:\\Program Files\\CMake\\bin\\cmake.exe",
+    "cmake_sha256":  "9eb660bd159bb79ae45110b4af67392bb510c9be3e91e01f3ba3c8254436fe3c",
+    "cmake_version":  "cmake version 4.3.2\r\n\r\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
+    "configure_argv":  [
+                           "-S",
+                           "\\\\wsl.localhost\\Ubuntu-24.04\\home\\lordegypt\\DragonLord\\DragonLord-Emulator\\phase0\\.work\\gfxstream-gpu-feasibility",
+                           "-B",
+                           "\\\\wsl.localhost\\Ubuntu-24.04\\home\\lordegypt\\DragonLord\\DragonLord-Emulator\\phase0\\.work\\gpu-feasibility\\gfxstream-build-clangcl",
+                           "-G",
+                           "Visual Studio 17 2022",
+                           "-A",
+                           "x64",
+                           "-T",
+                           "ClangCL",
+                           "-DBUILD_STANDALONE=ON",
+                           "-DENABLE_VKCEREAL_TESTS=ON",
+                           "-DASTC_CPU_DECODING=OFF",
+                           "-DGFXSTREAM_ENABLE_HOST_TRACING=OFF"
+                       ],
+    "configure_exit_code":  1,
+    "reason":  "Native configure failed; inspect configure logs and missing toolchain/dependencies"
+}

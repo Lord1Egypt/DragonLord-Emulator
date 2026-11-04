@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "scope": "Linux diagnostic boot only",
+  "status": "PASS",
+  "accelerator": "tcg",
+  "hardware": {
+    "timestamp_utc": "2026-11-03T21:14:08.954202+00:00",
+    "platform": "Linux",
+    "release": "6.18.54.1-microsoft-standard-WSL2",
+    "machine": "x86_64",
+    "logical_cpu_count": 12,
+    "device_access": {
+      "/dev/kvm": {
+        "exists": false,
+        "read_write": false
+      },
+      "/dev/dri": {
+        "exists": false,
+        "read_write": false
+      },
+      "/dev/dxg": {
+        "exists": false,
+        "read_write": false
+      }
+    },
+    "tools": {
+      "cc": "/usr/bin/cc",
+      "make": "/usr/bin/make",
+      "pkg-config": "/usr/bin/pkg-config",
+      "adb": "/usr/bin/adb",
+      "vulkaninfo": null,
+      "powershell.exe": "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe"
+    }
+  },
+  "android16": "NOT_TESTED",
+  "gpu": "NOT_TESTED",
+  "kernelsu": "NOT_TESTED",
+  "argv": [
+    "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/qemu-build-linux/qemu-system-x86_64",
+    "-machine",
+    "pc-q35-11.1",
+    "-accel",
+    "tcg",
+    "-cpu",
+    "Nehalem",
+    "-smp",
+    "2",
+    "-m",
+    "1024",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-nic",
+    "none",
+    "-no-reboot",
+    "-kernel",
+    "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/assets/bzImage",
+    "-append",
+    "root=/dev/sda console=ttyS0 panic=-1",
+    "-drive",
+    "file=/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/assets/rootfs.ext4,format=raw,if=none,id=phase0disk,snapshot=on",
+    "-device",
+    "ide-hd,drive=phase0disk,bus=ide.0,unit=0",
+    "-serial",
+    "tcp:127.0.0.1:45849,server=on,wait=off",
+    "-qmp",
+    "tcp:127.0.0.1:45971,server=on,wait=off",
+    "-L",
+    "phase0/.work/qemu-11.1.3/pc-bios"
+  ],
+  "qemu_sha256": "fe9ef622891c40468d08b0d2524d9296e78f6f692452c5e97784782d1f5a4b4b",
+  "qemu_version": "QEMU emulator version 11.1.3 (v11.1.3)\nCopyright (c) 2003-2026 Fabrice Bellard and the QEMU Project developers\n",
+  "kernel_sha256": "f57bfc6553bcd6e0a54aab86095bf642b33b5571d14e3af1731b18c87ed5aef8",
+  "rootfs_sha256": "1d426a6b31f1a9da8476e3b106bedf854840863b9ca0823e513a2ac2ab64e699",
+  "process_to_guest_ready_seconds": 5.93204302400045,
+  "reason": "Guest logged in and executed a fresh readiness nonce; QMP quit clean; base disk unchanged"
+}

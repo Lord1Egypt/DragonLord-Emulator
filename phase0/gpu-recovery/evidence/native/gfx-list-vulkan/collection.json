@@ -1,0 +1,33 @@
+{
+  "scope": "Exact raw log bytes, lossless gzip when large; no binaries or ETL copied",
+  "files": [
+    {
+      "file": "capture-vcvars.cmd",
+      "raw_bytes": 153,
+      "raw_sha256": "e1ad75ceef8c54dedd51a07ff0712262e8a701b086aba20ce20d625271e46529",
+      "stored_as": "capture-vcvars.cmd",
+      "stored_sha256": "e1ad75ceef8c54dedd51a07ff0712262e8a701b086aba20ce20d625271e46529"
+    },
+    {
+      "file": "result.json",
+      "raw_bytes": 910,
+      "raw_sha256": "24f772cee098fdd8a46f2e96bbea4f6bdeb471475eb1f51dcd0980a2ad22b903",
+      "stored_as": "result.json",
+      "stored_sha256": "24f772cee098fdd8a46f2e96bbea4f6bdeb471475eb1f51dcd0980a2ad22b903"
+    },
+    {
+      "file": "stderr.log",
+      "raw_bytes": 0,
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stored_as": "stderr.log",
+      "stored_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "stdout.log",
+      "raw_bytes": 6265,
+      "raw_sha256": "4027d25ceaaf4c655bad40d939a954c1cd8a1bfd81919910bce964d1eb28cfbb",
+      "stored_as": "stdout.log",
+      "stored_sha256": "4027d25ceaaf4c655bad40d939a954c1cd8a1bfd81919910bce964d1eb28cfbb"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+Running main() from C:\DLGPU\p06-20261104\src\external\googletest\googletest\src\gtest_main.cc
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[shared_library.cpp(43)] SharedLibrary::open for [C:\DLGPU\p06-20261104\build\gfxstream-native-3\testlib64\vulkan-1.dll]
+[shared_library.cpp(43)] SharedLibrary::open for [C:\DLGPU\p06-20261104\build\gfxstream-native-3\testlib64\vulkan-1.dll]
+[shared_library.cpp(43)] SharedLibrary::open for [C:\DLGPU\p06-20261104\build\gfxstream-native-3\lib64\vulkan\vulkan-1.dll]
+[shared_library.cpp(43)] SharedLibrary::open for [C:\DLGPU\p06-20261104\build\gfxstream-native-3\lib64\vulkan\vulkan-1.dll]
+[shared_library.cpp(43)] SharedLibrary::open for [vulkan-1.dll]
+[vulkan_dispatch.cpp(223)] Added library: vulkan-1.dll
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (1088 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (151 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (137 ms)
+[----------] 3 tests from CompositorVkTest (1378 ms total)
+
+[----------] Global test environment tear-down
+[==========] 3 tests from 1 test suite ran. (1381 ms total)
+[  PASSED  ] 3 tests.

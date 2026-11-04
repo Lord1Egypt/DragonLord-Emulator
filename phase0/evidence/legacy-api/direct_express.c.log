@@ -1,0 +1,41 @@
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express.c: In function ‘direct_express_handle’:
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express.c:36:28: error: implicit declaration of function ‘atomic_cmpxchg’; did you mean ‘qatomic_cmpxchg’? [-Werror=implicit-function-declaration]
+   36 |         int running_flag = atomic_cmpxchg(&atomic_distribute_thread_running, 0, 1);
+      |                            ^~~~~~~~~~~~~~
+      |                            qatomic_cmpxchg
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express.c:36:28: warning: nested extern declaration of ‘atomic_cmpxchg’ [-Wnested-externs]
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express.c:51:21: error: implicit declaration of function ‘atomic_read’; did you mean ‘qatomic_read’? [-Werror=implicit-function-declaration]
+   51 |                 if (atomic_read(&atomic_distribute_thread_running) == 2)
+      |                     ^~~~~~~~~~~
+      |                     qatomic_read
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express.c:51:21: warning: nested extern declaration of ‘atomic_read’ [-Wnested-externs]
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express.c:80:13: error: implicit declaration of function ‘atomic_set’; did you mean ‘qatomic_set’? [-Werror=implicit-function-declaration]
+   80 |             atomic_set(&atomic_distribute_thread_running, 0);
+      |             ^~~~~~~~~~
+      |             qatomic_set
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express.c:80:13: warning: nested extern declaration of ‘atomic_set’ [-Wnested-externs]
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express.c: In function ‘direct_express_realize’:
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express.c:112:35: warning: passing argument 2 of ‘virtio_init’ makes integer from pointer without a cast [-Wint-conversion]
+  112 |     virtio_init(VIRTIO_DEVICE(g), "direct-express", DIRECT_EXPRESS_DEVICE_ID, 0);
+      |                                   ^~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   const char *
+In file included from /home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/qemu-11.1.3/include/hw/virtio/virtio-bus.h:29,
+                 from /home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/qemu-11.1.3/include/hw/virtio/virtio-pci.h:19,
+                 from /home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/legacy-api-include/direct-express/direct_express.h:5,
+                 from /home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express.c:11:
+/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/qemu-11.1.3/include/hw/virtio/virtio.h:294:47: note: expected ‘uint16_t’ {aka ‘short unsigned int’} but argument is of type ‘const char *’
+  294 | void virtio_init(VirtIODevice *vdev, uint16_t device_id, size_t config_size);
+      |                                      ~~~~~~~~~^~~~~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express.c:112:5: error: too many arguments to function ‘virtio_init’
+  112 |     virtio_init(VIRTIO_DEVICE(g), "direct-express", DIRECT_EXPRESS_DEVICE_ID, 0);
+      |     ^~~~~~~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/qemu-11.1.3/include/hw/virtio/virtio.h:294:6: note: declared here
+  294 | void virtio_init(VirtIODevice *vdev, uint16_t device_id, size_t config_size);
+      |      ^~~~~~~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express.c: In function ‘direct_express_register_types’:
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express.c:157:23: error: initialization of ‘void (*)(ObjectClass *, const void *)’ from incompatible pointer type ‘void (*)(ObjectClass *, void *)’ [-Werror=incompatible-pointer-types]
+  157 |         .class_init = direct_express_class_init,
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/hw/direct-express/direct_express.c:157:23: note: (near initialization for ‘express_info.class_init’)
+cc1: some warnings being treated as errors

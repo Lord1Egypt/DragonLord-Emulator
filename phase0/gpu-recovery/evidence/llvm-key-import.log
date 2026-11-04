@@ -1,0 +1,10 @@
+gpg: keybox '/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-recovery/gnupg/pubring.kbx' created
+gpg: /home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-recovery/gnupg/trustdb.gpg: trustdb created
+gpg: key 44F2485E45D59042: public key "Tobias Hieta <tobias@hieta.se>" imported
+gpg: key A2C794A986419D8A: public key "Tom Stellard <tstellar@redhat.com>" imported
+gpg: key 0FC3042E345AD05D: public key "Hans Wennborg <hans@chromium.org>" imported
+gpg: key 2FFC629D3F563BDC: public key "Muhammad Omair Javaid (LLVM Release Signing Key) <omair.javaid@linaro.org>" imported
+gpg: key 3E83BABF4A4F9E85: public key "Cullen Rhodes <cullen.rhodes@arm.com>" imported
+gpg: key 316C56D064CACBA5: public key "Douglas Yung <douglas.yung@sony.com>" imported
+gpg: Total number processed: 6
+gpg:               imported: 6

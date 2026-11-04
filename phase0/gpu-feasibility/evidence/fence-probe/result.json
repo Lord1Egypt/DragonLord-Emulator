@@ -1,0 +1,214 @@
+{
+  "scope": "Unmodified QEMU callback host unit; not Windows/GPU/VM execution",
+  "status": "FAIL",
+  "pins": {
+    "qemu": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+    "rutabaga": "4f2bcaf71a6497583362ed664d9fe21cc5043049"
+  },
+  "gpu": "NOT TESTED",
+  "source_sha256": "808fd2cc677a268be0a235bbefb704e43707cb3a786fa813d73e727f9de47df3",
+  "callback_sha256": "1608fce69368e4d3229e2383c91bba253693f767698d7a5702b35bc0e898d976",
+  "compile_argv": [
+    "cc",
+    "-std=gnu11",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-I/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/qemu-11.1.3/include",
+    "-I/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/rutabaga-gpu-feasibility/ffi/src/include",
+    "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-feasibility/fence-probe/fence_probe.c",
+    "-o",
+    "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-feasibility/fence-probe/fence_probe"
+  ],
+  "compile_exit_code": 0,
+  "exit_code": 1,
+  "execute_argv": [
+    "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-feasibility/fence-probe/fence_probe"
+  ],
+  "cases": [
+    {
+      "case": "same_context_same_ring",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "different_context_same_ring",
+      "expected_completed": 0,
+      "actual_completed": 1,
+      "other_context_completed": true,
+      "status": "FAIL"
+    },
+    {
+      "case": "different_ring",
+      "expected_completed": 0,
+      "actual_completed": 0,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "future_fence",
+      "expected_completed": 0,
+      "actual_completed": 0,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "different_timeline_mode",
+      "expected_completed": 0,
+      "actual_completed": 0,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "two_contexts_same_ring",
+      "expected_completed": 1,
+      "actual_completed": 2,
+      "other_context_completed": true,
+      "status": "FAIL"
+    },
+    {
+      "case": "repeated_callback_scaffold",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "repeated_callback_scaffold",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "repeated_callback_scaffold",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "repeated_callback_scaffold",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "repeated_callback_scaffold",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "repeated_callback_scaffold",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "repeated_callback_scaffold",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "repeated_callback_scaffold",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "repeated_callback_scaffold",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "repeated_callback_scaffold",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "repeated_callback_scaffold",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "repeated_callback_scaffold",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "repeated_callback_scaffold",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "repeated_callback_scaffold",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "repeated_callback_scaffold",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "repeated_callback_scaffold",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "repeated_callback_scaffold",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "repeated_callback_scaffold",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "repeated_callback_scaffold",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    },
+    {
+      "case": "repeated_callback_scaffold",
+      "expected_completed": 1,
+      "actual_completed": 1,
+      "other_context_completed": false,
+      "status": "PASS"
+    }
+  ],
+  "binary_sha256": "816f4be03fda45086a94acd789319050d109e0709f2a1919ef0f8a496c73ce3c",
+  "reason": "Per-context fence isolation oracle against unchanged callback; inspect individual cases"
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="3" failures="0" disabled="0" errors="0" time="0.473" timestamp="2026-11-04T07:12:37.008" name="AllTests">
+  <testsuite name="CompositorVkTest" tests="3" failures="0" disabled="0" skipped="0" errors="0" time="0.472" timestamp="2026-11-04T07:12:51.442">
+    <testcase name="EmptyCompositionShouldDrawABlackFrame" file="C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\host\vulkan\compositor_vk_unittest.cpp" line="463" status="run" result="completed" time="0.181" timestamp="2026-11-04T07:12:51.442" classname="CompositorVkTest" />
+    <testcase name="SimpleComposition" file="C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\host\vulkan\compositor_vk_unittest.cpp" line="493" status="run" result="completed" time="0.139" timestamp="2026-11-04T07:12:51.624" classname="CompositorVkTest" />
+    <testcase name="SolidColor" file="C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\host\vulkan\compositor_vk_unittest.cpp" line="658" status="run" result="completed" time="0.151" timestamp="2026-11-04T07:12:51.763" classname="CompositorVkTest" />
+  </testsuite>
+</testsuites>

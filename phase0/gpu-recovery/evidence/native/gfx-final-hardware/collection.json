@@ -1,0 +1,33 @@
+{
+  "scope": "Exact raw log bytes, lossless gzip when large; no binaries or ETL copied",
+  "files": [
+    {
+      "file": "gtest.xml",
+      "raw_bytes": 1143,
+      "raw_sha256": "f424f77bf5559d331c3548fc0d879b45adfd10da3ea25d1a6677db550986363f",
+      "stored_as": "gtest.xml",
+      "stored_sha256": "f424f77bf5559d331c3548fc0d879b45adfd10da3ea25d1a6677db550986363f"
+    },
+    {
+      "file": "result.json",
+      "raw_bytes": 53829,
+      "raw_sha256": "8a5df153aa7e9bf276930ce5d9b8245d986fe18fb697e06baf64143f8b35280d",
+      "stored_as": "result.json",
+      "stored_sha256": "8a5df153aa7e9bf276930ce5d9b8245d986fe18fb697e06baf64143f8b35280d"
+    },
+    {
+      "file": "stderr.log",
+      "raw_bytes": 157050,
+      "raw_sha256": "f619ddf4348d1ae77a9ca0a6f2d1ce76913ac3732f206e03d258e15313e1d3da",
+      "stored_as": "stderr.log",
+      "stored_sha256": "f619ddf4348d1ae77a9ca0a6f2d1ce76913ac3732f206e03d258e15313e1d3da"
+    },
+    {
+      "file": "stdout.log",
+      "raw_bytes": 47238,
+      "raw_sha256": "335d1b6bf61bcc53f696ee3bb4843212d505ce81ee3f3129656f37995f366c47",
+      "stored_as": "stdout.log",
+      "stored_sha256": "335d1b6bf61bcc53f696ee3bb4843212d505ce81ee3f3129656f37995f366c47"
+    }
+  ]
+}

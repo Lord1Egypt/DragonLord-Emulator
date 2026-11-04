@@ -1,0 +1,6 @@
+{"case":"C_Rust_size_alignment_offsets","status":"PASS"}
+{"case":"C_Rust_ring_field_width","status":"FAIL"}
+{"case":"Rust_to_C_fields_without_padding_read","status":"FAIL"}
+{"C_ring_bytes":4,"Rust_ring_bytes":1,"C_ring_value":2779096383}
+{"case":"C_to_Rust_fields","status":"PASS"}
+{"case":"helper_null_pointer_rejection","status":"PASS"}

@@ -1,0 +1,11 @@
+{
+  "scope": "Phase0 publication completed before Phase0.5 GPU work",
+  "repository": "https://github.com/Lord1Egypt/DragonLord-Emulator",
+  "branch": "phase0/architecture-feasibility",
+  "published_phase0_commit": "d74a521f7933baeeb771f412cb9261c3311ded62",
+  "main_at_publication": "c5447ed4baf97d93e3a87c62534ed7d300d288de",
+  "pull_request": "https://github.com/Lord1Egypt/DragonLord-Emulator/pull/1",
+  "draft": true,
+  "verification": "git ls-remote remote SHA and GitHub create-PR base/head response matched",
+  "later_phase05_publication": "Exact final SHA and sync verification are recorded in the updated PR, final review handoff and ThothMemory after this local commit."
+}

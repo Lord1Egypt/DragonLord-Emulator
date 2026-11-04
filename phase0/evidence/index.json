@@ -1,0 +1,417 @@
+{
+  "schema": 1,
+  "created_utc": "2026-11-04T01:07:34.513861+00:00",
+  "legacy_commit": "c5447ed4baf97d93e3a87c62534ed7d300d288de",
+  "qemu_commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+  "branch": "phase0/architecture-feasibility",
+  "verdict": "NO-GO for graphics architecture adoption/full migration",
+  "evidence_scope": "Agent-reported captured results, not owner attestation. Binary/asset/build trees are local ignored artifacts; hashes and logs retained. Index excludes itself. Later runs belong in results/.",
+  "gates": {
+    "linux_build": "PASS",
+    "windows_cross_build": "PASS",
+    "linux_tcg_diagnostic": "PASS",
+    "native_windows_whpx_diagnostic": "PASS",
+    "legacy_modern_api": "FAIL (3 of 4 probe units)",
+    "linux_kvm": "BLOCKED",
+    "windows_guest_gpu": "BLOCKED",
+    "android16_boot": "BLOCKED",
+    "kernelsu": "BLOCKED",
+    "performance": "BLOCKED",
+    "license_closure": "BLOCKED"
+  },
+  "attempts": {
+    "tcg-boot-initial": "Failed temp-directory access; retained",
+    "windows-native-inventory-initial": "Optional Vulkan stderr warning terminated first probe; retained",
+    "build-windows.json": "Native MSYS2 preflight blocked; separate cross-build passed",
+    "whpx-boot": "Linux runner correctly blocks WHPX; native Windows test is in windows-whpx-boot",
+    "android-boot": "No-device negative collector check; not an Android boot attempt",
+    "cross-build-initial.log": "Older MinGW header missing VMX capability definitions; isolated pinned header overlay resolved build"
+  },
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 160,
+      "sha256": "4b128d02196061a6a3d272214b294a227c6aaa9f071cc5c2e41b9b3994c27dc4"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 65,
+      "sha256": "8bfe64a549e7d202a8b1f751b31b38b41b5a1fab02a9e6058cd43f18a3912086"
+    },
+    {
+      "path": "BENCHMARKS.md",
+      "bytes": 7437,
+      "sha256": "6bbf36295d51c8dd23b883850e6e4ac4ea03fc8b30475d5e322d5b37828eb187"
+    },
+    {
+      "path": "GPU-BACKENDS.md",
+      "bytes": 8282,
+      "sha256": "bb6130d6b78ee4358713b91de11fd9dc418c2d95e83ee6291a3eb4942012c205"
+    },
+    {
+      "path": "GUEST.md",
+      "bytes": 8911,
+      "sha256": "b644e69860759ee5b1c9edf39a072e937ab38884d3ec4d8b8d6bc497c7d5077e"
+    },
+    {
+      "path": "README.md",
+      "bytes": 8037,
+      "sha256": "ef8fecc4f047ba733bc8c97871304cf773bf3d696f89e7f970c65a5ccb649302"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 18771,
+      "sha256": "5b08233ad1f346d59d44ef1242cc43f8526ce71b37a776a71eff1edbd4e4abfa"
+    },
+    {
+      "path": "ROADMAP.md",
+      "bytes": 8391,
+      "sha256": "8fa0156fe3b2f81f3b2e40a736f11ba62edfec83ef68a6ec7ed77973409a3be4"
+    },
+    {
+      "path": "evidence/android-boot/architecture.txt",
+      "bytes": 41,
+      "sha256": "92e037a58a526ad558ce5b880219f49082977d3765cc9a6e8a681a0292cafe88"
+    },
+    {
+      "path": "evidence/android-boot/boot_completed.txt",
+      "bytes": 118,
+      "sha256": "823e1bc4986afdc43dcae31a0525d11152b814e63bd96779e66606cd5332e200"
+    },
+    {
+      "path": "evidence/android-boot/boot_log.txt",
+      "bytes": 41,
+      "sha256": "92e037a58a526ad558ce5b880219f49082977d3765cc9a6e8a681a0292cafe88"
+    },
+    {
+      "path": "evidence/android-boot/fingerprint.txt",
+      "bytes": 41,
+      "sha256": "92e037a58a526ad558ce5b880219f49082977d3765cc9a6e8a681a0292cafe88"
+    },
+    {
+      "path": "evidence/android-boot/graphics_allocator.txt",
+      "bytes": 41,
+      "sha256": "92e037a58a526ad558ce5b880219f49082977d3765cc9a6e8a681a0292cafe88"
+    },
+    {
+      "path": "evidence/android-boot/kernel.txt",
+      "bytes": 41,
+      "sha256": "92e037a58a526ad558ce5b880219f49082977d3765cc9a6e8a681a0292cafe88"
+    },
+    {
+      "path": "evidence/android-boot/release.txt",
+      "bytes": 41,
+      "sha256": "92e037a58a526ad558ce5b880219f49082977d3765cc9a6e8a681a0292cafe88"
+    },
+    {
+      "path": "evidence/android-boot/result.json",
+      "bytes": 1527,
+      "sha256": "e167f31a75ad8f1de3cd385715d678804371c90e1ea6462f7420fded486d6213"
+    },
+    {
+      "path": "evidence/android-boot/sdk.txt",
+      "bytes": 41,
+      "sha256": "92e037a58a526ad558ce5b880219f49082977d3765cc9a6e8a681a0292cafe88"
+    },
+    {
+      "path": "evidence/android-boot/selinux.txt",
+      "bytes": 41,
+      "sha256": "92e037a58a526ad558ce5b880219f49082977d3765cc9a6e8a681a0292cafe88"
+    },
+    {
+      "path": "evidence/android-boot/surfaceflinger.txt",
+      "bytes": 41,
+      "sha256": "92e037a58a526ad558ce5b880219f49082977d3765cc9a6e8a681a0292cafe88"
+    },
+    {
+      "path": "evidence/artifact-validation.json",
+      "bytes": 330,
+      "sha256": "d15bb8208c7e5bb9c819dcaf91959743e0eb8a2cf3a6ed429abc53187231be55"
+    },
+    {
+      "path": "evidence/build-linux.json",
+      "bytes": 1178,
+      "sha256": "68ecde625f8bc2425659b6967b1d6ae722e8d4b9abff6e273c10f34375fe5ac3"
+    },
+    {
+      "path": "evidence/build-linux.log",
+      "bytes": 630,
+      "sha256": "6cda03275b8727a73db029c60f7f09329b08520b340431f6032c6474b171e4df"
+    },
+    {
+      "path": "evidence/build-windows-cross.json",
+      "bytes": 3185,
+      "sha256": "fb882ed5a0ce63b1ce38e1d96429b6c85e5b62b5f0bd18a29e9ad5252cce74e2"
+    },
+    {
+      "path": "evidence/build-windows-cross.log",
+      "bytes": 469,
+      "sha256": "00f706ef309d3c0a26ce9b97525abe717140ea6b9d81bf7a059ed5b0476bb0e7"
+    },
+    {
+      "path": "evidence/build-windows.json",
+      "bytes": 540,
+      "sha256": "65abdc0a22913321c0f8fe962b028b1146195ff288b13197dac80a53a23773e2"
+    },
+    {
+      "path": "evidence/configure-linux.log",
+      "bytes": 29041,
+      "sha256": "4b2fb71103aa28d1d3c8173225f9f2c23a4165fc18b405937644138c9f1b4524"
+    },
+    {
+      "path": "evidence/configure-windows-cross.log",
+      "bytes": 29327,
+      "sha256": "a0321527d22e84e29b5ef649d3791bdf7f2adc1438e41b8153fe3e72021cc0b4"
+    },
+    {
+      "path": "evidence/cross-build-initial.log",
+      "bytes": 128494,
+      "sha256": "8a7015d1b5e261546bf77ac98f2b64f4c2f30887760ea87f3586508eea33ec96"
+    },
+    {
+      "path": "evidence/harness-tests.log",
+      "bytes": 2463,
+      "sha256": "86e1ad4309e8079277c3f20949fb721495653c7ff5a3aeb76b07892e608d1764"
+    },
+    {
+      "path": "evidence/host.json",
+      "bytes": 678,
+      "sha256": "4ae884a82233e966593e46fb6704c8fe25fdee29d6af1c25b099cd20a65c41a6"
+    },
+    {
+      "path": "evidence/kvm-boot/result.json",
+      "bytes": 995,
+      "sha256": "efd80ab60470dc349ab2ecf94bd594546c327b9d6779b16d45e5c045c18c4f59"
+    },
+    {
+      "path": "evidence/legacy-api/direct_express.c.log",
+      "bytes": 4410,
+      "sha256": "f6fa249603e2201ed0a682164245e09f2f4a257900673f9259ace3c57dc74145"
+    },
+    {
+      "path": "evidence/legacy-api/direct_express_distribute.c.log",
+      "bytes": 8827,
+      "sha256": "883af5801d23860979bde0e760d1b21f8d922e95ea502cfabd4152e4e2e8aa1b"
+    },
+    {
+      "path": "evidence/legacy-api/direct_express_pci.c.log",
+      "bytes": 398,
+      "sha256": "6661a8ab2de7472564ba1887924a43195e78a54dc46673adf9512dd723dc8f43"
+    },
+    {
+      "path": "evidence/legacy-api/express_handle_thread.c.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/legacy-api/result.json",
+      "bytes": 12384,
+      "sha256": "6b360e16ac255cffa41bab53c2a7d08c1a6d85aab2ae5f51c13f38d4e8408c57"
+    },
+    {
+      "path": "evidence/local-dependencies.json",
+      "bytes": 906,
+      "sha256": "d7ade7adc55f78d64e9a836734a59d015efc9acb516f42697835361e35485436"
+    },
+    {
+      "path": "evidence/preservation.json",
+      "bytes": 218,
+      "sha256": "158beeb220e4c4f4d2bb09c2522cddb586340964bcfe62eb6f3e437e21733c7d"
+    },
+    {
+      "path": "evidence/sources.json",
+      "bytes": 5463,
+      "sha256": "709f3d64e70b73dc1554d5c434ab412ba5d0fb900adf9e8742b25bed4df2e07b"
+    },
+    {
+      "path": "evidence/tcg-boot/qemu.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/tcg-boot/qmp.json",
+      "bytes": 305,
+      "sha256": "080390b0d5a13409cfde50702307871a137694d5622bbee3cf2d50a178b29029"
+    },
+    {
+      "path": "evidence/tcg-boot/result.json",
+      "bytes": 2370,
+      "sha256": "eedf5baeb4192703b193848f03329d5aae647f8dcc5184c30dec4c7a846c1d2c"
+    },
+    {
+      "path": "evidence/tcg-boot/serial.log",
+      "bytes": 16644,
+      "sha256": "4078c5709f1522b5616965a091f22de2f95cfb066aca1dbe7d76583dfad0551d"
+    },
+    {
+      "path": "evidence/tcg-boot-initial/qemu.log",
+      "bytes": 231,
+      "sha256": "50b64eac9eb83c392d12ee68b0f027057545dbb35090d8c0600fe88f3200a065"
+    },
+    {
+      "path": "evidence/tcg-boot-initial/result.json",
+      "bytes": 2283,
+      "sha256": "7ef5874214390b6a2e4719cfdd2a620ada20bede4b57462be3b990ca3947d19f"
+    },
+    {
+      "path": "evidence/thothmemory-tasks.json",
+      "bytes": 553,
+      "sha256": "fd2660a05ec74ff6db2fd1001ee6f60e4f36d7e01aec710459794235deaf8734"
+    },
+    {
+      "path": "evidence/upstream-tag.txt",
+      "bytes": 121,
+      "sha256": "c934f3972046a660b419273d8f07d2a6170cd31c045ec33ab1b43d9a7ba05613"
+    },
+    {
+      "path": "evidence/whpx-boot/result.json",
+      "bytes": 1038,
+      "sha256": "41e99a55b2e2f0ec5638704f6ea1107e236c70021c0a1b864885daeb9b52e966"
+    },
+    {
+      "path": "evidence/windows-build-attempt.log",
+      "bytes": 540,
+      "sha256": "65abdc0a22913321c0f8fe962b028b1146195ff288b13197dac80a53a23773e2"
+    },
+    {
+      "path": "evidence/windows-diagnostic-binary.json",
+      "bytes": 2438,
+      "sha256": "036072eaa37e4201b4a70eff08b39bc2f6fda3f6016c20377d778e6291913f7e"
+    },
+    {
+      "path": "evidence/windows-hardware.json",
+      "bytes": 596,
+      "sha256": "a49d438bf00efe5a6e4d3d26a59702ce154d88dff4eeb788392e626f32befba0"
+    },
+    {
+      "path": "evidence/windows-native-inventory/accelerators.txt",
+      "bytes": 54,
+      "sha256": "2f27c21eafeed1c3da8d6742cd477c734b778e096147f84df8e5a3ca2841684b"
+    },
+    {
+      "path": "evidence/windows-native-inventory/devices.txt",
+      "bytes": 16153,
+      "sha256": "759946f39edfb75d07789cf2c78f68bf69d04b1380ac69e241c62becad3ec481"
+    },
+    {
+      "path": "evidence/windows-native-inventory/displays.txt",
+      "bytes": 283,
+      "sha256": "83c9f70fd8a98c87036adbd44b4aaaaa989af0b38e0399b5c60387db2d253245"
+    },
+    {
+      "path": "evidence/windows-native-inventory/inventory.json",
+      "bytes": 1569,
+      "sha256": "78045d05fed832cf77b5609740bb69cfe9d482b585c3e30efdfbcd55d2dc9633"
+    },
+    {
+      "path": "evidence/windows-native-inventory/vulkan-summary.txt",
+      "bytes": 3572,
+      "sha256": "c2640e4656a2fc01895d91412ff664a7a3aef56d19a5bd97c85e594b48f3a417"
+    },
+    {
+      "path": "evidence/windows-native-inventory-initial/accelerators.txt",
+      "bytes": 54,
+      "sha256": "2f27c21eafeed1c3da8d6742cd477c734b778e096147f84df8e5a3ca2841684b"
+    },
+    {
+      "path": "evidence/windows-native-inventory-initial/devices.txt",
+      "bytes": 16153,
+      "sha256": "759946f39edfb75d07789cf2c78f68bf69d04b1380ac69e241c62becad3ec481"
+    },
+    {
+      "path": "evidence/windows-native-inventory-initial/displays.txt",
+      "bytes": 283,
+      "sha256": "83c9f70fd8a98c87036adbd44b4aaaaa989af0b38e0399b5c60387db2d253245"
+    },
+    {
+      "path": "evidence/windows-native-inventory-initial/inventory.json",
+      "bytes": 1567,
+      "sha256": "4e4fa925d34b271023aca9dfa39490f432e08755da32bd8a470758f478ab6e0a"
+    },
+    {
+      "path": "evidence/windows-native-inventory-initial/vulkan-summary.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/windows-whpx-boot/qemu.err.log",
+      "bytes": 186,
+      "sha256": "afea30ec1c0cabae39a27c466d3d90bee59e593d7989c272d92b298532c5b835"
+    },
+    {
+      "path": "evidence/windows-whpx-boot/qemu.out.log",
+      "bytes": 5,
+      "sha256": "f01a374e9c81e3db89b3a42940c4d6a5447684986a1296e42bf13f196eed6295"
+    },
+    {
+      "path": "evidence/windows-whpx-boot/qmp-greeting.json",
+      "bytes": 121,
+      "sha256": "d93af3efd95f17e8df1e712b6917e13c1068b0f5bf660b763783fbcaee6285a3"
+    },
+    {
+      "path": "evidence/windows-whpx-boot/result.json",
+      "bytes": 2280,
+      "sha256": "80bde423d99cea443041668bb29f006f110c33ad56a23ce3bbb356d3319a30e8"
+    },
+    {
+      "path": "evidence/windows-whpx-boot/serial.log",
+      "bytes": 15729,
+      "sha256": "c0efd4dbf19b9bb081e6337ade7097c93875c02a418cc9f37e6cbeafd341fa26"
+    },
+    {
+      "path": "tests/test_experiment.py",
+      "bytes": 3339,
+      "sha256": "ceb8e54955f8b7e493516a5d24aa914bef832be5082927b0329159ff9f367532"
+    },
+    {
+      "path": "tools/audit-legacy.py",
+      "bytes": 2664,
+      "sha256": "73cd059dc641c1eb39dd9943ca5c6e521816895d9cca429dbbf964728bcdaa06"
+    },
+    {
+      "path": "tools/boot-whpx.ps1",
+      "bytes": 7917,
+      "sha256": "3ce22bc803a8b8e9d2bc99ecd5848fc661d2efbe43031ffce7901255b4b7f2a0"
+    },
+    {
+      "path": "tools/bootstrap-linux.py",
+      "bytes": 1755,
+      "sha256": "e86ec46c2149b52cb3152afc7632713e2cb7b05d3c1af2c9931a729c4b6c0bff"
+    },
+    {
+      "path": "tools/build-qemu.py",
+      "bytes": 4547,
+      "sha256": "84adb021af612618f4dbbf950ee86545f38778bb269a135e568adec0cc04a75e"
+    },
+    {
+      "path": "tools/build-windows-cross.py",
+      "bytes": 5859,
+      "sha256": "5bc03cb79b5558affc4b0ec45634c4d4710d699c37e2a004235736a0ef347335"
+    },
+    {
+      "path": "tools/collect-android.py",
+      "bytes": 2728,
+      "sha256": "bfee091d0dc656cf4cea722df2e2c58904fed0dd779b55b36419d867bb005fd6"
+    },
+    {
+      "path": "tools/experiment.py",
+      "bytes": 13429,
+      "sha256": "446deafdb904eed252d87f5eccad31615b9d68baa597f886ee633399fe5ff703"
+    },
+    {
+      "path": "tools/probe-windows.ps1",
+      "bytes": 2585,
+      "sha256": "96786edee4f020aa21b4ec3f1b4cd2096a61c674e9e8a6af0fa422a2b72a89e3"
+    },
+    {
+      "path": "versions.lock.json",
+      "bytes": 2206,
+      "sha256": "cfab16fdaae2a0c0f697901d4ae349df617f6acc84eb48a1cae7db2ae6af1d4f"
+    },
+    {
+      "path": "windows-cross.lock.json",
+      "bytes": 4741,
+      "sha256": "78112d89e759076e161310ee0f5d29ef62c6c9f4ab4a0bca4bdc2682e6fdd404"
+    }
+  ]
+}

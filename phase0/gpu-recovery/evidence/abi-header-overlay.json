@@ -1,0 +1,7 @@
+{
+  "scope": "Local C header overlay aligns actual Rust field; original pinned header preserved",
+  "original_header_sha256": "f4c446179fa6b49fcb251eef28e73553dce74602a822f7f994324482d4da5612",
+  "corrected_header_sha256": "2d63d051540bdcc67f1ad706dbd21dd961dba4e8040f69c24505e3d4a85337f7",
+  "patch_sha256": "34163c2a431053ca7e0b84598f62261476550c42bf81b0cbeccedffa326a9feb",
+  "library_source_modified": false
+}

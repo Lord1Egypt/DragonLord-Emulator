@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "review_date_local": "2026-11-04",
+  "legacy_commit": "c5447ed4baf97d93e3a87c62534ed7d300d288de",
+  "development_branch": "phase0/architecture-feasibility",
+  "qemu": {
+    "version": "11.1.3",
+    "tag": "v11.1.3",
+    "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+    "repository": "https://gitlab.com/qemu-project/qemu.git",
+    "release_date": "2026-10-28",
+    "release_source": "https://www.qemu.org/download/"
+  },
+  "python_build_tools": ["meson==1.11.1", "ninja==1.13.0", "packaging==25.0", "pycotap==1.3.1", "zstandard==0.25.0"],
+  "ubuntu_24_04_local_debs": [
+    "libglib2.0-dev=2.80.0-6ubuntu3.10", "libglib2.0-0t64=2.80.0-6ubuntu3.10",
+    "libpixman-1-dev=0.42.2-1build1", "libpixman-1-0=0.42.2-1build1",
+    "libpcre2-dev=10.42-4ubuntu2.1", "libpcre2-8-0=10.42-4ubuntu2.1"
+  ],
+  "diagnostic_guest": {
+    "purpose": "Unmodified upstream QEMU Linux functional-test assets; not Android or GPU evidence",
+    "source": "https://gitlab.com/qemu-project/qemu/-/blob/v11.1.3/tests/functional/x86_64/test_tuxrun.py",
+    "kernel": {"url": "https://storage.tuxboot.com/buildroot/20241119/x86_64/bzImage", "sha256": "f57bfc6553bcd6e0a54aab86095bf642b33b5571d14e3af1731b18c87ed5aef8"},
+    "rootfs": {"url": "https://storage.tuxboot.com/buildroot/20241119/x86_64/rootfs.ext4.zst", "sha256": "4b8b2a99117519c5290e1202cb36eb6c7aaba92b357b5160f5970cf5fb78a751"}
+  },
+  "research_candidates_not_runtime_qualified": {
+    "gfxstream": {"repository": "https://github.com/google/gfxstream", "commit": "94240f814c0097a63027ae680ea4bec7b0cb25f7"},
+    "rutabaga": {"repository": "https://github.com/magma-gpu/rutabaga_gfx", "commit": "4f2bcaf71a6497583362ed664d9fe21cc5043049", "ffi_version": "0.1.85"},
+    "android": {"tag": "android-16.0.0_r4", "manifest_commit": "15128c9e27cfa599c48d294babd39286ee8f1426", "cuttlefish_commit": "4d368849922b04124e66b1aad48f93b3209f3c8d", "product": "aosp_cf_x86_64_only_phone", "kernel_series_from_board_config": "6.12", "artifact_build_id": null, "artifact_sha256": null},
+    "kernelsu": {"repository": "https://github.com/tiann/KernelSU", "research_head": "28db74f6f4692e97006ce9ebd8b19b9cc614b5b7", "runtime_qualified_commit": null}
+  }
+}

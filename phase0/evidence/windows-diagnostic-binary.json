@@ -1,0 +1,75 @@
+{
+  "scope": "CPU diagnostic binary, not GPU",
+  "binary_sha256": "16c854418f0251adee38b8bd1468017ec003524e146fe6e705436870408af15d",
+  "qemu_commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+  "dlls": [
+    {
+      "name": "libgio-2.0-0.dll",
+      "sha256": "eef35a18138b7afefaf5ade36b07b3b3ec25d21080a1c2c5eccefad383482016"
+    },
+    {
+      "name": "libcharset-1.dll",
+      "sha256": "f4baaf8ed32747bf10e97c8ba1788221f8533d3e9b98db60832e33cc5b5af609"
+    },
+    {
+      "name": "libasprintf-0.dll",
+      "sha256": "317a714680dd0706c4f56c06fe23a6a9af2a7703120066845c7fd4a4e8841a5d"
+    },
+    {
+      "name": "libgmodule-2.0-0.dll",
+      "sha256": "79a7646945b520966dcd2541d40c109f26c42979b47bed9aabec796a8cbe20d0"
+    },
+    {
+      "name": "libgirepository-2.0-0.dll",
+      "sha256": "517239b90be3c49fae6de28f4e0c39642ff54a638d2336d2d5b0104256a78bb7"
+    },
+    {
+      "name": "libglib-2.0-0.dll",
+      "sha256": "84b15dc907fd1d3bb1cd799fc034d2edcbc3946c8c4acd6a8dd3ace381f9e568"
+    },
+    {
+      "name": "libpcre2-32-0.dll",
+      "sha256": "2b96ab757af6c647cab5b4250b3241fb4694e349a329a172ecb48e6a70edb50e"
+    },
+    {
+      "name": "libwinpthread-1.dll",
+      "sha256": "98a4fea591385952cad1c532f4a92606358630976e9ede5fcf115ab945305a09"
+    },
+    {
+      "name": "libpcre2-16-0.dll",
+      "sha256": "510114569c1e7cdcccb9d9d502c69853f41d78785a6918cca35964cce7940a08"
+    },
+    {
+      "name": "zlib1.dll",
+      "sha256": "a2efc7d0985a82364e79e0fdde3570f7ad66cb8cf5d60d54355a80c2504325fe"
+    },
+    {
+      "name": "libffi-8.dll",
+      "sha256": "b649c515907436a3299326f83aea0e8d75c61853eb1609602603bbcb9b00b4db"
+    },
+    {
+      "name": "libintl-8.dll",
+      "sha256": "0537c3dd2378218508ebe3cc416d72a99ee2d24ae1c5525e23458f32544ef861"
+    },
+    {
+      "name": "libgthread-2.0-0.dll",
+      "sha256": "150169032b546456c868aeac4317a919d9f9e2f34f3a79bcb42b96528b451ec6"
+    },
+    {
+      "name": "libpcre2-8-0.dll",
+      "sha256": "68a7cee2acc36d6a61d73f78825d17dfd32f8580f4bb1bc399134719518213d5"
+    },
+    {
+      "name": "libpcre2-posix-3.dll",
+      "sha256": "bc8195438a3fc637de63059cad78657df36dffa49bdf41d3e0f793b6793d7de3"
+    },
+    {
+      "name": "libgobject-2.0-0.dll",
+      "sha256": "a417864358cbe7a1da74b7cfcc61f7d49b03772b02f29fa611b01a67d5b99632"
+    },
+    {
+      "name": "libiconv-2.dll",
+      "sha256": "7a282a854e01be726c6cccfe46f548c716aa45b3014818468253aaa4efbcd067"
+    }
+  ]
+}

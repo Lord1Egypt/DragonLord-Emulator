@@ -1,0 +1,26 @@
+{
+  "scope": "Windows cross-profile Rutabaga dependency probe, not native library execution",
+  "status": "BLOCKED",
+  "integration": "NOT TESTED",
+  "gpu": "NOT TESTED",
+  "source_commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+  "configure_argv": [
+    "sh",
+    "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/qemu-11.1.3/configure",
+    "--target-list=x86_64-softmmu",
+    "--cross-prefix=x86_64-w64-mingw32-",
+    "--without-default-features",
+    "--enable-tcg",
+    "--enable-whpx",
+    "--disable-pixman",
+    "--disable-docs",
+    "--disable-werror",
+    "--disable-plugins",
+    "--disable-guest-agent",
+    "--enable-download",
+    "--enable-rutabaga-gfx"
+  ],
+  "configure_exit_code": 1,
+  "missing_rutabaga_dependency_confirmed": true,
+  "reason": "Pinned Windows target library rutabaga_gfx_ffi is unavailable"
+}

@@ -1,0 +1,7 @@
+{
+  "executable": "C:\\DLGPU\\p06-20261104\\experiments\\mapping_retirement.exe",
+  "arguments": [],
+  "working_directory": "C:\\DLGPU\\p06-20261104\\experiments",
+  "timeout_seconds": 30,
+  "scope": "Standalone Win32 retirement procedure, QEMU/GPU NOT TESTED"
+}

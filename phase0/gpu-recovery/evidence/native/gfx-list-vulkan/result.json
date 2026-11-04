@@ -1,0 +1,18 @@
+﻿{
+    "scope":  "Native development command only; no implicit GPU qualification",
+    "status":  "PASS",
+    "timestamp_utc":  "2026-11-04T04:02:46.3541041Z",
+    "command":  {
+                    "executable":  "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3\\Vulkan_unittests.exe",
+                    "arguments":  [
+                                      "--gtest_list_tests"
+                                  ],
+                    "working_directory":  "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3",
+                    "timeout_seconds":  60,
+                    "scope":  "Gfxstream test discovery, not rendering"
+                },
+    "exit_code":  0,
+    "timed_out":  false,
+    "executable_sha256":  "f9893bb32ac4699eb3f1b8970a8358ce447dbae837cc2225fe33d85317208c5b",
+    "reason":  "Raw command exit status only; inspect output and test counts for qualification"
+}

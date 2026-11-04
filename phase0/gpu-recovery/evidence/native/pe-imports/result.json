@@ -1,0 +1,22 @@
+﻿{
+    "scope":  "Native development command only; no implicit GPU qualification",
+    "status":  "PASS",
+    "timestamp_utc":  "2026-11-04T04:16:21.9022190Z",
+    "command":  {
+                    "executable":  "C:\\DLGPU\\p06-20261104\\tools\\clang+llvm-23.1.5-x86_64-pc-windows-msvc\\bin\\llvm-readobj.exe",
+                    "arguments":  [
+                                      "--coff-imports",
+                                      "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3\\gfxstream_backend.dll",
+                                      "C:\\DLGPU\\p06-20261104\\build\\rutabaga-ffi-gfx\\x86_64-pc-windows-msvc\\release\\rutabaga_gfx_ffi.dll",
+                                      "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3\\Vulkan_unittests.exe"
+                                  ],
+                    "working_directory":  "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3",
+                    "timeout_seconds":  60,
+                    "scope":  "Static PE import provenance; dynamically loaded drivers separately captured at runtime"
+                },
+    "process_id":  13192,
+    "exit_code":  0,
+    "timed_out":  false,
+    "executable_sha256":  "7dbcd1c64f6a4e526ce5aebd7dbed1ea8dbd24066be7fc0339266095a898a293",
+    "reason":  "Raw command exit status only; inspect output and test counts for qualification"
+}

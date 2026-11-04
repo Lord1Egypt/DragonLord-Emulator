@@ -1,0 +1,45 @@
+{
+  "scope": "Native compiled binary identity only; binaries excluded from publication",
+  "binaries": [
+    {
+      "native_relative_path": "build/rutabaga-ffi-core/x86_64-pc-windows-msvc/release/dragonlord_boundary_probe.dll",
+      "bytes": 114688,
+      "sha256": "482d500fd7ec8e8b9eb8b295f3435089fd425464e6815dd432cb7d2c74d17839"
+    },
+    {
+      "native_relative_path": "build/rutabaga-ffi-core/x86_64-pc-windows-msvc/release/dragonlord_boundary_probe.dll.lib",
+      "bytes": 4418,
+      "sha256": "3092adde5146cfc2aedeccb4b766dca30f0a7716bffb9740f58e7cf96a48a2ed"
+    },
+    {
+      "native_relative_path": "build/rutabaga-ffi-core/x86_64-pc-windows-msvc/release/rutabaga_gfx_ffi.dll",
+      "bytes": 621568,
+      "sha256": "2544af6aebc6afaeec4d17f3ab3615071acd15eb1fa5d60cb9eabd59d69f8d29"
+    },
+    {
+      "native_relative_path": "build/rutabaga-ffi-core/x86_64-pc-windows-msvc/release/rutabaga_gfx_ffi.dll.lib",
+      "bytes": 8426,
+      "sha256": "7ff29935529328655e6c3e04cf6205494beae99da298baebdafccac4b71fdb0e"
+    },
+    {
+      "native_relative_path": "build/rutabaga-ffi-core/x86_64-pc-windows-msvc/release/rutabaga_gfx_ffi.lib",
+      "bytes": 17465678,
+      "sha256": "3c4e48e11c055767e948cf9c7a0d1f0d94fb31879939a8e2d1902a68931512b1"
+    },
+    {
+      "native_relative_path": "build/rutabaga-ffi-gfx/x86_64-pc-windows-msvc/release/rutabaga_gfx_ffi.dll",
+      "bytes": 669696,
+      "sha256": "697ca5f1b4cfcd01dae9f98404a8effdf3da759d6c87d2118fbe249ce7620a5e"
+    },
+    {
+      "native_relative_path": "build/rutabaga-ffi-gfx/x86_64-pc-windows-msvc/release/rutabaga_gfx_ffi.dll.lib",
+      "bytes": 8426,
+      "sha256": "7ff29935529328655e6c3e04cf6205494beae99da298baebdafccac4b71fdb0e"
+    },
+    {
+      "native_relative_path": "build/rutabaga-ffi-gfx/x86_64-pc-windows-msvc/release/rutabaga_gfx_ffi.lib",
+      "bytes": 17601264,
+      "sha256": "683262a319760e8740bd924aaf508f6c12735ca1485e1d846d30f391a227744a"
+    }
+  ]
+}

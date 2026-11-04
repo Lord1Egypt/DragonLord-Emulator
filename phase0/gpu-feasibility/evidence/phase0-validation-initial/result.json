@@ -1,0 +1,8 @@
+{
+  "scope": "Phase 0 artifact revalidation, not a new VM/GPU test",
+  "status": "FAIL",
+  "phase0_commit": "d74a521f7933baeeb771f412cb9261c3311ded62",
+  "timestamp_utc": "2026-11-04T01:26:56.463152+00:00",
+  "retained_artifacts_checked": 77,
+  "reason": "No returned nonce plus architecture; a command echo is insufficient"
+}

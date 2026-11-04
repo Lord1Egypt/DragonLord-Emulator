@@ -1,0 +1,6 @@
+﻿Available display backend types:
+none
+
+Some display backends support suboptions, which can be set with
+   -display backend,option=value,option=value...
+For a short list of the suboptions for each display, see the top-level -help output; more detail is in the documentation.

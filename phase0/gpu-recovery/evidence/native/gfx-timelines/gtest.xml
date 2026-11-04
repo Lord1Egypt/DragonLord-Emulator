@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="7" failures="0" disabled="0" errors="0" time="0." timestamp="2026-11-04T07:16:21.692" name="AllTests">
+  <testsuite name="VirtioGpuTimelinesTest" tests="7" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-11-04T07:16:21.712">
+    <testcase name="Init" file="C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\host\virtio_gpu_timelines_tests.cpp" line="47" status="run" result="completed" time="0." timestamp="2026-11-04T07:16:21.712" classname="VirtioGpuTimelinesTest" />
+    <testcase name="TasksShouldHaveDifferentIds" file="C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\host\virtio_gpu_timelines_tests.cpp" line="54" status="run" result="completed" time="0." timestamp="2026-11-04T07:16:21.712" classname="VirtioGpuTimelinesTest" />
+    <testcase name="MultipleTasksAndFencesWithAsyncCallback" file="C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\host\virtio_gpu_timelines_tests.cpp" line="63" status="run" result="completed" time="0." timestamp="2026-11-04T07:16:21.712" classname="VirtioGpuTimelinesTest" />
+    <testcase name="FencesWithoutPendingTasksWithAsyncCallback" file="C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\host\virtio_gpu_timelines_tests.cpp" line="126" status="run" result="completed" time="0." timestamp="2026-11-04T07:16:21.712" classname="VirtioGpuTimelinesTest" />
+    <testcase name="FencesSharingSamePendingTasksWithAsyncCallback" file="C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\host\virtio_gpu_timelines_tests.cpp" line="154" status="run" result="completed" time="0." timestamp="2026-11-04T07:16:21.712" classname="VirtioGpuTimelinesTest" />
+    <testcase name="TasksAndFencesOnMultipleContextsWithAsyncCallback" file="C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\host\virtio_gpu_timelines_tests.cpp" line="185" status="run" result="completed" time="0." timestamp="2026-11-04T07:16:21.712" classname="VirtioGpuTimelinesTest" />
+    <testcase name="TasksAndFencesOnMultipleRingsWithAsyncCallback" file="C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\host\virtio_gpu_timelines_tests.cpp" line="235" status="run" result="completed" time="0." timestamp="2026-11-04T07:16:21.712" classname="VirtioGpuTimelinesTest" />
+  </testsuite>
+</testsuites>

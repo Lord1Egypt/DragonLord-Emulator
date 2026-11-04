@@ -1,0 +1,18 @@
+{
+  "scope": "Isolated printf safety fix and selected-device observation/assertions; Gfxstream compositor unchanged",
+  "baseline_commit": "94240f814c0097a63027ae680ea4bec7b0cb25f7",
+  "patch_sha256": "7c93abde082d824aa60ac4e0dac8474d987604f891ab9eca1277a923123c0fff",
+  "files": [
+    {
+      "path": "host/vulkan/vk_common_operations.cpp",
+      "original_sha256": "76f3e2f0e8a2a4e3b365d217c16b3b77c1e6b493705471e31e64c0f0a9b79963",
+      "patched_sha256": "92f9049cbb5e5e812e63abe14a25f9fffa596149091816b5da907735cb6ab170"
+    },
+    {
+      "path": "host/vulkan/compositor_vk_unittest.cpp",
+      "original_sha256": "37223f7ab8642b1ca0d9ddc71a107831a5e07686e33302af2eeb3b4c893cc5ff",
+      "patched_sha256": "6b872c041fef5f3ab2f65d35858c51c3a34b2067e30d400458a206cfe074416c"
+    }
+  ],
+  "observation_patch_sha256": "78895ef10307982c9ccceec6d0c2d713f7c7307bbd29b1b6bea19f9b984ae842"
+}

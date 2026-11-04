@@ -1,0 +1,38 @@
+{
+  "scope": "Phase 0 artifact revalidation, not a new VM/GPU test",
+  "status": "PASS",
+  "phase0_commit": "d74a521f7933baeeb771f412cb9261c3311ded62",
+  "timestamp_utc": "2026-11-04T01:27:43.517346+00:00",
+  "retained_artifacts_checked": 77,
+  "tcg": {
+    "status": "PASS",
+    "scope": "Retained Linux diagnostic evidence; not a new boot",
+    "binary_sha256": "fe9ef622891c40468d08b0d2524d9296e78f6f692452c5e97784782d1f5a4b4b",
+    "gpu": "NOT TESTED"
+  },
+  "whpx": {
+    "status": "PASS",
+    "scope": "Retained Linux diagnostic evidence; not a new boot",
+    "binary_sha256": "16c854418f0251adee38b8bd1468017ec003524e146fe6e705436870408af15d",
+    "gpu": "NOT TESTED"
+  },
+  "binary_checks": [
+    {
+      "path": "phase0/.work/qemu-build-linux/qemu-system-x86_64",
+      "status": "PASS",
+      "sha256": "fe9ef622891c40468d08b0d2524d9296e78f6f692452c5e97784782d1f5a4b4b"
+    },
+    {
+      "path": "phase0/.work/qemu-build-cross/qemu-system-x86_64.exe",
+      "status": "PASS",
+      "sha256": "602e6d69036baeb1521f275fda56d363629ade1cfdb7ac656a29dcf3f86ae254"
+    },
+    {
+      "path": "phase0/.work/windows-diagnostic/qemu-system-x86_64.exe",
+      "status": "PASS",
+      "sha256": "16c854418f0251adee38b8bd1468017ec003524e146fe6e705436870408af15d"
+    }
+  ],
+  "harness_exit_code": 0,
+  "reason": "Retained published bytes/boot responses and local binary hashes agree; original harness passes"
+}

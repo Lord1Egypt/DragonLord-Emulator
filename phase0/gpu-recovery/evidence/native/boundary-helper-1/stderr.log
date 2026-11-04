@@ -1,0 +1,6 @@
+    Updating crates.io index
+     Locking 32 packages to latest compatible versions
+   Compiling rutabaga_gfx v0.1.85 (C:\DLGPU\p06-20261104\src\rutabaga)
+   Compiling magma-gpu v0.1.85 (C:\DLGPU\p06-20261104\src\rutabaga\third_party\mesa3d\src\virtio\magma-gpu-rs\lib)
+   Compiling dragonlord_boundary_probe v0.0.1 (C:\DLGPU\p06-20261104\experiments\boundary)
+    Finished `release` profile [optimized] target(s) in 12.24s

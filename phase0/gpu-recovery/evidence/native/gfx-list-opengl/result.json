@@ -1,0 +1,18 @@
+﻿{
+    "scope":  "Native development command only; no implicit GPU qualification",
+    "status":  "PASS",
+    "timestamp_utc":  "2026-11-04T04:02:49.6572811Z",
+    "command":  {
+                    "executable":  "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3\\OpenglRender_unittests.exe",
+                    "arguments":  [
+                                      "--gtest_list_tests"
+                                  ],
+                    "working_directory":  "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3",
+                    "timeout_seconds":  60,
+                    "scope":  "Gfxstream test discovery, not rendering"
+                },
+    "exit_code":  0,
+    "timed_out":  false,
+    "executable_sha256":  "6f05d674af4202d0ca500620571643fdd6689de514c5c8f7bcc502f5ae752925",
+    "reason":  "Raw command exit status only; inspect output and test counts for qualification"
+}

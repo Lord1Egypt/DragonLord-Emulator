@@ -1,0 +1,26 @@
+Running main() from C:\DLGPU\p06-20261104\src\external\googletest\googletest\src\gtest_main.cc
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[shared_library.cpp(43)] SharedLibrary::open for [C:\DLGPU\p06-20261104\build\gfxstream-native-3\testlib64\vulkan-1.dll]
+[shared_library.cpp(43)] SharedLibrary::open for [C:\DLGPU\p06-20261104\build\gfxstream-native-3\testlib64\vulkan-1.dll]
+[shared_library.cpp(43)] SharedLibrary::open for [C:\DLGPU\p06-20261104\build\gfxstream-native-3\lib64\vulkan\vulkan-1.dll]
+[shared_library.cpp(43)] SharedLibrary::open for [C:\DLGPU\p06-20261104\build\gfxstream-native-3\lib64\vulkan\vulkan-1.dll]
+[shared_library.cpp(43)] SharedLibrary::open for [vulkan-1.dll]
+[vulkan_dispatch.cpp(223)] Added library: vulkan-1.dll
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\host\vulkan\compositor_vk_unittest.cpp(355): error: Expected equality of these values:
+  k_vk->vkCreateInstance(&instanceCi, nullptr, &m_vkInstance)
+    Which is: -9
+  VK_SUCCESS
+    Which is: 0
+
+C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\host\vulkan\compositor_vk_unittest.cpp(360): error: Expected: (m_vkInstance) != (nullptr), actual: NULL vs (nullptr)
+
+unknown file: error: SEH exception with code 0xc0000005 thrown in SetUp().
+Stack trace:
+
+

@@ -1,0 +1,15 @@
+   Compiling rutabaga_gfx v0.1.85 (C:\DLGPU\p06-20261104\src\rutabaga)
+warning: field `rutabaga_paths` is never read
+  --> src\renderer_utils.rs:39:9
+   |
+33 | pub struct RutabagaCookie {
+   |            -------------- field in this struct
+...
+39 |     pub rutabaga_paths: Option<RutabagaPaths>,
+   |         ^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: `rutabaga_gfx` (lib) generated 1 warning
+   Compiling rutabaga_gfx_ffi v0.1.85 (C:\DLGPU\p06-20261104\src\rutabaga\ffi)
+    Finished `release` profile [optimized] target(s) in 10.52s
