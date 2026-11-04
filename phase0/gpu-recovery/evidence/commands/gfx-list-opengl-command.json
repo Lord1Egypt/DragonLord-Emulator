@@ -1,0 +1,9 @@
+{
+  "executable": "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3\\OpenglRender_unittests.exe",
+  "arguments": [
+    "--gtest_list_tests"
+  ],
+  "working_directory": "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3",
+  "timeout_seconds": 60,
+  "scope": "Gfxstream test discovery, not rendering"
+}

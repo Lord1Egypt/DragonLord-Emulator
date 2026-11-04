@@ -1,0 +1,175 @@
+[1/277] Building CXX object common\base\windows\CMakeFiles\gfxstream_common_base_windows_compat.dir\src\files.cpp.obj
+[2/277] Building C object common\base\windows\CMakeFiles\gfxstream_common_base_windows_compat.dir\src\msvc-posix.c.obj
+[3/277] Building CXX object common\logging\CMakeFiles\gfxstream_common_logging.dir\logging.cpp.obj
+[4/277] Linking CXX static library common\logging\gfxstream_common_logging.lib
+[5/277] Building CXX object common\base\windows\CMakeFiles\gfxstream_common_base_windows_compat.dir\src\time.cpp.obj
+FAILED: common/base/windows/CMakeFiles/gfxstream_common_base_windows_compat.dir/src/time.cpp.obj 
+C:\DLGPU\p06-20261104\tools\clang+llvm-23.1.5-x86_64-pc-windows-msvc\bin\clang-cl.exe  /nologo -TP -DGFXSTREAM_ENABLE_HOST_GLES=1 -DGLM_FORCE_DEFAULT_ALIGNED_GENTYPES -DGLM_FORCE_RADIANS -DVIRGL_RENDERER_UNSTABLE_APIS -DVK_GFXSTREAM_STRUCTURE_TYPE_EXT -DVK_USE_PLATFORM_WIN32_KHR -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_SECURE_NO_WARNINGS -IC:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\includes /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O2 /Ob2 /DNDEBUG /Zi -std:c++17   -DUNICODE -D_UNICODE -DNOMINMAX -DEMUGL_BUILD -DVK_USE_PLATFORM_WIN32_KHR -DBUILDING_EMUGL_COMMON_SHARED -Wno-macro-redefined -Wno-deprecated-declarations -clang:-MD -clang:-MTcommon\base\windows\CMakeFiles\gfxstream_common_base_windows_compat.dir\src\time.cpp.obj -clang:-MFcommon\base\windows\CMakeFiles\gfxstream_common_base_windows_compat.dir\src\time.cpp.obj.d /Focommon\base\windows\CMakeFiles\gfxstream_common_base_windows_compat.dir\src\time.cpp.obj /Fdcommon\base\windows\CMakeFiles\gfxstream_common_base_windows_compat.dir\gfxstream_common_base_windows_compat.pdb -c -- C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\src\time.cpp
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\src\time.cpp:16:
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\includes\sys/time.h:20:
+In file included from C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\WinSock2.h:116:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\ws2def.h(246,16): error: redefinition of 'sockaddr'
+  246 | typedef struct sockaddr {
+      |                ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winsock.h(482,8): note: previous definition is here
+  482 | struct sockaddr {
+      |        ^
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\src\time.cpp:16:
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\includes\sys/time.h:20:
+In file included from C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\WinSock2.h:116:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\ws2def.h(448,5): error: expected identifier
+  448 |     IPPROTO_ICMP          = 1,
+      |     ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winsock.h(211,33): note: expanded from macro 'IPPROTO_ICMP'
+  211 | #define IPPROTO_ICMP            1               /* control message protocol */
+      |                                 ^
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\src\time.cpp:16:
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\includes\sys/time.h:20:
+In file included from C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\WinSock2.h:116:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\ws2def.h(449,5): error: expected identifier
+  449 |     IPPROTO_IGMP          = 2,
+      |     ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winsock.h(212,33): note: expanded from macro 'IPPROTO_IGMP'
+  212 | #define IPPROTO_IGMP            2               /* group management protocol */
+      |                                 ^
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\src\time.cpp:16:
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\includes\sys/time.h:20:
+In file included from C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\WinSock2.h:116:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\ws2def.h(450,5): error: expected identifier
+  450 |     IPPROTO_GGP           = 3,
+      |     ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winsock.h(213,33): note: expanded from macro 'IPPROTO_GGP'
+  213 | #define IPPROTO_GGP             3               /* gateway^2 (deprecated) */
+      |                                 ^
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\src\time.cpp:16:
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\includes\sys/time.h:20:
+In file included from C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\WinSock2.h:116:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\ws2def.h(457,5): error: expected identifier
+  457 |     IPPROTO_TCP           = 6,
+      |     ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winsock.h(214,33): note: expanded from macro 'IPPROTO_TCP'
+  214 | #define IPPROTO_TCP             6               /* tcp */
+      |                                 ^
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\src\time.cpp:16:
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\includes\sys/time.h:20:
+In file included from C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\WinSock2.h:116:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\ws2def.h(463,5): error: expected identifier
+  463 |     IPPROTO_PUP           = 12,
+      |     ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winsock.h(215,33): note: expanded from macro 'IPPROTO_PUP'
+  215 | #define IPPROTO_PUP             12              /* pup */
+      |                                 ^
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\src\time.cpp:16:
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\includes\sys/time.h:20:
+In file included from C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\WinSock2.h:116:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\ws2def.h(464,5): error: expected identifier
+  464 |     IPPROTO_UDP           = 17,
+      |     ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winsock.h(216,33): note: expanded from macro 'IPPROTO_UDP'
+  216 | #define IPPROTO_UDP             17              /* user datagram protocol */
+      |                                 ^
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\src\time.cpp:16:
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\includes\sys/time.h:20:
+In file included from C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\WinSock2.h:116:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\ws2def.h(465,5): error: expected identifier
+  465 |     IPPROTO_IDP           = 22,
+      |     ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winsock.h(217,33): note: expanded from macro 'IPPROTO_IDP'
+  217 | #define IPPROTO_IDP             22              /* xns idp */
+      |                                 ^
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\src\time.cpp:16:
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\includes\sys/time.h:20:
+In file included from C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\WinSock2.h:116:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\ws2def.h(481,5): error: expected identifier
+  481 |     IPPROTO_ND            = 77,
+      |     ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winsock.h(218,33): note: expanded from macro 'IPPROTO_ND'
+  218 | #define IPPROTO_ND              77              /* UNOFFICIAL net disk proto */
+      |                                 ^
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\src\time.cpp:16:
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\includes\sys/time.h:20:
+In file included from C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\WinSock2.h:116:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\ws2def.h(491,5): error: expected identifier
+  491 |     IPPROTO_RAW           = 255,
+      |     ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winsock.h(220,33): note: expanded from macro 'IPPROTO_RAW'
+  220 | #define IPPROTO_RAW             255             /* raw IP packet */
+      |                                 ^
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\src\time.cpp:16:
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\includes\sys/time.h:20:
+In file included from C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\WinSock2.h:116:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\ws2def.h(493,5): error: expected identifier
+  493 |     IPPROTO_MAX           = 256,
+      |     ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winsock.h(221,33): note: expanded from macro 'IPPROTO_MAX'
+  221 | #define IPPROTO_MAX             256
+      |                                 ^
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\src\time.cpp:16:
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\includes\sys/time.h:20:
+In file included from C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\WinSock2.h:116:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\ws2def.h(644,16): error: redefinition of 'sockaddr_in'
+  644 | typedef struct sockaddr_in {
+      |                ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winsock.h(309,8): note: previous definition is here
+  309 | struct sockaddr_in {
+      |        ^
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\src\time.cpp:16:
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\includes\sys/time.h:20:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\WinSock2.h(136,16): error: redefinition of 'fd_set'
+  136 | typedef struct fd_set {
+      |                ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winsock.h(65,16): note: previous definition is here
+   65 | typedef struct fd_set {
+      |                ^
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\src\time.cpp:16:
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\includes\sys/time.h:20:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\WinSock2.h(180,8): error: redefinition of 'timeval'
+  180 | struct timeval {
+      |        ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winsock.h(108,8): note: previous definition is here
+  108 | struct timeval {
+      |        ^
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\src\time.cpp:16:
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\includes\sys/time.h:20:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\WinSock2.h(236,9): error: redefinition of 'hostent'
+  236 | struct  hostent {
+      |         ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winsock.h(164,9): note: previous definition is here
+  164 | struct  hostent {
+      |         ^
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\src\time.cpp:16:
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\includes\sys/time.h:20:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\WinSock2.h(249,9): error: redefinition of 'netent'
+  249 | struct  netent {
+      |         ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winsock.h(177,9): note: previous definition is here
+  177 | struct  netent {
+      |         ^
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\src\time.cpp:16:
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\includes\sys/time.h:20:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\WinSock2.h(256,9): error: redefinition of 'servent'
+  256 | struct  servent {
+      |         ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winsock.h(184,9): note: previous definition is here
+  184 | struct  servent {
+      |         ^
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\src\time.cpp:16:
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\includes\sys/time.h:20:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\WinSock2.h(268,9): error: redefinition of 'protoent'
+  268 | struct  protoent {
+      |         ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winsock.h(196,9): note: previous definition is here
+  196 | struct  protoent {
+      |         ^
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\src\time.cpp:16:
+In file included from C:\DLGPU\p06-20261104\src\hardware\google\gfxstream\common\base\windows\includes\sys/time.h:20:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\WinSock2.h(364,16): error: redefinition of 'WSAData'
+  364 | typedef struct WSAData {
+      |                ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winsock.h(319,16): note: previous definition is here
+  319 | typedef struct WSAData {
+      |                ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+[6/277] Building CXX object common\base\CMakeFiles\gfxstream_common_base.dir\AlignedBuf.cpp.obj
+ninja: build stopped: subcommand failed.

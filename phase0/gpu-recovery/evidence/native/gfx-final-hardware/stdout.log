@@ -1,0 +1,729 @@
+Running main() from C:\DLGPU\p06-20261104\src\external\googletest\googletest\src\gtest_main.cc
+
+Repeating all tests (iteration 1) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[shared_library.cpp(43)] SharedLibrary::open for [C:\DLGPU\p06-20261104\build\gfxstream-native-3\testlib64\vulkan-1.dll]
+[shared_library.cpp(43)] SharedLibrary::open for [C:\DLGPU\p06-20261104\build\gfxstream-native-3\testlib64\vulkan-1.dll]
+[shared_library.cpp(43)] SharedLibrary::open for [C:\DLGPU\p06-20261104\build\gfxstream-native-3\lib64\vulkan\vulkan-1.dll]
+[shared_library.cpp(43)] SharedLibrary::open for [C:\DLGPU\p06-20261104\build\gfxstream-native-3\lib64\vulkan\vulkan-1.dll]
+[shared_library.cpp(43)] SharedLibrary::open for [vulkan-1.dll]
+[vulkan_dispatch.cpp(223)] Added library: vulkan-1.dll
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (690 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (154 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (184 ms)
+[----------] 3 tests from CompositorVkTest (1029 ms total)
+
+[==========] 3 tests from 1 test suite ran. (1046 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 2) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (197 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (153 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (168 ms)
+[----------] 3 tests from CompositorVkTest (520 ms total)
+
+[==========] 3 tests from 1 test suite ran. (520 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 3) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (244 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (278 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (214 ms)
+[----------] 3 tests from CompositorVkTest (737 ms total)
+
+[==========] 3 tests from 1 test suite ran. (737 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 4) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (226 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (183 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (168 ms)
+[----------] 3 tests from CompositorVkTest (578 ms total)
+
+[==========] 3 tests from 1 test suite ran. (578 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 5) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (364 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (212 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (198 ms)
+[----------] 3 tests from CompositorVkTest (776 ms total)
+
+[==========] 3 tests from 1 test suite ran. (776 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 6) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (228 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (155 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (198 ms)
+[----------] 3 tests from CompositorVkTest (583 ms total)
+
+[==========] 3 tests from 1 test suite ran. (583 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 7) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (241 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (168 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (180 ms)
+[----------] 3 tests from CompositorVkTest (590 ms total)
+
+[==========] 3 tests from 1 test suite ran. (590 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 8) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (211 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (169 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (214 ms)
+[----------] 3 tests from CompositorVkTest (595 ms total)
+
+[==========] 3 tests from 1 test suite ran. (595 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 9) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (226 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (182 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (167 ms)
+[----------] 3 tests from CompositorVkTest (576 ms total)
+
+[==========] 3 tests from 1 test suite ran. (576 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 10) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (211 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (181 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (183 ms)
+[----------] 3 tests from CompositorVkTest (576 ms total)
+
+[==========] 3 tests from 1 test suite ran. (577 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 11) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (215 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (213 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (169 ms)
+[----------] 3 tests from CompositorVkTest (599 ms total)
+
+[==========] 3 tests from 1 test suite ran. (599 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 12) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (242 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (170 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (153 ms)
+[----------] 3 tests from CompositorVkTest (565 ms total)
+
+[==========] 3 tests from 1 test suite ran. (565 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 13) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (241 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (167 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (152 ms)
+[----------] 3 tests from CompositorVkTest (560 ms total)
+
+[==========] 3 tests from 1 test suite ran. (560 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 14) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (212 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (169 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (168 ms)
+[----------] 3 tests from CompositorVkTest (550 ms total)
+
+[==========] 3 tests from 1 test suite ran. (550 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 15) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (210 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (166 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (228 ms)
+[----------] 3 tests from CompositorVkTest (606 ms total)
+
+[==========] 3 tests from 1 test suite ran. (606 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 16) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (211 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (167 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (166 ms)
+[----------] 3 tests from CompositorVkTest (545 ms total)
+
+[==========] 3 tests from 1 test suite ran. (545 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 17) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (228 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (167 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (151 ms)
+[----------] 3 tests from CompositorVkTest (547 ms total)
+
+[==========] 3 tests from 1 test suite ran. (547 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 18) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (195 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (151 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (137 ms)
+[----------] 3 tests from CompositorVkTest (484 ms total)
+
+[==========] 3 tests from 1 test suite ran. (484 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 19) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (181 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (155 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (152 ms)
+[----------] 3 tests from CompositorVkTest (490 ms total)
+
+[==========] 3 tests from 1 test suite ran. (490 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 20) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (181 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (150 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (136 ms)
+[----------] 3 tests from CompositorVkTest (469 ms total)
+
+[==========] 3 tests from 1 test suite ran. (469 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 21) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (181 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (153 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (154 ms)
+[----------] 3 tests from CompositorVkTest (488 ms total)
+
+[==========] 3 tests from 1 test suite ran. (488 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 22) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (211 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (153 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (151 ms)
+[----------] 3 tests from CompositorVkTest (515 ms total)
+
+[==========] 3 tests from 1 test suite ran. (516 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 23) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (196 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (169 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (153 ms)
+[----------] 3 tests from CompositorVkTest (519 ms total)
+
+[==========] 3 tests from 1 test suite ran. (519 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 24) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (198 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (151 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (154 ms)
+[----------] 3 tests from CompositorVkTest (505 ms total)
+
+[==========] 3 tests from 1 test suite ran. (505 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 25) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (196 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (151 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (150 ms)
+[----------] 3 tests from CompositorVkTest (498 ms total)
+
+[==========] 3 tests from 1 test suite ran. (498 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 26) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (195 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (150 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (150 ms)
+[----------] 3 tests from CompositorVkTest (497 ms total)
+
+[==========] 3 tests from 1 test suite ran. (497 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 27) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (199 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (155 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (154 ms)
+[----------] 3 tests from CompositorVkTest (509 ms total)
+
+[==========] 3 tests from 1 test suite ran. (509 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 28) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (197 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (151 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (150 ms)
+[----------] 3 tests from CompositorVkTest (499 ms total)
+
+[==========] 3 tests from 1 test suite ran. (500 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 29) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (182 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (152 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (151 ms)
+[----------] 3 tests from CompositorVkTest (487 ms total)
+
+[==========] 3 tests from 1 test suite ran. (487 ms total)
+[  PASSED  ] 3 tests.
+
+Repeating all tests (iteration 30) . . .
+
+Note: Google Test filter = CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor
+[==========] Running 3 tests from 1 test suite.
+[----------] 3 tests from CompositorVkTest
+[graphics_test_environment.cpp(115)] GraphicsTestEnvironment: not changing host EGL/GLES driver configuration.
+[graphics_test_environment.cpp(123)] GraphicsTestEnvironment: not changing Vulkan driver configuration.
+[ RUN      ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.EmptyCompositionShouldDrawABlackFrame (183 ms)
+[ RUN      ] CompositorVkTest.SimpleComposition
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SimpleComposition (152 ms)
+[ RUN      ] CompositorVkTest.SolidColor
+DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000
+[compositor_vk.cpp(172)] Created CompositorVk
+[       OK ] CompositorVkTest.SolidColor (152 ms)
+[----------] 3 tests from CompositorVkTest (489 ms total)
+
+[----------] Global test environment tear-down
+[==========] 3 tests from 1 test suite ran. (489 ms total)
+[  PASSED  ] 3 tests.

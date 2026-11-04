@@ -1,0 +1,20 @@
+﻿{
+    "scope":  "Native development command only; no implicit GPU qualification",
+    "status":  "FAIL",
+    "timestamp_utc":  "2026-11-04T04:13:29.9542559Z",
+    "command":  {
+                    "executable":  "C:\\DLGPU\\p06-20261104\\experiments\\abi-original-observe.exe",
+                    "arguments":  [
+                                      "C:\\DLGPU\\p06-20261104\\build\\rutabaga-ffi-core\\x86_64-pc-windows-msvc\\release\\dragonlord_boundary_probe.dll",
+                                      "C:\\DLGPU\\p06-20261104\\build\\rutabaga-ffi-core\\x86_64-pc-windows-msvc\\release\\rutabaga_gfx_ffi.dll"
+                                  ],
+                    "working_directory":  "C:\\DLGPU\\p06-20261104\\experiments",
+                    "timeout_seconds":  60,
+                    "scope":  "Actual native C/Rust ABI, HANDLE and FFI core/CPU transfer; GPU NOT TESTED"
+                },
+    "process_id":  35664,
+    "exit_code":  1,
+    "timed_out":  false,
+    "executable_sha256":  "a44369a4cfb4a6d93c7e8a076ed1904744d3734f4f4fc4b73fa66a0988f8407b",
+    "reason":  "Raw command exit status only; inspect output and test counts for qualification"
+}

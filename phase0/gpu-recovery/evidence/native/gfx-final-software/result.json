@@ -1,0 +1,614 @@
+﻿{
+    "scope":  "Observed standalone Gfxstream component; no QEMU/Android qualification",
+    "status":  "PASS",
+    "command":  {
+                    "executable":  "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3\\Vulkan_unittests.exe",
+                    "arguments":  [
+                                      "--gtest_filter=CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor",
+                                      "--gtest_repeat=30",
+                                      "--gtest_output=xml:C:\\DLGPU\\p06-20261104\\results\\gfx-final-software\\gtest.xml"
+                                  ],
+                    "working_directory":  "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3",
+                    "environment":  {
+                                        "DLGPU_EXPECT_VENDOR":  "0x1ae0",
+                                        "DLGPU_EXPECT_TYPE":  "4",
+                                        "VK_DRIVER_FILES":  "C:\\Program Files\\Google\\Chrome\\Application\\156.0.8078.80\\vk_swiftshader_icd.json",
+                                        "VK_ICD_FILENAMES":  null,
+                                        "ANDROID_EMU_VK_ICD":  null,
+                                        "VK_LOADER_DEBUG":  "driver"
+                                    },
+                    "timeout_seconds":  90,
+                    "scope":  "Same pinned Gfxstream compositor workload with explicit device type/vendor assertion and pixel readback"
+                },
+    "timestamp_utc":  "2026-11-04T04:25:33.7924290Z",
+    "observer_sha256":  "999db38156da18f65bb71b60d17bca79f0ddabd3849c207b3f943861a5b3747f",
+    "command_sha256":  "5d81b26f28c0e75a59419019594dae709a4eaa78c7d4f3b73985733a146231ee",
+    "etw":  {
+                "session":  "DLGPU_65badde181bb4ad58ac8765b7e4e5f5b",
+                "status":  "BLOCKED",
+                "start_exit_code":  -2147024891,
+                "start_output":  [
+                                     "xperf: error: DLGPU_65badde181bb4ad58ac8765b7e4e5f5b: Access is denied. (0x5)."
+                                 ]
+            },
+    "process_id":  8252,
+    "exit_code":  0,
+    "timed_out":  false,
+    "elapsed_ms":  12915,
+    "executable_sha256":  "4a9f453d3fdde4bd267afbb2a7bb13a10113bfc6d32be8742ed59e46798aec11",
+    "counter_errors":  [
+                           "There is more data to return than will fit in the supplied buffer. Allocate a larger buffer and call the function again.",
+                           "No GPU counter sample set returned",
+                           "The data in one of the performance counter samples is not valid. View the Status property for each PerformanceCounterSample object to make sure it contains valid data.",
+                           "The data in one of the performance counter samples is not valid. View the Status property for each PerformanceCounterSample object to make sure it contains valid data."
+                       ],
+    "samples":  [
+                    {
+                        "elapsed_ms":  24,
+                        "cpu_seconds":  0.015625,
+                        "working_set_bytes":  3309568,
+                        "private_bytes":  647168,
+                        "gpu":  [
+
+                                ]
+                    },
+                    {
+                        "elapsed_ms":  6517,
+                        "cpu_seconds":  6.59375,
+                        "working_set_bytes":  41254912,
+                        "private_bytes":  61140992,
+                        "gpu":  [
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_0_engtype_3d",
+                                        "timestamp":  "2026-11-04T04:25:45.8218515Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_10_engtype_copy",
+                                        "timestamp":  "2026-11-04T04:25:45.8218515Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_11_engtype_copy",
+                                        "timestamp":  "2026-11-04T04:25:45.8218515Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_12_engtype_copy",
+                                        "timestamp":  "2026-11-04T04:25:45.8218515Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_13_engtype_security_1",
+                                        "timestamp":  "2026-11-04T04:25:45.8218515Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_1_engtype_legacyoverlay",
+                                        "timestamp":  "2026-11-04T04:25:45.8218515Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_2_engtype_videodecode",
+                                        "timestamp":  "2026-11-04T04:25:45.8218515Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_3_engtype_copy",
+                                        "timestamp":  "2026-11-04T04:25:45.8218515Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_4_engtype_copy",
+                                        "timestamp":  "2026-11-04T04:25:45.8218515Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_5_engtype_copy",
+                                        "timestamp":  "2026-11-04T04:25:45.8218515Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_6_engtype_security",
+                                        "timestamp":  "2026-11-04T04:25:45.8218515Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_7_engtype_videoencode",
+                                        "timestamp":  "2026-11-04T04:25:45.8218515Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_8_engtype_vr",
+                                        "timestamp":  "2026-11-04T04:25:45.8218515Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_9_engtype_copy",
+                                        "timestamp":  "2026-11-04T04:25:45.8218515Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_0_engtype_3d",
+                                        "timestamp":  "2026-11-04T04:25:46.8431587Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_10_engtype_copy",
+                                        "timestamp":  "2026-11-04T04:25:46.8431587Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_11_engtype_copy",
+                                        "timestamp":  "2026-11-04T04:25:46.8431587Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_12_engtype_copy",
+                                        "timestamp":  "2026-11-04T04:25:46.8431587Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_13_engtype_security_1",
+                                        "timestamp":  "2026-11-04T04:25:46.8431587Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_1_engtype_legacyoverlay",
+                                        "timestamp":  "2026-11-04T04:25:46.8431587Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_2_engtype_videodecode",
+                                        "timestamp":  "2026-11-04T04:25:46.8431587Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_3_engtype_copy",
+                                        "timestamp":  "2026-11-04T04:25:46.8431587Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_4_engtype_copy",
+                                        "timestamp":  "2026-11-04T04:25:46.8431587Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_5_engtype_copy",
+                                        "timestamp":  "2026-11-04T04:25:46.8431587Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_6_engtype_security",
+                                        "timestamp":  "2026-11-04T04:25:46.8431587Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_7_engtype_videoencode",
+                                        "timestamp":  "2026-11-04T04:25:46.8431587Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_8_engtype_vr",
+                                        "timestamp":  "2026-11-04T04:25:46.8431587Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    },
+                                    {
+                                        "instance":  "pid_8252_luid_0x00000000_0x000123f9_phys_0_eng_9_engtype_copy",
+                                        "timestamp":  "2026-11-04T04:25:46.8431587Z",
+                                        "status":  3221228486,
+                                        "value":  0
+                                    }
+                                ]
+                    }
+                ],
+    "modules":  [
+                    {
+                        "signer":  null,
+                        "path":  "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3\\Vulkan_unittests.exe",
+                        "authenticode_status":  "NotSigned",
+                        "name":  "Vulkan_unittests.exe",
+                        "company":  null,
+                        "sha256":  "4a9f453d3fdde4bd267afbb2a7bb13a10113bfc6d32be8742ed59e46798aec11",
+                        "file_version":  null
+                    },
+                    {
+                        "signer":  "CN=Google LLC, O=Google LLC, L=Mountain View, S=California, C=US, SERIALNUMBER=3582691, OID.2.5.4.15=Private Organization, OID.1.3.6.1.4.1.311.60.2.1.2=Delaware, OID.1.3.6.1.4.1.311.60.2.1.3=US",
+                        "path":  "C:\\Program Files\\Google\\Chrome\\Application\\156.0.8078.80\\vk_swiftshader.dll",
+                        "authenticode_status":  "Valid",
+                        "name":  "vk_swiftshader.dll",
+                        "company":  "",
+                        "sha256":  "678f934ed4a77e9206f53085687a369f6403ce8497728e14c6fbb0fcc375804a",
+                        "file_version":  "5.0.0"
+                    },
+                    {
+                        "company":  null,
+                        "path":  "C:\\Program Files\\TikTok LIVE Studio\\1.28.0\\resources\\app\\electron\\sdk\\lib\\MediaSDK_V2\\plugins\\game_detour_64.dll",
+                        "sha256":  "6bbbbce79578882817ddfd91a695ec008eb760a37772587af169f0acd0662842",
+                        "name":  "game_detour_64.dll",
+                        "file_version":  null
+                    },
+                    {
+                        "company":  "OBS Project",
+                        "path":  "C:\\ProgramData\\obs-studio-hook\\graphics-hook64.dll",
+                        "sha256":  "f89ade59480de0d55fcc100495d78e8e491bed469fab4dbd3d430837b58b27a5",
+                        "name":  "graphics-hook64.dll",
+                        "file_version":  "1.8.7.0"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\ADVAPI32.dll",
+                        "sha256":  "0cd55279ff31adfa5f4ee974acc841f1e77f53f6469a3606a755bb4d09efae08",
+                        "name":  "ADVAPI32.dll",
+                        "file_version":  "10.0.26100.8875 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\bcryptPrimitives.dll",
+                        "sha256":  "3659619f38aa3541ef5d62838208fd477f27550a3468292ba666a781a1c20d4f",
+                        "name":  "bcryptPrimitives.dll",
+                        "file_version":  "10.0.26100.9818 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\CFGMGR32.dll",
+                        "sha256":  "8f1d9eb7e0315ab1b07970d15016953e22aedd44fe70337ca9c592983495506d",
+                        "name":  "CFGMGR32.dll",
+                        "file_version":  "10.0.26100.9818 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\combase.dll",
+                        "sha256":  "b9136a89f90897b8423b10dea838babbf1b6318fd717a37c9dd638caa0a305e3",
+                        "name":  "combase.dll",
+                        "file_version":  "10.0.26100.8875 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\CRYPT32.dll",
+                        "sha256":  "bca7a7a91c758b78c7fb9b6fcc6b72dcb2c660aae809b402a2ade9999ac5df6b",
+                        "name":  "CRYPT32.dll",
+                        "file_version":  "10.0.26100.9818 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\cryptbase.dll",
+                        "sha256":  "09c2d3e0f1c3d86f4a69496acf6d0c0901715ee2f02f20afc10d6dc9e639b03f",
+                        "name":  "cryptbase.dll",
+                        "file_version":  "10.0.26100.9711 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\cryptnet.dll",
+                        "sha256":  "440af621e97fd5fcb93f06393b8f3fd5af936de550e763380cc1f4c71cd6c795",
+                        "name":  "cryptnet.dll",
+                        "file_version":  "10.0.26100.9818 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\system32\\d3d11.dll",
+                        "sha256":  "9253355cd78fbc6aacb72e91be264d04b145ef06d64cbf496c8de3e5f0e44edb",
+                        "name":  "d3d11.dll",
+                        "file_version":  "10.0.26100.9818 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\devobj.dll",
+                        "sha256":  "53e81d1df33d9f036c12f93d3c3ae33824d2b01e324f355ffc7517d87744c39a",
+                        "name":  "devobj.dll",
+                        "file_version":  "10.0.26100.9818 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\directxdatabasehelper.dll",
+                        "sha256":  "3a262619c8050c59ede854740c9cdd0fc0afdc89d5313958ac04e96285fd50dc",
+                        "name":  "directxdatabasehelper.dll",
+                        "file_version":  "10.0.26100.9818 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "signer":  "CN=Microsoft Windows Hardware Compatibility Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
+                        "path":  "C:\\WINDOWS\\System32\\DriverStore\\FileRepository\\nvtfsi.inf_amd64_a9f45ac1e5edde2a\\nvoglv64.dll",
+                        "authenticode_status":  "Valid",
+                        "name":  "nvoglv64.dll",
+                        "company":  "NVIDIA Corporation",
+                        "sha256":  "adda6dc8054888d5c52e3f97cf33b742952d16b3f145ced74cfb1012556bd696",
+                        "file_version":  "32.0.16.1742"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\drvstore.dll",
+                        "sha256":  "f2bd8b7cfa74c7f001262ebc1fd909e48e9c377b682fa38952eb104b3130e725",
+                        "name":  "drvstore.dll",
+                        "file_version":  "10.0.26100.9818 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\dxcore.dll",
+                        "sha256":  "74bd73065b06e32ddedd81ade496510921a27e647b7e99f4b6494eb2812702ba",
+                        "name":  "dxcore.dll",
+                        "file_version":  "10.0.26100.9818 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\system32\\dxgi.dll",
+                        "sha256":  "84bc502f36687bb6c4dd9763d109c6ed7339767ed50a8a70707761563dd3e816",
+                        "name":  "dxgi.dll",
+                        "file_version":  "10.0.26100.9818 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\GDI32.dll",
+                        "sha256":  "772c73e294a4c5f5e0d4146288af95287a85c074d3aee3fa9f320dc010d7dbfe",
+                        "name":  "GDI32.dll",
+                        "file_version":  "10.0.26100.8328 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\gdi32full.dll",
+                        "sha256":  "b960ec62e341678bb9ae91b45e3e14f76ad5b147aadcbc2625620a4b36b72bec",
+                        "name":  "gdi32full.dll",
+                        "file_version":  "10.0.26100.9818 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\IMM32.DLL",
+                        "sha256":  "a0a5953dbe06dc43af9bc617139bf2cfe1c3976403f9682ee8d8d470a94a2364",
+                        "name":  "IMM32.DLL",
+                        "file_version":  "10.0.26100.9818 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\kernel.appcore.dll",
+                        "sha256":  "5da68e8d50b02fb8c90cf3bcd3c511723fc433612d0a441071b6e31f9544cf8d",
+                        "name":  "kernel.appcore.dll",
+                        "file_version":  "10.0.26100.9818 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\KERNEL32.DLL",
+                        "sha256":  "11db2fee643262b9c7916fac0b2ed592cb51d1ec480cac6a0fcc81492d6c7167",
+                        "name":  "KERNEL32.DLL",
+                        "file_version":  "10.0.26100.9549 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\KERNELBASE.dll",
+                        "sha256":  "bbab51f86d7e04fd829275163daa4de29fe976f0d758f0003fa5ee03380eb715",
+                        "name":  "KERNELBASE.dll",
+                        "file_version":  "10.0.26100.9278 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\msasn1.dll",
+                        "sha256":  "a28902ae7ad6ff2d1b904f73c7ca22dbbf11a36cee70b5b22dd605364dd0fa2e",
+                        "name":  "msasn1.dll",
+                        "file_version":  "10.0.26100.9711 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\MSCTF.dll",
+                        "sha256":  "5d3ea684c59e7f51302f024510390f0b23a4bfd73a0ee2308f1addf2095350f3",
+                        "name":  "MSCTF.dll",
+                        "file_version":  "10.0.26100.8875 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\msvcp_win.dll",
+                        "sha256":  "b9dacd83201e59bb74e5282d8f0dcc8c428525409b4bc458a39eb8d2a9373a9a",
+                        "name":  "msvcp_win.dll",
+                        "file_version":  "10.0.26100.9711 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\MSVCP140.dll",
+                        "sha256":  "7c26614e1d733892c2deac7e245ce115504b1d80592dd0a01b08e3e5a55f89ca",
+                        "name":  "MSVCP140.dll",
+                        "file_version":  "14.51.36247.0"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\msvcrt.dll",
+                        "sha256":  "fc1447db4e4814cbcb002179a8003a41f383fc417879f628727043cab8c25093",
+                        "name":  "msvcrt.dll",
+                        "file_version":  "7.0.26100.9711 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\ntdll.dll",
+                        "sha256":  "b072efaeac06c558b1ab71d7e91f2d7c14903262af53e33bd277edc4ce5aed21",
+                        "name":  "ntdll.dll",
+                        "file_version":  "10.0.26100.9549 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\ntmarta.dll",
+                        "sha256":  "f2bfd7121052ddfa5affae30efa070ac98052d76e6a5723f31ff75171c561974",
+                        "name":  "ntmarta.dll",
+                        "file_version":  "10.0.26100.8875 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\ole32.dll",
+                        "sha256":  "4d61e79261da7069330662bc822aa7d4041899079d00fdb3b3503db1f6f858bd",
+                        "name":  "ole32.dll",
+                        "file_version":  "10.0.26100.8875 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\OLEAUT32.dll",
+                        "sha256":  "f30f836d9c748b3d8002cd9174a561dd86348485153f6552ed548bc07b2ca6b2",
+                        "name":  "OLEAUT32.dll",
+                        "file_version":  "10.0.26100.9818 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\powrprof.dll",
+                        "sha256":  "096b3c77ad7fece122be0362c72530b1edc024fe7107d1d40d8bcd8fa5428a0e",
+                        "name":  "powrprof.dll",
+                        "file_version":  "10.0.26100.8875 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\RPCRT4.dll",
+                        "sha256":  "e52b8779f88892b53510cf63c1beb50fbd0004ddbf40d1c61b3e912cab9a2dc1",
+                        "name":  "RPCRT4.dll",
+                        "file_version":  "10.0.26100.8875 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\sechost.dll",
+                        "sha256":  "bfba167e580dd8ceecc0ebf6087fc6dfac4e3a0d5fe53494ae26e7313df00878",
+                        "name":  "sechost.dll",
+                        "file_version":  "10.0.26100.1 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\SETUPAPI.dll",
+                        "sha256":  "74a265f36ff231e64a279675bb187faf8391a727ca804384fabd2d7437457b8e",
+                        "name":  "SETUPAPI.dll",
+                        "file_version":  "10.0.26100.8875 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\SHELL32.dll",
+                        "sha256":  "a923d1a2029dd71fd90818d02ce77ff79b6693b316a0f4608f03c95be83b51d5",
+                        "name":  "SHELL32.dll",
+                        "file_version":  "10.0.26100.9549 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\SHLWAPI.dll",
+                        "sha256":  "855aa0dc138d81ce2491f5c96cbcbc33d72eac697d6b447b80e81b9a378a320a",
+                        "name":  "SHLWAPI.dll",
+                        "file_version":  "10.0.26100.8875 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\SspiCli.dll",
+                        "sha256":  "3cd898a6e69c0aeac1aaccb1494944fb36e3fec873e1840105b097edc0954184",
+                        "name":  "SspiCli.dll",
+                        "file_version":  "10.0.26100.9818 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\ucrtbase.dll",
+                        "sha256":  "dedb7611e1abc1ff3852dcac3d4c93a048d729e25b061973b9969f22698f14ca",
+                        "name":  "ucrtbase.dll",
+                        "file_version":  "10.0.26100.9711 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\UMPDC.dll",
+                        "sha256":  "8172acbaf08cbf516b8bc8e567cab5aa7576d4af913ecd3918a7ed65fdf64b3d",
+                        "name":  "UMPDC.dll",
+                        "file_version":  "10.0.26100.9818 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\USER32.dll",
+                        "sha256":  "4f66c3c584276f7df0dbfb78332315990ef81276661c8eacd8ba93197931ff91",
+                        "name":  "USER32.dll",
+                        "file_version":  "10.0.26100.8875 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\system32\\uxtheme.dll",
+                        "sha256":  "e2e972e21a16c62e7c678334dc50f33c2f327c1b6854a2fb096ca244ae650f27",
+                        "name":  "uxtheme.dll",
+                        "file_version":  "10.0.26100.8875 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\VCRUNTIME140.dll",
+                        "sha256":  "d1f4225df2cd877dbf130d5668a021dce3f94118455ff5ec952061c30afc9ce7",
+                        "name":  "VCRUNTIME140.dll",
+                        "file_version":  "14.51.36247.0"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\VCRUNTIME140_1.dll",
+                        "sha256":  "a7146c08f89fe5b04541ab507cdb59ff7b44534d4ba3c668a426c6450a03434e",
+                        "name":  "VCRUNTIME140_1.dll",
+                        "file_version":  "14.51.36247.0"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\VERSION.dll",
+                        "sha256":  "cea99f212af557a9613150c5509631403ed0f05f5d9a06ac42039bd59b40e39a",
+                        "name":  "VERSION.dll",
+                        "file_version":  "10.0.26100.1150 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "signer":  "CN=Microsoft Windows Hardware Compatibility Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\vulkan-1.dll",
+                        "authenticode_status":  "Valid",
+                        "name":  "vulkan-1.dll",
+                        "company":  "",
+                        "sha256":  "0f8b9d12b001932d4c0a86945215432ab9f746fdbf32688d211d3d93b791b139",
+                        "file_version":  "1.4.341.0"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\win32u.dll",
+                        "sha256":  "ad301c9614d1a769d165cd57d220c5000a5dacbab4b98c776c8f3d3ebf9876e4",
+                        "name":  "win32u.dll",
+                        "file_version":  "10.0.26100.9818 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\windows.staterepositorycore.dll",
+                        "sha256":  "c1c72a4db772ea90432fcf7bc236613f2462967de0ee4a88640bcde18efb8cac",
+                        "name":  "windows.staterepositorycore.dll",
+                        "file_version":  "10.0.26100.9818 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\System32\\WINTRUST.dll",
+                        "sha256":  "8e0330ecb240c0e2582e19bc03b0bd48209ff69045bb349b89c41a6f34eca09e",
+                        "name":  "WINTRUST.dll",
+                        "file_version":  "10.0.26100.9818 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\wldp.dll",
+                        "sha256":  "2fd7baf055f1cd968ad1c783f7414d8aaa24ef93dc25fb1eeabc60afa3e5d4ea",
+                        "name":  "wldp.dll",
+                        "file_version":  "10.0.26100.8875 (WinBuild.160101.0800)"
+                    },
+                    {
+                        "company":  "Microsoft Corporation",
+                        "path":  "C:\\WINDOWS\\SYSTEM32\\WTSAPI32.dll",
+                        "sha256":  "38ee662afee154b6d02c0fe28178d6f497c83f1b4ec6240cb34bf0f0d111ae75",
+                        "name":  "WTSAPI32.dll",
+                        "file_version":  "10.0.26100.9818 (WinBuild.160101.0800)"
+                    }
+                ],
+    "reason":  "Raw rendering exit status; independently inspect pixel tests, device identity, software controls and telemetry"
+}

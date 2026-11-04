@@ -2,3 +2,4 @@ evidence/** -text -whitespace
 upstream-fence-fix.patch -text -whitespace
 tools/*.py text eol=lf
 tools/*.ps1 text eol=lf
+*.patch -text -whitespace

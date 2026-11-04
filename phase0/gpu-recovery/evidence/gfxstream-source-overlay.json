@@ -1,0 +1,12 @@
+{
+  "scope": "One-line local build/safety correction; not upstream acceptance or a renderer port",
+  "baseline_commit": "94240f814c0097a63027ae680ea4bec7b0cb25f7",
+  "patch_sha256": "7c93abde082d824aa60ac4e0dac8474d987604f891ab9eca1277a923123c0fff",
+  "files": [
+    {
+      "path": "host/vulkan/vk_common_operations.cpp",
+      "original_sha256": "76f3e2f0e8a2a4e3b365d217c16b3b77c1e6b493705471e31e64c0f0a9b79963",
+      "patched_sha256": "92f9049cbb5e5e812e63abe14a25f9fffa596149091816b5da907735cb6ab170"
+    }
+  ]
+}

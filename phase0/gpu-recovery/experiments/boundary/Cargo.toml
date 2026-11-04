@@ -1,0 +1,11 @@
+[package]
+name = "dragonlord_boundary_probe"
+version = "0.0.1"
+edition = "2021"
+license = "BSD-3-Clause"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+rutabaga_gfx = { path = "../../src/rutabaga", version = "0.1.85" }

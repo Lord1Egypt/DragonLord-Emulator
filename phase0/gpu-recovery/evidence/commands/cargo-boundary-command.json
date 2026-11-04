@@ -1,0 +1,17 @@
+{
+  "executable": "C:\\DLGPU\\p06-20261104\\tools\\rust-1.88.0\\bin\\cargo.exe",
+  "arguments": [
+    "build",
+    "--manifest-path",
+    "C:\\DLGPU\\p06-20261104\\experiments\\boundary\\Cargo.toml",
+    "--release",
+    "--target",
+    "x86_64-pc-windows-msvc"
+  ],
+  "working_directory": "C:\\DLGPU\\p06-20261104\\experiments\\boundary",
+  "environment": {
+    "CARGO_TARGET_DIR": "C:\\DLGPU\\p06-20261104\\build\\rutabaga-ffi-core"
+  },
+  "timeout_seconds": 600,
+  "scope": "Actual pinned Rust type/HANDLE boundary helper, not Gfxstream"
+}

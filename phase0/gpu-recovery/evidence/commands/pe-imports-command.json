@@ -1,0 +1,12 @@
+{
+  "executable": "C:\\DLGPU\\p06-20261104\\tools\\clang+llvm-23.1.5-x86_64-pc-windows-msvc\\bin\\llvm-readobj.exe",
+  "arguments": [
+    "--coff-imports",
+    "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3\\gfxstream_backend.dll",
+    "C:\\DLGPU\\p06-20261104\\build\\rutabaga-ffi-gfx\\x86_64-pc-windows-msvc\\release\\rutabaga_gfx_ffi.dll",
+    "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3\\Vulkan_unittests.exe"
+  ],
+  "working_directory": "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3",
+  "timeout_seconds": 60,
+  "scope": "Static PE import provenance; dynamically loaded drivers separately captured at runtime"
+}

@@ -1,0 +1,301 @@
+﻿2026-11-04T03:39:45.4439139Z Current runner version: '2.338.2'
+2026-11-04T03:39:45.4461762Z ##[group]Runner Image Provisioner
+2026-11-04T03:39:45.4462568Z Hosted Compute Agent
+2026-11-04T03:39:45.4463115Z Version: 20261021.618
+2026-11-04T03:39:45.4463708Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-11-04T03:39:45.4464293Z Build Date: 2026-10-21T00:45:21Z
+2026-11-04T03:39:45.4464927Z Worker ID: {0b55095c-ae9f-48f0-b308-937b48f22719}
+2026-11-04T03:39:45.4465561Z Region: southcentralus
+2026-11-04T03:39:45.4466110Z Cloud: Azure
+2026-11-04T03:39:45.4466593Z ##[endgroup]
+2026-11-04T03:39:45.4468017Z ##[group]Operating System
+2026-11-04T03:39:45.4468622Z Ubuntu
+2026-11-04T03:39:45.4469143Z 24.04.5
+2026-11-04T03:39:45.4469575Z LTS
+2026-11-04T03:39:45.4470125Z ##[endgroup]
+2026-11-04T03:39:45.4470752Z ##[group]Runner Image
+2026-11-04T03:39:45.4471293Z Image: ubuntu-24.04
+2026-11-04T03:39:45.4471814Z Version: 20261025.353.1
+2026-11-04T03:39:45.4472941Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md
+2026-11-04T03:39:45.4474224Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353
+2026-11-04T03:39:45.4475099Z ##[endgroup]
+2026-11-04T03:39:45.4476040Z ##[group]GITHUB_TOKEN Permissions
+2026-11-04T03:39:45.4478245Z Contents: read
+2026-11-04T03:39:45.4478888Z Metadata: read
+2026-11-04T03:39:45.4479518Z ##[endgroup]
+2026-11-04T03:39:45.4482102Z Secret source: Actions
+2026-11-04T03:39:45.4482924Z Cache mode: write
+2026-11-04T03:39:45.4483850Z Prepare workflow directory
+2026-11-04T03:39:45.4759180Z Prepare all required actions
+2026-11-04T03:39:45.4799734Z Getting action download info
+2026-11-04T03:39:45.7141621Z Download action repository 'actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09' (SHA:fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09)
+2026-11-04T03:39:45.8420930Z Download action repository 'actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1' (SHA:ece7cb06caefa5fff74198d8649806c4678c61a1)
+2026-11-04T03:39:46.1830488Z Complete job name: Evidence and harness (ubuntu-24.04)
+2026-11-04T03:39:46.2545138Z ##[group]Run git config --global core.autocrlf false
+2026-11-04T03:39:46.2545811Z [36;1mgit config --global core.autocrlf false[0m
+2026-11-04T03:39:46.2566326Z shell: /usr/bin/bash -e {0}
+2026-11-04T03:39:46.2566930Z ##[endgroup]
+2026-11-04T03:39:46.3013533Z ##[group]Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+2026-11-04T03:39:46.3014154Z with:
+2026-11-04T03:39:46.3014495Z   fetch-depth: 0
+2026-11-04T03:39:46.3014887Z   persist-credentials: false
+2026-11-04T03:39:46.3015337Z   repository: Lord1Egypt/DragonLord-Emulator
+2026-11-04T03:39:46.3018456Z   token: ***
+2026-11-04T03:39:46.3018829Z   ssh-strict: true
+2026-11-04T03:39:46.3019194Z   ssh-user: git
+2026-11-04T03:39:46.3019539Z   clean: true
+2026-11-04T03:39:46.3019901Z   sparse-checkout-cone-mode: true
+2026-11-04T03:39:46.3020339Z   fetch-tags: false
+2026-11-04T03:39:46.3020913Z   show-progress: true
+2026-11-04T03:39:46.3021288Z   lfs: false
+2026-11-04T03:39:46.3021649Z   submodules: false
+2026-11-04T03:39:46.3022018Z   set-safe-directory: true
+2026-11-04T03:39:46.3022422Z   allow-unsafe-pr-checkout: false
+2026-11-04T03:39:46.3022837Z ##[endgroup]
+2026-11-04T03:39:46.7169372Z Syncing repository: Lord1Egypt/DragonLord-Emulator
+2026-11-04T03:39:46.7172116Z ##[group]Getting Git version info
+2026-11-04T03:39:46.7173164Z Working directory is '/home/runner/work/DragonLord-Emulator/DragonLord-Emulator'
+2026-11-04T03:39:46.7174738Z [command]/usr/bin/git version
+2026-11-04T03:39:46.7175370Z git version 2.56.0
+2026-11-04T03:39:46.7191958Z ##[endgroup]
+2026-11-04T03:39:46.7202205Z Copying '/home/runner/.gitconfig' to '/home/runner/work/_temp/0320acbd-3e25-477f-b17d-316d8d94d668/.gitconfig'
+2026-11-04T03:39:46.7211847Z Temporarily overriding HOME='/home/runner/work/_temp/0320acbd-3e25-477f-b17d-316d8d94d668' before making global git config changes
+2026-11-04T03:39:46.7213662Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-04T03:39:46.7216376Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/DragonLord-Emulator/DragonLord-Emulator
+2026-11-04T03:39:46.7261932Z Deleting the contents of '/home/runner/work/DragonLord-Emulator/DragonLord-Emulator'
+2026-11-04T03:39:46.7270943Z ##[group]Initializing the repository
+2026-11-04T03:39:46.7272224Z [command]/usr/bin/git init /home/runner/work/DragonLord-Emulator/DragonLord-Emulator
+2026-11-04T03:39:46.7381438Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-04T03:39:46.7382844Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-04T03:39:46.7383953Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-04T03:39:46.7384822Z hint: call:
+2026-11-04T03:39:46.7385296Z hint:
+2026-11-04T03:39:46.7385878Z hint: 	git config --global init.defaultBranch <name>
+2026-11-04T03:39:46.7386382Z hint:
+2026-11-04T03:39:46.7386867Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-04T03:39:46.7387668Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-04T03:39:46.7388421Z hint:
+2026-11-04T03:39:46.7388903Z hint: 	git branch -m <name>
+2026-11-04T03:39:46.7389451Z hint:
+2026-11-04T03:39:46.7390249Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-04T03:39:46.7391951Z Initialized empty Git repository in /home/runner/work/DragonLord-Emulator/DragonLord-Emulator/.git/
+2026-11-04T03:39:46.7402542Z [command]/usr/bin/git remote add origin https://github.com/Lord1Egypt/DragonLord-Emulator
+2026-11-04T03:39:46.7453425Z ##[endgroup]
+2026-11-04T03:39:46.7454430Z ##[group]Disabling automatic garbage collection
+2026-11-04T03:39:46.7457136Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-04T03:39:46.7493441Z ##[endgroup]
+2026-11-04T03:39:46.7500018Z ##[group]Setting up auth
+2026-11-04T03:39:46.7501348Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-04T03:39:46.7543719Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-04T03:39:46.8039265Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-04T03:39:46.8078752Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-04T03:39:46.8298540Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-04T03:39:46.8339792Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-04T03:39:46.8558228Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-04T03:39:46.8605376Z ##[endgroup]
+2026-11-04T03:39:46.8606101Z ##[group]Fetching the repository
+2026-11-04T03:39:46.8616315Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/* +1ab8e0c8ef8e0d03e486d6491d4e2464347f797d:refs/remotes/pull/1/merge
+2026-11-04T03:39:48.2696061Z From https://github.com/Lord1Egypt/DragonLord-Emulator
+2026-11-04T03:39:48.2697544Z  * [new branch]      main                                     -> origin/main
+2026-11-04T03:39:48.2699339Z  * [new branch]      phase0/architecture-feasibility          -> origin/phase0/architecture-feasibility
+2026-11-04T03:39:48.2701444Z  * [new ref]         1ab8e0c8ef8e0d03e486d6491d4e2464347f797d -> pull/1/merge
+2026-11-04T03:39:48.2704989Z ##[endgroup]
+2026-11-04T03:39:48.2706393Z ##[group]Determining the checkout info
+2026-11-04T03:39:48.2707523Z ##[endgroup]
+2026-11-04T03:39:48.2708223Z [command]/usr/bin/git sparse-checkout disable
+2026-11-04T03:39:48.2767954Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-04T03:39:48.2805617Z ##[group]Checking out the ref
+2026-11-04T03:39:48.2808465Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/1/merge
+2026-11-04T03:39:48.7573296Z Note: switching to 'refs/remotes/pull/1/merge'.
+2026-11-04T03:39:48.7574042Z 
+2026-11-04T03:39:48.7574407Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-11-04T03:39:48.7575158Z changes and commit them, and you can discard any commits you make in this
+2026-11-04T03:39:48.7575967Z state without impacting any branches by switching back to a branch.
+2026-11-04T03:39:48.7576378Z 
+2026-11-04T03:39:48.7576712Z If you want to create a new branch to retain commits you create, you may
+2026-11-04T03:39:48.7577605Z do so (now or later) by using -c with the switch command. Example:
+2026-11-04T03:39:48.7578016Z 
+2026-11-04T03:39:48.7578231Z   git switch -c <new-branch-name>
+2026-11-04T03:39:48.7578571Z 
+2026-11-04T03:39:48.7578789Z Or undo this operation with:
+2026-11-04T03:39:48.7579123Z 
+2026-11-04T03:39:48.7579301Z   git switch -
+2026-11-04T03:39:48.7579543Z 
+2026-11-04T03:39:48.7579886Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-11-04T03:39:48.7580321Z 
+2026-11-04T03:39:48.7581033Z HEAD is now at 1ab8e0c Merge 7904adf57c39288bd0b157c6f1d34bbd489c9dbc into c5447ed4baf97d93e3a87c62534ed7d300d288de
+2026-11-04T03:39:48.7594612Z ##[endgroup]
+2026-11-04T03:39:48.7643769Z [command]/usr/bin/git log -1 --format=%H
+2026-11-04T03:39:48.7675883Z 1ab8e0c8ef8e0d03e486d6491d4e2464347f797d
+2026-11-04T03:39:48.7685091Z ##[group]Removing auth
+2026-11-04T03:39:48.7688600Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-04T03:39:48.7725202Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-04T03:39:48.7949663Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-04T03:39:48.7983437Z http.https://github.com/.extraheader
+2026-11-04T03:39:48.7989699Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-04T03:39:48.8029535Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-04T03:39:48.8251043Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-04T03:39:48.8292034Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-04T03:39:48.8508713Z ##[endgroup]
+2026-11-04T03:39:48.8708166Z ##[group]Run actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+2026-11-04T03:39:48.8708671Z with:
+2026-11-04T03:39:48.8708988Z   python-version: 3.13
+2026-11-04T03:39:48.8709316Z   check-latest: false
+2026-11-04T03:39:48.8711673Z   token: ***
+2026-11-04T03:39:48.8712001Z   update-environment: true
+2026-11-04T03:39:48.8712356Z   allow-prereleases: false
+2026-11-04T03:39:48.8712701Z   freethreaded: false
+2026-11-04T03:39:48.8713028Z ##[endgroup]
+2026-11-04T03:39:48.9887656Z ##[group]Installed versions
+2026-11-04T03:39:48.9963808Z Successfully set up CPython (3.13.17)
+2026-11-04T03:39:48.9964854Z ##[endgroup]
+2026-11-04T03:39:49.0082454Z ##[group]Run python phase0/gpu-recovery/tools/verify-evidence.py --include-recovery
+2026-11-04T03:39:49.0083183Z [36;1mpython phase0/gpu-recovery/tools/verify-evidence.py --include-recovery[0m
+2026-11-04T03:39:49.0144385Z shell: /usr/bin/bash -e {0}
+2026-11-04T03:39:49.0144809Z env:
+2026-11-04T03:39:49.0145220Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T03:39:49.0145788Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+2026-11-04T03:39:49.0146329Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T03:39:49.0147105Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T03:39:49.0147640Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T03:39:49.0148137Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+2026-11-04T03:39:49.0148576Z ##[endgroup]
+2026-11-04T03:39:49.8623875Z phase0: PASS 77 artifacts (integrity only)
+2026-11-04T03:39:49.8624625Z phase0/gpu-feasibility: PASS 43 artifacts (integrity only)
+2026-11-04T03:39:49.8625172Z phase0/gpu-recovery: PASS 23 artifacts (integrity only)
+2026-11-04T03:39:49.9339988Z ##[group]Run python -m unittest discover -s phase0/tests -v
+2026-11-04T03:39:49.9340413Z [36;1mpython -m unittest discover -s phase0/tests -v[0m
+2026-11-04T03:39:49.9340980Z [36;1mpython -m unittest discover -s phase0/gpu-feasibility/tests -v[0m
+2026-11-04T03:39:49.9341343Z [36;1mpython -m unittest discover -s phase0/gpu-recovery/tests -v[0m
+2026-11-04T03:39:49.9361252Z shell: /usr/bin/bash -e {0}
+2026-11-04T03:39:49.9361477Z env:
+2026-11-04T03:39:49.9361735Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T03:39:49.9362083Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+2026-11-04T03:39:49.9362411Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T03:39:49.9362710Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T03:39:49.9363002Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T03:39:49.9363311Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+2026-11-04T03:39:49.9363644Z ##[endgroup]
+2026-11-04T03:39:51.5315786Z test_accessible_kvm_can_proceed_to_runtime_test (test_experiment.EvidenceGateTests.test_accessible_kvm_can_proceed_to_runtime_test) ... ok
+2026-11-04T03:39:51.5317512Z test_authenticated_command_response_can_qualify_diagnostic_only (test_experiment.EvidenceGateTests.test_authenticated_command_response_can_qualify_diagnostic_only) ... ok
+2026-11-04T03:39:51.5326645Z test_bad_download_is_not_promoted_to_verified_artifact (test_experiment.EvidenceGateTests.test_bad_download_is_not_promoted_to_verified_artifact) ... ok
+2026-11-04T03:39:51.5343300Z test_blocked_smoke_cannot_claim_android_or_gpu_pass (test_experiment.EvidenceGateTests.test_blocked_smoke_cannot_claim_android_or_gpu_pass) ... ok
+2026-11-04T03:39:51.5344209Z test_echoed_command_does_not_establish_guest_readiness (test_experiment.EvidenceGateTests.test_echoed_command_does_not_establish_guest_readiness) ... ok
+2026-11-04T03:39:51.5345359Z test_hardware_command_has_one_accelerator_and_snapshot_disk (test_experiment.EvidenceGateTests.test_hardware_command_has_one_accelerator_and_snapshot_disk) ... ok
+2026-11-04T03:39:51.5346628Z test_marker_requires_returned_architecture (test_experiment.EvidenceGateTests.test_marker_requires_returned_architecture) ... ok
+2026-11-04T03:39:51.5347286Z {
+2026-11-04T03:39:51.5347464Z   "schema": 1,
+2026-11-04T03:39:51.5347692Z   "scope": "Linux diagnostic boot only",
+2026-11-04T03:39:51.5347931Z   "status": "BLOCKED",
+2026-11-04T03:39:51.5348861Z test_missing_kvm_blocks_instead_of_falling_back (test_experiment.EvidenceGateTests.test_missing_kvm_blocks_instead_of_falling_back) ... ok
+2026-11-04T03:39:51.5349557Z   "accelerator": "whpx",
+2026-11-04T03:39:51.5350238Z test_whpx_never_qualifies_under_wsl_or_linux (test_experiment.EvidenceGateTests.test_whpx_never_qualifies_under_wsl_or_linux) ... ok
+2026-11-04T03:39:51.5351038Z 
+2026-11-04T03:39:51.5351229Z ----------------------------------------------------------------------
+2026-11-04T03:39:51.5351658Z Ran 9 tests in 0.003s
+2026-11-04T03:39:51.5351826Z 
+2026-11-04T03:39:51.5351936Z OK
+2026-11-04T03:39:51.5352150Z   "hardware": {
+2026-11-04T03:39:51.5352434Z     "timestamp_utc": "2026-11-04T03:39:51.533191+00:00",
+2026-11-04T03:39:51.5352802Z     "platform": "Linux",
+2026-11-04T03:39:51.5353076Z     "release": "7.0.0-1017-azure",
+2026-11-04T03:39:51.5353351Z     "machine": "x86_64",
+2026-11-04T03:39:51.5353648Z     "logical_cpu_count": 4,
+2026-11-04T03:39:51.5353940Z     "device_access": {
+2026-11-04T03:39:51.5354750Z       "/dev/kvm": {
+2026-11-04T03:39:51.5354997Z         "exists": true,
+2026-11-04T03:39:51.5355274Z         "read_write": false
+2026-11-04T03:39:51.5355540Z       },
+2026-11-04T03:39:51.5355754Z       "/dev/dri": {
+2026-11-04T03:39:51.5355992Z         "exists": true,
+2026-11-04T03:39:51.5356253Z         "read_write": false
+2026-11-04T03:39:51.5356507Z       },
+2026-11-04T03:39:51.5356720Z       "/dev/dxg": {
+2026-11-04T03:39:51.5356962Z         "exists": false,
+2026-11-04T03:39:51.5357440Z         "read_write": false
+2026-11-04T03:39:51.5357711Z       }
+2026-11-04T03:39:51.5357919Z     },
+2026-11-04T03:39:51.5358133Z     "tools": {
+2026-11-04T03:39:51.5358369Z       "cc": "/usr/bin/cc",
+2026-11-04T03:39:51.5358647Z       "make": "/usr/bin/make",
+2026-11-04T03:39:51.5358960Z       "pkg-config": "/usr/bin/pkg-config",
+2026-11-04T03:39:51.5359280Z       "adb": null,
+2026-11-04T03:39:51.5359525Z       "vulkaninfo": null,
+2026-11-04T03:39:51.5359805Z       "powershell.exe": null
+2026-11-04T03:39:51.5360085Z     }
+2026-11-04T03:39:51.5360293Z   },
+2026-11-04T03:39:51.5360528Z   "android16": "NOT_TESTED",
+2026-11-04T03:39:51.5361002Z   "gpu": "NOT_TESTED",
+2026-11-04T03:39:51.5361266Z   "kernelsu": "NOT_TESTED",
+2026-11-04T03:39:51.5361780Z   "reason": "Native Windows WHPX execution unavailable in this process; WSL is not a WHPX test host"
+2026-11-04T03:39:51.5362214Z }
+2026-11-04T03:39:51.6174456Z test_blocked_record_is_not_upgraded_by_console (test_evidence.EvidenceIntegrityTests.test_blocked_record_is_not_upgraded_by_console) ... ok
+2026-11-04T03:39:51.6179895Z test_command_echo_cannot_qualify_retained_boot (test_evidence.EvidenceIntegrityTests.test_command_echo_cannot_qualify_retained_boot) ... ok
+2026-11-04T03:39:51.6184081Z test_fallback_cannot_qualify_retained_boot (test_evidence.EvidenceIntegrityTests.test_fallback_cannot_qualify_retained_boot) ... ok
+2026-11-04T03:39:51.6188584Z test_index_cannot_escape_evidence_tree (test_evidence.EvidenceIntegrityTests.test_index_cannot_escape_evidence_tree) ... ok
+2026-11-04T03:39:51.6192649Z test_original_tcg_64bit_nonce_is_accepted (test_evidence.EvidenceIntegrityTests.test_original_tcg_64bit_nonce_is_accepted) ... ok
+2026-11-04T03:39:51.6196142Z test_original_windows_128bit_nonce_is_accepted (test_evidence.EvidenceIntegrityTests.test_original_windows_128bit_nonce_is_accepted) ... ok
+2026-11-04T03:39:51.6206625Z test_tampered_log_fails_hash_validation (test_evidence.EvidenceIntegrityTests.test_tampered_log_fails_hash_validation) ... ok
+2026-11-04T03:39:51.6210216Z test_wrong_returned_architecture_is_rejected (test_evidence.EvidenceIntegrityTests.test_wrong_returned_architecture_is_rejected) ... ok
+2026-11-04T03:39:51.6211037Z 
+2026-11-04T03:39:51.6211171Z ----------------------------------------------------------------------
+2026-11-04T03:39:51.6211448Z Ran 8 tests in 0.018s
+2026-11-04T03:39:51.6211561Z 
+2026-11-04T03:39:51.6211641Z OK
+2026-11-04T03:39:51.6822912Z test_duplicate_path_fails (test_integrity.IntegrityTests.test_duplicate_path_fails) ... ok
+2026-11-04T03:39:51.6827609Z test_exact_bytes_pass (test_integrity.IntegrityTests.test_exact_bytes_pass) ... ok
+2026-11-04T03:39:51.6834840Z test_line_ending_rewrite_fails (test_integrity.IntegrityTests.test_line_ending_rewrite_fails) ... ok
+2026-11-04T03:39:51.6841658Z test_parent_escape_fails (test_integrity.IntegrityTests.test_parent_escape_fails) ... ok
+2026-11-04T03:39:51.6842105Z 
+2026-11-04T03:39:51.6842285Z ----------------------------------------------------------------------
+2026-11-04T03:39:51.6842705Z Ran 4 tests in 0.003s
+2026-11-04T03:39:51.6842862Z 
+2026-11-04T03:39:51.6842926Z OK
+2026-11-04T03:39:51.6972271Z ##[group]Run python -m pip install ruff==0.14.4
+2026-11-04T03:39:51.6972581Z [36;1mpython -m pip install ruff==0.14.4[0m
+2026-11-04T03:39:51.6990809Z shell: /usr/bin/bash -e {0}
+2026-11-04T03:39:51.6991011Z env:
+2026-11-04T03:39:51.6991228Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T03:39:51.6991567Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+2026-11-04T03:39:51.6992063Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T03:39:51.6992364Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T03:39:51.6992653Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T03:39:51.6992946Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+2026-11-04T03:39:51.6993201Z ##[endgroup]
+2026-11-04T03:39:53.9124432Z Collecting ruff==0.14.4
+2026-11-04T03:39:53.9928072Z   Downloading ruff-0.14.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (25 kB)
+2026-11-04T03:39:54.0281125Z Downloading ruff-0.14.4-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.4 MB)
+2026-11-04T03:39:54.3096050Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.4/13.4 MB 51.5 MB/s  0:00:00
+2026-11-04T03:39:54.4095094Z Installing collected packages: ruff
+2026-11-04T03:39:54.5894751Z Successfully installed ruff-0.14.4
+2026-11-04T03:39:54.5901170Z 
+2026-11-04T03:39:54.5901539Z [notice] A new release of pip is available: 26.2.2 -> 26.3
+2026-11-04T03:39:54.5902002Z [notice] To update, run: pip install --upgrade pip
+2026-11-04T03:39:54.6610969Z ##[group]Run python -m ruff check --select E9,F63,F7,F82 phase0/tools phase0/tests phase0/gpu-feasibility/tools phase0/gpu-feasibility/tests phase0/gpu-recovery/tools phase0/gpu-recovery/tests
+2026-11-04T03:39:54.6612000Z [36;1mpython -m ruff check --select E9,F63,F7,F82 phase0/tools phase0/tests phase0/gpu-feasibility/tools phase0/gpu-feasibility/tests phase0/gpu-recovery/tools phase0/gpu-recovery/tests[0m
+2026-11-04T03:39:54.6631041Z shell: /usr/bin/bash -e {0}
+2026-11-04T03:39:54.6631252Z env:
+2026-11-04T03:39:54.6631471Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T03:39:54.6631813Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib/pkgconfig
+2026-11-04T03:39:54.6632147Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T03:39:54.6632457Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T03:39:54.6632762Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.17/x64
+2026-11-04T03:39:54.6633087Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.17/x64/lib
+2026-11-04T03:39:54.6633340Z ##[endgroup]
+2026-11-04T03:39:54.6936559Z All checks passed!
+2026-11-04T03:39:54.7042595Z Post job cleanup.
+2026-11-04T03:39:54.8329681Z Post job cleanup.
+2026-11-04T03:39:54.9099416Z [command]/usr/bin/git version
+2026-11-04T03:39:54.9140137Z git version 2.56.0
+2026-11-04T03:39:54.9172276Z Copying '/home/runner/.gitconfig' to '/home/runner/work/_temp/6afa5365-761b-4884-888e-674ef028c438/.gitconfig'
+2026-11-04T03:39:54.9181502Z Temporarily overriding HOME='/home/runner/work/_temp/6afa5365-761b-4884-888e-674ef028c438' before making global git config changes
+2026-11-04T03:39:54.9182396Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-04T03:39:54.9186130Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/DragonLord-Emulator/DragonLord-Emulator
+2026-11-04T03:39:54.9238038Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-04T03:39:54.9278867Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-04T03:39:54.9533424Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-04T03:39:54.9573824Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-04T03:39:54.9831419Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-04T03:39:54.9872527Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-04T03:39:55.0323278Z Cleaning up orphan processes
+

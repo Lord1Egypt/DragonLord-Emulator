@@ -1,0 +1,21 @@
+﻿{
+    "scope":  "Native development command only; no implicit GPU qualification",
+    "status":  "PASS",
+    "timestamp_utc":  "2026-11-04T04:14:57.8218568Z",
+    "command":  {
+                    "executable":  "C:\\DLGPU\\p06-20261104\\experiments\\abi-corrected.exe",
+                    "arguments":  [
+                                      "C:\\DLGPU\\p06-20261104\\build\\rutabaga-ffi-core\\x86_64-pc-windows-msvc\\release\\dragonlord_boundary_probe.dll",
+                                      "C:\\DLGPU\\p06-20261104\\build\\rutabaga-ffi-gfx\\x86_64-pc-windows-msvc\\release\\rutabaga_gfx_ffi.dll",
+                                      "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3"
+                                  ],
+                    "working_directory":  "C:\\DLGPU\\p06-20261104\\experiments",
+                    "timeout_seconds":  60,
+                    "scope":  "Gfxstream-enabled FFI DLL load plus actual CPU core ABI tests; GPU decoder path NOT TESTED"
+                },
+    "process_id":  6528,
+    "exit_code":  0,
+    "timed_out":  false,
+    "executable_sha256":  "a3c12a50b4320c4807761d0776e3aeffc3655e9a39110d3c9f53948a28174a01",
+    "reason":  "Raw command exit status only; inspect output and test counts for qualification"
+}

@@ -1,0 +1,17 @@
+{
+  "executable": "C:\\DLGPU\\p06-20261104\\tools\\rust-1.88.0\\bin\\cargo.exe",
+  "arguments": [
+    "build",
+    "--manifest-path",
+    "C:\\DLGPU\\p06-20261104\\src\\rutabaga\\ffi\\Cargo.toml",
+    "--release",
+    "--target",
+    "x86_64-pc-windows-msvc"
+  ],
+  "working_directory": "C:\\DLGPU\\p06-20261104\\src\\rutabaga",
+  "environment": {
+    "CARGO_TARGET_DIR": "C:\\DLGPU\\p06-20261104\\build\\rutabaga-ffi-core"
+  },
+  "timeout_seconds": 1200,
+  "scope": "Pinned Windows FFI core build, gfxstream feature not enabled"
+}

@@ -1,0 +1,19 @@
+{
+  "executable": "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3\\Vulkan_unittests.exe",
+  "arguments": [
+    "--gtest_filter=CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor",
+    "--gtest_repeat=30",
+    "--gtest_output=xml:C:\\DLGPU\\p06-20261104\\results\\gfx-pdh-software\\gtest.xml"
+  ],
+  "working_directory": "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3",
+  "environment": {
+    "DLGPU_EXPECT_VENDOR": "0x1ae0",
+    "DLGPU_EXPECT_TYPE": "4",
+    "VK_DRIVER_FILES": "C:\\Program Files\\Google\\Chrome\\Application\\156.0.8078.80\\vk_swiftshader_icd.json",
+    "VK_ICD_FILENAMES": null,
+    "ANDROID_EMU_VK_ICD": null,
+    "VK_LOADER_DEBUG": "driver"
+  },
+  "timeout_seconds": 90,
+  "scope": "Same pinned Gfxstream compositor workload with explicit device type/vendor assertion and pixel readback"
+}

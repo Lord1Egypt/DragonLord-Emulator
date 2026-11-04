@@ -2,6 +2,7 @@
 """Fetch exact source pins required by the callback tests; install nothing."""
 from pathlib import Path
 import subprocess
+import argparse
 
 PHASE = Path(__file__).resolve().parents[2]
 SOURCES = [
@@ -11,7 +12,16 @@ SOURCES = [
 
 
 def main():
-    for directory, url, pin in SOURCES:
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--native', action='store_true', help='Also fetch pinned Gfxstream and GoogleTest')
+    a = p.parse_args()
+    sources = list(SOURCES)
+    if a.native:
+        sources += [
+            ('gfxstream-gpu-feasibility', 'https://github.com/google/gfxstream.git', '94240f814c0097a63027ae680ea4bec7b0cb25f7'),
+            ('gpu-recovery/googletest', 'https://github.com/google/googletest.git', '52eb8108c5bdec04579160ae17225d66034bd723'),
+        ]
+    for directory, url, pin in sources:
         path = PHASE / ".work" / directory
         if not path.exists():
             path.mkdir(parents=True)

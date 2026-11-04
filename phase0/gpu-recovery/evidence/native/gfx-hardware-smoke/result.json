@@ -1,0 +1,24 @@
+﻿{
+    "scope":  "Native development command only; no implicit GPU qualification",
+    "status":  "FAIL",
+    "timestamp_utc":  "2026-11-04T04:07:13.7283176Z",
+    "command":  {
+                    "executable":  "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3\\Vulkan_unittests.exe",
+                    "arguments":  [
+                                      "--gtest_filter=CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor",
+                                      "--gtest_output=xml:C:\\DLGPU\\p06-20261104\\results\\gfx-hardware-smoke\\gtest.xml"
+                                  ],
+                    "working_directory":  "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3",
+                    "timeout_seconds":  90,
+                    "environment":  {
+                                        "ANDROID_EMU_VK_ICD":  "",
+                                        "VK_DRIVER_FILES":  "",
+                                        "VK_ICD_FILENAMES":  ""
+                                    },
+                    "scope":  "Actual pinned Gfxstream compositor pixel tests, hardware attribution pending"
+                },
+    "exit_code":  -1073740791,
+    "timed_out":  false,
+    "executable_sha256":  "f9893bb32ac4699eb3f1b8970a8358ce447dbae837cc2225fe33d85317208c5b",
+    "reason":  "Raw command exit status only; inspect output and test counts for qualification"
+}

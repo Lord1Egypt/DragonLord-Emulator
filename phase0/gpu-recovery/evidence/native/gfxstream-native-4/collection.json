@@ -1,0 +1,61 @@
+{
+  "scope": "Exact raw log bytes, lossless gzip when large; no binaries or ETL copied",
+  "files": [
+    {
+      "file": "build.stderr.log",
+      "raw_bytes": 0,
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stored_as": "build.stderr.log",
+      "stored_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "build.stdout.log",
+      "raw_bytes": 52660209,
+      "raw_sha256": "db731c4f5fd86721bb5861bfe51fdd56a30bcebfac21d70530803e9d09e04337",
+      "stored_as": "build.stdout.log.gz",
+      "stored_sha256": "a31fd9edd4c8d8985c97a3e8cf347fecf4406e5fd36f41688fb94e18392e98bc"
+    },
+    {
+      "file": "capture-vcvars.cmd",
+      "raw_bytes": 153,
+      "raw_sha256": "e1ad75ceef8c54dedd51a07ff0712262e8a701b086aba20ce20d625271e46529",
+      "stored_as": "capture-vcvars.cmd",
+      "stored_sha256": "e1ad75ceef8c54dedd51a07ff0712262e8a701b086aba20ce20d625271e46529"
+    },
+    {
+      "file": "clang-version.stderr.log",
+      "raw_bytes": 0,
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stored_as": "clang-version.stderr.log",
+      "stored_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "clang-version.stdout.log",
+      "raw_bytes": 269,
+      "raw_sha256": "e0d610d5332b149cfae14dc7b23c89573ed192ba4e7df5fd79c5666e5b75ecfb",
+      "stored_as": "clang-version.stdout.log",
+      "stored_sha256": "e0d610d5332b149cfae14dc7b23c89573ed192ba4e7df5fd79c5666e5b75ecfb"
+    },
+    {
+      "file": "configure.stderr.log",
+      "raw_bytes": 294,
+      "raw_sha256": "b7fb1838c19ee217cf542fad10970ff2d97815a316d38e38e9073102c618dd93",
+      "stored_as": "configure.stderr.log",
+      "stored_sha256": "b7fb1838c19ee217cf542fad10970ff2d97815a316d38e38e9073102c618dd93"
+    },
+    {
+      "file": "configure.stdout.log",
+      "raw_bytes": 137,
+      "raw_sha256": "9526724374791185bb3894746bdd0c3cc71898c3d70adf4c0be4a361009667e5",
+      "stored_as": "configure.stdout.log",
+      "stored_sha256": "9526724374791185bb3894746bdd0c3cc71898c3d70adf4c0be4a361009667e5"
+    },
+    {
+      "file": "result.json",
+      "raw_bytes": 8089,
+      "raw_sha256": "e3dd414904847560739a7cf05c51914fb06677852aeb76e6c55c48865045eb42",
+      "stored_as": "result.json",
+      "stored_sha256": "e3dd414904847560739a7cf05c51914fb06677852aeb76e6c55c48865045eb42"
+    }
+  ]
+}

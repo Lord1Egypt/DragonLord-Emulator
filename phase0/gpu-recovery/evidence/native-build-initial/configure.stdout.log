@@ -1,0 +1,7 @@
+-- The C compiler identification is Clang 23.1.5 with MSVC-like command-line
+-- The CXX compiler identification is Clang 23.1.5 with MSVC-like command-line
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - failed
+-- Check for working C compiler: C:/DLGPU/p06-20261104/tools/clang+llvm-23.1.5-x86_64-pc-windows-msvc/bin/clang-cl.exe
+-- Check for working C compiler: C:/DLGPU/p06-20261104/tools/clang+llvm-23.1.5-x86_64-pc-windows-msvc/bin/clang-cl.exe - broken
+-- Configuring incomplete, errors occurred!

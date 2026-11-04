@@ -1,0 +1,12 @@
+{
+  "scope": "Exact raw log bytes, lossless gzip when large; no binaries or ETL copied",
+  "files": [
+    {
+      "file": "result.json",
+      "raw_bytes": 1779,
+      "raw_sha256": "2ce5703a2e995ca47bce61e450a3e7dcd5e20261d3b126eef3cd0e99c8d15428",
+      "stored_as": "result.json",
+      "stored_sha256": "2ce5703a2e995ca47bce61e450a3e7dcd5e20261d3b126eef3cd0e99c8d15428"
+    }
+  ]
+}

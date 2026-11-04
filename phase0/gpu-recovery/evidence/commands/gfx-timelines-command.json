@@ -1,0 +1,11 @@
+{
+  "executable": "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3\\Vulkan_unittests.exe",
+  "arguments": [
+    "--gtest_filter=VirtioGpuTimelinesTest.*",
+    "--gtest_repeat=20",
+    "--gtest_output=xml:C:\\DLGPU\\p06-20261104\\results\\gfx-timelines\\gtest.xml"
+  ],
+  "working_directory": "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3",
+  "timeout_seconds": 60,
+  "scope": "Actual Gfxstream CPU timeline async callback tests; guest/QEMU and hardware fence lifecycle NOT TESTED"
+}

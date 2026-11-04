@@ -1,0 +1,161 @@
+Running main() from C:\DLGPU\p06-20261104\src\external\googletest\googletest\src\gtest_main.cc
+DeviceOpTrackerDeathTest.
+  OnQueueSubmissionAbortedMismatchedFence
+  UnfinishedBuilderTriggersFatal
+ExternalFencePoolDeathTest.
+  undestroyedFences
+VkCheckCallbacksDeathTest.
+  deviceLostCallbackShouldBeCalled
+  deviceLostCallbackShouldNotBeCalled
+  nullCallbacksShouldntCrash
+  nullVkDeviceLostErrorCallbackShouldntCrash
+VirtioGpuTimelinesTest.
+  Init
+  TasksShouldHaveDifferentIds
+  MultipleTasksAndFencesWithAsyncCallback
+  FencesWithoutPendingTasksWithAsyncCallback
+  FencesSharingSamePendingTasksWithAsyncCallback
+  TasksAndFencesOnMultipleContextsWithAsyncCallback
+  TasksAndFencesOnMultipleRingsWithAsyncCallback
+CompositorVkTest.
+  QueueSupportsComposition
+  Init
+  EmptyCompositionShouldDrawABlackFrame
+  SimpleComposition
+  BlendPremultiplied
+  Crop
+  SolidColor
+  SolidColorBelow
+  SolidColorAbove
+  Transformations
+  MultipleTargetsComposition
+  MultipleLayers
+DeviceOpTrackerTest.
+  OnQueueSubmissionAbortedDestroysCreatedFence
+  OnQueueSubmissionAbortedGuestFenceDoesNotDestroy
+  OnQueueSubmissionAbortedNullFence
+  OnQueueSubmittedWithFencePollsAndDestroysCreatedFence
+DisplayVkTest.
+  Init
+  PostWithoutSurfaceShouldntCrash
+  SimplePost
+  PostTwoColorBuffers
+  PostWithRotation
+  PostWithColorTransform
+  PostMultiDisplayComposition
+SwapChainStateVkTest.
+  init
+ExternalFencePoolTest.
+  poolNoDeviceFences
+  poolReuseSignalledFence
+  poolReuseSignalledFenceAsSignaled
+  poolUnsignalledFence
+  poolPopAll
+VkDecoderGlobalStateDescriptorUpdateTemplateTest.
+  linearizedEntriesSkipWholeArrays
+VkGuestMemoryUtilsTest.
+  Passthrough
+  ReserveAHardwareBuffer
+  VulkanAllocateDeviceMemoryOnly
+  VulkanMaxSafeHeapSizeUnset
+  VulkanMaxSafeHeapSizeSet
+  VulkanDisableCoherentMemoryAndEmulate
+  VulkanEnsureCachedCoherentMemoryAvailable
+  VulkanAllocateUncachedHostVisibleAsCached
+  VulkanAMDCoherentFlagsNotLeakedToGuest
+  MemoryBudgetClampedToClampedGuestHeapSize
+  MemoryBudgetWithinHeapSizesUnchanged
+  MemoryBudgetNullIsNoOp
+VkGuestQueueUtilsTest.
+  Passthrough
+  VulkanVirtualQueue
+  VulkanProtectedQueue
+  VulkanProtectedVirtualQueue
+  VulkanEtc2EmulationHidesTransferOnlyQueue
+  VulkanAstcEmulationHidesTransferOnlyQueue
+VkFormatUtilsTest.
+  GetTransferInfoInvalidFormat
+  GetTransferInfoRGBA
+  GetTransferInfoNV12OrNV21
+  GetTransferInfoYV12OrYV21
+  GetTransferInfoD24S8
+  PackUnpackD24S8RoundTrip
+  GetTransferInfoDepthStencilWithDepth
+  GetTransferInfoLargeExtentNoUint32Overflow
+  GetTransferInfoMultiPlaneLargeOffsetNoUint32Overflow
+  GetTransferInfoWidthAlignmentOverflowReturnsFalse
+  GetTransferInfoBC1
+  GetTransferInfoBC3
+  GetTransferInfoBC3SubBlockMipExtent
+VkMemoryAllocationHelperTest.
+  DriverAllocatedDeviceLocalMemory
+  NonDirectMappingRoundsUpUnalignedAllocationSizeToPageSize
+  NonDirectMappingRoundsUpPageSizedAllocationToNextPage
+  ImportColorBufferUsesHostMemoryTypeIndexEvenWhenGuestMemoryTypesShift
+  ImportColorBufferMissingDuringSnapshotLoadFallsBackToDriverWithoutHostEmulation
+  ImportColorBufferMissingOutsideSnapshotLoadIsRejected
+  ImportBufferPopulatesBoundBufferAndPreservesDedicatedAlloc
+  HostVisibleSharedMemorySystemBlobStrategyAlignsSizeWithoutSyscalls
+  HostVisibleExternalBlobChainsExportAllocateInfo
+  HostVisibleExternalBlobMapsWhenDeviceUsesAstcCpuDecompression
+  HostVisibleHeapMemoryStrategyAndPureFallbackUpdatesIndexAndCachingFlagsInSync
+  HostVisibleHeapMemoryIsSkippedWhenDedicatedOrFlagsStructIsChained
+  ExecuteImportColorBufferHostAllocationRejectsMissingHostPointer
+  ExecuteImportColorBufferHostAllocationChainsHostPointerInfo
+  ExecuteImportBufferHostAllocationRejectsMissingHostPointer
+  ExecuteImportBufferHostAllocationChainsHostPointerInfo
+  ExecuteHostVisibleHeapMemoryAllocatesBackingAndChainsHostPointer
+  ExecuteHostVisibleHeapMemoryPropagatesHostPointerPropertiesError
+  ExecuteHostVisibleSharedMemorySystemBlobAllocatesAndMapsSharedMemory
+  ExecuteHostVisibleSharedMemoryRejectsWhenNeitherUdmabufNorSystemBlobEnabled
+  ApplyHostPointerMemoryTypeBitsRejectsZeroMask
+  ApplyHostPointerMemoryTypeBitsRejectsOutOfRangeMask
+  ApplyHostPointerMemoryTypeBitsRejectsNonHostVisibleMaskWhenInitialTypeIsHostVisible
+  ApplyHostPointerMemoryTypeBitsRejectsNonHostVisibleMaskWhenInitialTypeIsNonHostVisible
+  ApplyHostPointerMemoryTypeBitsSelectsHostVisibleFallback
+  ChainedAllocateFlagsAndOpaqueCaptureAddressStructsArePreservedAcrossRepeatedCalls
+  ComputeCachingWriteCombinedMode
+  ComputeCachingUncachedMode
+  VirtioGpuNextEnablesDirectMappingWithoutGlDirectMem
+  GuestVulkanOnlyDisablesColorBufferGlInvalidation
+  SelectStrategyRejectsNullAllocateInfo
+  SelectStrategyRejectsNullOutPlan
+  ExecuteStrategyRejectsNullProvider
+  ExecuteStrategyRejectsNullPlan
+  MinImportedHostPointerAlignmentZeroIsNormalized
+  AllocationSizeOverflowRejectedInNonDirectMappingPageRounding
+  AllocationSizeOverflowRejectedInSharedMemoryAlignment
+  AllocationSizeOverflowRejectedInHeapMemoryAlignment
+  SelectStrategyRejectsOutOfRangeGuestMemoryTypeIndex
+  SelectStrategyRejectsOutOfRangeImportedColorBufferHostMemoryTypeIndex
+  SelectStrategyRejectsOutOfRangeImportedBufferHostMemoryTypeIndex
+  SelectStrategyRejectsMissingImportedBufferInfo
+  SelectStrategyRejectsHostVisibleHeapMemoryWithoutExternalMemoryHostProperties
+  ImportColorBufferAndroidAhbSkipsHostMapAfterAlloc
+VkQsriTImelineTest.
+  signalFirstRegisterCallbackLater
+  registerCallbackFirstSignalLater
+getVkInstanceProcAddrWithFallbackTest.
+  ShouldReturnNullOnFailure
+  ShouldSkipNullVkGetInstanceProcAddr
+  ShouldSkipNullFpReturned
+  firstVkInstanceProcAddrShouldTakeThePriority
+  firstNameShouldTakeThePriority
+MultiCrtp.
+  MultiCrtp
+vk_util.
+  vk_insert_struct
+ShaderFloatControls2WorkaroundTest.
+  FeatureSetRegistersAndTogglesFeature
+  ClearsFeatureInExtensionAndVulkan14Structs
+  ValidatesDeviceCreateInfoExtensionsAndFeatures
+AhbFormatMappingTest.
+  MapsVkFormatsAndBytesPerPixelConsistently
+VulkanTest.
+  Basic
+  StagingMemoryQuery
+VVLConfigurationTest.
+  ExactMatchingCaseInsensitive
+  ExcludeFilterPrecedence
+  FilterWithoutExplicitBehaviorDefaultsToPrint
+  FilterEnvironmentVariables

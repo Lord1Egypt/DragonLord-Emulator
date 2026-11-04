@@ -1,0 +1,26 @@
+﻿{
+    "scope":  "Native development command only; no implicit GPU qualification",
+    "status":  "PASS",
+    "timestamp_utc":  "2026-11-04T03:54:29.5228287Z",
+    "command":  {
+                    "executable":  "C:\\DLGPU\\p06-20261104\\tools\\rust-1.88.0\\bin\\cargo.exe",
+                    "arguments":  [
+                                      "build",
+                                      "--manifest-path",
+                                      "C:\\DLGPU\\p06-20261104\\experiments\\boundary\\Cargo.toml",
+                                      "--release",
+                                      "--target",
+                                      "x86_64-pc-windows-msvc"
+                                  ],
+                    "working_directory":  "C:\\DLGPU\\p06-20261104\\experiments\\boundary",
+                    "environment":  {
+                                        "CARGO_TARGET_DIR":  "C:\\DLGPU\\p06-20261104\\build\\rutabaga-ffi-core"
+                                    },
+                    "timeout_seconds":  600,
+                    "scope":  "Actual pinned Rust type/HANDLE boundary helper, not Gfxstream"
+                },
+    "exit_code":  0,
+    "timed_out":  false,
+    "executable_sha256":  "d9d1f16c0438e0e5e820b2bb40846e3cc6a023e0a835505c5c4b25664e46c3be",
+    "reason":  "Raw command exit status only; inspect output and test counts for qualification"
+}

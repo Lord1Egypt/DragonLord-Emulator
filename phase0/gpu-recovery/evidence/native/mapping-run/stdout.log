@@ -1,0 +1,15 @@
+{"case":"real_Win32_mapping_created","status":"PASS"}
+{"case":"bounded_lease_acquired","status":"PASS"}
+{"case":"overflow_and_range_rejected","status":"PASS"}
+{"case":"stale_generation_rejected","status":"PASS"}
+{"case":"Win32_unaligned_mapping_rejected","status":"PASS"}
+{"case":"active_reader_prevents_unmap","status":"PASS"}
+{"case":"retirement_stops_new_leases_and_callbacks","status":"PASS"}
+{"case":"retirement_after_reader_drain","status":"PASS"}
+{"case":"retirement_is_idempotent","status":"PASS"}
+{"case":"new_generation_does_not_accept_old_callback","status":"PASS"}
+{"case":"new_generation_retires","status":"PASS"}
+{"case":"concurrent_reader_drains_before_unmap","status":"PASS"}
+{"case":"one_hundred_mapping_lifecycles","status":"PASS"}
+{"case":"no_handle_growth_after_warmup","status":"PASS"}
+{"tests":14,"failures":0,"handles_before":57,"handles_after":57,"GPU":"NOT TESTED","QEMU":"NOT TESTED"}

@@ -1,0 +1,29 @@
+{
+  "sources": [
+    {
+      "name": "qemu",
+      "commit": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+      "repository": "https://gitlab.com/qemu-project/qemu.git"
+    },
+    {
+      "name": "gfxstream",
+      "commit": "94240f814c0097a63027ae680ea4bec7b0cb25f7",
+      "repository": "https://github.com/google/gfxstream.git"
+    },
+    {
+      "name": "rutabaga",
+      "commit": "4f2bcaf71a6497583362ed664d9fe21cc5043049",
+      "repository": "https://github.com/magma-gpu/rutabaga_gfx.git"
+    },
+    {
+      "name": "googletest",
+      "commit": "52eb8108c5bdec04579160ae17225d66034bd723",
+      "repository": "https://github.com/google/googletest.git"
+    }
+  ],
+  "upstream_fence_fix": "dbb53a7caa04d4e12e93f83511640247a2fd49d6",
+  "workflow_hashes": {
+    ".github/workflows/main.yml": "107367bd71eb22db78d4da8bf2fc8de8763cbdcae3961ddc0a05e6ed6eb4cfbc",
+    ".github/workflows/phase0-validation.yml": "d56096b517f770791c0230ed4f9ded5c439c9d7fc9e4766657616bede41d6b82"
+  }
+}

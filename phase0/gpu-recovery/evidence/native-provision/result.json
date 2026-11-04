@@ -1,0 +1,47 @@
+{
+  "scope": "Isolated tool/source extraction; native compilation and GPU NOT TESTED",
+  "status": "PASS",
+  "binaries": [
+    {
+      "path": "/mnt/c/DLGPU/p06-20261104/tools/clang+llvm-23.1.5-x86_64-pc-windows-msvc/bin/clang-cl.exe",
+      "sha256": "dd3634f32c562c92a2dc11e115df029a5abc5373f2ee6d640b26e2f68d656c01"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p06-20261104/tools/clang+llvm-23.1.5-x86_64-pc-windows-msvc/bin/lld-link.exe",
+      "sha256": "56d95ebd4ceeddcec7035ae38fd957f8eb3b2f35110c9d0e0cfe25d6f508bf96"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p06-20261104/tools/rust-1.88.0/bin/rustc.exe",
+      "sha256": "17e7448d6f213cdd41d1e4d8385a403e364c2b09c55b2b645f1afaf404adf1a6"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p06-20261104/tools/rust-1.88.0/bin/cargo.exe",
+      "sha256": "d9d1f16c0438e0e5e820b2bb40846e3cc6a023e0a835505c5c4b25664e46c3be"
+    }
+  ],
+  "sources": [
+    {
+      "commit": "94240f814c0097a63027ae680ea4bec7b0cb25f7",
+      "archive_sha256": "210a19efa8154531227490eed8df9d1ba1bc23f196b3c3165b0c7d9e1a46907b",
+      "native_path": "/mnt/c/DLGPU/p06-20261104/src/hardware/google/gfxstream",
+      "nonbuild_ci_symlink_omitted": true
+    },
+    {
+      "commit": "52eb8108c5bdec04579160ae17225d66034bd723",
+      "archive_sha256": "3a8fea2f310f73e090dbf10dc16260ab959cccf77bc5482f453d1f4bc3af4bcb",
+      "native_path": "/mnt/c/DLGPU/p06-20261104/src/external/googletest",
+      "nonbuild_ci_symlink_omitted": false
+    },
+    {
+      "commit": "4f2bcaf71a6497583362ed664d9fe21cc5043049",
+      "archive_sha256": "2149965587551d3bcf47ac2967b9c4effc0e60de057fce62e4bba6bdc069d0a5",
+      "native_path": "/mnt/c/DLGPU/p06-20261104/src/rutabaga",
+      "nonbuild_ci_symlink_omitted": false
+    }
+  ],
+  "archives": {
+    "clang+llvm-23.1.5-x86_64-pc-windows-msvc.tar.zst": "b2be33385ddc86e83511417a060de927ae8b09d1f3017cc3cdce5c73cd5029d7",
+    "rust-1.88.0-x86_64-pc-windows-msvc.tar.xz": "4c5bafcfbb25a2a3b21cb5934d18c70d370b504b518c0119fda51aee7887e7c2"
+  },
+  "reason": "Verified official archive subsets and pinned source archives extracted; no system installation"
+}

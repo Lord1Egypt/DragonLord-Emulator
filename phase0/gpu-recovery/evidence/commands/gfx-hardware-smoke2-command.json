@@ -1,0 +1,15 @@
+{
+  "executable": "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3\\Vulkan_unittests.exe",
+  "arguments": [
+    "--gtest_filter=CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor",
+    "--gtest_output=xml:C:\\DLGPU\\p06-20261104\\results\\gfx-hardware-smoke2\\gtest.xml"
+  ],
+  "working_directory": "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3",
+  "timeout_seconds": 90,
+  "environment": {
+    "ANDROID_EMU_VK_ICD": null,
+    "VK_DRIVER_FILES": null,
+    "VK_ICD_FILENAMES": null
+  },
+  "scope": "Actual pinned Gfxstream compositor pixel tests, hardware attribution pending"
+}

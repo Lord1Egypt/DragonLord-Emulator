@@ -1,0 +1,18 @@
+{
+  "executable": "C:\\DLGPU\\p06-20261104\\tools\\clang+llvm-23.1.5-x86_64-pc-windows-msvc\\bin\\clang-cl.exe",
+  "arguments": [
+    "/nologo",
+    "/DOBSERVE_UNCORRECTED_HEADER",
+    "/TC",
+    "/std:c11",
+    "/W3",
+    "/WX",
+    "/IC:\\DLGPU\\p06-20261104\\src\\rutabaga\\ffi\\src\\include",
+    "C:\\DLGPU\\p06-20261104\\experiments\\abi_probe.c",
+    "/FoC:\\DLGPU\\p06-20261104\\experiments\\abi-original-observe.obj",
+    "/FeC:\\DLGPU\\p06-20261104\\experiments\\abi-original-observe.exe"
+  ],
+  "working_directory": "C:\\DLGPU\\p06-20261104\\experiments",
+  "timeout_seconds": 120,
+  "scope": "C ABI compile assertion; original header is an explicit negative control"
+}

@@ -1,0 +1,27 @@
+﻿{
+    "scope":  "Native development command only; no implicit GPU qualification",
+    "status":  "FAIL",
+    "timestamp_utc":  "2026-11-04T04:13:18.6609164Z",
+    "command":  {
+                    "executable":  "C:\\DLGPU\\p06-20261104\\tools\\clang+llvm-23.1.5-x86_64-pc-windows-msvc\\bin\\clang-cl.exe",
+                    "arguments":  [
+                                      "/nologo",
+                                      "/TC",
+                                      "/std:c11",
+                                      "/W3",
+                                      "/WX",
+                                      "/IC:\\DLGPU\\p06-20261104\\src\\rutabaga\\ffi\\src\\include",
+                                      "C:\\DLGPU\\p06-20261104\\experiments\\abi_probe.c",
+                                      "/FoC:\\DLGPU\\p06-20261104\\experiments\\abi-original-assert.obj",
+                                      "/FeC:\\DLGPU\\p06-20261104\\experiments\\abi-original-assert.exe"
+                                  ],
+                    "working_directory":  "C:\\DLGPU\\p06-20261104\\experiments",
+                    "timeout_seconds":  120,
+                    "scope":  "C ABI compile assertion; original header is an explicit negative control"
+                },
+    "process_id":  18076,
+    "exit_code":  1,
+    "timed_out":  false,
+    "executable_sha256":  "dd3634f32c562c92a2dc11e115df029a5abc5373f2ee6d640b26e2f68d656c01",
+    "reason":  "Raw command exit status only; inspect output and test counts for qualification"
+}

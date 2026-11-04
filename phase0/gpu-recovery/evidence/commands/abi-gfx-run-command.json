@@ -1,0 +1,11 @@
+{
+  "executable": "C:\\DLGPU\\p06-20261104\\experiments\\abi-corrected.exe",
+  "arguments": [
+    "C:\\DLGPU\\p06-20261104\\build\\rutabaga-ffi-core\\x86_64-pc-windows-msvc\\release\\dragonlord_boundary_probe.dll",
+    "C:\\DLGPU\\p06-20261104\\build\\rutabaga-ffi-gfx\\x86_64-pc-windows-msvc\\release\\rutabaga_gfx_ffi.dll",
+    "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3"
+  ],
+  "working_directory": "C:\\DLGPU\\p06-20261104\\experiments",
+  "timeout_seconds": 60,
+  "scope": "Gfxstream-enabled FFI DLL load plus actual CPU core ABI tests; GPU decoder path NOT TESTED"
+}

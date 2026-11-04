@@ -1,0 +1,18 @@
+{
+  "executable": "C:\\DLGPU\\p06-20261104\\tools\\rust-1.88.0\\bin\\cargo.exe",
+  "arguments": [
+    "metadata",
+    "--manifest-path",
+    "C:\\DLGPU\\p06-20261104\\src\\rutabaga\\ffi\\Cargo.toml",
+    "--format-version",
+    "1",
+    "--locked",
+    "--features",
+    "gfxstream",
+    "--filter-platform",
+    "x86_64-pc-windows-msvc"
+  ],
+  "working_directory": "C:\\DLGPU\\p06-20261104\\src\\rutabaga",
+  "timeout_seconds": 120,
+  "scope": "Dependency metadata only"
+}

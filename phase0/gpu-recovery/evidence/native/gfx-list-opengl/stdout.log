@@ -1,0 +1,70 @@
+Running main() from C:\DLGPU\p06-20261104\src\external\googletest\googletest\src\gtest_main.cc
+FrameBufferTest.
+  FrameBufferBasic
+  CreateColorBuffer
+  CreateCloseColorBuffer
+  CreateOpenCloseColorBuffer
+  CreateOpenUpdateCloseColorBuffer
+  CreateOpenUpdateCloseColorBuffer_BGRA8888
+  CreateOpenUpdateCloseColorBuffer_ReadYUV420
+  CreateOpenUpdateCloseColorBuffer_ReadNV12
+  CreateOpenUpdateCloseColorBuffer_ReadNV12TOYUV420
+  CreateOpenUpdateCloseColorBuffer_ReadYV12
+  CreateOpenUpdateCloseColorBuffer_FormatChange
+  CreateOpenUpdateCloseColorBuffer_RGB565
+  Configs
+  CreateEmulatedEglContext
+  CreateEmulatedEglWindowSurface
+  CreateBindEmulatedEglContext
+  BasicBlit
+  SnapshotSmokeTest
+  SnapshotPreserveColorClear
+  SnapshotSingleColorBuffer
+  SnapshotColorBufferSubUpdateRestore
+  DrawCallRate
+  HostDrawCallRate
+  VulkanInteropQuery
+  CreateColorBufferBGRA
+  DISABLED_ReadColorBufferSwitchRedBlue
+  CreateMultiDisplay
+  BindMultiDisplayColorBuffer
+  SetMultiDisplayPosition
+  SetMultiDisplayColorTransform
+  ComposeMultiDisplay
+  CleanupProcGLObjects
+  ReusePuidBeforeAsyncCleanupCompletes
+RenderThreadDeadlockTest.
+  ReproDeadlockOnTeardown
+  ReproAsgFullMessageChannelDeadlockOnTeardown
+  CoalescedAsgConsumerStateFlags
+VsyncThread.
+  Basic
+  ChangePeriod
+GLTest.
+  TestGlFrustumNoCoreProfile
+  TextureDrawBasic
+StalePtrRegistry.
+  Constructor
+  Add
+  AddRemove
+  AddMakeStale
+  Get
+  GetDefaultVal
+  GetNonExisting
+  AddMakeStaleGetStale
+  AddMakeStaleGetStaleWithDelete
+  AddMakeStaleWithRemap
+  AddMakeStaleWithRemapNameCollision
+  AddMakeStaleTwice
+  AddMakeStaleTwiceWithCollision
+CombinedFramebufferBlitTest/CombinedFramebufferBlit.
+  DefaultDrawDefaultRead/0  # GetParam() = ClearColorParam(GLESApi_CM, fast blit)
+  DefaultDrawDefaultRead/1  # GetParam() = ClearColorParam(GLESApi_2, fast blit)
+  DefaultDrawDefaultRead/2  # GetParam() = ClearColorParam(GLESApi_3_0, fast blit)
+  NonDefault/0  # GetParam() = ClearColorParam(GLESApi_CM, fast blit)
+  NonDefault/1  # GetParam() = ClearColorParam(GLESApi_2, fast blit)
+  NonDefault/2  # GetParam() = ClearColorParam(GLESApi_3_0, fast blit)
+DefaultFramebufferBlitTest/NonDefaultFramebufferBlit.
+  NonDefaultDrawNonDefaultRead/0  # GetParam() = ClearColorParam(GLESApi_3_0, fast blit)
+  DefaultDrawNonDefaultRead/0  # GetParam() = ClearColorParam(GLESApi_3_0, fast blit)
+  NonDefaultDrawDefaultRead/0  # GetParam() = ClearColorParam(GLESApi_3_0, fast blit)

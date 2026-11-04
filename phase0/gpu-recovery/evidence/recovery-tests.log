@@ -1,0 +1,14 @@
+test_duplicate_path_fails (test_integrity.IntegrityTests.test_duplicate_path_fails) ... ok
+test_exact_bytes_pass (test_integrity.IntegrityTests.test_exact_bytes_pass) ... ok
+test_line_ending_rewrite_fails (test_integrity.IntegrityTests.test_line_ending_rewrite_fails) ... ok
+test_parent_escape_fails (test_integrity.IntegrityTests.test_parent_escape_fails) ... ok
+test_empty_test_selection_is_not_rendering (test_renderer_qualification.QualificationTests.test_empty_test_selection_is_not_rendering) ... ok
+test_invalid_positive_counters_cannot_prove_hardware (test_renderer_qualification.QualificationTests.test_invalid_positive_counters_cannot_prove_hardware) ... ok
+test_real_invalid_software_counters_never_count_as_zero (test_renderer_qualification.QualificationTests.test_real_invalid_software_counters_never_count_as_zero) ... ok
+test_software_module_in_hardware_run_blocks_qualification (test_renderer_qualification.QualificationTests.test_software_module_in_hardware_run_blocks_qualification) ... ok
+test_wrong_pid_cannot_prove_hardware (test_renderer_qualification.QualificationTests.test_wrong_pid_cannot_prove_hardware) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.057s
+
+OK
