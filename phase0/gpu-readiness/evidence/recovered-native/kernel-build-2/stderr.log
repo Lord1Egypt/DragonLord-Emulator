@@ -1,0 +1,135 @@
+In file included from C:\DLGPU\p07-20261104\experiments\kernel-observer.cpp:5:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\d3dkmthk.h(3098,13): error: unknown type name 'NTSTATUS'; did you mean 'LSTATUS'?
+ 3098 |             NTSTATUS    Status;                     // out
+      |             ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winreg.h(52,59): note: 'LSTATUS' declared here
+   52 | typedef _Return_type_success_(return==ERROR_SUCCESS) LONG LSTATUS;
+      |                                                           ^
+In file included from C:\DLGPU\p07-20261104\experiments\kernel-observer.cpp:5:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\d3dkmthk.h(5706,24): error: unknown type name 'NTSTATUS'; did you mean 'LSTATUS'?
+ 5706 | typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_CREATEALLOCATION)(_Inout_ D3DKMT_CREATEALLOCATION*);
+      |                        ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winreg.h(52,59): note: 'LSTATUS' declared here
+   52 | typedef _Return_type_success_(return==ERROR_SUCCESS) LONG LSTATUS;
+      |                                                           ^
+In file included from C:\DLGPU\p07-20261104\experiments\kernel-observer.cpp:5:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\d3dkmthk.h(5707,24): error: unknown type name 'NTSTATUS'; did you mean 'LSTATUS'?
+ 5707 | typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_CREATEALLOCATION2)(_Inout_ D3DKMT_CREATEALLOCATION*); // _ADVSCH_
+      |                        ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winreg.h(52,59): note: 'LSTATUS' declared here
+   52 | typedef _Return_type_success_(return==ERROR_SUCCESS) LONG LSTATUS;
+      |                                                           ^
+In file included from C:\DLGPU\p07-20261104\experiments\kernel-observer.cpp:5:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\d3dkmthk.h(5708,24): error: unknown type name 'NTSTATUS'; did you mean 'LSTATUS'?
+ 5708 | typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_QUERYRESOURCEINFO)(_Inout_ D3DKMT_QUERYRESOURCEINFO*);
+      |                        ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winreg.h(52,59): note: 'LSTATUS' declared here
+   52 | typedef _Return_type_success_(return==ERROR_SUCCESS) LONG LSTATUS;
+      |                                                           ^
+In file included from C:\DLGPU\p07-20261104\experiments\kernel-observer.cpp:5:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\d3dkmthk.h(5710,24): error: unknown type name 'NTSTATUS'; did you mean 'LSTATUS'?
+ 5710 | typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_QUERYRESOURCEINFOFROMNTHANDLE)(_Inout_ D3DKMT_QUERYRESOURCEINFOFROMNTHANDLE*);
+      |                        ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winreg.h(52,59): note: 'LSTATUS' declared here
+   52 | typedef _Return_type_success_(return==ERROR_SUCCESS) LONG LSTATUS;
+      |                                                           ^
+In file included from C:\DLGPU\p07-20261104\experiments\kernel-observer.cpp:5:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\d3dkmthk.h(5712,24): error: unknown type name 'NTSTATUS'; did you mean 'LSTATUS'?
+ 5712 | typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_SHAREOBJECTS)(
+      |                        ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winreg.h(52,59): note: 'LSTATUS' declared here
+   52 | typedef _Return_type_success_(return==ERROR_SUCCESS) LONG LSTATUS;
+      |                                                           ^
+In file included from C:\DLGPU\p07-20261104\experiments\kernel-observer.cpp:5:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\d3dkmthk.h(5719,24): error: unknown type name 'NTSTATUS'; did you mean 'LSTATUS'?
+ 5719 | typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_OPENNTHANDLEFROMNAME)(_Inout_ D3DKMT_OPENNTHANDLEFROMNAME*);
+      |                        ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winreg.h(52,59): note: 'LSTATUS' declared here
+   52 | typedef _Return_type_success_(return==ERROR_SUCCESS) LONG LSTATUS;
+      |                                                           ^
+In file included from C:\DLGPU\p07-20261104\experiments\kernel-observer.cpp:5:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\d3dkmthk.h(5720,24): error: unknown type name 'NTSTATUS'; did you mean 'LSTATUS'?
+ 5720 | typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_OPENRESOURCEFROMNTHANDLE)(_Inout_ D3DKMT_OPENRESOURCEFROMNTHANDLE*);
+      |                        ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winreg.h(52,59): note: 'LSTATUS' declared here
+   52 | typedef _Return_type_success_(return==ERROR_SUCCESS) LONG LSTATUS;
+      |                                                           ^
+In file included from C:\DLGPU\p07-20261104\experiments\kernel-observer.cpp:5:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\d3dkmthk.h(5721,24): error: unknown type name 'NTSTATUS'; did you mean 'LSTATUS'?
+ 5721 | typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_OPENSYNCOBJECTFROMNTHANDLE)(_Inout_ D3DKMT_OPENSYNCOBJECTFROMNTHANDLE*);
+      |                        ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winreg.h(52,59): note: 'LSTATUS' declared here
+   52 | typedef _Return_type_success_(return==ERROR_SUCCESS) LONG LSTATUS;
+      |                                                           ^
+In file included from C:\DLGPU\p07-20261104\experiments\kernel-observer.cpp:5:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\d3dkmthk.h(5723,24): error: unknown type name 'NTSTATUS'; did you mean 'LSTATUS'?
+ 5723 | typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_OPENRESOURCE)(_Inout_ D3DKMT_OPENRESOURCE*);
+      |                        ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winreg.h(52,59): note: 'LSTATUS' declared here
+   52 | typedef _Return_type_success_(return==ERROR_SUCCESS) LONG LSTATUS;
+      |                                                           ^
+In file included from C:\DLGPU\p07-20261104\experiments\kernel-observer.cpp:5:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\d3dkmthk.h(5724,24): error: unknown type name 'NTSTATUS'; did you mean 'LSTATUS'?
+ 5724 | typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_OPENRESOURCE2)(_Inout_ D3DKMT_OPENRESOURCE*); // _ADVSCH_
+      |                        ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winreg.h(52,59): note: 'LSTATUS' declared here
+   52 | typedef _Return_type_success_(return==ERROR_SUCCESS) LONG LSTATUS;
+      |                                                           ^
+In file included from C:\DLGPU\p07-20261104\experiments\kernel-observer.cpp:5:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\d3dkmthk.h(5725,24): error: unknown type name 'NTSTATUS'; did you mean 'LSTATUS'?
+ 5725 | typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_DESTROYALLOCATION)(_In_ CONST D3DKMT_DESTROYALLOCATION*);
+      |                        ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winreg.h(52,59): note: 'LSTATUS' declared here
+   52 | typedef _Return_type_success_(return==ERROR_SUCCESS) LONG LSTATUS;
+      |                                                           ^
+In file included from C:\DLGPU\p07-20261104\experiments\kernel-observer.cpp:5:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\d3dkmthk.h(5728,24): error: unknown type name 'NTSTATUS'; did you mean 'LSTATUS'?
+ 5728 | typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_DESTROYALLOCATION2)(_In_ CONST D3DKMT_DESTROYALLOCATION2*);
+      |                        ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winreg.h(52,59): note: 'LSTATUS' declared here
+   52 | typedef _Return_type_success_(return==ERROR_SUCCESS) LONG LSTATUS;
+      |                                                           ^
+In file included from C:\DLGPU\p07-20261104\experiments\kernel-observer.cpp:5:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\d3dkmthk.h(5731,24): error: unknown type name 'NTSTATUS'; did you mean 'LSTATUS'?
+ 5731 | typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_SETALLOCATIONPRIORITY)(_In_ CONST D3DKMT_SETALLOCATIONPRIORITY*);
+      |                        ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winreg.h(52,59): note: 'LSTATUS' declared here
+   52 | typedef _Return_type_success_(return==ERROR_SUCCESS) LONG LSTATUS;
+      |                                                           ^
+In file included from C:\DLGPU\p07-20261104\experiments\kernel-observer.cpp:5:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\d3dkmthk.h(5732,24): error: unknown type name 'NTSTATUS'; did you mean 'LSTATUS'?
+ 5732 | typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_QUERYALLOCATIONRESIDENCY)(_In_ CONST D3DKMT_QUERYALLOCATIONRESIDENCY*);
+      |                        ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winreg.h(52,59): note: 'LSTATUS' declared here
+   52 | typedef _Return_type_success_(return==ERROR_SUCCESS) LONG LSTATUS;
+      |                                                           ^
+In file included from C:\DLGPU\p07-20261104\experiments\kernel-observer.cpp:5:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\d3dkmthk.h(5733,24): error: unknown type name 'NTSTATUS'; did you mean 'LSTATUS'?
+ 5733 | typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_CREATEDEVICE)(_Inout_ D3DKMT_CREATEDEVICE*);
+      |                        ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winreg.h(52,59): note: 'LSTATUS' declared here
+   52 | typedef _Return_type_success_(return==ERROR_SUCCESS) LONG LSTATUS;
+      |                                                           ^
+In file included from C:\DLGPU\p07-20261104\experiments\kernel-observer.cpp:5:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\d3dkmthk.h(5734,24): error: unknown type name 'NTSTATUS'; did you mean 'LSTATUS'?
+ 5734 | typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_DESTROYDEVICE)(_In_ CONST D3DKMT_DESTROYDEVICE*);
+      |                        ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winreg.h(52,59): note: 'LSTATUS' declared here
+   52 | typedef _Return_type_success_(return==ERROR_SUCCESS) LONG LSTATUS;
+      |                                                           ^
+In file included from C:\DLGPU\p07-20261104\experiments\kernel-observer.cpp:5:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\d3dkmthk.h(5735,24): error: unknown type name 'NTSTATUS'; did you mean 'LSTATUS'?
+ 5735 | typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_CREATECONTEXT)(_Inout_ D3DKMT_CREATECONTEXT*);
+      |                        ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winreg.h(52,59): note: 'LSTATUS' declared here
+   52 | typedef _Return_type_success_(return==ERROR_SUCCESS) LONG LSTATUS;
+      |                                                           ^
+In file included from C:\DLGPU\p07-20261104\experiments\kernel-observer.cpp:5:
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared\d3dkmthk.h(5736,24): error: unknown type name 'NTSTATUS'; did you mean 'LSTATUS'?
+ 5736 | typedef _Check_return_ NTSTATUS (APIENTRY *PFND3DKMT_DESTROYCONTEXT)(_In_ CONST D3DKMT_DESTROYCONTEXT*);
+      |                        ^
+C:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um\winreg.h(52,59): note: 'LSTATUS' declared here
+   52 | typedef _Return_type_success_(return==ERROR_SUCCESS) LONG LSTATUS;
+      |                                                           ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.

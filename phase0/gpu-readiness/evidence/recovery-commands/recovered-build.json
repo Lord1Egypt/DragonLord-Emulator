@@ -1,0 +1,20 @@
+{
+  "executable": "C:\\DLGPU\\p06-20261104\\tools\\clang+llvm-23.1.5-x86_64-pc-windows-msvc\\bin\\clang-cl.exe",
+  "arguments": [
+    "/nologo",
+    "/std:c++17",
+    "/EHsc",
+    "/W4",
+    "/WX",
+    "C:\\DLGPU\\p07-20261104\\experiments\\kernel-observer-recovered.cpp",
+    "/FoC:\\DLGPU\\p07-20261104\\experiments\\kernel-observer-recovered.obj",
+    "/FeC:\\DLGPU\\p07-20261104\\experiments\\kernel-observer-recovered.exe",
+    "/link",
+    "gdi32.lib",
+    "dxgi.lib",
+    "psapi.lib"
+  ],
+  "working_directory": "C:\\DLGPU\\p07-20261104\\experiments",
+  "timeout_seconds": 120,
+  "scope": "Fixed writer compile only; GPU qualification separate"
+}

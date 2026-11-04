@@ -1,0 +1,4 @@
+==9==WARNING: ASan doesn't fully support makecontext/swapcontext functions and may produce false positives in some cases!
+==9==WARNING: ASan is ignoring requested __asan_handle_no_return: stack type: default top: 0x7ffdb68eb000; bottom 0x725100ffe000; size: 0x0dacb58ed000 (15035431571456)
+False positive error reports may follow
+For details see https://github.com/google/sanitizers/issues/189

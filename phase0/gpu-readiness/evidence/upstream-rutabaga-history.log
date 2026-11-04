@@ -1,0 +1,14 @@
+ca5d368f110b11d5a9565c211b8d40bb72a131ac virtio-gpu: fix memory leaks in virgl and rutabaga
+dbb53a7caa04d4e12e93f83511640247a2fd49d6 virtio-gpu-rutabaga: make sure ctx_ids match
+ab277b55859793e570593190f99a862664c14267 virtio-gpu: extract virtio_gpu_disable_scanout_for_resource helper
+04c150ddfc519d8e4c6b881294156a56114b635b virtio-gpu: consolidate disabling scanout
+0bee63d565c24c6b837c88b2000532f7ac4c5b79 virtio-gpu-rutabaga: fix scanout handling
+d814b44636d077c2704245cdcec811168253a56b hw/display/virtio-gpu: introduce virtio_gpu_{simple,virgl}_resource_new()
+eb2b3a1fa807f47515a1d86e434c60c981310bcd virtio-gpu: use g_try_malloc to avoid guest-triggered abort
+d513c644b89361ab645a50a627a1d846aefc3eb2 hw/display/virtio-gpu: Always reject invalid scanout bounds
+d541d7dc2fb4ee0d86ab7b4a7c466f0e8211d9d4 hw/display/virtio-gpu-rutabaga: zero-init capset info response
+5c9ef661a60ad737c61f4a872226376b5f2d424a hw/display/virtio-gpu: Block Rutabaga migration
+8ac0a1c7b98e11693db8fc6b390cc892b6e3e6c8 virtio-gpu: fix NULL deref in rutabaga set_scanout
+8720061c6d343c77b4f3a061cce631c05ecc0482 hw/display/virtio-gpu: cap submit_3d command buffer allocation
+405a42e36550e17598b007b144d19bc99caabfe3 ui/console: rename public API to use consistent qemu_console_ prefix
+4e4832dd72db59cf9348a5cb787fe65b738d7601 util/readline: Fix out-of-bounds access in readline_insert_char().

@@ -1,0 +1,29 @@
+{
+  "reviewed_base": "4de8297ab162e71b0271c5e9e6148c44b5ef360a",
+  "scope": "Interruption recovery milestone, not full Phase0.7 completion",
+  "recovery": "PASS",
+  "architecture_verdict": "NO-GO",
+  "original_error_controls": {
+    "json_column108": "FAIL retained",
+    "QOM_abstract_construction": "FAIL retained",
+    "deprecated_native_writer": "FAIL exit1 retained"
+  },
+  "corrected_checks": {
+    "QOM_safe_core_smoke": "PASS exit0",
+    "native_writer_compilation": "PASS exit0 under /WX",
+    "hardware_pixel_smoke": "PASS 3 tests",
+    "software_pixel_smoke": "PASS 3 tests",
+    "separate_trace_parsing": "PASS both",
+    "parser_regressions": "PASS 5 tests"
+  },
+  "broader_phase": {
+    "T1": "PARTIAL/BLOCKED",
+    "T2": "PARTIAL/BLOCKED",
+    "T3": "NOT IMPLEMENTED/NOT TESTED",
+    "T4": "NOT STARTED/NOT TESTED",
+    "T5": "NOT STARTED/NOT TESTED",
+    "T6": "BLOCKED/NOT ATTEMPTED",
+    "T7": "PARTIAL/BLOCKED for full phase"
+  },
+  "Android_KernelSU_migration_guest_GPU": "NOT STARTED"
+}

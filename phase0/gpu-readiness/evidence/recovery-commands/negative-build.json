@@ -1,0 +1,20 @@
+{
+  "executable": "C:\\DLGPU\\p06-20261104\\tools\\clang+llvm-23.1.5-x86_64-pc-windows-msvc\\bin\\clang-cl.exe",
+  "arguments": [
+    "/nologo",
+    "/std:c++17",
+    "/EHsc",
+    "/W4",
+    "/WX",
+    "C:\\DLGPU\\p07-20261104\\experiments\\kernel-observer-negative.cpp",
+    "/FoC:\\DLGPU\\p07-20261104\\experiments\\kernel-observer-negative.obj",
+    "/FeC:\\DLGPU\\p07-20261104\\experiments\\kernel-observer-negative.exe",
+    "/link",
+    "gdi32.lib",
+    "dxgi.lib",
+    "psapi.lib"
+  ],
+  "working_directory": "C:\\DLGPU\\p07-20261104\\experiments",
+  "timeout_seconds": 120,
+  "scope": "Original deprecated-writer FAIL control"
+}

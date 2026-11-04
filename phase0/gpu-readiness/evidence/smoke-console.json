@@ -1,0 +1,8 @@
+{
+  "scope": "Decoded tool console capture, not a GPU qualification",
+  "chunk_id": "60114c",
+  "wall_time_seconds": 0.000017529,
+  "exit_code": 0,
+  "original_token_count": 63,
+  "output": "Native status=PASS; wrapper exit=0; child exit=0\r\nResult: C:\\DLGPU\\p07-20261104\\results\\recovery-smoke-hardware\\result.json\r\nNative status=PASS; wrapper exit=0; child exit=0\r\nResult: C:\\DLGPU\\p07-20261104\\results\\recovery-smoke-software\\result.json\r\n"
+}

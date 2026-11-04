@@ -1,0 +1,1 @@
+Bail out! ERROR:../qemu-11.1.3/qom/object.c:495:object_initialize_with_type: assertion failed: (type->abstract == false)

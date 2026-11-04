@@ -1,0 +1,6 @@
+==10==WARNING: ASan doesn't fully support makecontext/swapcontext functions and may produce false positives in some cases!
+==10==WARNING: ASan is ignoring requested __asan_handle_no_return: stack type: default top: 0x7ffc2f5a7000; bottom 0x7d8bb17fe000; size: 0x02707dda9000 (2682171068416)
+False positive error reports may follow
+For details see https://github.com/google/sanitizers/issues/189
+**
+ERROR:../qemu-11.1.3/qom/object.c:495:object_initialize_with_type: assertion failed: (type->abstract == false)

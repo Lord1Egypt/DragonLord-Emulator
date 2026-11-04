@@ -1,0 +1,5 @@
+evidence/** -text -whitespace
+experiments/*.in text eol=lf
+experiments/*.cpp text eol=lf
+tools/*.py text eol=lf
+tools/*.ps1 text eol=lf

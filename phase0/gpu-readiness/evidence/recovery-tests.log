@@ -1,0 +1,10 @@
+test_actual_interleaved_record_still_fails_at_column_108 (test_trace_recovery.TraceRecoveryTests.test_actual_interleaved_record_still_fails_at_column_108) ... ok
+test_actual_recovered_trace_parses (test_trace_recovery.TraceRecoveryTests.test_actual_recovered_trace_parses) ... ok
+test_invalid_numeric_zero_is_not_a_valid_kernel_sample (test_trace_recovery.TraceRecoveryTests.test_invalid_numeric_zero_is_not_a_valid_kernel_sample) ... ok
+test_truncated_trace_fails (test_trace_recovery.TraceRecoveryTests.test_truncated_trace_fails) ... ok
+test_wrong_process_samples_fail (test_trace_recovery.TraceRecoveryTests.test_wrong_process_samples_fail) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.018s
+
+OK

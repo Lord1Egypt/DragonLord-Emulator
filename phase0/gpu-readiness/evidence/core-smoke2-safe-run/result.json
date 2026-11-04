@@ -1,0 +1,13 @@
+{
+  "scope": "Concrete QOM owner and actual QEMU core map/unmap smoke only; no Rutabaga command/guest/GPU qualification",
+  "argv": [
+    "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/core/core_probe",
+    "safe"
+  ],
+  "binary_sha256": "5b7b37f893450bd573384bbd40b3729a4680414464918e494987eb5f6a1470bd",
+  "source_sha256": "a1d81d3ac855abbed53da3e6b0b4f229c8f156d006e26cd90ea61b928005a897",
+  "exit_code": 0,
+  "ASAN_OPTIONS": "detect_leaks=0:abort_on_error=1",
+  "UBSAN_OPTIONS": "halt_on_error=1",
+  "status": "PASS"
+}

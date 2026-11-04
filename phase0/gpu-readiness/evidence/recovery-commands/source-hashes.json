@@ -1,0 +1,10 @@
+[
+  {
+    "path": "/mnt/c/DLGPU/p07-20261104/experiments/kernel-observer-negative.cpp",
+    "sha256": "a01005529d85d26067a5a314d45c79a9e033440dfbf62db9fc5f474c7f2d261a"
+  },
+  {
+    "path": "/mnt/c/DLGPU/p07-20261104/experiments/kernel-observer-recovered.cpp",
+    "sha256": "85d98ec97af022a9efb4e1aedf54c06d24dc11e52fd2375fa5c3706225206778"
+  }
+]

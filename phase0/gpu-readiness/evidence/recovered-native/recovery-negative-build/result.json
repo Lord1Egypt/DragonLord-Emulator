@@ -1,0 +1,30 @@
+﻿{
+    "scope":  "Native development command only; no implicit GPU qualification",
+    "status":  "FAIL",
+    "timestamp_utc":  "2026-11-04T10:13:25.9559599Z",
+    "command":  {
+                    "executable":  "C:\\DLGPU\\p06-20261104\\tools\\clang+llvm-23.1.5-x86_64-pc-windows-msvc\\bin\\clang-cl.exe",
+                    "arguments":  [
+                                      "/nologo",
+                                      "/std:c++17",
+                                      "/EHsc",
+                                      "/W4",
+                                      "/WX",
+                                      "C:\\DLGPU\\p07-20261104\\experiments\\kernel-observer-negative.cpp",
+                                      "/FoC:\\DLGPU\\p07-20261104\\experiments\\kernel-observer-negative.obj",
+                                      "/FeC:\\DLGPU\\p07-20261104\\experiments\\kernel-observer-negative.exe",
+                                      "/link",
+                                      "gdi32.lib",
+                                      "dxgi.lib",
+                                      "psapi.lib"
+                                  ],
+                    "working_directory":  "C:\\DLGPU\\p07-20261104\\experiments",
+                    "timeout_seconds":  120,
+                    "scope":  "Original deprecated-writer FAIL control"
+                },
+    "process_id":  11144,
+    "exit_code":  1,
+    "timed_out":  false,
+    "executable_sha256":  "dd3634f32c562c92a2dc11e115df029a5abc5373f2ee6d640b26e2f68d656c01",
+    "reason":  "Raw command exit status only; inspect output and test counts for qualification"
+}

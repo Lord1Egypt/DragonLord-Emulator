@@ -1,0 +1,7 @@
+{
+  "cc_path": "/usr/bin/x86_64-linux-gnu-gcc-13",
+  "cc_sha256": "1b99826121ae6682a634e5efe09bd3e3df58ce58e0b28f849114ab5b89139c26",
+  "version": "cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "qemu_pin": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+  "note": "Prebuilt QEMU core objects reused; only probe main instrumented with sanitizers, not a clean or fully instrumented QEMU build"
+}

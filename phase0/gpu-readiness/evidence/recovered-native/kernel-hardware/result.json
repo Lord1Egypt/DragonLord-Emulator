@@ -1,0 +1,29 @@
+﻿{
+    "scope":  "Native development command only; no implicit GPU qualification",
+    "status":  "PASS",
+    "timestamp_utc":  "2026-11-04T09:42:15.0208196Z",
+    "command":  {
+                    "executable":  "C:\\DLGPU\\p07-20261104\\experiments\\kernel-observer.exe",
+                    "arguments":  [
+                                      "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3\\Vulkan_unittests.exe",
+                                      "--gtest_filter=CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor --gtest_repeat=30",
+                                      "90"
+                                  ],
+                    "working_directory":  "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3",
+                    "environment":  {
+                                        "DLGPU_EXPECT_VENDOR":  "4318",
+                                        "DLGPU_EXPECT_TYPE":  "2",
+                                        "VK_DRIVER_FILES":  null,
+                                        "VK_ICD_FILENAMES":  null,
+                                        "ANDROID_EMU_VK_ICD":  null,
+                                        "VK_LOADER_DEBUG":  "driver"
+                                    },
+                    "timeout_seconds":  120,
+                    "scope":  "Experimental read-only D3DKMT per-child PID/LUID accounting and unchanged Gfxstream compositor pixels; qualification separate"
+                },
+    "process_id":  17328,
+    "exit_code":  0,
+    "timed_out":  false,
+    "executable_sha256":  "aefde8e440d5b7888f91ed2845f179e2a715f26d972d91cfed409c84f44e0eaf",
+    "reason":  "Raw command exit status only; inspect output and test counts for qualification"
+}

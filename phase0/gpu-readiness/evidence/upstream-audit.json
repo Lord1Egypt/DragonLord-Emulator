@@ -1,0 +1,51 @@
+{
+  "baseline": "005c61c0ef6f6ae615283440b4bb7be51b2c6ddd",
+  "inspected_master": "f29ccc287a6cfdd51d3a4fd17fbe9af3310a0ac5",
+  "master_repository": "https://gitlab.com/qemu-project/qemu.git",
+  "history_scope": "master fetched depth256; latest20 path commits inspected, not exhaustive historical absence proof",
+  "files": [
+    {
+      "path": "hw/display/virtio-gpu-rutabaga.c",
+      "baseline_sha256": "808fd2cc677a268be0a235bbefb704e43707cb3a786fa813d73e727f9de47df3",
+      "master_sha256": "a3152551a3308a72c314ad16cc17801710f2a106765e695359c8b45b2234c374",
+      "equal": false
+    },
+    {
+      "path": "hw/display/virtio-gpu.c",
+      "baseline_sha256": "6c3fa51c2ca92144008b430fdebd0c550b655021321017e900c4e30b27f23e47",
+      "master_sha256": "1c5b77fa18bbd4fbd0147658ec816cdfcd1dec444d6a3221fac2565fb0c8333a",
+      "equal": false
+    },
+    {
+      "path": "system/memory.c",
+      "baseline_sha256": "09a3c9c186629f082f63b50b3ee7c54366c37a62584f6d9f897980cd276aca13",
+      "master_sha256": "a5d9604432407ef656852bcba96fb5aa86887b67a45c07da5f7fcb69d155853a",
+      "equal": false
+    },
+    {
+      "path": "system/physmem.c",
+      "baseline_sha256": "3210a543353b435a146f7ae4a33608ea849aad038cd9e889ddb3a30c104c063f",
+      "master_sha256": "8520ee4385523a591d6a3a5ef0465234484f4b9e94867be3cffb679b27138b58",
+      "equal": false
+    },
+    {
+      "path": "accel/whpx/whpx-common.c",
+      "baseline_sha256": "da153b07fcdcb972ac5189c3bc26676d1777422b205d3540279c5d55f6fcfcfe",
+      "master_sha256": "00fcc7cfe1b9104bc5af40ded6e9aeb5ef581ccc8f5d6b2515663a25fe3de20a",
+      "equal": false
+    },
+    {
+      "path": "util/async.c",
+      "baseline_sha256": "0f49c8dc78668e33e5407c5bed34c90c8e217ff605de2fb77a5e631535308e3c",
+      "master_sha256": "0f49c8dc78668e33e5407c5bed34c90c8e217ff605de2fb77a5e631535308e3c",
+      "equal": true
+    },
+    {
+      "path": "docs/devel/memory.rst",
+      "baseline_sha256": "ebe656c0bfda6c5004f06c7600c3ebe8ad02699f57e049d11f6e2ab1bf5f94f9",
+      "master_sha256": "ebe656c0bfda6c5004f06c7600c3ebe8ad02699f57e049d11f6e2ab1bf5f94f9",
+      "equal": true
+    }
+  ],
+  "lifetime_risk_comment_still_in_master": true
+}

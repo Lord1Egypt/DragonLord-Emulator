@@ -1,0 +1,20 @@
+{
+  "executable": "C:\\DLGPU\\p07-20261104\\experiments\\kernel-observer-recovered.exe",
+  "arguments": [
+    "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3\\Vulkan_unittests.exe",
+    "--gtest_filter=CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor --gtest_repeat=1",
+    "45",
+    "C:\\DLGPU\\p07-20261104\\results\\recovery-smoke-hardware\\kernel.jsonl"
+  ],
+  "working_directory": "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3",
+  "environment": {
+    "DLGPU_EXPECT_VENDOR": "4318",
+    "DLGPU_EXPECT_TYPE": "2",
+    "VK_DRIVER_FILES": null,
+    "VK_ICD_FILENAMES": null,
+    "ANDROID_EMU_VK_ICD": null,
+    "VK_LOADER_DEBUG": "driver"
+  },
+  "timeout_seconds": 60,
+  "scope": "Bounded trace-writer regression and unchanged Gfxstream pixel smoke; NOT independent GPU acceptance"
+}

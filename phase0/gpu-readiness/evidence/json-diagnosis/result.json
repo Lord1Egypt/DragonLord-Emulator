@@ -1,0 +1,87 @@
+{
+  "scope": "Strict diagnosis; malformed traces remain FAIL, not silently skipped",
+  "runs": [
+    {
+      "mode": "hardware",
+      "source": "/mnt/c/DLGPU/p07-20261104/results/kernel-hardware/stdout.log",
+      "sha256": "828c00d493d7f7d9057db615b790994651a06a86c621a343dbbf6b367ad4bc68",
+      "valid_DLK_lines": 5035,
+      "malformed_DLK_lines": 21,
+      "first_errors": [
+        {
+          "source_line": 606,
+          "json_line": 1,
+          "column": 108,
+          "offset": 107,
+          "message": "Expecting ',' delimiter",
+          "raw_line": "DLK {\"event\":\"sample\",\"sample\":12,\"pid\":13700,\"qpc_delta\":13098733,\"luid_high\":0,\"luid_low\":74745,\"vendor\":4318[compositor_vk.cpp(172)] Created CompositorVk"
+        },
+        {
+          "source_line": 877,
+          "json_line": 1,
+          "column": 107,
+          "offset": 106,
+          "message": "Expecting ',' delimiter",
+          "raw_line": "DLK {\"event\":\"sample\",\"sample\":18,\"pid\":13700,\"qpc_delta\":19538716,\"luid_high\":0,\"luid_low\":74745,\"vendor\":431DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000"
+        },
+        {
+          "source_line": 916,
+          "json_line": 1,
+          "column": 107,
+          "offset": 106,
+          "message": "Expecting ',' delimiter",
+          "raw_line": "DLK {\"event\":\"sample\",\"sample\":19,\"pid\":13700,\"qpc_delta\":20757786,\"luid_high\":0,\"luid_low\":74745,\"vendor\":431[compositor_vk.cpp(172)] Created CompositorVk"
+        },
+        {
+          "source_line": 1753,
+          "json_line": 1,
+          "column": 106,
+          "offset": 105,
+          "message": "Expecting ',' delimiter",
+          "raw_line": "DLK {\"event\":\"sample\",\"sample\":38,\"pid\":13700,\"qpc_delta\":41549672,\"luid_high\":0,\"luid_low\":74745,\"vendor\":43DLGPU_DEVICE name=NVIDIA GeForce RTX 2060 vendor=4318 device=7953 type=2 api=4211039 driver=2588573696 luidValid=1 luid=f923010000000000"
+        },
+        {
+          "source_line": 1914,
+          "json_line": 1,
+          "column": 106,
+          "offset": 105,
+          "message": "Expecting ',' delimiter",
+          "raw_line": "DLK {\"event\":\"sample\",\"sample\":42,\"pid\":13700,\"qpc_delta\":45818955,\"luid_high\":0,\"luid_low\":74745,\"vendor\":43[compositor_vk.cpp(172)] Created CompositorVk"
+        },
+        {
+          "source_line": 2224,
+          "json_line": 1,
+          "column": 105,
+          "offset": 104,
+          "message": "Expecting ',' delimiter",
+          "raw_line": "DLK {\"event\":\"sample\",\"sample\":49,\"pid\":13700,\"qpc_delta\":53302035,\"luid_high\":0,\"luid_low\":74745,\"vendor\":4[compositor_vk.cpp(172)] Created CompositorVk"
+        }
+      ]
+    },
+    {
+      "mode": "software",
+      "source": "/mnt/c/DLGPU/p07-20261104/results/kernel-software/stdout.log",
+      "sha256": "8eccc7c763c6893b2d4993075d23bf2c5132b502561bffb9e502ef0561fd9270",
+      "valid_DLK_lines": 3743,
+      "malformed_DLK_lines": 2,
+      "first_errors": [
+        {
+          "source_line": 1040,
+          "json_line": 1,
+          "column": 119,
+          "offset": 118,
+          "message": "Unterminated string starting at",
+          "raw_line": "DLK {\"event\":\"sample\",\"sample\":21,\"pid\":33424,\"qpc_delta\":22541440,\"luid_high\":0,\"luid_low\":74745,\"vendor\":4318,\"node\":11,\"DLGPU_DEVICE name=SwiftShader Device (Subzero) vendor=6880 device=49374 type=4 api=4206592 driver=20971520 luidValid=0 luid=0000000000000000"
+        },
+        {
+          "source_line": 1397,
+          "json_line": 1,
+          "column": 11,
+          "offset": 10,
+          "message": "Expecting value",
+          "raw_line": "DLK {\"event\":[compositor_vk.cpp(172)] Created CompositorVk"
+        }
+      ]
+    }
+  ]
+}

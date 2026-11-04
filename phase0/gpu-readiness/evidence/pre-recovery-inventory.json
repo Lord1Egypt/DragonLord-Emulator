@@ -1,0 +1,301 @@
+{
+  "captured_utc": "2026-11-04T10:09:08.253721+00:00",
+  "head": "4de8297ab162e71b0271c5e9e6148c44b5ef360a",
+  "files": [
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/evidence/core-build-initial/compile.stderr.log",
+      "bytes": 5685,
+      "sha256": "694922b4c58e401dbb7d138a365914bd431989771a2c48f11731fa2d9c745485"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/evidence/core-build-initial/compile.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/evidence/core-build-initial/link.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/evidence/core-build-initial/link.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/evidence/core-build-initial/result.json",
+      "bytes": 45540,
+      "sha256": "e0ef08d32319b1fc4720b03a3d146dbb0894e2d405410640f5827b21745fbe2c"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/evidence/core-build-smoke2/compile.stderr.log",
+      "bytes": 5685,
+      "sha256": "694922b4c58e401dbb7d138a365914bd431989771a2c48f11731fa2d9c745485"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/evidence/core-build-smoke2/compile.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/evidence/core-build-smoke2/link.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/evidence/core-build-smoke2/link.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/evidence/core-build-smoke2/result.json",
+      "bytes": 45540,
+      "sha256": "76cb62054348f34b01894ac310d26639d5ebbf9635e022f10711794103200ed7"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/evidence/core-initial-runs/result.json",
+      "bytes": 405,
+      "sha256": "d2155f4812f7d5a1eabda685a9f897ebf4910a87c2516915f2203a0e82d0d3c2"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/evidence/core-initial-runs/safe.stderr.log",
+      "bytes": 509,
+      "sha256": "247e0f1b1a1271337c0da727dfd525fecde2dd78e06d9f562c1175d4f0ea095c"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/evidence/core-initial-runs/safe.stdout.log",
+      "bytes": 121,
+      "sha256": "80d42176f93f52396022521e2717529b9cf185d6731dddd6290287e76253fcd7"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/evidence/core-initial-runs/unsafe.stderr.log",
+      "bytes": 509,
+      "sha256": "c36a2002a270ee11c86bdfbff6aad7632aed1c3c052b9abf374d64f1fb8ec891"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/evidence/core-initial-runs/unsafe.stdout.log",
+      "bytes": 121,
+      "sha256": "80d42176f93f52396022521e2717529b9cf185d6731dddd6290287e76253fcd7"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/evidence/upstream-audit.json",
+      "bytes": 2173,
+      "sha256": "8a1b2180b6005d683dc00e698c9f8b45949bacabea9843608cca2ef89d33e6f2"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/evidence/upstream-cleanup.patch",
+      "bytes": 2217,
+      "sha256": "7498bde589033d0c1920b28c500feef8e912ae284354acee102bff42fbfa7e67"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/evidence/upstream-fence.patch",
+      "bytes": 1373,
+      "sha256": "1126c30202e1ae567c08c816e4b271c60ad423f1d26f2be47c0ea4a12c68db7d"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/evidence/upstream-rutabaga-history.log",
+      "bytes": 1376,
+      "sha256": "2fa78c094ed1001d8ac1791251b91fc4550f959ce03c9df00f7883827e29c9de"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/experiments/core_probe.c.in",
+      "bytes": 1592,
+      "sha256": "a1d81d3ac855abbed53da3e6b0b4f229c8f156d006e26cd90ea61b928005a897"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/experiments/core_smoke_initial.c.in",
+      "bytes": 1442,
+      "sha256": "d1c2eec8aa10fb3ced2079a16c10afcef6bafff9993f70ff884bdda5630c2009"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/experiments/kernel-observer.cpp",
+      "bytes": 5420,
+      "sha256": "a01005529d85d26067a5a314d45c79a9e033440dfbf62db9fc5f474c7f2d261a"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/tools/audit-native.ps1",
+      "bytes": 1507,
+      "sha256": "5d55370fa4d8b191381b3ad60936a085a7b5db50e13e0c2138f0f0ddfcc173a1"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/gpu-readiness/tools/build-core-probe.py",
+      "bytes": 3528,
+      "sha256": "3afcf2dd7e1a24746ca23f92a9a8fc49a75e7dd0c08b4ab7d90fff63f1763bd3"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/core/core_probe",
+      "bytes": 75830392,
+      "sha256": "5b7b37f893450bd573384bbd40b3729a4680414464918e494987eb5f6a1470bd"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/core/core_probe.c",
+      "bytes": 1592,
+      "sha256": "a1d81d3ac855abbed53da3e6b0b4f229c8f156d006e26cd90ea61b928005a897"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/core/core_probe.o",
+      "bytes": 48096,
+      "sha256": "9368ce681cfe0fcb13811cdb880044df4faa1b0f7f737a478bc6b6079d90a992"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/kernel-build.json",
+      "bytes": 609,
+      "sha256": "a2cb9b8c4c6c40504cdf28efc39fd41701cb80ba6fd63bf9f6604a3814f35b70"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/kernel-build2.json",
+      "bytes": 622,
+      "sha256": "b7bbdb472eb3f72f82edfe997a4ab0c48ff68a1875af4660aebdce70565f37c1"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/kernel-hardware.json",
+      "bytes": 804,
+      "sha256": "5eb8ba724d7caf08f983aa97995dadbf1ee35fb8f982198061645efc4bad0984"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/kernel-hardware2.json",
+      "bytes": 876,
+      "sha256": "2eabff78fa5d539ed469520b01cc7d0f6ebf741e7fb222bca681cee26baff0cf"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/kernel-software.json",
+      "bytes": 890,
+      "sha256": "7b2306ec398dfff47ae6108282e143d7ebbd0f63b78ada0bf05e650898c1cba9"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/kernel-software2.json",
+      "bytes": 962,
+      "sha256": "5165ae06d52f219c58616a3c6e793c7372d7b5f4d181b77ee7a7341a2d50e321"
+    },
+    {
+      "path": "/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/qemu-link.json",
+      "bytes": 32377,
+      "sha256": "f8857bf96192763d8440293db0e7adf397ae415848b703cbff0248e14eab05af"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-build-1/capture-vcvars.cmd",
+      "bytes": 153,
+      "sha256": "e1ad75ceef8c54dedd51a07ff0712262e8a701b086aba20ce20d625271e46529"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-build-1/result.json",
+      "bytes": 1599,
+      "sha256": "8892cb23f3a14865483c8e5dbd8febaa24af35eba0793539c8c093f599796f3a"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-build-1/stderr.log",
+      "bytes": 129,
+      "sha256": "e9c11ea9b10ef6c4d88cf20a0fd32673d70cf2f4b3c04f1d7d0e8bd8d275d5b6"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-build-1/stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-build-2/capture-vcvars.cmd",
+      "bytes": 153,
+      "sha256": "e1ad75ceef8c54dedd51a07ff0712262e8a701b086aba20ce20d625271e46529"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-build-2/result.json",
+      "bytes": 1647,
+      "sha256": "021b8f7fb128d2602b3fe6cf1a1e6c97da0991d0441b5eb2354c2709e2efe223"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-build-2/stderr.log",
+      "bytes": 12244,
+      "sha256": "23e32fc08b4958d251c0b5ad982f3794a4c39870abfa50dac72b3e187cf1b7f5"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-build-2/stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-build-3/capture-vcvars.cmd",
+      "bytes": 153,
+      "sha256": "e1ad75ceef8c54dedd51a07ff0712262e8a701b086aba20ce20d625271e46529"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-build-3/result.json",
+      "bytes": 1647,
+      "sha256": "157a47dfa9d61fdc390a0f01a4dd041a33693ad014de55828610612bbc459320"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-build-3/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-build-3/stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-build-4/capture-vcvars.cmd",
+      "bytes": 153,
+      "sha256": "e1ad75ceef8c54dedd51a07ff0712262e8a701b086aba20ce20d625271e46529"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-build-4/result.json",
+      "bytes": 1647,
+      "sha256": "4a924eb791a8375e7967dff65059329d8747b271dbde9ece0b88c496d1a2aabc"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-build-4/stderr.log",
+      "bytes": 1258,
+      "sha256": "b334f41668c69f1b6d5b8cb0468e88c9db1333c5acfe1b388f6eec3cb04be091"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-build-4/stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-hardware/capture-vcvars.cmd",
+      "bytes": 153,
+      "sha256": "e1ad75ceef8c54dedd51a07ff0712262e8a701b086aba20ce20d625271e46529"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-hardware/result.json",
+      "bytes": 1796,
+      "sha256": "17010aef88f3a7c64c8b45b2beae3812d6c5fd36bfbfb33eb63bc67fad130b43"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-hardware/stderr.log",
+      "bytes": 157050,
+      "sha256": "f619ddf4348d1ae77a9ca0a6f2d1ce76913ac3732f206e03d258e15313e1d3da"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-hardware/stdout.log",
+      "bytes": 967277,
+      "sha256": "828c00d493d7f7d9057db615b790994651a06a86c621a343dbbf6b367ad4bc68"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-software/capture-vcvars.cmd",
+      "bytes": 153,
+      "sha256": "e1ad75ceef8c54dedd51a07ff0712262e8a701b086aba20ce20d625271e46529"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-software/result.json",
+      "bytes": 1882,
+      "sha256": "9847bd8b3dea501f8a6d0fdbc375b67778f6624d45ab6cb53538fbd29efa3ebf"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-software/stderr.log",
+      "bytes": 150030,
+      "sha256": "156084e4fe37b478b5e76343262a62b247ce517d263e9ce99a19a2054af9d35c"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/kernel-software/stdout.log",
+      "bytes": 727653,
+      "sha256": "8eccc7c763c6893b2d4993075d23bf2c5132b502561bffb9e502ef0561fd9270"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/results/rights-hooks/result.json",
+      "bytes": 1401,
+      "sha256": "caafe244416d512a1934b863182d89c07af687aab40eae8d29c2da50d73eebd6"
+    }
+  ]
+}

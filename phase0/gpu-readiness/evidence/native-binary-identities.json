@@ -1,0 +1,15 @@
+{
+  "scope": "Hashes only; no binaries published",
+  "files": [
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/experiments/kernel-observer-recovered.exe",
+      "bytes": 185856,
+      "sha256": "a2599abe20b90668aea9ad9bde79644bcd5c32dc18b7189db0f280bed73b3d2e"
+    },
+    {
+      "path": "/mnt/c/DLGPU/p07-20261104/experiments/kernel-observer.exe",
+      "bytes": 174080,
+      "sha256": "aefde8e440d5b7888f91ed2845f179e2a715f26d972d91cfed409c84f44e0eaf"
+    }
+  ]
+}

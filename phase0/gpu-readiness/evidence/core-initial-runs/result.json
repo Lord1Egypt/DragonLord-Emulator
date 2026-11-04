@@ -1,0 +1,17 @@
+{
+  "scope": "Initial actual QEMU MemoryRegion/address_space map core smoke; no Rutabaga source command extraction yet",
+  "ASAN_OPTIONS": "detect_leaks=0:abort_on_error=1",
+  "UBSAN_OPTIONS": "halt_on_error=1",
+  "runs": [
+    {
+      "case": "safe",
+      "exit_code": -6,
+      "asan_heap_uaf": false
+    },
+    {
+      "case": "unsafe",
+      "exit_code": -6,
+      "asan_heap_uaf": false
+    }
+  ]
+}

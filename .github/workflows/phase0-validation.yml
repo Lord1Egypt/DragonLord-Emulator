@@ -30,12 +30,15 @@ jobs:
         with:
           python-version: '3.13'
       - name: Verify preserved and recovery evidence artifacts
-        run: python phase0/gpu-recovery/tools/verify-evidence.py --include-recovery
+        run: |
+          python phase0/gpu-recovery/tools/verify-evidence.py --include-recovery
+          python phase0/gpu-readiness/tools/verify-evidence.py
       - name: Harness regressions (not GPU qualification)
         run: |
           python -m unittest discover -s phase0/tests -v
           python -m unittest discover -s phase0/gpu-feasibility/tests -v
           python -m unittest discover -s phase0/gpu-recovery/tests -v
+          python -m unittest discover -s phase0/gpu-readiness/tests -v
       - name: Install pinned lint tool
         run: python -m pip install ruff==0.14.4
       - name: Lint Python syntax and undefined names
@@ -44,6 +47,7 @@ jobs:
           phase0/tools phase0/tests
           phase0/gpu-feasibility/tools phase0/gpu-feasibility/tests
           phase0/gpu-recovery/tools phase0/gpu-recovery/tests
+          phase0/gpu-readiness/tools phase0/gpu-readiness/tests
       - name: Parse native PowerShell scripts
         if: runner.os == 'Windows'
         shell: pwsh

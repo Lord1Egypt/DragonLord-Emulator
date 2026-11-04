@@ -1,0 +1,37 @@
+/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/core/core_probe.c: In function ‘main’:
+/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/core/core_probe.c:10:30: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   10 |     char *args[] = {argv[0], "-machine", "none", "-accel", "tcg", "-S", "-display", "none", "-nodefaults", "-monitor", "none", "-serial", "none", NULL};
+      |                              ^~~~~~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/core/core_probe.c:10:42: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   10 |     char *args[] = {argv[0], "-machine", "none", "-accel", "tcg", "-S", "-display", "none", "-nodefaults", "-monitor", "none", "-serial", "none", NULL};
+      |                                          ^~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/core/core_probe.c:10:50: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   10 |     char *args[] = {argv[0], "-machine", "none", "-accel", "tcg", "-S", "-display", "none", "-nodefaults", "-monitor", "none", "-serial", "none", NULL};
+      |                                                  ^~~~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/core/core_probe.c:10:60: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   10 |     char *args[] = {argv[0], "-machine", "none", "-accel", "tcg", "-S", "-display", "none", "-nodefaults", "-monitor", "none", "-serial", "none", NULL};
+      |                                                            ^~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/core/core_probe.c:10:67: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   10 |     char *args[] = {argv[0], "-machine", "none", "-accel", "tcg", "-S", "-display", "none", "-nodefaults", "-monitor", "none", "-serial", "none", NULL};
+      |                                                                   ^~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/core/core_probe.c:10:73: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   10 |     char *args[] = {argv[0], "-machine", "none", "-accel", "tcg", "-S", "-display", "none", "-nodefaults", "-monitor", "none", "-serial", "none", NULL};
+      |                                                                         ^~~~~~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/core/core_probe.c:10:85: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   10 |     char *args[] = {argv[0], "-machine", "none", "-accel", "tcg", "-S", "-display", "none", "-nodefaults", "-monitor", "none", "-serial", "none", NULL};
+      |                                                                                     ^~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/core/core_probe.c:10:93: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   10 |     char *args[] = {argv[0], "-machine", "none", "-accel", "tcg", "-S", "-display", "none", "-nodefaults", "-monitor", "none", "-serial", "none", NULL};
+      |                                                                                             ^~~~~~~~~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/core/core_probe.c:10:108: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   10 |     char *args[] = {argv[0], "-machine", "none", "-accel", "tcg", "-S", "-display", "none", "-nodefaults", "-monitor", "none", "-serial", "none", NULL};
+      |                                                                                                            ^~~~~~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/core/core_probe.c:10:120: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   10 |     char *args[] = {argv[0], "-machine", "none", "-accel", "tcg", "-S", "-display", "none", "-nodefaults", "-monitor", "none", "-serial", "none", NULL};
+      |                                                                                                                        ^~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/core/core_probe.c:10:128: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   10 |     char *args[] = {argv[0], "-machine", "none", "-accel", "tcg", "-S", "-display", "none", "-nodefaults", "-monitor", "none", "-serial", "none", NULL};
+      |                                                                                                                                ^~~~~~~~~
+/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/gpu-readiness/core/core_probe.c:10:139: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   10 |     char *args[] = {argv[0], "-machine", "none", "-accel", "tcg", "-S", "-display", "none", "-nodefaults", "-monitor", "none", "-serial", "none", NULL};
+      |                                                                                                                                           ^~~~~~

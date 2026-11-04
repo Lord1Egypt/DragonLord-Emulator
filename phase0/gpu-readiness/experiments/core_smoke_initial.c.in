@@ -1,0 +1,32 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later */
+#include "qemu/osdep.h"
+#include "qapi/error.h"
+#include "qemu/main-loop.h"
+#include "qom/object.h"
+#include "system/system.h"
+#include "system/memory.h"
+int (*qemu_main)(void);
+int main(int argc, char **argv) {
+    char *args[] = {argv[0], "-machine", "none", "-accel", "tcg", "-S", "-display", "none", "-nodefaults", "-monitor", "none", "-serial", "none", NULL};
+    qemu_init(13,args);
+    Object *owner=object_new(TYPE_OBJECT);
+    MemoryRegion root,mr;AddressSpace as;void *backing=NULL;
+    g_assert_cmpint(posix_memalign(&backing,4096,4096),==,0);
+    memset(backing,0x5a,4096);
+    memory_region_init(&root,owner,"probe-root",65536);
+    address_space_init(&as,&root,"probe-as");
+    memory_region_init_ram_ptr(&mr,owner,"probe-memory",4096,backing);
+    memory_region_add_subregion(&root,0,&mr);
+    hwaddr length=4096;
+    void *mapped=address_space_map(&as,0,&length,false,MEMTXATTRS_UNSPECIFIED);
+    g_assert(mapped==backing);
+    printf("CORE actual_QEMU_map_PASS len=%"PRIu64"\n",length);fflush(stdout);
+    memory_region_del_subregion(&root,&mr);
+    if(argc>1 && strcmp(argv[1],"unsafe")==0){
+        free(backing); /* Model renderer releasing caller-owned backing after del. */
+        volatile uint8_t byte=((uint8_t*)mapped)[0];(void)byte;
+    }
+    address_space_unmap(&as,mapped,length,false,0);
+    printf("CORE actual_QEMU_unmap_PASS\n");fflush(stdout);
+    return 0;
+}

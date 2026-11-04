@@ -1,0 +1,30 @@
+﻿{
+    "scope":  "Native development command only; no implicit GPU qualification",
+    "status":  "PASS",
+    "timestamp_utc":  "2026-11-04T10:16:18.2582746Z",
+    "command":  {
+                    "executable":  "C:\\DLGPU\\p07-20261104\\experiments\\kernel-observer-recovered.exe",
+                    "arguments":  [
+                                      "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3\\Vulkan_unittests.exe",
+                                      "--gtest_filter=CompositorVkTest.EmptyCompositionShouldDrawABlackFrame:CompositorVkTest.SimpleComposition:CompositorVkTest.SolidColor --gtest_repeat=1",
+                                      "45",
+                                      "C:\\DLGPU\\p07-20261104\\results\\recovery-smoke-hardware\\kernel.jsonl"
+                                  ],
+                    "working_directory":  "C:\\DLGPU\\p06-20261104\\build\\gfxstream-native-3",
+                    "environment":  {
+                                        "DLGPU_EXPECT_VENDOR":  "4318",
+                                        "DLGPU_EXPECT_TYPE":  "2",
+                                        "VK_DRIVER_FILES":  null,
+                                        "VK_ICD_FILENAMES":  null,
+                                        "ANDROID_EMU_VK_ICD":  null,
+                                        "VK_LOADER_DEBUG":  "driver"
+                                    },
+                    "timeout_seconds":  60,
+                    "scope":  "Bounded trace-writer regression and unchanged Gfxstream pixel smoke; NOT independent GPU acceptance"
+                },
+    "process_id":  11552,
+    "exit_code":  0,
+    "timed_out":  false,
+    "executable_sha256":  "a2599abe20b90668aea9ad9bde79644bcd5c32dc18b7189db0f280bed73b3d2e",
+    "reason":  "Raw command exit status only; inspect output and test counts for qualification"
+}
