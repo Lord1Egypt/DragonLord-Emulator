@@ -14,4 +14,8 @@ for a in "$@"; do
   fi
   args+=("$a")
 done
+# DL_TOUCH_SOCK: vhost-user touchscreen served by dlvm (cf_vhost_user_input), fed by the panel's browser view
+if [[ -n ${DL_TOUCH_SOCK:-} ]]; then
+  args+=(-chardev "socket,id=dltouch,path=$DL_TOUCH_SOCK" -device vhost-user-input-pci,chardev=dltouch)
+fi
 exec "$REAL" "${args[@]}"

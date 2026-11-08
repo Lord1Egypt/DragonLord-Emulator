@@ -14,6 +14,8 @@ import json
 import os
 import re
 import shutil
+import signal
+import socket
 import subprocess
 import sys
 import time
@@ -186,6 +188,49 @@ def build_cmd(cfg):
     return cmd
 
 
+TOUCH_TEMPLATE = CVD / "etc/default_input_devices/single_touchscreen_template.json"
+
+
+def touch_fifo(cfg):
+    return inst_dir(cfg["name"]) / "touch.fifo"
+
+
+def start_touch(cfg):
+    """Virtio touchscreen for the browser view. Cuttlefish starts this daemon in QEMU mode too but never attaches it;
+    we run our own copy: it serves the device to QEMU over vhost-user and reads virtio input events (le16 type,
+    le16 code, le32 value) from its stdin, which is a FIFO the panel writes to."""
+    d = inst_dir(cfg["name"])
+    w, h = cfg["res"].split("x")
+    spec = d / "touch.json"
+    spec.write_text(TOUCH_TEMPLATE.read_text().replace("%INDEX%", "0").replace("%WIDTH%", w).replace("%HEIGHT%", h))
+    fifo = touch_fifo(cfg)
+    if not fifo.exists():
+        os.mkfifo(fifo, 0o600)
+    sock_path = d / "touch.sock"
+    sock_path.unlink(missing_ok=True)
+    srv = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    srv.bind(str(sock_path))
+    srv.listen(1)
+    fin = os.open(fifo, os.O_RDWR)  # read-write: the daemon itself keeps a writer, so it never sees end of file
+    p = subprocess.Popen([str(CVD / "bin/cf_vhost_user_input"), f"--socket-fd={srv.fileno()}", f"--device-config={spec}",
+                          "--verbosity=Info"], stdin=fin, pass_fds=(srv.fileno(),), stdout=open(d / "logs/touch.log", "w"),
+                         stderr=subprocess.STDOUT, start_new_session=True)
+    srv.close()
+    os.close(fin)
+    cfg["touch_pid"] = p.pid
+    return str(sock_path)
+
+
+def stop_touch(cfg):
+    pid = cfg.pop("touch_pid", None)
+    if pid:
+        try:
+            os.kill(pid, signal.SIGTERM)
+        except OSError:
+            pass
+    (inst_dir(cfg["name"]) / "touch.sock").unlink(missing_ok=True)
+
+
 def cmd_start(a):
     cfg = load(a.name)
     if running(cfg):
@@ -205,6 +250,8 @@ def cmd_start(a):
            "DL_NET": "user"}  # user-mode networking: no root-created TAP devices
     if cfg["gpu"] == "gfxstream":
         env["GALLIUM_DRIVER"] = "d3d12"
+    stop_touch(cfg)
+    env["DL_TOUCH_SOCK"] = start_touch(cfg)  # the QEMU wrapper attaches it
     log = d / "logs/launch.stderr"
     p = subprocess.Popen(build_cmd(cfg), cwd=d, env=env, stdout=open(d / "logs/launch.stdout", "w"),
                          stderr=open(log, "w"), start_new_session=True)
@@ -214,6 +261,7 @@ def cmd_start(a):
     while time.time() < end:
         if p.poll() is not None:
             cfg["pid"] = None
+            stop_touch(cfg)
             save(cfg)
             sys.exit(f"launcher exited early (code {p.returncode}); see {log}")
         if "VIRTUAL_DEVICE_BOOT_COMPLETED" in log.read_text(errors="replace"):
@@ -239,6 +287,7 @@ def cmd_stop(a):
                    capture_output=True, timeout=120)
     subprocess.run(["adb", "disconnect", ser], capture_output=True)
     Path(mem_path(cfg)).unlink(missing_ok=True)
+    stop_touch(cfg)
     for _ in range(30):  # stop_cvd sends SIGKILL; wait until nothing of this instance is left
         left = subprocess.run(["pgrep", "-f", f"{d}/|--instance_dir={d}|qemu_cvd_home={d}|{mem_path(cfg)}"], capture_output=True, text=True).stdout.split()
         left = [p for p in left if int(p) != os.getpid()]
@@ -291,7 +340,7 @@ def main():
     c.add_argument("--extra", action="append", metavar="FLAG", help="extra launch_cvd flag (repeatable)")
     s = sub.add_parser("start")
     s.add_argument("name")
-    s.add_argument("--timeout", type=int, default=600)
+    s.add_argument("--timeout", type=int, default=900)
     for n in ("stop", "delete", "logs"):
         sub.add_parser(n).add_argument("name")
     sub.add_parser("status").add_argument("name", nargs="?")

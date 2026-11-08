@@ -30,12 +30,28 @@ async function input(o){try{const r=await fetch("/api/input",{method:"POST",head
 document.querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>input({type:"key",key:b.dataset.k}));
 $("send").onclick=()=>{input({type:"text",text:$("txt").value});$("txt").value=""};
 $("txt").onkeydown=e=>{if(e.key==="Enter")$("send").onclick()};
-let down=null, dev=[720,1280];
-fetch("/api/instances",{headers:{"X-DL-Token":TOKEN}}).then(r=>r.json()).then(l=>{const c=l.find(i=>i.name===NAME);if(c)dev=c.res.split("x").map(Number)}).catch(()=>{});
+let down=null, dev=[720,1280], touch=false;
+fetch("/api/instances",{headers:{"X-DL-Token":TOKEN}}).then(r=>r.json()).then(l=>{const c=l.find(i=>i.name===NAME);
+  if(c){dev=c.res.split("x").map(Number);touch=!!c.touch_pid}}).catch(()=>{});
+// real touchscreen: steps go out in order, one request in flight, moves batched while one is pending
+let tq=[],tsending=false;
+async function tflush(){
+  if(tsending||!tq.length)return;tsending=true;
+  const steps=tq;tq=[];
+  try{const r=await fetch("/api/touch",{method:"POST",headers:{"X-DL-Token":TOKEN,"Content-Type":"application/json"},body:JSON.stringify({name:NAME,steps})});
+    if(!r.ok){msg((await r.json()).error);touch=false}}catch(e){msg(e.message)}
+  tsending=false;tflush();
+}
+const tstep=(t,p)=>{const c=x=>Math.max(0,x),st={t,x:Math.min(c(p.x),dev[0]-1),y:Math.min(c(p.y),dev[1]-1)};
+  if(t==="move"&&tq.length&&tq[tq.length-1].t==="move")tq[tq.length-1]=st;else tq.push(st);  // newest move wins
+  tflush()};
 // map to the device's own resolution: the stream may be downscaled
 const pos=e=>{const r=cv.getBoundingClientRect();return{x:Math.round((e.clientX-r.left)*dev[0]/r.width),y:Math.round((e.clientY-r.top)*dev[1]/r.height)}};
-cv.onpointerdown=e=>{down={...pos(e),t:performance.now()};cv.setPointerCapture(e.pointerId)};
+cv.onpointerdown=e=>{down={...pos(e),t:performance.now()};cv.setPointerCapture(e.pointerId);if(touch)tstep("down",down)};
+cv.onpointermove=e=>{if(down&&touch)tstep("move",pos(e))};
+cv.onpointercancel=e=>{if(down&&touch)tstep("up",pos(e));down=null};
 cv.onpointerup=e=>{if(!down)return;const u=pos(e),d=down;down=null;
+  if(touch){tstep("up",u);return}
   if(Math.hypot(u.x-d.x,u.y-d.y)<12)input({type:"tap",x:u.x,y:u.y});
   else input({type:"swipe",x:d.x,y:d.y,x2:u.x,y2:u.y,ms:Math.max(80,Math.min(1000,Math.round(performance.now()-d.t)))})};
 // --- H.264 (Annex B) over a streaming fetch, decoded with WebCodecs ---

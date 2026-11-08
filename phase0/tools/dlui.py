@@ -7,15 +7,19 @@ Thin layer over dlvm.py: every action calls the same functions as the CLI, so li
 """
 import argparse
 import base64
+import fcntl
 import hashlib
 import json
 import os
 import re
 import secrets
 import socket
+import struct
 import subprocess
 import sys
+import termios
 import threading
+import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
@@ -140,6 +144,47 @@ def do_input(cfg, d):
     else:
         raise ValueError("unknown input type")
     subprocess.run(adb_cmd(cfg, "shell", shell), capture_output=True, timeout=15)
+
+
+def do_touch(cfg, d):
+    """Write virtio input events for a batch of touch steps into the instance's touchscreen FIFO (see dlvm.start_touch)."""
+    steps = d.get("steps")
+    if not isinstance(steps, list) or not 0 < len(steps) <= 200:
+        raise ValueError("steps: 1-200 items")
+    w, h = (int(v) for v in cfg["res"].split("x"))
+    groups = []
+    ev = lambda t, c, v: struct.pack("<HHi", t, c, v)
+    for st in steps:
+        out = b""
+        if not isinstance(st, dict) or st.get("t") not in ("down", "move", "up"):
+            raise ValueError("step t must be down, move or up")
+        if st["t"] != "up":
+            out += ev(3, 0, int(coord(st, "x", w - 1))) + ev(3, 1, int(coord(st, "y", h - 1)))
+        if st["t"] == "down":
+            out += ev(1, 330, 1)
+        elif st["t"] == "up":
+            out += ev(1, 330, 0)
+        groups.append(out + ev(0, 0, 0))
+    if not cfg.get("touch_pid"):
+        raise ValueError("this instance has no touchscreen (start it again to add one)")
+    try:
+        fd = os.open(dlvm.touch_fifo(cfg), os.O_WRONLY | os.O_NONBLOCK)
+    except OSError:
+        raise ValueError("touchscreen not available")
+    def drained(limit=0.1):  # bytes still in the FIFO, readable from the write end too
+        end = time.time() + limit
+        while struct.unpack("i", fcntl.ioctl(fd, termios.FIONREAD, b"\0\0\0\0"))[0] and time.time() < end:
+            time.sleep(0.001)
+    try:
+        # cf_vhost_user_input forwards only the first SYN-terminated group of each read and keeps the rest until the
+        # next read, so two groups in the FIFO at once leave one stuck (a touch that never lifts). Fixed delays failed
+        # under load; instead each group is written only after the daemon has taken the previous one.
+        for g in groups:
+            drained()
+            os.write(fd, g)
+        drained()
+    finally:
+        os.close(fd)
 
 
 FILE_OK = re.compile(r"[A-Za-z0-9_][A-Za-z0-9._ -]{0,99}")  # also the shell-safety rule for guest paths
@@ -430,6 +475,11 @@ class H(BaseHTTPRequestHandler):
                 if not dlvm.running(cfg):
                     raise ValueError(f"{name} is not running")
                 show_screen(cfg)
+            elif path == "/api/touch":
+                cfg = dlvm.load(str(d.get("name", "")))
+                if not dlvm.running(cfg):
+                    raise ValueError("not running")
+                do_touch(cfg, d)
             elif path == "/api/input":
                 cfg = dlvm.load(str(d.get("name", "")))
                 if not dlvm.running(cfg):
