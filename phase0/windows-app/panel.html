@@ -32,18 +32,18 @@ progress{width:100%;height:14px;accent-color:var(--acc)}
   <div><label for="ram">Memory (MB)</label><input id="ram" type="number" value="3072" min="2048" max="16384" step="512"></div>
   <div><label for="cpus">CPU cores</label><input id="cpus" type="number" value="4" min="1" max="16"></div>
   <div><label for="disk">Drive size (MB)</label><input id="disk" type="number" value="8192" min="6144" step="1024"></div>
-  <div><label for="res">Screen</label><select id="res">
+  <div><label for="res">Screen</label><select id="res" autocomplete="off">
    <option value="1280x800" selected>Wide 1280x800 (tablet)</option><option value="1600x900">Wide 1600x900</option>
    <option value="1920x1080">Wide 1920x1080</option><option value="720x1280">Phone 720x1280</option><option value="1080x1920">Phone 1080x1920</option></select></div>
   <div><label for="dpi">Density (dpi)</label><input id="dpi" type="number" value="213" min="120" max="640"></div>
-  <div><label for="image">Android image</label><select id="image"></select><div class="hint" id="imghint"></div></div>
-  <div><label for="root">Root</label><select id="root"><option value="off" selected>Off</option><option value="on">On (Light image only)</option></select></div>
-  <div><label for="profile">Performance</label><select id="profile">
+  <div><label for="gapps">Google apps (Play Store)</label><select id="gapps" autocomplete="off"><option value="off" selected>Off: light and fast (about 0.8 GB download)</option><option value="on">On: Google Play image (about 1.9 GB download, heavier)</option></select></div>
+  <div><label for="root">Root access</label><select id="root" autocomplete="off"><option value="off" selected>Off</option><option value="on">On (built-in root, not available with Google apps)</option></select><div class="hint" id="roothint"></div></div>
+  <div><label for="profile">Performance</label><select id="profile" autocomplete="off">
    <option value="light" selected>Light: 2 GB, 2 cores (fastest, least load)</option>
    <option value="balanced">Balanced: 3 GB, 4 cores</option>
    <option value="power">Power: 4 GB, 6 cores (games)</option></select></div>
  </div>
- <div class="row" style="margin-top:16px"><button class="p" id="create">Create and start</button><button id="createonly">Create only</button><button id="cancel">Cancel</button></div>
+ <div class="row" style="margin-top:16px"><button class="p" id="create">Create and start</button><button id="createonly">Create only</button><button class="p" id="save" hidden>Save changes</button><button id="cancel">Cancel</button></div>
 </section>
 <div class="row"><button id="add" class="p">+ New emulator</button><button id="shared">Open shared folder</button><button id="quit">Quit DragonLord</button></div>
 <p class="hint">Drop an .apk on a running emulator's card to install it; drop any other file to copy it into Android's Shared folder.</p>
@@ -73,8 +73,7 @@ async function refresh(){
   $("stitle").textContent=s.error?"Setup failed":(s.ready?"Downloading Android image":"First start: installing the engine");
   $("sbar").value=s.pct||0;$("sline").textContent=s.error||s.step||"";
   $("add").disabled=!s.ready;
-  const sel=$("image");if(!sel.options.length||sel.dataset.v!==JSON.stringify(d.images)){sel.dataset.v=JSON.stringify(d.images);const cur=sel.value;sel.replaceChildren();
-    for(const im of d.images){const o=el("option","",im.label+(im.ready?"":" (downloads "+im.mb+" MB)"));o.value=im.key;sel.append(o)}if(cur)sel.value=cur}
+  window.IMAGES=d.images;
   const list=$("list");list.replaceChildren();
   if(s.done&&!d.instances.length&&!formOpen)openForm(true);
   for(const c of d.instances){
@@ -82,12 +81,15 @@ async function refresh(){
     info.append(el("strong","",c.name));
     info.append(el("span","state"+(c.running&&!c.busy?" on":""),"  "+(c.busy?c.busy+"...":c.running?"running":"stopped")));
     const tags=el("div");
-    for(const t of [c.ram+" MB",c.cpus+" CPU",c.disk+" MB drive",c.res+"@"+c.dpi,c.image==="play"?"Google Play":"Light",c.root?"root":"","adb "+c.adb])tags.append(el("span","tag",t));
-    info.append(tags);card.append(info);
+    for(const t of [c.ram+" MB",c.cpus+" CPU",c.disk+" MB drive",c.res+"@"+c.dpi,c.image==="play"?"Google apps":"Light",c.root?"root":"","adb "+c.adb])tags.append(el("span","tag",t));
+    info.append(tags);
+    if(c.busy){const pr=document.createElement("progress");pr.max=100;pr.value=c.progress||0;pr.style.marginTop="6px";info.append(pr);info.append(el("div","hint",c.phase||""))}
+    card.append(info);
     const run=c.running,b=c.busy;
-    for(const [label,path,off] of [["Start","/api/start",run||b],["Stop","/api/stop",!run||(b&&b!=="starting")],["Terminal","term",!run||b],["Clone","clone",run||b],["Rename","rename",run||b],["Copy shared folder","/api/sync-shared",!run||b],["Delete","/api/delete",b]]){
+    for(const [label,path,off] of [["Start","/api/start",run||b],["Stop","/api/stop",!run||(b&&b!=="starting")],["Terminal","term",!run||b],["Settings","settings",run||b],["Clone","clone",run||b],["Rename","rename",run||b],["Copy shared folder","/api/sync-shared",!run||b],["Delete","/api/delete",b]]){
       const btn=el("button","",label);btn.disabled=!!off;
-      btn.onclick=()=>{if(path==="clone"||path==="rename"){const nn=prompt((path==="clone"?"Name of the copy of ":"New name for ")+c.name+":",c.name+(path==="clone"?"-copy":""));if(!nn)return;
+      btn.onclick=()=>{if(path==="settings"){openForm(false,c);return}
+      if(path==="clone"||path==="rename"){const nn=prompt((path==="clone"?"Name of the copy of ":"New name for ")+c.name+":",c.name+(path==="clone"?"-copy":""));if(!nn)return;
         showErr();api("/api/"+path,{name:c.name,newName:nn}).then(()=>refresh()).catch(showErr);return}
       if(path==="term"){window.open("/term?name="+encodeURIComponent(c.name)+"&t="+TOKEN,"_blank");return}if(path==="/api/delete"&&!confirm("Delete "+c.name+" and its drive?"))return;act(path,c.name)};card.append(btn);
     }
@@ -99,9 +101,26 @@ async function refresh(){
     list.append(card);
   }
 }
-function openForm(first){formOpen=true;$("form").hidden=false;$("cancel").hidden=!!first;$("add").hidden=true;$("ftitle").textContent=first?"Set up your first emulator":"New emulator"}
+let editing=null;
+function syncRoot(){const on=$("gapps").value==="on";$("root").disabled=on;if(on)$("root").value="off";$("roothint").textContent=on?"Root needs the light image: Google's Play build is locked.":""}
+$("gapps").onchange=syncRoot;
+function openForm(first,inst){
+  formOpen=true;$("form").hidden=false;$("cancel").hidden=!!first;$("add").hidden=true;editing=inst||null;
+  const edit=!!inst;
+  $("ftitle").textContent=edit?"Settings: "+inst.name:(first?"Set up your first emulator":"New emulator");
+  for(const id of ["name","disk","gapps","root","profile"])$(id).disabled=edit;
+  $("create").hidden=edit;$("createonly").hidden=edit;$("save").hidden=!edit;
+  if(edit){$("ram").value=inst.ram;$("cpus").value=inst.cpus;$("res").value=inst.res;$("dpi").value=inst.dpi;
+    if(![...$("res").options].some(o=>o.value===inst.res)){const o=el("option","",inst.res);o.value=inst.res;$("res").append(o);$("res").value=inst.res}
+    $("name").value=inst.name;$("disk").value=inst.disk;$("gapps").value=inst.image==="play"?"on":"off";$("root").value=inst.root?"on":"off";$("profile").value=inst.profile||"light";
+    $("roothint").textContent="Changing screen, memory or cores restarts Android from scratch the next time (about two minutes)."}
+  else{$("name").disabled=false;syncRoot()}
+}
 $("add").onclick=()=>openForm(false);
-$("cancel").onclick=()=>{formOpen=false;$("form").hidden=true;$("add").hidden=false;showErr()};
+$("cancel").onclick=()=>{formOpen=false;editing=null;$("form").hidden=true;$("add").hidden=false;showErr()};
+$("save").onclick=async()=>{showErr();const n=id=>Number($(id).value);
+  try{await api("/api/settings",{name:editing.name,ram:n("ram"),cpus:n("cpus"),res:$("res").value,dpi:n("dpi")});
+    formOpen=false;editing=null;$("form").hidden=true;$("add").hidden=false;refresh()}catch(e){showErr(e)}};
 $("shared").onclick=()=>api("/api/open-shared",{}).catch(showErr);
 $("quit").onclick=async()=>{if(confirm("Quit DragonLord? Running emulators keep running."))try{await api("/api/quit",{});document.body.textContent="DragonLord has quit. You can close this tab."}catch(e){showErr(e)}};
 const PROFILES={light:[2048,2],balanced:[3072,4],power:[4096,6]};
@@ -109,7 +128,7 @@ $("profile").onchange=()=>{const p=PROFILES[$("profile").value];$("ram").value=p
 $("ram").value=PROFILES.light[0];$("cpus").value=PROFILES.light[1];
 async function create(start){
   showErr();const n=id=>Number($(id).value);
-  try{await api("/api/create",{name:$("name").value,ram:n("ram"),cpus:n("cpus"),disk:n("disk"),res:$("res").value,dpi:n("dpi"),image:$("image").value,profile:$("profile").value,root:$("root").value==="on",start});
+  try{await api("/api/create",{name:$("name").value,ram:n("ram"),cpus:n("cpus"),disk:n("disk"),res:$("res").value,dpi:n("dpi"),image:$("gapps").value==="on"?"play":"light",profile:$("profile").value,root:$("root").value==="on",start});
     formOpen=false;$("form").hidden=true;$("add").hidden=false;refresh()}catch(e){showErr(e)}
 }
 $("create").onclick=()=>create(true);$("createonly").onclick=()=>create(false);

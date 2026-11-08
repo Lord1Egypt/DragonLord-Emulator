@@ -33,8 +33,12 @@ type Instance struct {
 	// filled in for the panel
 	Running bool   `json:"running"`
 	Busy    string `json:"busy,omitempty"`
-	Adb     string `json:"adb"`
-	Gapps   bool   `json:"gapps"`
+	// Progress and Phase describe a start, stop or clone in progress (an estimate from elapsed time and what this
+	// instance needed last time; the emulator reports no percentage)
+	Progress int    `json:"progress"`
+	Phase    string `json:"phase,omitempty"`
+	Adb      string `json:"adb"`
+	Gapps    bool   `json:"gapps"`
 }
 
 var (
@@ -42,6 +46,7 @@ var (
 	resOK  = regexp.MustCompile(`^(\d{3,4})x(\d{3,4})$`)
 	mu     sync.Mutex
 	busy   = map[string]string{}
+	since  = map[string]time.Time{}
 )
 
 func avdDir(name string) string { return dir("instances", name+".avd") }
@@ -106,7 +111,11 @@ func list() []*Instance {
 			in.Running, in.Adb, in.Gapps = running(in), serial(in.Number), images[in.Image].playstore
 			mu.Lock()
 			in.Busy = busy[name]
+			t0 := since[name]
 			mu.Unlock()
+			if in.Busy != "" {
+				in.Progress, in.Phase = progress(in, t0)
+			}
 			out = append(out, in)
 		}
 	}
@@ -211,7 +220,11 @@ func setBusy(name, state string) bool {
 	}
 	if state == "" {
 		delete(busy, name)
+		delete(since, name)
 	} else {
+		if busy[name] != state {
+			since[name] = time.Now()
+		}
 		busy[name] = state
 	}
 	return true
@@ -527,4 +540,73 @@ func rename(in *Instance, newName string) error {
 		return err
 	}
 	return writeIni(&n)
+}
+
+// progress estimates how far a start, stop or clone is. A restore from a snapshot takes about 10 s, a cold boot about
+// 110 s (measured on the owner's PC), so the bar is elapsed time against that, never reaching 100 until it is done.
+func progress(in *Instance, t0 time.Time) (int, string) {
+	el := time.Since(t0).Seconds()
+	expect, phase := 12.0, "Restoring the saved state"
+	switch in.Busy {
+	case "starting":
+		if _, err := os.Stat(filepath.Join(avdDir(in.Name), "snapshots", "default_boot", "snapshot.pb")); err != nil {
+			expect, phase = 110, "Starting Android for the first time (about two minutes)"
+		}
+	case "stopping":
+		expect, phase = 10, "Saving the state"
+	case "cloning":
+		expect, phase = 30, "Copying the emulator"
+	}
+	p := int(el / expect * 95)
+	if p > 95 {
+		p = 95
+	}
+	return p, phase
+}
+
+// updateSettings changes screen, density, memory and cores of a stopped instance. The emulator discards its saved
+// state when the hardware description changes, so the snapshot is removed and the next start is a cold boot.
+func updateSettings(in *Instance, ram, cpus int, res string, dpi int) error {
+	if running(in) || busyState(in.Name) != "" {
+		return errors.New("stop the instance first")
+	}
+	m := resOK.FindStringSubmatch(res)
+	if m == nil || ram < 2048 || ram > 16384 || cpus < 1 || cpus > 16 || dpi < 120 || dpi > 640 {
+		return errors.New("limits: RAM 2048-16384 MB, CPU 1-16, density 120-640, screen like 1280x800")
+	}
+	w, _ := strconv.Atoi(m[1])
+	h, _ := strconv.Atoi(m[2])
+	orient := "portrait"
+	if w > h {
+		orient = "landscape"
+	}
+	path := filepath.Join(avdDir(in.Name), "config.ini")
+	b, err := os.ReadFile(path)
+	if err != nil {
+		return err
+	}
+	t := string(b)
+	set := func(k, v string) {
+		re := regexp.MustCompile(`(?m)^` + regexp.QuoteMeta(k) + `\s*=.*$`)
+		if re.MatchString(t) {
+			t = re.ReplaceAllLiteralString(t, k+"="+v)
+		} else {
+			t += k + "=" + v + "\r\n"
+		}
+	}
+	set("hw.ramSize", strconv.Itoa(ram))
+	set("hw.cpu.ncore", strconv.Itoa(cpus))
+	set("hw.lcd.width", strconv.Itoa(w))
+	set("hw.lcd.height", strconv.Itoa(h))
+	set("hw.lcd.density", strconv.Itoa(dpi))
+	set("hw.initialOrientation", orient)
+	if err := os.WriteFile(path, []byte(t), 0o644); err != nil {
+		return err
+	}
+	os.RemoveAll(filepath.Join(avdDir(in.Name), "snapshots"))
+	n := *in
+	n.RAM, n.CPUs, n.Res, n.DPI = ram, cpus, res, dpi
+	jb, _ := json.MarshalIndent(Instance{Name: n.Name, Number: n.Number, RAM: n.RAM, CPUs: n.CPUs, Disk: n.Disk, Res: n.Res, DPI: n.DPI,
+		Image: n.Image, Profile: n.Profile, Root: n.Root}, "", "  ")
+	return os.WriteFile(filepath.Join(avdDir(in.Name), "dragonlord.json"), jb, 0o644)
 }

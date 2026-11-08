@@ -21,11 +21,12 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"sync"
 )
 
-const version = "0.2.1-preview"
+const version = "0.2.2-preview"
 
 type pkg struct {
 	name, url, sha256, into string
@@ -280,7 +281,10 @@ func main() {
 		log.SetOutput(f) // built as a Windows GUI program: no console, everything goes to the log file
 	}
 	log.SetFlags(log.LstdFlags)
-	log.Printf("DragonLord %s starting in %s", version, base)
+	if v, err := strconv.Atoi(os.Getenv("DRAGONLORD_PORT")); err == nil && v > 1024 && v < 65536 {
+		port = v // testing only: a second copy beside a running one
+	}
+	log.Printf("DragonLord %s starting in %s (port %d)", version, base, port)
 	token, err := loadToken(dir("data", "ui-token"))
 	if err != nil {
 		log.Fatal(err)

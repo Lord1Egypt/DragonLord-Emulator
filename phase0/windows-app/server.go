@@ -25,7 +25,7 @@ import (
 var panelHTML string
 
 // 8765 is the Linux edition's panel; WSL forwards it to Windows, so the Windows edition uses its own port.
-const port = 8770
+var port = 8770
 
 var (
 	errInUse = errors.New("port in use")
@@ -205,6 +205,8 @@ func (a *api) action(w http.ResponseWriter, r *http.Request) {
 		}
 	case "/api/rename":
 		err = rename(in, d.NewName)
+	case "/api/settings":
+		err = updateSettings(in, d.RAM, d.CPUs, d.Res, d.DPI)
 	case "/api/sync-shared":
 		if !running(in) {
 			err = errors.New("start the instance first")

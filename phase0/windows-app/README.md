@@ -16,6 +16,6 @@ Measured Light versus Google Play on the same PC: 16 s versus 25 s from a snapsh
 
 Requirements: Windows 10/11 x64 with the Windows Hypervisor Platform enabled, about 8 GB free disk plus the instances' drives, enough free RAM for each instance (default 3 GB).
 
-**Clone** copies a stopped instance together with its quick-boot snapshot (the clone starts in about 8 s); **Rename** moves one. **Root** works on the Light image (adb root, `su`), not on Google Play. **Terminal**: a root-capable shell in the browser. Not yet: IMEI setting, Android 17 (no Android 17 emulator image is published yet). Google's emulator and images are under the Android SDK licence; they are downloaded on your machine, not shipped by us.
+**Settings** change screen (wide or phone), density, memory and cores of a stopped emulator (Android then restarts from scratch once). Starting, stopping and cloning show a progress bar. **Google apps** is a switch in the new-emulator form (it selects the Google Play image). **Clone** copies a stopped instance together with its quick-boot snapshot (the clone starts in about 8 s); **Rename** moves one. **Root** works on the Light image (adb root, `su`), not on Google Play. **Terminal**: a root-capable shell in the browser. Not yet: IMEI setting, Android 17 (no Android 17 emulator image is published yet). Google's emulator and images are under the Android SDK licence; they are downloaded on your machine, not shipped by us.
 
 Build from source (WSL/Linux, Go 1.22+): `./build.sh`.
