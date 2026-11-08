@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DragonLord</title>
+<style>
+:root{--bg:#f6f6f4;--card:#fff;--ink:#1b1b1b;--mut:#666;--line:#dcdcd6;--acc:#b3261e;--ok:#1b7f3b}
+@media(prefers-color-scheme:dark){:root{--bg:#161616;--card:#202020;--ink:#eee;--mut:#9a9a9a;--line:#333;--acc:#ff6b60;--ok:#4cc26f}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,sans-serif}
+main{max-width:900px;margin:0 auto;padding:20px 16px}
+h1{font-size:22px;margin:0 0 4px}.sub{color:var(--mut);margin:0 0 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:12px}
+.card.drop{outline:2px dashed var(--acc)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.grow{flex:1;min-width:220px}
+.tag{display:inline-block;white-space:nowrap;font-size:12px;border:1px solid var(--line);border-radius:99px;padding:1px 8px;color:var(--mut);margin:2px 4px 2px 0}
+.state{font-weight:600}.state.on{color:var(--ok)}
+button,.btn{font:inherit;padding:7px 14px;border-radius:7px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button.p{background:var(--acc);border-color:var(--acc);color:#fff}button:disabled{opacity:.5;cursor:default}
+label{display:block;margin:10px 0 3px;font-weight:600}input,select{font:inherit;width:100%;padding:7px;border-radius:7px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}@media(max-width:600px){.grid{grid-template-columns:1fr}}
+.hint{color:var(--mut);font-size:13px;margin-top:2px}#err{color:var(--acc);margin:8px 0;min-height:1.2em}
+#setup{border-color:var(--acc)}
+</style></head><body><main>
+<h1>DragonLord</h1><p class="sub" id="sub">Android emulator for Windows</p>
+<div id="setup" class="card" hidden></div>
+<div id="err" role="alert"></div>
+<section id="list"></section>
+<section id="form" class="card" hidden>
+ <h2 id="ftitle" style="margin-top:0">New emulator</h2>
+ <label for="name">Name</label><input id="name" value="Phone1" maxlength="32" autocomplete="off">
+ <div class="hint">Letters, digits, - and _ (up to 32).</div>
+ <div class="grid">
+  <div><label for="ram">Memory (MB)</label><input id="ram" type="number" value="3072" min="2048" max="16384" step="512"></div>
+  <div><label for="cpus">CPU cores</label><input id="cpus" type="number" value="4" min="1" max="16"></div>
+  <div><label for="disk">Drive size (MB)</label><input id="disk" type="number" value="8192" min="2048" step="1024"></div>
+  <div><label for="res">Screen</label><select id="res">
+   <option value="1280x800" selected>Wide 1280x800 (tablet)</option><option value="1600x900">Wide 1600x900</option>
+   <option value="1920x1080">Wide 1920x1080</option><option value="720x1280">Phone 720x1280</option><option value="1080x1920">Phone 1080x1920</option></select></div>
+  <div><label for="dpi">Density (dpi)</label><input id="dpi" type="number" value="213" min="120" max="640"></div>
+ </div>
+ <div class="hint">Android 16 with Google Play. Root and IMEI options come later for Windows.</div>
+ <div class="row" style="margin-top:16px"><button class="p" id="create">Create and start</button><button id="createonly">Create only</button><button id="cancel">Cancel</button></div>
+</section>
+<div class="row"><button id="add" class="p">+ New emulator</button><button id="shared">Open shared folder</button></div>
+<p class="hint">Drop an .apk on a running emulator's card to install it; drop any other file to copy it into Android's Shared folder.</p>
+</main>
+<script>
+const TOKEN="__TOKEN__";
+const $=id=>document.getElementById(id);
+async function api(path,body){
+  const r=await fetch(path,{method:body?"POST":"GET",headers:{"X-DL-Token":TOKEN,"Content-Type":"application/json"},body:body?JSON.stringify(body):undefined});
+  const j=await r.json();if(!r.ok)throw new Error(j.error||r.statusText);return j;
+}
+const el=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e};
+const showErr=e=>$("err").textContent=e?e.message||String(e):"";
+async function act(path,name){showErr();try{const j=await api(path,{name});if(j.result)$("err").textContent=j.result;refresh()}catch(e){showErr(e)}}
+async function upload(name,file){
+  const action=file.name.toLowerCase().endsWith(".apk")?"install":"shared";
+  $("err").textContent=(action==="install"?"Installing ":"Copying ")+file.name+" ...";
+  try{const r=await fetch("/api/upload?name="+encodeURIComponent(name)+"&action="+action+"&file="+encodeURIComponent(file.name),
+      {method:"POST",headers:{"X-DL-Token":TOKEN},body:file});
+    const j=await r.json();$("err").textContent=r.ok?file.name+": "+(action==="install"?"installed":"copied to Shared"):j.error}catch(e){showErr(e)}
+}
+let formOpen=false;
+async function refresh(){
+  let d;try{d=await api("/api/instances")}catch(e){return showErr(e)}
+  const s=d.setup,box=$("setup");
+  box.hidden=s.done;box.textContent=s.error?"Setup failed: "+s.error:"First start: installing the engine. "+(s.step||"")+" (about 2.9 GB from Google, checked)";
+  $("add").disabled=!s.done;
+  const list=$("list");list.replaceChildren();
+  if(s.done&&!d.instances.length&&!formOpen)openForm(true);
+  for(const c of d.instances){
+    const card=el("div","card row"),info=el("div","grow");
+    info.append(el("strong","",c.name));
+    info.append(el("span","state"+(c.running&&!c.busy?" on":""),"  "+(c.busy?c.busy+"...":c.running?"running":"stopped")));
+    const tags=el("div");
+    for(const t of [c.ram+" MB",c.cpus+" CPU",c.disk+" MB drive",c.res+"@"+c.dpi,"GPU","Google Play","adb "+c.adb])tags.append(el("span","tag",t));
+    info.append(tags);card.append(info);
+    const run=c.running,b=c.busy;
+    for(const [label,path,off] of [["Start","/api/start",run||b],["Stop","/api/stop",!run||(b&&b!=="starting")],["Copy shared folder","/api/sync-shared",!run||b],["Delete","/api/delete",b]]){
+      const btn=el("button","",label);btn.disabled=!!off;
+      btn.onclick=()=>{if(path==="/api/delete"&&!confirm("Delete "+c.name+" and its drive?"))return;act(path,c.name)};card.append(btn);
+    }
+    const pick=el("label","btn","Install APK"),inp=el("input");inp.type="file";inp.accept=".apk";inp.hidden=true;inp.multiple=true;
+    inp.onchange=async()=>{for(const f of inp.files)await upload(c.name,f);inp.value=""};pick.append(inp);
+    if(!run)pick.style.opacity=.5;card.append(pick);
+    card.ondragover=e=>{e.preventDefault();card.classList.add("drop")};card.ondragleave=()=>card.classList.remove("drop");
+    card.ondrop=async e=>{e.preventDefault();card.classList.remove("drop");for(const f of e.dataTransfer.files)await upload(c.name,f)};
+    list.append(card);
+  }
+}
+function openForm(first){formOpen=true;$("form").hidden=false;$("cancel").hidden=!!first;$("add").hidden=true;$("ftitle").textContent=first?"Set up your first emulator":"New emulator"}
+$("add").onclick=()=>openForm(false);
+$("cancel").onclick=()=>{formOpen=false;$("form").hidden=true;$("add").hidden=false;showErr()};
+$("shared").onclick=()=>api("/api/open-shared",{}).catch(showErr);
+async function create(start){
+  showErr();const n=id=>Number($(id).value);
+  try{await api("/api/create",{name:$("name").value,ram:n("ram"),cpus:n("cpus"),disk:n("disk"),res:$("res").value,dpi:n("dpi"),start});
+    formOpen=false;$("form").hidden=true;$("add").hidden=false;refresh()}catch(e){showErr(e)}
+}
+$("create").onclick=()=>create(true);$("createonly").onclick=()=>create(false);
+refresh();setInterval(refresh,3000);
+</script></body></html>
