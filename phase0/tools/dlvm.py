@@ -227,7 +227,7 @@ def cmd_stop(a):
     subprocess.run(["adb", "disconnect", ser], capture_output=True)
     Path(mem_path(cfg)).unlink(missing_ok=True)
     for _ in range(30):  # stop_cvd sends SIGKILL; wait until nothing of this instance is left
-        left = subprocess.run(["pgrep", "-f", f"{d}/|--instance_dir={d}|qemu_cvd_home={d}"], capture_output=True, text=True).stdout.split()
+        left = subprocess.run(["pgrep", "-f", f"{d}/|--instance_dir={d}|qemu_cvd_home={d}|{mem_path(cfg)}"], capture_output=True, text=True).stdout.split()
         left = [p for p in left if int(p) != os.getpid()]
         if not left and not running(cfg):
             break

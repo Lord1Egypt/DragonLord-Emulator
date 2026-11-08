@@ -11,7 +11,8 @@ button,input,select{font:inherit;padding:6px 12px;border-radius:7px;border:1px s
 button,.btn{cursor:pointer}.btn{padding:6px 12px;border-radius:7px;border:1px solid var(--line)}#files{list-style:none;padding:0;margin:0;max-width:96vw}#files a{color:var(--ink)}#ok{color:var(--mut)}#msg{color:var(--acc);min-height:1.2em}
 </style></head><body>
 <div class="bar"><strong id="title"></strong>
-<select id="q" aria-label="Stream quality"><option value="50">Fast (50%)</option><option value="75" selected>Balanced (75%)</option><option value="100">Sharp (100%)</option></select></div>
+<select id="q" aria-label="Screen source"><option value="vnc" selected>Direct (fast, full size)</option><option value="50">Video 50%</option><option value="75">Video 75%</option><option value="100">Video 100%</option></select></div>
+<div id="hint" style="color:var(--mut);font-size:12px">Click the screen, then type: keys go straight to Android.</div>
 <canvas id="c" width="720" height="1280" tabindex="0"></canvas>
 <div class="bar"><button data-k="back">Back</button><button data-k="home">Home</button><button data-k="recents">Recents</button>
 <button data-k="power">Power</button><button data-k="volup">Vol +</button><button data-k="voldown">Vol -</button></div>
@@ -82,9 +83,80 @@ async function files(){
   }catch(e){msg(e.message)}
 }
 $("refresh").onclick=files;
+// --- Direct mode: VNC (RFB 3.8, raw + copyrect) from QEMU through the panel's authorised WebSocket tunnel ---
+let ws=null;
+function vnc(){
+  return new Promise((resolve,reject)=>{
+    const proto=location.protocol==="https:"?"wss:":"ws:";
+    ws=new WebSocket(proto+"//"+location.host+"/api/vnc?name="+encodeURIComponent(NAME)+"&t="+TOKEN);
+    ws.binaryType="arraybuffer";
+    const me=ws;let chunks=[],have=0,waiter=null;
+    me.onmessage=e=>{const u=new Uint8Array(e.data);chunks.push(u);have+=u.length;
+      if(waiter&&have>=waiter.n){const w=waiter;waiter=null;w.r()}};
+    me.onclose=()=>{if(ws===me){msg("screen connection closed");ws=null}if(waiter){const w=waiter;waiter=null;w.j(new Error("closed"))}resolve()};
+    me.onerror=()=>reject(new Error("could not open the screen connection (is the instance running?)"));
+    async function read(n){
+      while(have<n)await new Promise((r,j)=>waiter={n,r,j});
+      const out=new Uint8Array(n);let o=0;
+      while(o<n){const c=chunks[0],k=Math.min(c.length,n-o);out.set(c.subarray(0,k),o);o+=k;
+        if(k===c.length)chunks.shift();else chunks[0]=c.subarray(k)}
+      have-=n;return out;
+    }
+    const u16=(b,i)=>b[i]<<8|b[i+1], s32=(b,i)=>(b[i]<<24|b[i+1]<<16|b[i+2]<<8|b[i+3]);
+    const put=a=>me.send(new Uint8Array(a));
+    const request=(inc)=>put([3,inc,0,0,0,0,cv.width>>8,cv.width&255,cv.height>>8,cv.height&255]);
+    me.onopen=async()=>{
+      try{
+        await read(12);put([...new TextEncoder().encode("RFB 003.008\n")]);
+        const nt=(await read(1))[0];if(!nt)throw new Error("VNC refused the connection");
+        const types=await read(nt);if(!types.includes(1))throw new Error("VNC asks for a password");
+        put([1]);if(s32(await read(4),0)!==0)throw new Error("VNC security failed");
+        put([1]);                                   // ClientInit, shared
+        const si=await read(24);await read(s32(si,20));
+        cv.width=u16(si,0);cv.height=u16(si,2);
+        // 32 bpp, depth 24, little endian, true colour, red/green/blue shifts 0/8/16: bytes arrive as R,G,B,X
+        put([0,0,0,0,32,24,0,1,0,255,0,255,0,255,0,8,16,0,0,0]);
+        put([2,0,0,3, 0,0,0,0, 0,0,0,1, 0xff,0xff,0xff,0x21]);  // encodings: raw, copyrect, desktop-size
+        request(0);msg("");
+        for(;;){
+          const t=(await read(1))[0];
+          if(t===0){
+            const n=u16(await read(3),1);
+            request(1);  // pipelined: QEMU prepares the next update while this one is drawn
+            for(let i=0;i<n;i++){
+              const h=await read(12),x=u16(h,0),y=u16(h,2),w=u16(h,4),hh=u16(h,6),enc=s32(h,8);
+              if(enc===0){const px=await read(w*hh*4);for(let k=3;k<px.length;k+=4)px[k]=255;
+                if(w&&hh)ctx.putImageData(new ImageData(new Uint8ClampedArray(px.buffer),w,hh),x,y)}
+              else if(enc===1){const c=await read(4);ctx.drawImage(cv,u16(c,0),u16(c,2),w,hh,x,y,w,hh)}
+              else if(enc===-223){cv.width=w;cv.height=hh}
+              else throw new Error("unexpected VNC encoding "+enc);
+            }
+          }else if(t===1){const h=await read(5);await read(u16(h,3)*6)}
+          else if(t===2){}
+          else if(t===3){const h=await read(7);await read(s32(h,3))}
+          else throw new Error("unexpected VNC message "+t);
+        }
+      }catch(e){if(ws===me){msg(e.message);me.close()}}
+    };
+  });
+}
+const KEYSYM={Backspace:0xff08,Tab:0xff09,Enter:0xff0d,Escape:0xff1b,Delete:0xffff,Home:0xff50,End:0xff57,PageUp:0xff55,PageDown:0xff56,
+  ArrowLeft:0xff51,ArrowUp:0xff52,ArrowRight:0xff53,ArrowDown:0xff54,Shift:0xffe1,Control:0xffe3,Alt:0xffe9,Meta:0xffe7};
+function keysym(e){if(KEYSYM[e.key])return KEYSYM[e.key];if([...e.key].length!==1)return 0;const c=e.key.codePointAt(0);return c<256?c:0x01000000|c}
+function key(e,down){
+  if(!ws||ws.readyState!==1||e.target!==cv)return;
+  const k=keysym(e);if(!k)return;e.preventDefault();
+  ws.send(new Uint8Array([4,down?1:0,0,0,k>>>24&255,k>>16&255,k>>8&255,k&255]));
+}
+cv.addEventListener("keydown",e=>key(e,true));cv.addEventListener("keyup",e=>key(e,false));
+cv.addEventListener("pointerdown",()=>cv.focus());
+
 let ctl=null;
 async function run(){
   if(ctl)ctl.abort();
+  if(ws){const w=ws;ws=null;w.close()}
+  if($("q").value==="vnc"){if(dec&&dec.state!=="closed")dec.close();dec=null;$("hint").hidden=false;return vnc()}
+  $("hint").hidden=true;
   ctl=new AbortController();const mine=ctl;
   if(dec&&dec.state!=="closed")dec.close();
   dec=null;haveKey=false;pending=[];

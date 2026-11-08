@@ -6,6 +6,8 @@
 Thin layer over dlvm.py: every action calls the same functions as the CLI, so limits and name checks live in one place.
 """
 import argparse
+import base64
+import hashlib
 import json
 import os
 import re
@@ -215,6 +217,8 @@ class H(BaseHTTPRequestHandler):
             except SystemExit as e:
                 return self.send(400, json.dumps({"error": str(e)}))
             return self.send(200, json.dumps(list_files(cfg) if dlvm.running(cfg) else []))
+        if path == "/api/vnc":
+            return self.vnc(parse_qs(urlparse(self.path).query).get("name", [""])[0])
         if path == "/view":
             return self.send(200, VIEW.replace("__TOKEN__", TOKEN), "text/html; charset=utf-8")
         if path == "/api/stream":
@@ -315,6 +319,85 @@ class H(BaseHTTPRequestHandler):
         finally:
             p.kill()
             p.wait()
+
+    def vnc(self, name):
+        """WebSocket tunnel to the instance's QEMU VNC server (127.0.0.1, 6443 + instance number).
+
+        QEMU's own WebSocket listener has no authentication and any web page could reach it, so the browser only
+        talks to this authorised endpoint; the Origin check stops other sites from using a leaked token."""
+        try:
+            cfg = dlvm.load(name)
+        except SystemExit as e:
+            return self.send(400, json.dumps({"error": str(e)}))
+        port = self.server.server_address[1]
+        if self.headers.get("Origin") not in (f"http://127.0.0.1:{port}", f"http://localhost:{port}"):
+            return self.send(403, '{"error":"bad origin"}')
+        key = self.headers.get("Sec-WebSocket-Key")
+        if (self.headers.get("Upgrade") or "").lower() != "websocket" or not key or not dlvm.running(cfg):
+            return self.send(400, '{"error":"websocket upgrade to a running instance required"}')
+        try:
+            up = socket.create_connection(("127.0.0.1", 6443 + cfg["number"]), timeout=5)
+        except OSError:
+            return self.send(503, '{"error":"VNC not reachable yet"}')
+        up.settimeout(None)
+        for sock in (up, self.connection):  # small RFB requests must not wait for Nagle's algorithm
+            sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+        self.send_response(101)
+        self.send_header("Upgrade", "websocket")
+        self.send_header("Connection", "Upgrade")
+        accept = base64.b64encode(hashlib.sha1((key + "258EAFA5-E914-47DA-95CA-C5AB0DC85B11").encode()).digest()).decode()
+        self.send_header("Sec-WebSocket-Accept", accept)
+        self.end_headers()
+        self.wfile.flush()
+        conn, lock = self.connection, threading.Lock()
+
+        def frame(opcode, data):
+            n = len(data)
+            head = bytes([0x80 | opcode]) + (bytes([n]) if n < 126 else
+                                             bytes([126]) + n.to_bytes(2, "big") if n < 65536 else
+                                             bytes([127]) + n.to_bytes(8, "big"))
+            with lock:
+                conn.sendall(head + data)
+
+        def pump():  # VNC server -> browser
+            try:
+                while data := up.recv(1 << 20):
+                    frame(2, data)
+            except OSError:
+                pass
+            finally:
+                try:
+                    conn.shutdown(socket.SHUT_RDWR)
+                except OSError:
+                    pass
+        threading.Thread(target=pump, daemon=True).start()
+        r = self.rfile
+        try:
+            while True:  # browser -> VNC server; RFC 6455 client frames are always masked
+                h = r.read(2)
+                if len(h) < 2:
+                    break
+                op, n = h[0] & 0x0F, h[1] & 0x7F
+                if n == 126:
+                    n = int.from_bytes(r.read(2), "big")
+                elif n == 127:
+                    n = int.from_bytes(r.read(8), "big")
+                if not h[1] & 0x80 or n > 1 << 20:
+                    break
+                mask = r.read(4)
+                data = r.read(n)
+                data = (int.from_bytes(data, "big") ^ int.from_bytes((mask * (n // 4 + 1))[:n], "big")).to_bytes(n, "big") if n else b""
+                if op == 8:
+                    break
+                if op == 9:
+                    frame(10, data)
+                elif op in (0, 2):
+                    up.sendall(data)
+        except OSError:
+            pass
+        finally:
+            up.close()
+            self.close_connection = True
 
     def do_POST(self):
         if not self.authorised():
