@@ -62,6 +62,20 @@ def do_create(d):
                        extra=None, imei=str(d.get("imei") or "") or None))
 
 
+SCRCPY = Path(__file__).resolve().parents[1] / ".work/scrcpy/win64"
+
+
+def show_screen(cfg):
+    """Open a scrcpy window (Windows build, run through WSL interop) mirroring the instance with mouse and keyboard."""
+    exe = SCRCPY / "scrcpy.exe"
+    if not exe.exists():
+        raise ValueError(f"scrcpy not found at {SCRCPY}")
+    win = subprocess.run(["wslpath", "-w", str(exe)], capture_output=True, text=True, check=True).stdout.strip()
+    args = f"'--tcpip={dlvm.adb_serial(cfg)}','--window-title={cfg['name']}'"  # name is [A-Za-z0-9_-] only
+    subprocess.Popen(["powershell.exe", "-NoProfile", "-Command", f"Start-Process -FilePath '{win}' -ArgumentList {args}"],
+                     stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+
 def background(name, verb, fn):
     with LOCK:
         # a boot in progress can always be cancelled by stop/delete; everything else waits for the current action
@@ -130,6 +144,12 @@ class H(BaseHTTPRequestHandler):
                 name = d["name"]
                 if d.get("start"):
                     background(name, "starting", lambda: dlvm.cmd_start(ns(name=name, timeout=900)))
+            elif path == "/api/screen":
+                name = str(d.get("name", ""))
+                cfg = dlvm.load(name)
+                if not dlvm.running(cfg):
+                    raise ValueError(f"{name} is not running")
+                show_screen(cfg)
             elif path in ("/api/start", "/api/stop", "/api/delete"):
                 name = str(d.get("name", ""))
                 dlvm.load(name)  # validates the name and that it exists
