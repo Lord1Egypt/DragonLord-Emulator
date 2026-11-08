@@ -2,7 +2,7 @@
 """DragonLord instance manager prototype (Linux/WSL test bench; the Windows port needs its own supervisor).
 
   dlvm.py create NAME [--ram MB] [--cpus N] [--disk MB] [--gpu gfxstream|software] [--root off|ksu]
-                      [--serial S] [--dpi N] [--res WxH]
+                      [--serial S] [--imei N|random] [--dpi N] [--res WxH]
   dlvm.py start NAME | stop NAME | status [NAME] | list | delete NAME | logs NAME
 
 Each instance lives in ~/DragonLord/instances/NAME/ (instance.json, HOME of its Cuttlefish run, logs/).
@@ -24,6 +24,7 @@ CVD = PHASE / ".work/cuttlefish/cvd"
 QEMU_DIR = PHASE / ".work/cuttlefish/qemu-ours"
 KSU_INIT_BOOT = PHASE / ".work/kernelsu/out/init_boot_ksu.img"
 ROOT = Path.home() / "DragonLord" / "instances"
+DEFAULT_IMEI = "867400022047199"  # hardcoded in Cuttlefish's prebuilt bin/modem_simulator
 DEFAULTS = {"ram": 4096, "cpus": 4, "disk": 8192, "gpu": "gfxstream", "root": "off",
             "serial": None, "dpi": 320, "res": "720x1280"}
 
@@ -69,6 +70,50 @@ def running(cfg):
         return False
 
 
+def luhn_ok(n):
+    t = 0
+    for i, ch in enumerate(reversed(n)):
+        d = int(ch)
+        if i % 2:
+            d = d * 2 - 9 if d > 4 else d * 2
+        t += d
+    return t % 10 == 0
+
+
+def random_imei():
+    import secrets
+    body = "35" + "".join(str(secrets.randbelow(10)) for _ in range(12))
+    return body + next(str(c) for c in range(10) if luhn_ok(body + str(c)))
+
+
+def hostout(cfg):
+    """Per-instance copy of the host tool tree (symlinks) whose bin/modem_simulator has this instance's IMEI."""
+    h = inst_dir(cfg["name"]) / "hostout"
+    if h.exists():
+        shutil.rmtree(h)
+    for src in CVD.rglob("*"):
+        rel = src.relative_to(CVD)
+        dst = h / rel
+        if src.is_dir() and not src.is_symlink():
+            dst.mkdir(parents=True, exist_ok=True)
+        elif rel != Path("bin/modem_simulator"):
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            dst.symlink_to(src)
+    data = (CVD / "bin/modem_simulator").read_bytes()
+    imei = cfg["imei"].encode()
+    # the IMEI exists twice: as a rodata string and as two overlapping 8-byte immediates (mov rax, imm64) that
+    # build the AT+CGSN reply; both must change or the guest keeps the default
+    imm_old = b"\x48\xb8" + DEFAULT_IMEI[:8].encode() + b"\x48\x89\x45\xb9\x48\xb8" + DEFAULT_IMEI[7:].encode()
+    imm_new = b"\x48\xb8" + imei[:8] + b"\x48\x89\x45\xb9\x48\xb8" + imei[7:]
+    if data.count(DEFAULT_IMEI.encode()) != 1 or data.count(imm_old) != 1:
+        sys.exit("modem_simulator does not have the expected IMEI layout; cannot set IMEI")
+    data = data.replace(DEFAULT_IMEI.encode(), imei).replace(imm_old, imm_new)
+    out = h / "bin/modem_simulator"
+    out.write_bytes(data)
+    out.chmod(0o755)
+    return h
+
+
 def cmd_create(a):
     d = inst_dir(a.name)
     if d.exists():
@@ -79,12 +124,17 @@ def cmd_create(a):
         sys.exit("res must look like 720x1280")
     if any(not re.fullmatch(r"-[A-Za-z0-9_]+(=[A-Za-z0-9_./:,@-]*)?", f) for f in (a.extra or [])):
         sys.exit("--extra must look like -flag or -flag=value (letters, digits and _ . / : , @ - only)")
+    if a.imei == "random":
+        a.imei = random_imei()
+    if a.imei and not (re.fullmatch(r"\d{15}", a.imei) and luhn_ok(a.imei)):
+        sys.exit("imei: 15 digits with a valid check digit (or 'random')")
     if a.root == "ksu" and not KSU_INIT_BOOT.exists():
         sys.exit(f"missing {KSU_INIT_BOOT}; run phase0/tools/ksu-patch.sh")
     ROOT.mkdir(parents=True, exist_ok=True)
     (d / "logs").mkdir(parents=True)
     cfg = {"name": a.name, "number": next_number(), "ram": a.ram, "cpus": a.cpus, "disk": a.disk,
-           "gpu": a.gpu, "root": a.root, "serial": a.serial, "dpi": a.dpi, "res": a.res, "pid": None, "data_created": False, "extra": a.extra or []}
+           "gpu": a.gpu, "root": a.root, "serial": a.serial, "dpi": a.dpi, "res": a.res, "pid": None, "data_created": False, "extra": a.extra or [],
+           "imei": a.imei or None}
     save(cfg)
     print(f"created {a.name} (instance number {cfg['number']}, adb {adb_serial(cfg)})")
 
@@ -112,7 +162,8 @@ def cmd_start(a):
     if running(cfg):
         sys.exit("already running")
     d = inst_dir(a.name)
-    env = {**os.environ, "HOME": str(d), "ANDROID_HOST_OUT": str(CVD), "DL_MEM_PATH": mem_path(cfg),
+    host_out = hostout(cfg) if cfg.get("imei") else CVD
+    env = {**os.environ, "HOME": str(d), "ANDROID_HOST_OUT": str(host_out), "DL_MEM_PATH": mem_path(cfg),
            "DL_NET": "user"}  # user-mode networking: no root-created TAP devices
     if cfg["gpu"] == "gfxstream":
         env["GALLIUM_DRIVER"] = "d3d12"
@@ -194,6 +245,7 @@ def main():
     c.add_argument("--gpu", choices=["gfxstream", "software"], default=DEFAULTS["gpu"])
     c.add_argument("--root", choices=["off", "ksu"], default=DEFAULTS["root"])
     c.add_argument("--serial")
+    c.add_argument("--imei", help="15-digit IMEI with valid check digit, or 'random'")
     c.add_argument("--dpi", type=int, default=DEFAULTS["dpi"])
     c.add_argument("--res", default=DEFAULTS["res"])
     c.add_argument("--extra", action="append", metavar="FLAG", help="extra launch_cvd flag (repeatable)")

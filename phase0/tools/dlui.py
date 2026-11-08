@@ -58,7 +58,7 @@ def do_create(d):
         raise ValueError("gpu or root value not allowed")
     dlvm.cmd_create(ns(name=name, ram=intval(d, "ram", 4096), cpus=intval(d, "cpus", 4), disk=intval(d, "disk", 8192),
                        gpu=gpu, root=root, serial=serial, dpi=intval(d, "dpi", 320), res=str(d.get("res", "720x1280")),
-                       extra=None))
+                       extra=None, imei=str(d.get("imei") or "") or None))
 
 
 def background(name, verb, fn):

@@ -31,6 +31,7 @@ label{display:block;margin:10px 0 3px;font-weight:600}input,select{font:inherit;
   <div><label for="res">Screen</label><select id="res"><option>720x1280</option><option>1080x1920</option><option>1080x2400</option></select></div>
   <div><label for="dpi">Density (dpi)</label><input id="dpi" type="number" value="320" min="120" max="640"></div>
   <div><label for="serial">Device serial (optional)</label><input id="serial" maxlength="32" autocomplete="off"></div>
+  <div><label for="imei">IMEI</label><select id="imei"><option value="">Default</option><option value="random">New random IMEI</option></select></div>
   <div><label for="gpu">Graphics</label><select id="gpu"><option value="gfxstream">Host GPU (fast)</option><option value="software">Software (no GPU)</option></select></div>
   <div><label for="root">Root</label><select id="root"><option value="off">Off</option><option value="ksu">On (KernelSU)</option></select></div>
  </div>
@@ -59,7 +60,7 @@ async function refresh(){
     info.append(el("strong","",c.name));
     const st=el("span","state"+(c.running&&!c.busy?" on":""),"  "+(c.busy?c.busy+"...":c.running?"running":"stopped"));info.append(st);
     const tags=el("div");
-    for(const t of [c.ram+" MB",c.cpus+" CPU",c.disk+" MB drive",c.res+"@"+c.dpi,c.gpu==="gfxstream"?"GPU":"software",c.root==="ksu"?"root":"no root","adb "+c.adb])tags.append(el("span","tag",t));
+    for(const t of [c.ram+" MB",c.cpus+" CPU",c.disk+" MB drive",c.res+"@"+c.dpi,c.gpu==="gfxstream"?"GPU":"software",c.root==="ksu"?"root":"no root",c.imei?"IMEI "+c.imei:"","adb "+c.adb])if(t)tags.append(el("span","tag",t));
     info.append(tags);card.append(info);
     const run=c.running;
     for(const [label,path,off] of [["Start","/api/start",run||c.busy],["Stop","/api/stop",!run||c.busy],["Delete","/api/delete",c.busy]]){
@@ -78,7 +79,7 @@ async function create(start){
   const num=id=>Number($(id).value);
   try{
     await api("/api/create",{name:$("name").value,ram:num("ram"),cpus:num("cpus"),disk:num("disk"),res:$("res").value,dpi:num("dpi"),
-      serial:$("serial").value,gpu:$("gpu").value,root:$("root").value,start});
+      serial:$("serial").value,imei:$("imei").value,gpu:$("gpu").value,root:$("root").value,start});
     $("form").hidden=true;$("add").hidden=false;refresh();
   }catch(e){showErr(e)}
 }
