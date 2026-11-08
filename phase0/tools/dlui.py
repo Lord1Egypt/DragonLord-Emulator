@@ -456,12 +456,16 @@ def main():
     ap.add_argument("--port", type=int, default=8765)
     ap.add_argument("--open", action="store_true", help="open the page in the Windows default browser (from WSL)")
     a = ap.parse_args()
-    srv = ThreadingHTTPServer(("127.0.0.1", a.port), H)
     url = f"http://127.0.0.1:{a.port}/?t={TOKEN}"
-    print(f"DragonLord UI: {url}", flush=True)
+    try:
+        srv = ThreadingHTTPServer(("127.0.0.1", a.port), H)
+    except OSError:
+        srv = None  # already running (the token file is shared, so the same link works): just open the page again
+    print(f"DragonLord UI {'already running' if srv is None else 'started'}: {url}", flush=True)
     if a.open:  # the token is URL-safe, so the URL needs no quoting
         subprocess.Popen(["powershell.exe", "-NoProfile", "-Command", f"Start-Process '{url}'"], stdout=subprocess.DEVNULL)
-    srv.serve_forever()
+    if srv:
+        srv.serve_forever()
 
 
 if __name__ == "__main__":
