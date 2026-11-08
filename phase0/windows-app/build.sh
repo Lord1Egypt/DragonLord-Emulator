@@ -6,5 +6,5 @@ OUT="${1:-../.work/dist/DragonLord.exe}"
 mkdir -p "$(dirname "$OUT")"
 gofmt -l . | (! grep .) || { echo "run gofmt -w ." >&2; exit 1; }
 GOOS=windows go vet ./...
-GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -trimpath -ldflags "-s -w -H windowsgui" -o "$OUT" .
+GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags "-s -w -H windowsgui" -o "$OUT" .
 sha256sum "$OUT"
