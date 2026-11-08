@@ -163,6 +163,9 @@ def cmd_start(a):
     if running(cfg):
         sys.exit("already running")
     d = inst_dir(a.name)
+    free_mb = shutil.disk_usage("/dev/shm").free // 2**20  # guest RAM lives in /dev/shm; running out kills QEMU silently
+    if free_mb < cfg["ram"] + 256:
+        sys.exit(f"not enough shared memory: /dev/shm has {free_mb} MB free, {a.name} needs {cfg['ram']} MB. Stop another instance or lower the RAM")
     host_out = hostout(cfg) if cfg.get("imei") else CVD
     env = {**os.environ, "HOME": str(d), "ANDROID_HOST_OUT": str(host_out), "DL_MEM_PATH": mem_path(cfg),
            "DL_NET": "user"}  # user-mode networking: no root-created TAP devices
