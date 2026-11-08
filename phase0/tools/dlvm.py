@@ -77,12 +77,14 @@ def cmd_create(a):
         sys.exit("limits: ram 1024-16384 MB, cpus 1-16, disk >= 2048 MB")
     if not re.fullmatch(r"\d{3,5}x\d{3,5}", a.res):
         sys.exit("res must look like 720x1280")
+    if any(not re.fullmatch(r"-[A-Za-z0-9_]+(=[A-Za-z0-9_./:,@-]*)?", f) for f in (a.extra or [])):
+        sys.exit("--extra must look like -flag or -flag=value (letters, digits and _ . / : , @ - only)")
     if a.root == "ksu" and not KSU_INIT_BOOT.exists():
         sys.exit(f"missing {KSU_INIT_BOOT}; run phase0/tools/ksu-patch.sh")
     ROOT.mkdir(parents=True, exist_ok=True)
     (d / "logs").mkdir(parents=True)
     cfg = {"name": a.name, "number": next_number(), "ram": a.ram, "cpus": a.cpus, "disk": a.disk,
-           "gpu": a.gpu, "root": a.root, "serial": a.serial, "dpi": a.dpi, "res": a.res, "pid": None, "data_created": False}
+           "gpu": a.gpu, "root": a.root, "serial": a.serial, "dpi": a.dpi, "res": a.res, "pid": None, "data_created": False, "extra": a.extra or []}
     save(cfg)
     print(f"created {a.name} (instance number {cfg['number']}, adb {adb_serial(cfg)})")
 
@@ -101,6 +103,7 @@ def build_cmd(cfg):
         cmd.append(f"-serial_number={cfg['serial']}")
     if cfg["root"] == "ksu":
         cmd.append(f"-init_boot_image={KSU_INIT_BOOT}")
+    cmd += cfg.get("extra", [])  # advanced launch_cvd flags, e.g. -device_external_network=slirp
     return cmd
 
 
@@ -193,6 +196,7 @@ def main():
     c.add_argument("--serial")
     c.add_argument("--dpi", type=int, default=DEFAULTS["dpi"])
     c.add_argument("--res", default=DEFAULTS["res"])
+    c.add_argument("--extra", action="append", metavar="FLAG", help="extra launch_cvd flag (repeatable)")
     s = sub.add_parser("start")
     s.add_argument("name")
     s.add_argument("--timeout", type=int, default=600)
