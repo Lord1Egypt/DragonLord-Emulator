@@ -28,6 +28,8 @@ KSU_INIT_BOOT = PHASE / ".work/kernelsu/out/init_boot_ksu.img"
 KSU_APK = PHASE / ".work/kernelsu/KernelSU_v3.3.1_32680-release.apk"
 KSU_APK_SHA256 = "b4a059ace71de2fa65cc7f12b1c58d55fc23ab25e057ee4230ce779742abe450"
 KSU_PKG = "me.weishu.kernelsu"
+GAPPS_BUNDLE = PHASE / ".work/gapps/bundle"  # built locally by tools/gapps-prepare.py (Google's apps are not ours to ship)
+GAPPS_PKGS = ("com.google.android.gms", "com.android.vending", "com.google.android.gsf")
 ROOT = Path.home() / "DragonLord" / "instances"
 DEFAULT_IMEI = "867400022047199"  # hardcoded in Cuttlefish's prebuilt bin/modem_simulator
 DEFAULTS = {"ram": 4096, "cpus": 4, "disk": 8192, "gpu": "gfxstream", "root": "off",
@@ -119,6 +121,64 @@ def hostout(cfg):
     return h
 
 
+def adb_wait_boot(ser, timeout=600):
+    end = time.time() + timeout
+    while time.time() < end:
+        subprocess.run(["adb", "connect", ser], capture_output=True, timeout=30)
+        r = subprocess.run(["adb", "-s", ser, "shell", "getprop", "sys.boot_completed"], capture_output=True, text=True, timeout=30)
+        if r.stdout.strip() == "1":
+            return
+        time.sleep(5)
+    sys.exit(f"{ser}: did not finish booting within {timeout}s")
+
+
+def adb_root(ser):
+    subprocess.run(["adb", "-s", ser, "root"], capture_output=True, timeout=60)
+    time.sleep(3)
+    adb_wait_boot(ser)
+
+
+def adb_reboot(ser):
+    subprocess.run(["adb", "-s", ser, "reboot"], capture_output=True, timeout=60)
+    time.sleep(15)
+    adb_wait_boot(ser)
+
+
+def ensure_gapps(cfg):
+    """GApps profile: put the Google apps bundle into /product and /system_ext through adb's overlayfs remount (this
+    userdebug image has an unlocked bootloader). The overlay lives on the instance's own disks, so it is per instance."""
+    ser = adb_serial(cfg)
+    have = subprocess.run(["adb", "-s", ser, "shell", "pm", "path", GAPPS_PKGS[0]], capture_output=True, text=True).stdout
+    if "package:" in have:
+        return
+    if not GAPPS_BUNDLE.exists():
+        print(f"{cfg['name']}: GApps bundle missing; run phase0/tools/gapps-prepare.py", file=sys.stderr)
+        return
+    print(f"{cfg['name']}: installing GApps (two extra reboots)")
+    adb_root(ser)
+    r = subprocess.run(["adb", "-s", ser, "disable-verity"], capture_output=True, text=True, timeout=60)
+    if "reboot" in (r.stdout + r.stderr).lower():
+        adb_reboot(ser)
+        adb_root(ser)
+    r = subprocess.run(["adb", "-s", ser, "remount"], capture_output=True, text=True, timeout=120)
+    if "reboot" in (r.stdout + r.stderr).lower():
+        adb_reboot(ser)
+        adb_root(ser)
+        r = subprocess.run(["adb", "-s", ser, "remount"], capture_output=True, text=True, timeout=120)
+    if r.returncode != 0:
+        sys.exit(f"{cfg['name']}: adb remount failed: {(r.stdout + r.stderr).strip()[-300:]}")
+    for part in ("product", "system_ext"):
+        r = subprocess.run(["adb", "-s", ser, "push", f"{GAPPS_BUNDLE / part}/.", f"/{part}/"], capture_output=True, text=True, timeout=600)
+        if r.returncode != 0:
+            sys.exit(f"{cfg['name']}: pushing GApps to /{part} failed: {(r.stdout + r.stderr).strip()[-300:]}")
+    subprocess.run(["adb", "-s", ser, "shell", "restorecon -R /product/priv-app /product/etc /system_ext/priv-app /system_ext/etc"],
+                   capture_output=True, timeout=120)
+    adb_reboot(ser)
+    have = subprocess.run(["adb", "-s", ser, "shell", "pm", "list", "packages"], capture_output=True, text=True).stdout
+    missing = [p for p in GAPPS_PKGS if f"package:{p}" not in have.split()]
+    print(f"{cfg['name']}: GApps " + (f"incomplete, missing {missing}" if missing else "installed"))
+
+
 def ensure_ksu_manager(cfg):
     """Root profile: make sure the KernelSU manager app is installed and has been opened once (that installs ksud)."""
     ser = adb_serial(cfg)
@@ -151,13 +211,15 @@ def cmd_create(a):
         a.imei = random_imei()
     if a.imei and not (re.fullmatch(r"\d{15}", a.imei) and luhn_ok(a.imei)):
         sys.exit("imei: 15 digits with a valid check digit (or 'random')")
+    if a.gapps and not GAPPS_BUNDLE.exists():
+        sys.exit(f"missing {GAPPS_BUNDLE}; run phase0/tools/gapps-prepare.py")
     if a.root == "ksu" and not KSU_INIT_BOOT.exists():
         sys.exit(f"missing {KSU_INIT_BOOT}; run phase0/tools/ksu-patch.sh")
     ROOT.mkdir(parents=True, exist_ok=True)
     (d / "logs").mkdir(parents=True)
     cfg = {"name": a.name, "number": next_number(), "ram": a.ram, "cpus": a.cpus, "disk": a.disk,
            "gpu": a.gpu, "root": a.root, "serial": a.serial, "dpi": a.dpi, "res": a.res, "pid": None, "data_created": False, "extra": a.extra or [],
-           "imei": a.imei or None}
+           "imei": a.imei or None, "gapps": bool(a.gapps)}
     save(cfg)
     print(f"created {a.name} (instance number {cfg['number']}, adb {adb_serial(cfg)})")
 
@@ -271,6 +333,8 @@ def cmd_start(a):
             print(f"{a.name}: boot completed in {time.time() - (end - a.timeout):.0f}s, adb {adb_serial(cfg)}")
             if cfg["root"] == "ksu":
                 ensure_ksu_manager(cfg)
+            if cfg.get("gapps"):
+                ensure_gapps(cfg)
             return
         time.sleep(3)
     sys.exit("boot timeout")
@@ -333,6 +397,7 @@ def main():
     c.add_argument("--disk", type=int, default=DEFAULTS["disk"])
     c.add_argument("--gpu", choices=["gfxstream", "software"], default=DEFAULTS["gpu"])
     c.add_argument("--root", choices=["off", "ksu"], default=DEFAULTS["root"])
+    c.add_argument("--gapps", action="store_true", help="install Google Play Services and Play Store on first boot")
     c.add_argument("--serial")
     c.add_argument("--imei", help="15-digit IMEI with valid check digit, or 'random'")
     c.add_argument("--dpi", type=int, default=DEFAULTS["dpi"])
