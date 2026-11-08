@@ -85,3 +85,10 @@ Goal: the user opens the emulator screen inside the web panel, with touch/mouse 
 - Install APK: choose or drag an APK in the panel (adb install), also install several at once.
 - Further ideas, same mechanism: screenshot, screen recording, clipboard sync, rotate/resize, GPS and sensor controls, shake/volume/home buttons, instance clone, snapshots, per-instance network/proxy.
 - Panel security rules to keep: bind 127.0.0.1 only, per-run token, Host header check, strict input validation, uploads limited in size and type, file names sanitised, no shell strings (argument lists only).
+
+## Owner requirements, 2026-11-08 evening: releases, portability, GApps
+
+- **GApps option** when creating an instance, next to root (in progress: `tools/gapps-prepare.py` builds a minimal Play Services + Play Store + Services Framework bundle from Google's Android 16 x86_64 Play emulator image; no Android 17 x86_64 GApps exist; the apps are proprietary and are fetched from Google on the user's machine, never shipped by us).
+- **Linux release**: compiled, versioned release that users run as one command (`./dragonlord`), which sets itself up (folders, image, tools) and opens the panel.
+- **Windows release**: one `.exe`; when opened it installs all folders and files **into the folder the exe is in** (no system-wide install), so the emulator is **fully portable** and can run from a USB flash drive.
+- **Windows view**: a **wide (landscape/tablet) screen** option, not only the phone shape; keyboard typing straight into Android (works today in Direct view); drag an APK onto the screen to install it automatically (works today); a **shared folder inside the emulator's folder** visible to Android.
