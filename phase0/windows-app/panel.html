@@ -31,7 +31,7 @@ progress{width:100%;height:14px;accent-color:var(--acc)}
  <div class="grid">
   <div><label for="ram">Memory (MB)</label><input id="ram" type="number" value="3072" min="2048" max="16384" step="512"></div>
   <div><label for="cpus">CPU cores</label><input id="cpus" type="number" value="4" min="1" max="16"></div>
-  <div><label for="disk">Drive size (MB)</label><input id="disk" type="number" value="8192" min="2048" step="1024"></div>
+  <div><label for="disk">Drive size (MB)</label><input id="disk" type="number" value="8192" min="6144" step="1024"></div>
   <div><label for="res">Screen</label><select id="res">
    <option value="1280x800" selected>Wide 1280x800 (tablet)</option><option value="1600x900">Wide 1600x900</option>
    <option value="1920x1080">Wide 1920x1080</option><option value="720x1280">Phone 720x1280</option><option value="1080x1920">Phone 1080x1920</option></select></div>
@@ -85,9 +85,11 @@ async function refresh(){
     for(const t of [c.ram+" MB",c.cpus+" CPU",c.disk+" MB drive",c.res+"@"+c.dpi,c.image==="play"?"Google Play":"Light",c.root?"root":"","adb "+c.adb])tags.append(el("span","tag",t));
     info.append(tags);card.append(info);
     const run=c.running,b=c.busy;
-    for(const [label,path,off] of [["Start","/api/start",run||b],["Stop","/api/stop",!run||(b&&b!=="starting")],["Terminal","term",!run||b],["Copy shared folder","/api/sync-shared",!run||b],["Delete","/api/delete",b]]){
+    for(const [label,path,off] of [["Start","/api/start",run||b],["Stop","/api/stop",!run||(b&&b!=="starting")],["Terminal","term",!run||b],["Clone","clone",run||b],["Rename","rename",run||b],["Copy shared folder","/api/sync-shared",!run||b],["Delete","/api/delete",b]]){
       const btn=el("button","",label);btn.disabled=!!off;
-      btn.onclick=()=>{if(path==="term"){window.open("/term?name="+encodeURIComponent(c.name)+"&t="+TOKEN,"_blank");return}if(path==="/api/delete"&&!confirm("Delete "+c.name+" and its drive?"))return;act(path,c.name)};card.append(btn);
+      btn.onclick=()=>{if(path==="clone"||path==="rename"){const nn=prompt((path==="clone"?"Name of the copy of ":"New name for ")+c.name+":",c.name+(path==="clone"?"-copy":""));if(!nn)return;
+        showErr();api("/api/"+path,{name:c.name,newName:nn}).then(()=>refresh()).catch(showErr);return}
+      if(path==="term"){window.open("/term?name="+encodeURIComponent(c.name)+"&t="+TOKEN,"_blank");return}if(path==="/api/delete"&&!confirm("Delete "+c.name+" and its drive?"))return;act(path,c.name)};card.append(btn);
     }
     const pick=el("label","btn","Install APK"),inp=el("input");inp.type="file";inp.accept=".apk";inp.hidden=true;inp.multiple=true;
     inp.onchange=async()=>{for(const f of inp.files)await upload(c.name,f);inp.value=""};pick.append(inp);

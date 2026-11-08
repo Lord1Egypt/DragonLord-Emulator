@@ -25,7 +25,7 @@ import (
 	"sync"
 )
 
-const version = "0.2.0-preview"
+const version = "0.2.1-preview"
 
 type pkg struct {
 	name, url, sha256, into string
@@ -266,7 +266,7 @@ func failSetup(err error) {
 }
 
 func openBrowser(url string) {
-	exec.Command("rundll32", "url.dll,FileProtocolHandler", url).Start()
+	hide(exec.Command("rundll32", "url.dll,FileProtocolHandler", url)).Start()
 }
 
 func main() {

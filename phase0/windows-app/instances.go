@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
 	"net"
 	"os"
 	"os/exec"
@@ -63,7 +64,7 @@ func adb(args ...string) (string, error) { return adbTimeout(60*time.Second, arg
 func adbTimeout(d time.Duration, args ...string) (string, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), d)
 	defer cancel()
-	cmd := exec.CommandContext(ctx, adbExe(), args...)
+	cmd := hide(exec.CommandContext(ctx, adbExe(), args...))
 	cmd.Env = emuEnv()
 	out, err := cmd.CombinedOutput()
 	return strings.TrimSpace(string(out)), err
@@ -153,8 +154,8 @@ func create(in *Instance) error {
 	if !nameOK.MatchString(in.Name) {
 		return errors.New("instance name: 1-32 letters, digits, - or _")
 	}
-	if in.RAM < 2048 || in.RAM > 16384 || in.CPUs < 1 || in.CPUs > 16 || in.Disk < 2048 || in.Disk > 262144 || in.DPI < 120 || in.DPI > 640 {
-		return errors.New("limits: RAM 2048-16384 MB, CPU 1-16, drive 2048-262144 MB, density 120-640")
+	if in.RAM < 2048 || in.RAM > 16384 || in.CPUs < 1 || in.CPUs > 16 || in.Disk < 6144 || in.Disk > 262144 || in.DPI < 120 || in.DPI > 640 {
+		return errors.New("limits: RAM 2048-16384 MB, CPU 1-16, drive 6144-262144 MB (the emulator raises smaller data disks to 6 GB), density 120-640")
 	}
 	if m := resOK.FindStringSubmatch(in.Res); m == nil {
 		return errors.New("screen must look like 1280x800")
@@ -246,7 +247,7 @@ func start(in *Instance) error {
 		args = append(args, "-no-audio") // measured: idle CPU 23% -> 14% and 130 MB less RAM per instance
 	}
 	args = append(args, strings.Fields(os.Getenv("DRAGONLORD_EMU_ARGS"))...) // benchmarking only
-	cmd := exec.Command(dir("engine", "emulator", "emulator.exe"), args...)
+	cmd := hide(exec.Command(dir("engine", "emulator", "emulator.exe"), args...))
 	cmd.Env, cmd.Stdout, cmd.Stderr = emuEnv(), log, log
 	if err := cmd.Start(); err != nil {
 		log.Close()
@@ -269,7 +270,8 @@ func start(in *Instance) error {
 			}
 			// booted = the emulator says so in its log, or the guest says so over adb (either one is enough)
 			b, _ := os.ReadFile(logPath)
-			up := strings.Contains(string(b), "Boot completed in")
+			// a restored quick-boot snapshot never prints the cold-boot line; the VM is running as soon as it is loaded
+			up := strings.Contains(string(b), "Boot completed in") || strings.Contains(string(b), "Successfully loaded snapshot")
 			if !up {
 				out, _ := adbTimeout(4*time.Second, "-s", serial(in.Number), "shell", "getprop", "sys.boot_completed")
 				up = out == "1"
@@ -364,4 +366,165 @@ func syncShared(in *Instance) (string, error) {
 func lastLine(s string) string {
 	lines := strings.Split(strings.TrimSpace(s), "\n")
 	return strings.TrimSpace(lines[len(lines)-1])
+}
+
+// copyTree copies a directory, skipping lock files and logs. Files are copied one at a time (instances are several GB).
+func copyTree(src, dst string) error {
+	return filepath.Walk(src, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		rel, _ := filepath.Rel(src, path)
+		target := filepath.Join(dst, rel)
+		name := info.Name()
+		if info.IsDir() {
+			if strings.HasSuffix(name, ".lock") {
+				return filepath.SkipDir
+			}
+			return os.MkdirAll(target, 0o755)
+		}
+		if strings.HasSuffix(name, ".lock") || name == "emulator-log.txt" {
+			return nil
+		}
+		in, err := os.Open(path)
+		if err != nil {
+			return err
+		}
+		defer in.Close()
+		out, err := os.Create(target)
+		if err != nil {
+			return err
+		}
+		_, err = io.Copy(out, in)
+		if cerr := out.Close(); err == nil {
+			err = cerr
+		}
+		return err
+	})
+}
+
+// retarget points a copied or renamed instance folder at its new name. The emulator rewrites config.ini itself (it
+// raises the data partition to its minimum, for one) and records the instance name and absolute paths in every
+// snapshot's hardware.ini; any other difference makes it discard the quick-boot snapshot as "different AVD
+// configuration". So the existing files are edited in place instead of being regenerated.
+func retarget(d, oldName, newName string) error {
+	oldRe := regexp.MustCompile(`(?i)\\instances\\` + regexp.QuoteMeta(oldName) + `\.avd\\`)
+	edit := func(path string, f func(string) string) error {
+		b, err := os.ReadFile(path)
+		if err != nil {
+			if os.IsNotExist(err) {
+				return nil
+			}
+			return err
+		}
+		return os.WriteFile(path, []byte(f(string(b))), 0o644)
+	}
+	nameLines := func(t string) string {
+		for _, k := range []string{"AvdId", "avd.ini.displayname", "avd.id", "avd.name"} {
+			t = regexp.MustCompile(`(?m)^`+regexp.QuoteMeta(k)+`(\s*=\s*)`+regexp.QuoteMeta(oldName)+`(\r?)$`).ReplaceAllString(t, k+"${1}"+newName+"${2}")
+		}
+		return oldRe.ReplaceAllLiteralString(t, `\instances\`+newName+`.avd\`)
+	}
+	if err := edit(filepath.Join(d, "config.ini"), nameLines); err != nil {
+		return err
+	}
+	snaps, _ := filepath.Glob(filepath.Join(d, "snapshots", "*", "hardware.ini"))
+	for _, h := range snaps {
+		if err := edit(h, nameLines); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+// clone makes a full copy of a stopped instance, including its quick-boot snapshot, under a new name.
+func clone(src *Instance, newName string) error {
+	if !nameOK.MatchString(newName) {
+		return errors.New("instance name: 1-32 letters, digits, - or _")
+	}
+	if running(src) || busyState(src.Name) != "" {
+		return errors.New("stop the instance first")
+	}
+	if !setBusy(newName, "cloning") {
+		return errors.New("that name is in use")
+	}
+	defer setBusy(newName, "")
+	if _, err := os.Stat(avdDir(newName)); err == nil {
+		return fmt.Errorf("instance exists: %s", newName)
+	}
+	used := map[int]bool{}
+	paths, _ := filepath.Glob(dir("instances", "*.avd", "dragonlord.json"))
+	for _, p := range paths {
+		if o, err := load(strings.TrimSuffix(filepath.Base(filepath.Dir(p)), ".avd")); err == nil {
+			used[o.Number] = true
+		}
+	}
+	number := 0
+	for n := 1; n <= 16 && number == 0; n++ {
+		if !used[n] {
+			number = n
+		}
+	}
+	if number == 0 {
+		return errors.New("at most 16 instances")
+	}
+	// Copy into a temporary folder and move it into place only when complete: a half-copied instance (carrying a copy
+	// of the source's dragonlord.json) must never show up in the list or be startable.
+	tmp := avdDir(newName) + ".tmp"
+	os.RemoveAll(tmp)
+	if err := copyTree(avdDir(src.Name), tmp); err != nil {
+		os.RemoveAll(tmp)
+		return err
+	}
+	n := *src
+	n.Name, n.Number = newName, number
+	b, _ := json.MarshalIndent(Instance{Name: n.Name, Number: n.Number, RAM: n.RAM, CPUs: n.CPUs, Disk: n.Disk, Res: n.Res, DPI: n.DPI,
+		Image: n.Image, Profile: n.Profile, Root: n.Root}, "", "  ")
+	if err := os.WriteFile(filepath.Join(tmp, "dragonlord.json"), b, 0o644); err != nil {
+		os.RemoveAll(tmp)
+		return err
+	}
+	if err := retarget(tmp, src.Name, newName); err != nil {
+		os.RemoveAll(tmp)
+		return err
+	}
+	if err := os.Rename(tmp, avdDir(newName)); err != nil {
+		os.RemoveAll(tmp)
+		return err
+	}
+	return writeIni(&n)
+}
+
+func busyState(name string) string {
+	mu.Lock()
+	defer mu.Unlock()
+	return busy[name]
+}
+
+// rename moves a stopped instance to a new name.
+func rename(in *Instance, newName string) error {
+	if !nameOK.MatchString(newName) {
+		return errors.New("instance name: 1-32 letters, digits, - or _")
+	}
+	if running(in) || busyState(in.Name) != "" {
+		return errors.New("stop the instance first")
+	}
+	if _, err := os.Stat(avdDir(newName)); err == nil {
+		return fmt.Errorf("instance exists: %s", newName)
+	}
+	if err := os.Rename(avdDir(in.Name), avdDir(newName)); err != nil {
+		return err
+	}
+	os.Remove(dir("instances", in.Name+".ini"))
+	n := *in
+	n.Name = newName
+	b, _ := json.MarshalIndent(Instance{Name: n.Name, Number: n.Number, RAM: n.RAM, CPUs: n.CPUs, Disk: n.Disk, Res: n.Res, DPI: n.DPI,
+		Image: n.Image, Profile: n.Profile, Root: n.Root}, "", "  ")
+	if err := os.WriteFile(filepath.Join(avdDir(newName), "dragonlord.json"), b, 0o644); err != nil {
+		return err
+	}
+	if err := retarget(avdDir(newName), in.Name, newName); err != nil {
+		return err
+	}
+	return writeIni(&n)
 }

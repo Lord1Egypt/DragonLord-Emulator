@@ -36,6 +36,14 @@ Decision: the Light profile starts with `-no-audio`; Balanced and Power keep aud
 2. "Booted" detection depended on an adb round trip that can hang; it now uses the emulator's own "Boot completed" log line or an adb check limited to 4 s.
 3. Starting an instance right after stopping it failed ("same AVD"): stop, start and delete now wait for the emulator process and its lock files (stale locks older than 30 s are removed).
 
+## Clone, rename and what the snapshot depends on (measured, headless emulators)
+
+- Clean cycle on the Light image: cold boot 101-106 s, restart from the quick-boot snapshot **7 s**, adb usable at once; a **clone** (3.3 GB copy, 12 s) starts in **8 s** because its snapshot restores.
+- A snapshot is discarded ("different AVD configuration") if `config.ini` differs from what the emulator saved, so the app never regenerates `config.ini` for an existing instance; a clone or rename edits only the name and the instance paths in `config.ini` and in the snapshot's `hardware.ini`. The emulator also raises data disks below 6 GB to 6 GB, so the form's minimum is 6144 MB.
+- A clone is built in `NAME.avd.tmp` and moved into place when complete, so a half-copied instance never shows up or can be started.
+- **Never force-kill the emulator** (Task Manager, `taskkill /F`): it can leave a half-written snapshot, after which the next start hangs with adb offline. My own test runs did this once and produced exactly that state; after removing those instances and testing again with graceful stops everything worked. Stop and Quit in the panel are graceful.
+- Console programs started from the window-less exe (adb every second or two, the emulator launcher) opened a black console window each time; all child processes now start hidden.
+
 ## Still to do for the Windows edition
 
 One native window with the controls inside it (instead of the browser panel), clone/rename/import/export, batch start, identity profiles (brand, model, operator, phone number), fake GPS, key mapping, macros, operation synchronizer, screen recording, boss key, a lighter guest than stock AOSP (a trimmed image would cut the 100 s cold boot), and a comparison run against BlueStacks on this PC.

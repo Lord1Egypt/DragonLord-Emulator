@@ -9,6 +9,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"log"
 	"net"
 	"net/http"
 	"os"
@@ -85,6 +86,7 @@ func reply(w http.ResponseWriter, code int, v any) {
 }
 
 func fail(w http.ResponseWriter, err error) {
+	log.Printf("request failed: %v", err)
 	reply(w, http.StatusBadRequest, map[string]string{"error": err.Error()})
 }
 
@@ -135,6 +137,7 @@ func (a *api) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 func (a *api) action(w http.ResponseWriter, r *http.Request) {
 	var d struct {
+		NewName string `json:"newName"`
 		Root    bool   `json:"root"`
 		Image   string `json:"image"`
 		Profile string `json:"profile"`
@@ -191,6 +194,17 @@ func (a *api) action(w http.ResponseWriter, r *http.Request) {
 		go stop(in)
 	case "/api/delete":
 		err = remove(in)
+	case "/api/clone":
+		go func(src *Instance, to string) {
+			if err := clone(src, to); err != nil {
+				log.Print("clone failed: ", err)
+			}
+		}(in, d.NewName)
+		if !nameOK.MatchString(d.NewName) {
+			err = errors.New("instance name: 1-32 letters, digits, - or _")
+		}
+	case "/api/rename":
+		err = rename(in, d.NewName)
 	case "/api/sync-shared":
 		if !running(in) {
 			err = errors.New("start the instance first")

@@ -114,7 +114,7 @@ func (a *api) terminal(w http.ResponseWriter, r *http.Request) {
 		base64.StdEncoding.EncodeToString(sum[:]))
 	rw.Flush()
 
-	cmd := exec.Command(adbExe(), "-s", serial(in.Number), "shell", "-tt")
+	cmd := hide(exec.Command(adbExe(), "-s", serial(in.Number), "shell", "-tt"))
 	cmd.Env = emuEnv()
 	stdin, _ := cmd.StdinPipe()
 	stdout, _ := cmd.StdoutPipe()
