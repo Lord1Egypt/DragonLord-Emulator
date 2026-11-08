@@ -23,7 +23,7 @@ Both are unpacked into `phase0/.work/cuttlefish/cvd/` (untracked). The host pack
 
 Upstream QEMU 11.1.3 configured with `--enable-kvm --enable-virglrenderer --enable-rutabaga-gfx --enable-opengl --enable-sdl --enable-gtk --enable-slirp` (build dir `phase0/.work/qemu-build-gpu`, meson 1.11.1 from `.work/build-venv`).
 Rutabaga comes from a local pkg-config package (`phase0/.work/rutabaga-local`): Google's two prebuilt libraries plus `libc++.so.1`, and the header `rutabaga_gfx/rutabaga_gfx_ffi.h` from `.work/rutabaga-gpu-feasibility` with **one change: `struct rutabaga_fence.ring_idx` is `uint8_t`** (the Rust `RutabagaFence.ring_idx` is `u8`; the C header says `uint32_t`).
-Put the binary where the launcher looks: `ln -s .../qemu-build-gpu/qemu-system-x86_64 phase0/.work/cuttlefish/qemu-ours/qemu-system-x86_64`.
+Put a stand-in where the launcher looks: copy `phase0/tools/qemu-shm-wrapper.sh` to `phase0/.work/cuttlefish/qemu-ours/qemu-system-x86_64` (edit `REAL=` to your build). It moves the guest-RAM file `qemu.mem` from disk to `/dev/shm` and passes everything else through. **This matters on WSL**: with the file on disk the same boot took 262-394 s and the guest hit ANRs ("System UI isn't responding") because of disk I/O pressure; with `/dev/shm` it boots in 50-66 s. Delete `/dev/shm/dragonlord-cvd-1.mem` after each run (it holds 4 GB of RAM until removed).
 
 ## Launch
 
@@ -48,3 +48,12 @@ adb connect 127.0.0.1:6520 ; bin/stop_cvd
 
 Not proven: any speed gain (no valid benchmark yet). No hardware Vulkan on WSL (only llvmpipe), so Gfxstream Vulkan and Vulkan composition run in software (`useVulkanComposition: false`). The display is asleep behind the keyguard after boot; send `KEYCODE_WAKEUP` and a swipe before screenshots.
 Debug logs for any run: `phase0/tools/dlrun.py scan <run dir>`; Cuttlefish logs are in `cuttlefish/instances/cvd-1/logs/` (`launcher.log`, `logcat`, `kernel.log`).
+
+## Benchmark (`phase0/tools/dl-bench.py`, 40 Settings scroll pairs, 4 vCPU, 4 GB, 2 runs per mode, 2026-11-08)
+
+| Mode | Boot s | Workload s | Median frame ms | Slow frames % | GPU util avg % |
+|---|---|---|---|---|---|
+| guest_swiftshader | 52 / 50 | 22 / 28 | 32 / 38 | 33 / 40 | 0.1 / 0.0 |
+| gfxstream (RTX 2060 GL via d3d12) | 66 / 64 | 20 / 23 | 27 / 53 | 31 / 55 | 24 / 23 |
+
+Reading: no clear speed difference on this light UI workload; run-to-run noise is as large as the gap. Gfxstream boots about 14 s slower. The GPU is demonstrably used (about 23% vs 0%). Earlier numbers taken with RAM on disk (boot 262-394 s, 3.3 s frames) were an I/O artefact and are invalid. A heavy GL workload and a native-Windows run are still needed before claiming a speed benefit.
