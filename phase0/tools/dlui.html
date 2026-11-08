@@ -9,7 +9,7 @@ main{max-width:860px;margin:0 auto;padding:20px 16px}
 h1{font-size:22px;margin:0 0 4px}.sub{color:var(--mut);margin:0 0 20px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:12px}
 .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.grow{flex:1;min-width:200px}
-.tag{font-size:12px;border:1px solid var(--line);border-radius:99px;padding:1px 8px;color:var(--mut);margin-right:4px}
+.tag{display:inline-block;white-space:nowrap;font-size:12px;border:1px solid var(--line);border-radius:99px;padding:1px 8px;color:var(--mut);margin:2px 4px 2px 0}
 .state{font-weight:600}.state.on{color:var(--ok)}
 button{font:inherit;padding:7px 14px;border-radius:7px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
 button.p{background:var(--acc);border-color:var(--acc);color:#fff}button:disabled{opacity:.5;cursor:default}
@@ -63,7 +63,7 @@ async function refresh(){
     for(const t of [c.ram+" MB",c.cpus+" CPU",c.disk+" MB drive",c.res+"@"+c.dpi,c.gpu==="gfxstream"?"GPU":"software",c.root==="ksu"?"root":"no root",c.imei?"IMEI "+c.imei:"","adb "+c.adb])if(t)tags.append(el("span","tag",t));
     info.append(tags);card.append(info);
     const run=c.running;
-    for(const [label,path,off] of [["View","view",!run||!!c.busy],["Screen","/api/screen",!run||!!c.busy],["Start","/api/start",run||c.busy],["Stop","/api/stop",!run||(c.busy&&c.busy!=="starting")],["Delete","/api/delete",c.busy&&c.busy!=="starting"]]){
+    for(const [label,path,off] of [["View","view",!run||!!c.busy],["Start","/api/start",run||c.busy],["Stop","/api/stop",!run||(c.busy&&c.busy!=="starting")],["Delete","/api/delete",c.busy&&c.busy!=="starting"]]){
       const b=el("button","",label);b.disabled=!!off;
       b.onclick=()=>{if(path==="view"){window.open("/view?name="+encodeURIComponent(c.name)+"&t="+TOKEN,"_blank");return}
         if(path==="/api/delete"&&!confirm("Delete "+c.name+" and its drive?"))return;act(path,c.name)};card.append(b);

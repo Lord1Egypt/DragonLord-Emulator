@@ -14,7 +14,7 @@ Android 17 emulator on our QEMU 11.1.3 with KVM, host-GPU or software graphics, 
 - Panel: `python3 phase0/tools/dlui.py` (add `--open` on WSL to open it in the Windows browser; on Windows double-click `phase0/windows/DragonLord.cmd`). The link holds an access token that stays the same across restarts (`~/DragonLord/ui-token`); keep it private.
 - In the panel: create instances (name, RAM, CPU cores, drive size, screen, DPI, serial, IMEI, GPU or software, root), Start, Stop, Delete.
 - **View** opens the screen in a browser tab. Default source **Direct**: QEMU's own framebuffer over VNC, tunnelled through the panel (token, Host and Origin checked), full resolution, about 19 frames per second while the screen animates; click the screen and type, keys go to Android as a real keyboard. Fallback sources **Video 50/75/100 %** (H.264 from the guest's screen recorder, 5-15 fps). Click = tap and drag = live touch on a real virtio touchscreen (instances started with the current tools; older ones fall back to adb taps), Back/Home/Recents/Power/Volume buttons, **Install APK**, **Upload file** (to the guest's Download folder), list and download files from Download, drag and drop an APK or file onto the screen.
-- **Screen** opens a scrcpy window (Windows build in `.work/scrcpy`); not working yet on this setup (server connection fails), use View.
+- scrcpy (Windows build in `.work/scrcpy`) was tried as a separate screen window; it fails with "Server connection failed" here, so its button is hidden (`/api/screen` remains for a later retry).
 - Command line: `phase0/tools/dlvm.py create|start|stop|status|delete|logs` does the same as the panel.
 
 ## Android Studio / adb
