@@ -23,6 +23,9 @@ PHASE = Path(__file__).resolve().parents[1]
 CVD = PHASE / ".work/cuttlefish/cvd"
 QEMU_DIR = PHASE / ".work/cuttlefish/qemu-ours"
 KSU_INIT_BOOT = PHASE / ".work/kernelsu/out/init_boot_ksu.img"
+KSU_APK = PHASE / ".work/kernelsu/KernelSU_v3.3.1_32680-release.apk"
+KSU_APK_SHA256 = "b4a059ace71de2fa65cc7f12b1c58d55fc23ab25e057ee4230ce779742abe450"
+KSU_PKG = "me.weishu.kernelsu"
 ROOT = Path.home() / "DragonLord" / "instances"
 DEFAULT_IMEI = "867400022047199"  # hardcoded in Cuttlefish's prebuilt bin/modem_simulator
 DEFAULTS = {"ram": 4096, "cpus": 4, "disk": 8192, "gpu": "gfxstream", "root": "off",
@@ -114,6 +117,24 @@ def hostout(cfg):
     return h
 
 
+def ensure_ksu_manager(cfg):
+    """Root profile: make sure the KernelSU manager app is installed and has been opened once (that installs ksud)."""
+    ser = adb_serial(cfg)
+    have = subprocess.run(["adb", "-s", ser, "shell", "pm", "path", KSU_PKG], capture_output=True, text=True).stdout
+    if KSU_PKG in have or "package:" in have:
+        return
+    import hashlib
+    if hashlib.sha256(KSU_APK.read_bytes()).hexdigest() != KSU_APK_SHA256:
+        print(f"{cfg['name']}: KernelSU manager APK checksum mismatch, not installing", file=sys.stderr)
+        return
+    r = subprocess.run(["adb", "-s", ser, "install", "-r", str(KSU_APK)], capture_output=True, text=True, timeout=300)
+    print(f"{cfg['name']}: KernelSU manager install: {(r.stdout + r.stderr).strip().splitlines()[-1:]}")
+    subprocess.run(["adb", "-s", ser, "shell", "monkey", "-p", KSU_PKG, "-c", "android.intent.category.LAUNCHER", "1"],
+                   capture_output=True, timeout=60)
+    time.sleep(8)
+    subprocess.run(["adb", "-s", ser, "shell", "input", "keyevent", "3"], capture_output=True, timeout=30)
+
+
 def cmd_create(a):
     d = inst_dir(a.name)
     if d.exists():
@@ -187,6 +208,8 @@ def cmd_start(a):
             cfg["data_created"] = True
             save(cfg)
             print(f"{a.name}: boot completed in {time.time() - (end - a.timeout):.0f}s, adb {adb_serial(cfg)}")
+            if cfg["root"] == "ksu":
+                ensure_ksu_manager(cfg)
             return
         time.sleep(3)
     sys.exit("boot timeout")

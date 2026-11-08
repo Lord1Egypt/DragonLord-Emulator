@@ -140,6 +140,22 @@ def do_input(cfg, d):
     subprocess.run(adb_cmd(cfg, "shell", shell), capture_output=True, timeout=15)
 
 
+FILE_OK = re.compile(r"[A-Za-z0-9_][A-Za-z0-9._ -]{0,99}")  # also the shell-safety rule for guest paths
+GUEST_DIR = "/sdcard/Download"
+MAX_UPLOAD = 4 * 2**30
+
+
+def guest_file(name):
+    if not isinstance(name, str) or not FILE_OK.fullmatch(name) or ".." in name:
+        raise ValueError("file name: letters, digits, space and . _ - only (max 100)")
+    return name
+
+
+def list_files(cfg):
+    out = subprocess.run(adb_cmd(cfg, "shell", f"ls -p {GUEST_DIR}"), capture_output=True, text=True, timeout=30).stdout
+    return [f for f in out.splitlines() if f and not f.endswith("/") and FILE_OK.fullmatch(f)]
+
+
 def background(name, verb, fn):
     with LOCK:
         # a boot in progress can always be cancelled by stop/delete; everything else waits for the current action
@@ -190,13 +206,23 @@ class H(BaseHTTPRequestHandler):
             return self.send(200, PAGE.replace("__TOKEN__", TOKEN), "text/html; charset=utf-8")
         if path == "/api/instances":
             return self.send(200, json.dumps(list_instances()))
+        if path in ("/api/files", "/api/pull"):
+            q = parse_qs(urlparse(self.path).query)
+            if path == "/api/pull":
+                return self.pull(q.get("name", [""])[0], q.get("file", [""])[0])
+            try:
+                cfg = dlvm.load(q.get("name", [""])[0])
+            except SystemExit as e:
+                return self.send(400, json.dumps({"error": str(e)}))
+            return self.send(200, json.dumps(list_files(cfg) if dlvm.running(cfg) else []))
         if path == "/view":
             return self.send(200, VIEW.replace("__TOKEN__", TOKEN), "text/html; charset=utf-8")
         if path == "/api/stream":
-            return self.stream(parse_qs(urlparse(self.path).query).get("name", [""])[0])
+            q = parse_qs(urlparse(self.path).query)
+            return self.stream(q.get("name", [""])[0], q.get("q", ["75"])[0])
         self.send(404, '{"error":"not found"}')
 
-    def stream(self, name):
+    def stream(self, name, quality):
         """Raw H.264 (Annex B) from the guest's screenrecord, restarted when its 3-minute limit ends."""
         try:
             cfg = dlvm.load(name)
@@ -204,6 +230,10 @@ class H(BaseHTTPRequestHandler):
             return self.send(400, json.dumps({"error": str(e)}))
         if not dlvm.running(cfg):
             return self.send(400, '{"error":"not running"}')
+        pct = {"100": 100, "75": 75, "50": 50}.get(quality)
+        if not pct:
+            return self.send(400, '{"error":"quality must be 100, 75 or 50"}')
+        w, h = (int(v) * pct // 100 // 2 * 2 for v in cfg["res"].split("x"))  # the software encoder is the bottleneck
         self.send_response(200)
         self.send_header("Content-Type", "application/octet-stream")
         self.send_header("Cache-Control", "no-store")
@@ -211,7 +241,7 @@ class H(BaseHTTPRequestHandler):
         try:
             while dlvm.running(dlvm.load(name)):
                 p = subprocess.Popen(adb_cmd(cfg, "exec-out", "screenrecord", "--output-format=h264", "--time-limit", "180",
-                                             "--bit-rate", "4000000", "--size", cfg["res"], "-"),
+                                             "--bit-rate", "4000000", "--size", f"{w}x{h}", "-"),
                                      stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
                 try:
                     while True:
@@ -226,9 +256,71 @@ class H(BaseHTTPRequestHandler):
         except (BrokenPipeError, ConnectionResetError):
             pass
 
+    def upload(self):
+        """Raw file body. action=install runs adb install (APK); action=push copies it to the guest's Download folder."""
+        try:
+            q = parse_qs(urlparse(self.path).query)
+            cfg = dlvm.load(q.get("name", [""])[0])
+            if not dlvm.running(cfg):
+                raise ValueError("not running")
+            fname, action = guest_file(q.get("file", [""])[0]), q.get("action", [""])[0]
+            if action not in ("install", "push") or (action == "install" and not fname.lower().endswith(".apk")):
+                raise ValueError("action must be install (.apk) or push")
+            n = int(self.headers.get("Content-Length") or -1)
+            if not 0 < n <= MAX_UPLOAD:
+                raise ValueError("file must be 1 byte to 4 GB")
+            tmp_dir = dlvm.inst_dir(cfg["name"]) / "uploads"
+            tmp_dir.mkdir(exist_ok=True)
+            tmp = tmp_dir / f"{secrets.token_hex(8)}-{fname}"
+            try:
+                with open(tmp, "wb") as f:
+                    left = n
+                    while left:
+                        chunk = self.rfile.read(min(left, 1 << 20))
+                        if not chunk:
+                            raise ValueError("upload interrupted")
+                        f.write(chunk)
+                        left -= len(chunk)
+                if action == "install":
+                    r = subprocess.run(adb_cmd(cfg, "install", "-r", str(tmp)), capture_output=True, text=True, timeout=600)
+                else:
+                    r = subprocess.run(adb_cmd(cfg, "push", str(tmp), f"{GUEST_DIR}/{fname}"), capture_output=True, text=True, timeout=600)
+            finally:
+                tmp.unlink(missing_ok=True)
+            out = (r.stdout + r.stderr).strip().splitlines()
+            if r.returncode != 0 or (action == "install" and not any("Success" in l for l in out)):
+                raise ValueError(f"{action} failed: {out[-1] if out else r.returncode}")
+            self.send(200, json.dumps({"ok": True, "result": out[-1] if out else ""}))
+        except SystemExit as e:
+            self.send(400, json.dumps({"error": str(e)}))
+        except (ValueError, OSError, subprocess.TimeoutExpired) as e:
+            self.send(400, json.dumps({"error": str(e)}))
+
+    def pull(self, name, fname):
+        try:
+            cfg = dlvm.load(name)
+            fname = guest_file(fname)
+        except (SystemExit, ValueError) as e:
+            return self.send(400, json.dumps({"error": str(e)}))
+        p = subprocess.Popen(adb_cmd(cfg, "exec-out", f"cat '{GUEST_DIR}/{fname}'"), stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+        self.send_response(200)
+        self.send_header("Content-Type", "application/octet-stream")
+        self.send_header("Content-Disposition", f'attachment; filename="{fname}"')
+        self.end_headers()
+        try:
+            while chunk := p.stdout.read1(1 << 20):
+                self.wfile.write(chunk)
+        except (BrokenPipeError, ConnectionResetError):
+            pass
+        finally:
+            p.kill()
+            p.wait()
+
     def do_POST(self):
         if not self.authorised():
             return self.send(403, '{"error":"forbidden"}')
+        if urlparse(self.path).path == "/api/upload":
+            return self.upload()
         try:
             n = int(self.headers.get("Content-Length") or 0)
             if n > 10000:
