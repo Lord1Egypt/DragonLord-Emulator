@@ -8,6 +8,7 @@ Thin layer over dlvm.py: every action calls the same functions as the CLI, so li
 import argparse
 import json
 import secrets
+import socket
 import subprocess
 import sys
 import threading
@@ -67,6 +68,10 @@ SCRCPY = Path(__file__).resolve().parents[1] / ".work/scrcpy/win64/scrcpy-win64-
 
 def show_screen(cfg):
     """Open a scrcpy window (Windows build, run through WSL interop) mirroring the instance with mouse and keyboard."""
+    try:
+        socket.create_connection(("127.0.0.1", 6520 + cfg["number"] - 1), timeout=2).close()
+    except OSError:
+        raise ValueError(f"{cfg['name']} has not finished booting yet (adb port is closed); wait until the state says running")
     exe = SCRCPY / "scrcpy.exe"
     if not exe.exists():
         raise ValueError(f"scrcpy not found at {SCRCPY}")
