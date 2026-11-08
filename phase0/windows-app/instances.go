@@ -100,8 +100,7 @@ func list() []*Instance {
 	return out
 }
 
-// writeAVD (re)writes the emulator's definition. The .ini holds an absolute path, so it is rewritten on every start:
-// the folder may have moved to another drive since.
+// writeAVD writes a new instance's emulator definition.
 func writeAVD(in *Instance) error {
 	m := resOK.FindStringSubmatch(in.Res)
 	w, _ := strconv.Atoi(m[1])
@@ -125,6 +124,13 @@ func writeAVD(in *Instance) error {
 	if err := os.WriteFile(filepath.Join(avdDir(in.Name), "config.ini"), []byte(cfg), 0o644); err != nil {
 		return err
 	}
+	return writeIni(in)
+}
+
+// writeIni points the emulator at the instance folder. It holds an absolute path, so it is rewritten on every start
+// (the folder may have moved to another drive). config.ini is left alone after creation: the emulator adds its own
+// keys to it, and rewriting it makes the emulator discard its quick-boot snapshot ("different AVD configuration").
+func writeIni(in *Instance) error {
 	ini := "avd.ini.encoding=UTF-8\r\npath=" + avdDir(in.Name) + "\r\ntarget=android-36\r\n"
 	return os.WriteFile(dir("instances", in.Name+".ini"), []byte(ini), 0o644)
 }
@@ -185,7 +191,7 @@ func start(in *Instance) error {
 	if running(in) {
 		return errors.New("already running")
 	}
-	if err := writeAVD(in); err != nil {
+	if err := writeIni(in); err != nil {
 		return err
 	}
 	if !setBusy(in.Name, "starting") {
@@ -204,6 +210,7 @@ func start(in *Instance) error {
 		setBusy(in.Name, "")
 		return err
 	}
+	go retitle(in)
 	go func() {
 		defer log.Close()
 		done := make(chan struct{})
@@ -247,7 +254,15 @@ func remove(in *Instance) error {
 		return err
 	}
 	os.Remove(dir("instances", in.Name+".ini"))
-	return os.RemoveAll(avdDir(in.Name))
+	// the emulator's processes keep their files open for a few seconds after the console port closes
+	var err error
+	for i := 0; i < 30; i++ {
+		if err = os.RemoveAll(avdDir(in.Name)); err == nil {
+			return nil
+		}
+		time.Sleep(time.Second)
+	}
+	return err
 }
 
 func installAPK(in *Instance, path string) (string, error) {

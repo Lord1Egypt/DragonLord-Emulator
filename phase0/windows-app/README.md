@@ -10,7 +10,9 @@ One portable `DragonLord.exe`. Put it in any folder (another drive, a USB stick)
 | `downloads\` | the verified downloads, reused if you set up again |
 | `data\` | the panel's access token (keep private) |
 
-The panel opens in your browser (`http://127.0.0.1:8770`, local only, token-protected): create instances (RAM, CPU cores, drive size, wide or phone screen, density), start/stop/delete, install APKs (button or drag and drop), shared folder. Each instance opens in its own emulator window using the Windows Hypervisor Platform and your GPU (Vulkan and OpenGL ES). No WSL is used.
+The panel opens in your browser (`http://127.0.0.1:8770`, local only, token-protected): create instances (RAM, CPU cores, drive size, wide or phone screen, density), start/stop/delete, install APKs (button or drag and drop), shared folder. Each instance opens in its own window titled "DragonLord - <name>", using the Windows Hypervisor Platform and your GPU (Vulkan and OpenGL ES). No WSL is used.
+
+Boot times measured on a Windows 11 PC with an RTX 2060 and little free RAM: the first start of a new instance is a cold boot (about 2.5 minutes); stopping saves a quick-boot snapshot, and later starts take about 15 seconds.
 
 Requirements: Windows 10/11 x64 with the Windows Hypervisor Platform enabled, about 8 GB free disk plus the instances' drives, enough free RAM for each instance (default 3 GB).
 

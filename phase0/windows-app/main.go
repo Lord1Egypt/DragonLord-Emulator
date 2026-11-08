@@ -26,7 +26,7 @@ import (
 	"time"
 )
 
-const version = "0.1.0-preview"
+const version = "0.1.1-preview"
 
 // Pinned downloads (Google's SDK repository; SHA-256 computed from copies verified against Google's published SHA-1).
 var downloads = []struct {
