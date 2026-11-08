@@ -4,6 +4,8 @@
 
 DragonLord Emulator is an Android emulator designed to simultaneously meet the goals of high compatibility, security, and rendering efficiency utilizing graphics projection space.
 
+> **New engine in development (branch `phase0/architecture-feasibility`):** Android 17 on QEMU 11.1.3 with host-GPU or software graphics, optional KernelSU root, several instances and a local web panel (screen in the browser, touch, keyboard, APK install, file transfer). The Linux/WSL edition for app development is described in [phase0/LINUX-EDITION.md](phase0/LINUX-EDITION.md); the current state is in [phase0/STATUS-2026-11-08.md](phase0/STATUS-2026-11-08.md) and the Windows edition plan in [phase0/WINDOWS-EDITION-PLAN.md](phase0/WINDOWS-EDITION-PLAN.md). The instructions below describe the original release.
+
 <p float="left" align="middle">
 <img align="top" src="https://user-images.githubusercontent.com/32576375/209423491-b2e816f2-b641-446d-9b7f-3ff8c29db773.gif" width="49%"/>
 <img align="top" src="https://user-images.githubusercontent.com/32576375/209423951-efd6b3d4-5785-4e11-9365-09b90b26c76f.gif" width="49%"/>
