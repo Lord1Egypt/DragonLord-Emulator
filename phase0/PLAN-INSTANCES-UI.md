@@ -43,3 +43,12 @@ Status: design notes only, nothing built. Windows is the product target; WSL2 is
 Working: `create / start / stop / status / list / delete / logs` with one JSON per instance under `~/DragonLord/instances/<name>/` (own HOME, own Cuttlefish files, own logs, own RAM file `/dev/shm/dl-<name>.mem` via the QEMU wrapper's `DL_MEM_PATH`).
 Verified in the guest: custom serial (`DL-TEST-0001`), DPI 280 and 240, 720x1280, 2 CPUs, RAM (3072 MB requested, 2953 MB visible), data disk size (4096 requested, 3.9G), GPU mode (RTX 2060 renderer vs SwiftShader), KernelSU profile (`kernelsu` module loaded), data and settings persist across a graceful stop/start (marker file, serial), second boot 70 s, first boot of a fresh disk 240-330 s.
 Not done: a second instance running at the same time (needs TAP devices `cvd-mtap-02`/`cvd-etap-02` created with root), IMEI/model/brand, Windows supervisor, any UI, root-off base image without the debug `su`, input validation beyond basic limits.
+
+## Windows host facts (read-only inspection from WSL via powershell.exe, 2026-11-08)
+
+- Windows 11 Pro build 26300, 12 logical cores, 15.9 GB RAM, 90 GB free on C:. WSL2 uses 13 GB of that RAM, so a Windows-native VM test needs WSL stopped or limited (`.wslconfig`).
+- `HypervisorPresent: True` and `WinHvPlatform.dll` exists, so QEMU's WHPX accelerator is available (the earlier Phase 0 work booted QEMU 11.1.3 under WHPX natively). WHPX feature state itself needs elevation to query.
+- GPUs: NVIDIA GeForce RTX 2060 (driver 32.0.16.2114, Vulkan 1.4.357 driver 621.14, discrete) and Intel UHD Graphics 630 (Vulkan 1.1.95). **Hardware Vulkan exists on native Windows**, unlike WSL (llvmpipe only), so Gfxstream Vulkan and Vulkan composition can be tested on the real GPU there.
+- Present: `git`, `vulkaninfo`, `python` (WindowsApps stub, may not be a real install). Absent: `cargo`, `qemu-system-x86_64`.
+- KernelSU release v3.3.1 includes `ksud-x86_64-pc-windows-gnu.exe`, so the root-profile patching step can run on Windows. The Cuttlefish host tools (`launch_cvd`, `run_cvd`, `secure_env`, ...) are Linux ELF binaries: Windows needs either WSL2 as a hidden helper layer or a native supervisor reimplementing them (see Engine above).
+- Decision point for the owner: **WSL2-hosted engine with a Windows UI** (fast to ship: our proven stack, GL-only GPU) versus **fully native Windows engine** (hardware Vulkan, no WSL dependency, much more work: supervisor, Gfxstream/Rutabaga Windows builds, licence review).
