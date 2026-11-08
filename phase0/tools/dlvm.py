@@ -168,9 +168,16 @@ def build_cmd(cfg):
            f"-memory_mb={cfg['ram']}", f"-cpus={cfg['cpus']}", f"-blank_data_image_mb={cfg['disk']}",
            f"-dpi={cfg['dpi']}", f"-x_res={w}", f"-y_res={h}", "-start_webrtc=false", "-daemon=false",
            "-report_anonymous_usage_stats=n", "-use_allocd=false", "-console=true"]
-    # first start creates the data disk at the requested size; later starts keep the existing disk
-    has_disk = cfg.get("data_created", True) or any(inst_dir(cfg["name"]).glob("cuttlefish/instances/cvd-*/userdata.img"))
-    cmd.append("-data_policy=" + ("use_existing" if has_disk else "always_create"))
+    # The instance's own data disk lives outside the folders assemble_cvd cleans on every launch. Cuttlefish's
+    # create policies always write a new disk into its instance folder (deleted again on the next launch) and
+    # use_existing without -data_image falls back to the image folder's shared userdata.img: both silently reset the
+    # instance. So: create the blank disk here once (Android formats it on first boot) and always use it as is.
+    data = inst_dir(cfg["name"]) / "data/userdata.img"
+    if not data.exists():
+        data.parent.mkdir(exist_ok=True)
+        with open(data, "wb") as f:
+            f.truncate(cfg["disk"] * 2**20)
+    cmd += [f"-data_image={data}", "-data_policy=use_existing"]
     if cfg.get("serial"):
         cmd.append(f"-serial_number={cfg['serial']}")
     if cfg["root"] == "ksu":
@@ -184,7 +191,13 @@ def cmd_start(a):
     if running(cfg):
         sys.exit("already running")
     d = inst_dir(a.name)
-    free_mb = shutil.disk_usage("/dev/shm").free // 2**20  # guest RAM lives in /dev/shm; running out kills QEMU silently
+    # guest RAM lives in /dev/shm and running out kills QEMU silently; a just-stopped instance frees its RAM a few
+    # seconds after its processes are gone, so wait briefly before refusing
+    for _ in range(30):
+        free_mb = shutil.disk_usage("/dev/shm").free // 2**20
+        if free_mb >= cfg["ram"] + 256:
+            break
+        time.sleep(1)
     if free_mb < cfg["ram"] + 256:
         sys.exit(f"not enough shared memory: /dev/shm has {free_mb} MB free, {a.name} needs {cfg['ram']} MB. Stop another instance or lower the RAM")
     host_out = hostout(cfg) if cfg.get("imei") else CVD
