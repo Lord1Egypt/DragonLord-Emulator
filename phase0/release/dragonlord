@@ -1,0 +1,34 @@
+#!/bin/bash
+# DragonLord launcher (Linux / WSL edition). Everything stays inside this folder (data/), so the folder is portable.
+#   ./dragonlord              first run: setup; then open the web panel
+#   ./dragonlord setup [--no-root] [--gapps]   download and verify Android 17 + tools, build the root profile
+#   ./dragonlord gapps        build the Google Play bundle (downloads Google's image, 1.9 GB)
+#   ./dragonlord doctor       check this machine
+#   ./dragonlord vm ...       instance manager on the command line (create/start/stop/status/delete/logs)
+#   ./dragonlord panel        open the web panel
+set -euo pipefail
+HERE="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
+DATA="${DL_HOME:-$HERE/data}"
+export PATH="$DATA/android/bin:$PATH"  # adb from Google's host tools
+PY="$(command -v python3 || true)"
+[ -n "$PY" ] || { echo "DragonLord needs python3" >&2; exit 1; }
+
+panel() {
+  if [ ! -e "$DATA/android/.dragonlord-installed" ]; then
+    "$PY" "$HERE/tools/dl-install.py" || { echo "setup did not finish; fix the items above and run ./dragonlord again" >&2; exit 1; }
+  fi
+  exec "$PY" "$HERE/tools/dlui.py" --open "$@"
+}
+
+cmd="${1:-panel}"
+[ $# -gt 0 ] && shift
+case "$cmd" in
+  panel) panel "$@" ;;
+  setup) exec "$PY" "$HERE/tools/dl-install.py" "$@" ;;
+  gapps) exec "$PY" "$HERE/tools/gapps-prepare.py" "$@" ;;
+  doctor) exec "$PY" "$HERE/tools/dl-doctor.py" ;;
+  vm) exec "$PY" "$HERE/tools/dlvm.py" "$@" ;;
+  version) cat "$HERE/RELEASE" ;;
+  -h|--help|help) sed -n '2,9p' "$0" | sed 's/^# \{0,1\}//' ;;
+  *) echo "unknown command: $cmd (try ./dragonlord help)" >&2; exit 2 ;;
+esac

@@ -6,8 +6,8 @@
   dlvm.py start NAME | stop NAME | status [NAME] | list | delete NAME | logs NAME
 
 Each instance lives in ~/DragonLord/instances/NAME/ (instance.json, HOME of its Cuttlefish run, logs/).
-Shared read-only inputs: phase0/.work/cuttlefish/cvd (host tools + Android image), qemu-ours (QEMU wrapper),
-phase0/.work/kernelsu/out/init_boot_ksu.img (root profile). Stop is graceful: sync, then stop_cvd.
+Shared read-only inputs (paths in dlpaths.py): Google's Android image + host tools, the QEMU wrapper, the KernelSU
+root profile and the GApps bundle. Stop is graceful: sync, then stop_cvd.
 """
 import argparse
 import json
@@ -16,21 +16,25 @@ import re
 import shutil
 import signal
 import socket
+import stat
 import subprocess
 import sys
 import time
 from pathlib import Path
 
-PHASE = Path(__file__).resolve().parents[1]
-CVD = PHASE / ".work/cuttlefish/cvd"
-QEMU_DIR = PHASE / ".work/cuttlefish/qemu-ours"
-KSU_INIT_BOOT = PHASE / ".work/kernelsu/out/init_boot_ksu.img"
-KSU_APK = PHASE / ".work/kernelsu/KernelSU_v3.3.1_32680-release.apk"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import dlpaths  # noqa: E402
+
+PHASE = dlpaths.BASE
+CVD = dlpaths.CVD
+QEMU_DIR = dlpaths.QEMU_DIR
+KSU_INIT_BOOT = dlpaths.KSU_INIT_BOOT
+KSU_APK = dlpaths.KSU_APK
 KSU_APK_SHA256 = "b4a059ace71de2fa65cc7f12b1c58d55fc23ab25e057ee4230ce779742abe450"
 KSU_PKG = "me.weishu.kernelsu"
-GAPPS_BUNDLE = PHASE / ".work/gapps/bundle"  # built locally by tools/gapps-prepare.py (Google's apps are not ours to ship)
+GAPPS_BUNDLE = dlpaths.GAPPS_BUNDLE  # built locally by tools/gapps-prepare.py (Google's apps are not ours to ship)
 GAPPS_PKGS = ("com.google.android.gms", "com.android.vending", "com.google.android.gsf")
-ROOT = Path.home() / "DragonLord" / "instances"
+ROOT = dlpaths.INSTANCES
 DEFAULT_IMEI = "867400022047199"  # hardcoded in Cuttlefish's prebuilt bin/modem_simulator
 DEFAULTS = {"ram": 4096, "cpus": 4, "disk": 8192, "gpu": "gfxstream", "root": "off",
             "serial": None, "dpi": 320, "res": "720x1280"}
@@ -257,6 +261,20 @@ def touch_fifo(cfg):
     return inst_dir(cfg["name"]) / "touch.fifo"
 
 
+def touch_sock(cfg):
+    """Unix socket paths are limited to 108 bytes, too short for instance folders in deep release locations, so the
+    socket lives in a private per-user folder (like Cuttlefish's /tmp/cf_avd_<uid>)."""
+    run = Path(f"/tmp/dragonlord-{os.getuid()}")
+    try:
+        run.mkdir(mode=0o700)
+    except FileExistsError:
+        pass
+    st = os.lstat(run)
+    if not stat.S_ISDIR(st.st_mode) or st.st_uid != os.getuid() or st.st_mode & 0o077:
+        sys.exit(f"{run} is not a private directory owned by you; remove it and retry")
+    return run / f"touch-{cfg['number']}.sock"
+
+
 def start_touch(cfg):
     """Virtio touchscreen for the browser view. Cuttlefish starts this daemon in QEMU mode too but never attaches it;
     we run our own copy: it serves the device to QEMU over vhost-user and reads virtio input events (le16 type,
@@ -268,7 +286,7 @@ def start_touch(cfg):
     fifo = touch_fifo(cfg)
     if not fifo.exists():
         os.mkfifo(fifo, 0o600)
-    sock_path = d / "touch.sock"
+    sock_path = touch_sock(cfg)
     sock_path.unlink(missing_ok=True)
     srv = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     srv.bind(str(sock_path))
@@ -290,7 +308,7 @@ def stop_touch(cfg):
             os.kill(pid, signal.SIGTERM)
         except OSError:
             pass
-    (inst_dir(cfg["name"]) / "touch.sock").unlink(missing_ok=True)
+    touch_sock(cfg).unlink(missing_ok=True)
 
 
 def cmd_start(a):
@@ -309,9 +327,10 @@ def cmd_start(a):
         sys.exit(f"not enough shared memory: /dev/shm has {free_mb} MB free, {a.name} needs {cfg['ram']} MB. Stop another instance or lower the RAM")
     host_out = hostout(cfg) if cfg.get("imei") else CVD
     env = {**os.environ, "HOME": str(d), "ANDROID_HOST_OUT": str(host_out), "DL_MEM_PATH": mem_path(cfg),
-           "DL_NET": "user"}  # user-mode networking: no root-created TAP devices
-    if cfg["gpu"] == "gfxstream":
-        env["GALLIUM_DRIVER"] = "d3d12"
+           "DL_NET": "user",  # user-mode networking: no root-created TAP devices
+           "DL_QEMU_REAL": os.environ.get("DL_QEMU_REAL") or str(dlpaths.QEMU_REAL)}
+    if cfg["gpu"] == "gfxstream" and Path("/dev/dxg").exists():
+        env["GALLIUM_DRIVER"] = "d3d12"  # WSL: Mesa's D3D12 driver reaches the Windows GPU; native Linux uses its own
     stop_touch(cfg)
     env["DL_TOUCH_SOCK"] = start_touch(cfg)  # the QEMU wrapper attaches it
     log = d / "logs/launch.stderr"

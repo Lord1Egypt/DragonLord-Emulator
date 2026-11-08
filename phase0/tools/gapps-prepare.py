@@ -6,7 +6,7 @@
 Source: Google's Android 16 x86_64 "Google Play" emulator image from the Android SDK repository (newest x86_64
 Play image; no Android 17 one exists). The zip is downloaded and SHA-1 checked if missing. The apps are proprietary
 Google software: the bundle is built locally for the user and never committed or redistributed.
-Output: phase0/.work/gapps/bundle/ laid out like the guest's partitions (product/..., system_ext/...).
+Output: <gapps folder>/bundle/ (see dlpaths.py) laid out like the guest's partitions (product/..., system_ext/...).
 """
 import argparse
 import re
@@ -18,11 +18,13 @@ import urllib.request
 import zipfile
 from pathlib import Path
 
-PHASE = Path(__file__).resolve().parents[1]
-WORK = PHASE / ".work/gapps"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import dlpaths  # noqa: E402
+
+WORK = dlpaths.GAPPS
 URL = "https://dl.google.com/android/repository/sys-img/google_apis_playstore/x86_64-36-ext19_r01.zip"
 SHA1 = "68739f41080957209a4a34e1a2e65186d449776f"  # from Google's sys-img2-1.xml index
-FSCK_EROFS = PHASE / ".work/cuttlefish/cvd/bin/fsck.erofs"
+FSCK_EROFS = dlpaths.CVD / "bin/fsck.erofs"
 APPS = {"product": ["priv-app/PrebuiltGmsCore", "priv-app/Phonesky"], "system_ext": ["priv-app/GoogleServicesFramework"]}
 SYSCONFIG = ["google.xml", "google-hiddenapi-package-whitelist.xml"]
 

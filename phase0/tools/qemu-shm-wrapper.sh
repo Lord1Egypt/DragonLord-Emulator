@@ -3,6 +3,10 @@
 # disk file (the file-backed 4 GB RAM plus prealloc causes heavy disk I/O on WSL). With DL_NET=user the tap netdevs
 # become user-mode networking (no root TAP setup). All else passes through.
 REAL=${DL_QEMU_REAL:-$(cd "$(dirname "$0")/../../qemu-build-gpu" && pwd)/qemu-system-x86_64}  # installed in .work/cuttlefish/qemu-ours
+# a release ships QEMU's non-system libraries next to it (qemu/lib)
+if [[ -d "$(dirname "$REAL")/../lib" ]]; then
+  export LD_LIBRARY_PATH="$(cd "$(dirname "$REAL")/../lib" && pwd)${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+fi
 args=()
 for a in "$@"; do
   if [[ $a == memory-backend-file,*mem-path=*qemu.mem* ]]; then

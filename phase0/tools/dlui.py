@@ -13,6 +13,7 @@ import json
 import os
 import re
 import secrets
+import shutil
 import socket
 import struct
 import subprocess
@@ -31,7 +32,7 @@ import dlvm  # noqa: E402
 
 def load_token():
     """Reuse one token across restarts so bookmarked links keep working; the file is private to the user."""
-    f = dlvm.ROOT.parent / "ui-token"
+    f = dlvm.dlpaths.TOKEN
     try:
         t = f.read_text().strip()
         if len(t) >= 32:
@@ -505,7 +506,7 @@ class H(BaseHTTPRequestHandler):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--port", type=int, default=8765)
-    ap.add_argument("--open", action="store_true", help="open the page in the Windows default browser (from WSL)")
+    ap.add_argument("--open", action="store_true", help="open the page in the default browser (Windows browser on WSL)")
     a = ap.parse_args()
     url = f"http://127.0.0.1:{a.port}/?t={TOKEN}"
     try:
@@ -514,7 +515,10 @@ def main():
         srv = None  # already running (the token file is shared, so the same link works): just open the page again
     print(f"DragonLord UI {'already running' if srv is None else 'started'}: {url}", flush=True)
     if a.open:  # the token is URL-safe, so the URL needs no quoting
-        subprocess.Popen(["powershell.exe", "-NoProfile", "-Command", f"Start-Process '{url}'"], stdout=subprocess.DEVNULL)
+        if shutil.which("powershell.exe"):  # WSL: the Windows browser
+            subprocess.Popen(["powershell.exe", "-NoProfile", "-Command", f"Start-Process '{url}'"], stdout=subprocess.DEVNULL)
+        elif shutil.which("xdg-open"):
+            subprocess.Popen(["xdg-open", url], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     if srv:
         srv.serve_forever()
 
