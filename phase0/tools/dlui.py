@@ -8,6 +8,7 @@ Thin layer over dlvm.py: every action calls the same functions as the CLI, so li
 import argparse
 import json
 import secrets
+import subprocess
 import sys
 import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -146,9 +147,13 @@ class H(BaseHTTPRequestHandler):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--port", type=int, default=8765)
+    ap.add_argument("--open", action="store_true", help="open the page in the Windows default browser (from WSL)")
     a = ap.parse_args()
     srv = ThreadingHTTPServer(("127.0.0.1", a.port), H)
-    print(f"DragonLord UI: http://127.0.0.1:{a.port}/?t={TOKEN}", flush=True)
+    url = f"http://127.0.0.1:{a.port}/?t={TOKEN}"
+    print(f"DragonLord UI: {url}", flush=True)
+    if a.open:  # the token is URL-safe, so the URL needs no quoting
+        subprocess.Popen(["powershell.exe", "-NoProfile", "-Command", f"Start-Process '{url}'"], stdout=subprocess.DEVNULL)
     srv.serve_forever()
 
 
