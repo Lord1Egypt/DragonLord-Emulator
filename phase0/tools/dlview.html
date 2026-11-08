@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DragonLord screen</title>
+<style>
+:root{--bg:#161616;--ink:#eee;--mut:#9a9a9a;--line:#333;--acc:#ff6b60}
+@media(prefers-color-scheme:light){:root{--bg:#f6f6f4;--ink:#1b1b1b;--mut:#666;--line:#dcdcd6;--acc:#b3261e}}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;gap:8px;padding:10px}
+canvas{max-height:82vh;max-width:96vw;background:#000;border:1px solid var(--line);border-radius:6px;cursor:pointer;touch-action:none}
+.bar{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+button,input{font:inherit;padding:6px 12px;border-radius:7px;border:1px solid var(--line);background:transparent;color:var(--ink)}
+button{cursor:pointer}#msg{color:var(--acc);min-height:1.2em}
+</style></head><body>
+<div id="title"></div>
+<canvas id="c" width="720" height="1280" tabindex="0"></canvas>
+<div class="bar"><button data-k="back">Back</button><button data-k="home">Home</button><button data-k="recents">Recents</button>
+<button data-k="power">Power</button><button data-k="volup">Vol +</button><button data-k="voldown">Vol -</button></div>
+<div class="bar"><input id="txt" placeholder="type text, then Send" maxlength="100"><button id="send">Send</button><button data-k="enter">Enter</button><button data-k="del">Delete</button></div>
+<div id="msg" role="alert"></div>
+<script>
+const TOKEN="__TOKEN__", NAME=new URLSearchParams(location.search).get("name")||"";
+const $=id=>document.getElementById(id), cv=$("c"), ctx=cv.getContext("2d");
+$("title").textContent=NAME;
+const msg=t=>$("msg").textContent=t||"";
+async function input(o){try{const r=await fetch("/api/input",{method:"POST",headers:{"X-DL-Token":TOKEN,"Content-Type":"application/json"},body:JSON.stringify({name:NAME,...o})});if(!r.ok)msg((await r.json()).error)}catch(e){msg(e.message)}}
+document.querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>input({type:"key",key:b.dataset.k}));
+$("send").onclick=()=>{input({type:"text",text:$("txt").value});$("txt").value=""};
+$("txt").onkeydown=e=>{if(e.key==="Enter")$("send").onclick()};
+let down=null;
+const pos=e=>{const r=cv.getBoundingClientRect();return{x:Math.round((e.clientX-r.left)*cv.width/r.width),y:Math.round((e.clientY-r.top)*cv.height/r.height)}};
+cv.onpointerdown=e=>{down={...pos(e),t:performance.now()};cv.setPointerCapture(e.pointerId)};
+cv.onpointerup=e=>{if(!down)return;const u=pos(e),d=down;down=null;
+  if(Math.hypot(u.x-d.x,u.y-d.y)<12)input({type:"tap",x:u.x,y:u.y});
+  else input({type:"swipe",x:d.x,y:d.y,x2:u.x,y2:u.y,ms:Math.max(80,Math.min(1000,Math.round(performance.now()-d.t)))})};
+// --- H.264 (Annex B) over a streaming fetch, decoded with WebCodecs ---
+if(!("VideoDecoder" in window))msg("This browser has no WebCodecs VideoDecoder; use a current Chrome or Edge.");
+let dec=null, haveKey=false;
+function startDecoder(sps){
+  const cs="avc1."+[sps[1],sps[2],sps[3]].map(b=>b.toString(16).padStart(2,"0")).join("");
+  dec=new VideoDecoder({output:f=>{if(cv.width!==f.displayWidth||cv.height!==f.displayHeight){cv.width=f.displayWidth;cv.height=f.displayHeight}ctx.drawImage(f,0,0);f.close()},
+    error:e=>{msg("decoder: "+e.message);dec=null;haveKey=false}});
+  dec.configure({codec:cs,avc:{format:"annexb"},optimizeForLatency:true});
+}
+let pending=[], ts=0;
+function nal(n){ // n: bytes after the start code
+  const t=n[0]&31;
+  if(t===7||t===8){pending.push(n);if(t===7&&(!dec||dec.state==="closed"))startDecoder(n);return}
+  if(t!==1&&t!==5)return;
+  pending.push(n);
+  const key=t===5, parts=pending; pending=[];
+  if(!dec||dec.state==="closed")return;
+  if(key)haveKey=true;
+  if(!haveKey)return;
+  let len=0;for(const p of parts)len+=p.length+4;
+  const out=new Uint8Array(len);let o=0;
+  for(const p of parts){out.set([0,0,0,1],o);out.set(p,o+4);o+=p.length+4}
+  try{dec.decode(new EncodedVideoChunk({type:key?"key":"delta",timestamp:ts+=33333,data:out}))}catch(e){msg("decode: "+e.message)}
+}
+async function run(){
+  const r=await fetch("/api/stream?name="+encodeURIComponent(NAME),{headers:{"X-DL-Token":TOKEN}});
+  if(!r.ok){msg((await r.json()).error);return}
+  const rd=r.body.getReader();let buf=new Uint8Array(0);
+  for(;;){
+    const {value,done}=await rd.read();if(done)break;
+    const m=new Uint8Array(buf.length+value.length);m.set(buf);m.set(value,buf.length);buf=m;
+    // split on 00 00 01; the last NAL stays buffered until the next start code arrives
+    let starts=[];for(let i=0;i+2<buf.length;i++)if(buf[i]===0&&buf[i+1]===0&&buf[i+2]===1){starts.push(i);i+=2}
+    for(let k=0;k+1<starts.length;k++){let end=starts[k+1];while(end>starts[k]+3&&buf[end-1]===0)end--;nal(buf.subarray(starts[k]+3,end))}
+    if(starts.length)buf=buf.slice(starts[starts.length-1]);
+  }
+  msg("stream ended");
+}
+run().catch(e=>msg(e.message));
+</script></body></html>

@@ -8,6 +8,7 @@ Thin layer over dlvm.py: every action calls the same functions as the CLI, so li
 import argparse
 import json
 import os
+import re
 import secrets
 import socket
 import subprocess
@@ -43,6 +44,7 @@ TOKEN = load_token()
 BUSY = {}  # instance name -> "starting" | "stopping"
 LOCK = threading.Lock()
 PAGE = (Path(__file__).resolve().parent / "dlui.html").read_text()
+VIEW = (Path(__file__).resolve().parent / "dlview.html").read_text()
 
 
 def ns(**kw):
@@ -102,6 +104,42 @@ def show_screen(cfg):
                      stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 
+KEYS = {"home": 3, "back": 4, "recents": 187, "power": 26, "volup": 24, "voldown": 25, "enter": 66, "del": 67, "tab": 61}
+TEXT_OK = re.compile(r"[A-Za-z0-9 ._@-]{1,100}")
+
+
+def adb_cmd(cfg, *args):
+    return ["adb", "-s", dlvm.adb_serial(cfg), *args]
+
+
+def coord(d, key, limit=5000):
+    v = d.get(key)
+    if isinstance(v, bool) or not isinstance(v, (int, float)) or not 0 <= v <= limit:
+        raise ValueError(f"{key} out of range")
+    return str(int(v))
+
+
+def do_input(cfg, d):
+    """Inject one input event. adb joins its arguments into one shell command, so every value is whitelisted or numeric."""
+    kind = d.get("type")
+    if kind == "tap":
+        shell = f"input tap {coord(d, 'x')} {coord(d, 'y')}"
+    elif kind == "swipe":
+        shell = f"input swipe {coord(d, 'x')} {coord(d, 'y')} {coord(d, 'x2')} {coord(d, 'y2')} {coord(d, 'ms', 5000)}"
+    elif kind == "key":
+        if d.get("key") not in KEYS:
+            raise ValueError("unknown key")
+        shell = f"input keyevent {KEYS[d['key']]}"
+    elif kind == "text":
+        t = d.get("text")
+        if not isinstance(t, str) or not TEXT_OK.fullmatch(t):
+            raise ValueError("text: letters, digits, space and . _ @ - only (max 100)")
+        shell = "input text " + t.replace(" ", "%s")
+    else:
+        raise ValueError("unknown input type")
+    subprocess.run(adb_cmd(cfg, "shell", shell), capture_output=True, timeout=15)
+
+
 def background(name, verb, fn):
     with LOCK:
         # a boot in progress can always be cancelled by stop/delete; everything else waits for the current action
@@ -152,7 +190,41 @@ class H(BaseHTTPRequestHandler):
             return self.send(200, PAGE.replace("__TOKEN__", TOKEN), "text/html; charset=utf-8")
         if path == "/api/instances":
             return self.send(200, json.dumps(list_instances()))
+        if path == "/view":
+            return self.send(200, VIEW.replace("__TOKEN__", TOKEN), "text/html; charset=utf-8")
+        if path == "/api/stream":
+            return self.stream(parse_qs(urlparse(self.path).query).get("name", [""])[0])
         self.send(404, '{"error":"not found"}')
+
+    def stream(self, name):
+        """Raw H.264 (Annex B) from the guest's screenrecord, restarted when its 3-minute limit ends."""
+        try:
+            cfg = dlvm.load(name)
+        except SystemExit as e:
+            return self.send(400, json.dumps({"error": str(e)}))
+        if not dlvm.running(cfg):
+            return self.send(400, '{"error":"not running"}')
+        self.send_response(200)
+        self.send_header("Content-Type", "application/octet-stream")
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        try:
+            while dlvm.running(dlvm.load(name)):
+                p = subprocess.Popen(adb_cmd(cfg, "exec-out", "screenrecord", "--output-format=h264", "--time-limit", "180",
+                                             "--bit-rate", "4000000", "--size", cfg["res"], "-"),
+                                     stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+                try:
+                    while True:
+                        chunk = p.stdout.read1(65536)
+                        if not chunk:
+                            break
+                        self.wfile.write(chunk)
+                        self.wfile.flush()
+                finally:
+                    p.kill()
+                    p.wait()
+        except (BrokenPipeError, ConnectionResetError):
+            pass
 
     def do_POST(self):
         if not self.authorised():
@@ -176,6 +248,11 @@ class H(BaseHTTPRequestHandler):
                 if not dlvm.running(cfg):
                     raise ValueError(f"{name} is not running")
                 show_screen(cfg)
+            elif path == "/api/input":
+                cfg = dlvm.load(str(d.get("name", "")))
+                if not dlvm.running(cfg):
+                    raise ValueError("not running")
+                do_input(cfg, d)
             elif path in ("/api/start", "/api/stop", "/api/delete"):
                 name = str(d.get("name", ""))
                 dlvm.load(name)  # validates the name and that it exists
