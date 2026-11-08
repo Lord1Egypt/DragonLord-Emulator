@@ -2,7 +2,7 @@
 # Stand-in for qemu-system-x86_64 that Cuttlefish launches. Puts guest RAM in /dev/shm instead of a
 # disk file (the file-backed 4 GB RAM plus prealloc causes heavy disk I/O on WSL). With DL_NET=user the tap netdevs
 # become user-mode networking (no root TAP setup). All else passes through.
-REAL=/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/qemu-build-gpu/qemu-system-x86_64
+REAL=${DL_QEMU_REAL:-$(cd "$(dirname "$0")/../../qemu-build-gpu" && pwd)/qemu-system-x86_64}  # installed in .work/cuttlefish/qemu-ours
 args=()
 for a in "$@"; do
   if [[ $a == memory-backend-file,*mem-path=*qemu.mem* ]]; then
