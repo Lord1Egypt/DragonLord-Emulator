@@ -1,6 +1,6 @@
 # Instance manager and installer: requirements and design notes
 
-Status: design notes only, nothing built. Windows is the product target; WSL2 is the test bench. Written 2026-11-08 from the user's requests and from what the tests showed.
+Status: design notes plus a working prototype (see Prototype status and the Editions section). Windows is the product target; WSL2 is the test bench. Written 2026-11-08 from the user's requests and from what the tests showed.
 
 ## User requirements (from the project owner)
 
@@ -53,3 +53,35 @@ Not done: guest internet (with user-mode networking both NICs link up and eth1 g
 - Present: `git`, `vulkaninfo`, `python` (WindowsApps stub, may not be a real install). Absent: `cargo`, `qemu-system-x86_64`.
 - KernelSU release v3.3.1 includes `ksud-x86_64-pc-windows-gnu.exe`, so the root-profile patching step can run on Windows. The Cuttlefish host tools (`launch_cvd`, `run_cvd`, `secure_env`, ...) are Linux ELF binaries: Windows needs either WSL2 as a hidden helper layer or a native supervisor reimplementing them (see Engine above).
 - Decision point for the owner: **WSL2-hosted engine with a Windows UI** (fast to ship: our proven stack, GL-only GPU) versus **fully native Windows engine** (hardware Vulkan, no WSL dependency, much more work: supervisor, Gfxstream/Rutabaga Windows builds, licence review).
+
+## Owner decision, 2026-11-08: two editions, one web panel
+
+The owner likes the local web panel (`tools/dlui.py` + `tools/dlui.html`) and wants it in both editions.
+
+| | Edition L: Linux / WSL | Edition W: Windows standalone (portable) |
+|---|---|---|
+| Engine | Our QEMU 11.1.3 + Cuttlefish host tools (proven, `ANDROID17-WSL-RUNBOOK.md`) | Native Windows engine: QEMU with WHPX, hardware Vulkan, own supervisor in place of Cuttlefish's Linux-only launcher |
+| Packaging | Repo scripts now; later an installer that sets up WSL2 (one-time root steps) | One portable folder, no WSL, no install |
+| Web panel | Yes (exists, `dlui.py`) | Yes (same HTML/JS front end; the Python back end needs a Windows supervisor or a small native service) |
+| Screen | See "Emulator in the browser" below | scrcpy window first; browser view later if feasible |
+| GPU | Gfxstream over host GL (WSL d3d12 path); no hardware Vulkan in WSL | Hardware Vulkan on the RTX/Intel GPU |
+| Status | Works today on the test bench | Not started; needs engine work and the licence review (P0-08) |
+
+Build order: finish Edition L first (it is the reference and the test bench), then Edition W reusing the panel front end and the same instance JSON format so instances are portable in concept. Windows remains the product target for end users; the earlier "WSL2 first, native second" decision stands, and now "native" means the portable Edition W.
+
+Shared across editions: instance JSON schema, panel UI, identity options (IMEI, serial, DPI, resolution), root profile choice, Android 17 image pinned by build id (owner confirmed Android 17).
+
+## Emulator in the browser (Edition L, then W if possible)
+
+Goal: the user opens the emulator screen inside the web panel, with touch/mouse and keyboard, no extra app.
+- **Preferred: Cuttlefish WebRTC.** The `webRTC` host binary and `webrtc_operator` plus web assets (`usr/share/webrtc/assets`) are in the host package. With `-start_webrtc=true` the instance launches the webRTC process, but no operator service runs here, so nothing is served on 1443/8443. Next step: run `webrtc_operator` ourselves (own port, plain HTTP on 127.0.0.1, assets dir, socket path the webRTC process expects), per instance, and embed or link its client page from the panel. Unknowns: operator flags (help output was empty), certificate need, ICE across WSL2 NAT (may need TURN-less host candidates on localhost forwarding), per-instance ports.
+- **Fallback (works now, untested): scrcpy** mirrored in a desktop window from the panel's Screen button.
+- **Alternative: own streaming bridge** (adb screenrecord / H.264 over WebSocket plus input injection via adb) if WebRTC stays hard; lower quality, no new dependencies on Cuttlefish services.
+- Windows edition: QEMU display or a WebRTC/H.264 path from the native supervisor; decide after Edition L browser view works.
+
+## Planned panel features (later, not started)
+
+- Upload files to the instance (adb push into a shared folder or /sdcard), download files back.
+- Install APK: choose or drag an APK in the panel (adb install), also install several at once.
+- Further ideas, same mechanism: screenshot, screen recording, clipboard sync, rotate/resize, GPS and sensor controls, shake/volume/home buttons, instance clone, snapshots, per-instance network/proxy.
+- Panel security rules to keep: bind 127.0.0.1 only, per-run token, Host header check, strict input validation, uploads limited in size and type, file names sanitised, no shell strings (argument lists only).
