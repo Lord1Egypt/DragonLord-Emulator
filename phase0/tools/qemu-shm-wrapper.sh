@@ -5,7 +5,7 @@ REAL=/home/lordegypt/DragonLord/DragonLord-Emulator/phase0/.work/qemu-build-gpu/
 args=()
 for a in "$@"; do
   if [[ $a == memory-backend-file,*mem-path=*qemu.mem* ]]; then
-    a=$(sed -E 's#mem-path=[^,]*qemu\.mem#mem-path=/dev/shm/dragonlord-cvd-1.mem#' <<<"$a")
+    a=$(sed -E "s#mem-path=[^,]*qemu\.mem#mem-path=${DL_MEM_PATH:-/dev/shm/dragonlord-cvd-1.mem}#" <<<"$a")
   fi
   args+=("$a")
 done

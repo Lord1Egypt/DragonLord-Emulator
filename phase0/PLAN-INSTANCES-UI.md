@@ -16,12 +16,12 @@ Status: design notes only, nothing built. Windows is the product target; WSL2 is
 |---|---|---|
 | RAM | `launch_cvd -memory_mb=N`; guest RAM file must be in `/dev/shm` (tmpfs) or RAM-backed storage on Linux. On disk it caused 5x slower boots and ANRs on WSL. Windows needs its own answer (QEMU memory-backend options, not `/dev/shm`). | verified on WSL |
 | CPU | `-cpus=N` | verified (4) |
-| Disk size | `-blank_data_image_mb=N` (not yet exercised) | untested |
+| Disk size | `-blank_data_image_mb=N` **together with `-data_policy=always_create` on the instance's first start** (default `use_existing` ignores it and gives 8 GB); later starts use `use_existing`. | verified: 4096 requested -> 3.9G /data |
 | Graphics | `-gpu_mode=gfxstream` + host GL, or `guest_swiftshader` (software). `drm_virgl` does not work with this image. | verified on WSL |
 | Root on/off | which `init_boot.img` is passed (`-init_boot_image`): stock or KernelSU-patched (`phase0/tools/ksu-patch.sh`). The base image is userdebug and keeps its own `/system/xbin/su`, so a true "off" needs a user-variant or `su` removed. | verified patched boot, grant/deny, persistence |
 | Instance identity | Direct launcher flags exist for `-serial_number`, `-x_res/-y_res`, `-dpi`, `-display0..3`, `-extra_bootconfig_args` (androidboot.* props). **IMEI is hardcoded** (`867400022047199`) in the prebuilt `bin/modem_simulator` (`MiscService::HandleGetIMEI`); `modem_nvram.json` has no IMEI field. A per-instance IMEI needs a patched modem simulator (source is open in AOSP/android-cuttlefish) or a response-rewriting shim. Model/brand/manufacturer properties not yet checked. | flags and strings inspected, nothing booted with custom identity |
 | Several instances | `-instance_nums`, per-instance dirs, ports (ADB 6520+n), vsock CID, TAP names (`cvd-mtap-01`, `cvd-etap-01`, ...), guest RAM file name | untested, TAPs need root |
-| Shutdown | graceful only (sync, then stop): `stop_cvd` after a write lost a KernelSU grant | verified |
+| Shutdown | graceful only: `adb shell sync` then `stop_cvd` (it sends SIGKILL), then wait for all instance processes to exit and remove the RAM file; an unsynced stop lost a KernelSU grant | verified |
 
 ## Proposed architecture
 
@@ -37,3 +37,9 @@ Status: design notes only, nothing built. Windows is the product target; WSL2 is
 - Using Google's prebuilt Rutabaga/Gfxstream libraries with a locally patched header is a dev shortcut, not a shippable setup.
 - Android 16 vs 17: choose one for release and pin the build ID and security patch level.
 - Identity spoofing (IMEI etc.) feasibility and acceptable scope are undecided.
+
+## Prototype status (`phase0/tools/dlvm.py`, 2026-11-08, WSL2)
+
+Working: `create / start / stop / status / list / delete / logs` with one JSON per instance under `~/DragonLord/instances/<name>/` (own HOME, own Cuttlefish files, own logs, own RAM file `/dev/shm/dl-<name>.mem` via the QEMU wrapper's `DL_MEM_PATH`).
+Verified in the guest: custom serial (`DL-TEST-0001`), DPI 280 and 240, 720x1280, 2 CPUs, RAM (3072 MB requested, 2953 MB visible), data disk size (4096 requested, 3.9G), GPU mode (RTX 2060 renderer vs SwiftShader), KernelSU profile (`kernelsu` module loaded), data and settings persist across a graceful stop/start (marker file, serial), second boot 70 s, first boot of a fresh disk 240-330 s.
+Not done: a second instance running at the same time (needs TAP devices `cvd-mtap-02`/`cvd-etap-02` created with root), IMEI/model/brand, Windows supervisor, any UI, root-off base image without the debug `su`, input validation beyond basic limits.
