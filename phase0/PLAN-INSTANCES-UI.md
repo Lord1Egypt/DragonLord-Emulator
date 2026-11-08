@@ -19,7 +19,7 @@ Status: design notes only, nothing built. Windows is the product target; WSL2 is
 | Disk size | `-blank_data_image_mb=N` (not yet exercised) | untested |
 | Graphics | `-gpu_mode=gfxstream` + host GL, or `guest_swiftshader` (software). `drm_virgl` does not work with this image. | verified on WSL |
 | Root on/off | which `init_boot.img` is passed (`-init_boot_image`): stock or KernelSU-patched (`phase0/tools/ksu-patch.sh`). The base image is userdebug and keeps its own `/system/xbin/su`, so a true "off" needs a user-variant or `su` removed. | verified patched boot, grant/deny, persistence |
-| Instance identity | Cuttlefish `ro.*` properties and modem simulator; IMEI feasibility **unchecked** | untested |
+| Instance identity | Direct launcher flags exist for `-serial_number`, `-x_res/-y_res`, `-dpi`, `-display0..3`, `-extra_bootconfig_args` (androidboot.* props). **IMEI is hardcoded** (`867400022047199`) in the prebuilt `bin/modem_simulator` (`MiscService::HandleGetIMEI`); `modem_nvram.json` has no IMEI field. A per-instance IMEI needs a patched modem simulator (source is open in AOSP/android-cuttlefish) or a response-rewriting shim. Model/brand/manufacturer properties not yet checked. | flags and strings inspected, nothing booted with custom identity |
 | Several instances | `-instance_nums`, per-instance dirs, ports (ADB 6520+n), vsock CID, TAP names (`cvd-mtap-01`, `cvd-etap-01`, ...), guest RAM file name | untested, TAPs need root |
 | Shutdown | graceful only (sync, then stop): `stop_cvd` after a write lost a KernelSU grant | verified |
 
