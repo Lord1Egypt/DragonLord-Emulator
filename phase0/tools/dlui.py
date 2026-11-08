@@ -62,7 +62,7 @@ def do_create(d):
                        extra=None, imei=str(d.get("imei") or "") or None))
 
 
-SCRCPY = Path(__file__).resolve().parents[1] / ".work/scrcpy/win64"
+SCRCPY = Path(__file__).resolve().parents[1] / ".work/scrcpy/win64/scrcpy-win64-v5.0.1"
 
 
 def show_screen(cfg):
