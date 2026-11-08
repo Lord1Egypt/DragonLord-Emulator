@@ -57,3 +57,10 @@ Debug logs for any run: `phase0/tools/dlrun.py scan <run dir>`; Cuttlefish logs 
 | gfxstream (RTX 2060 GL via d3d12) | 66 / 64 | 20 / 23 | 27 / 53 | 31 / 55 | 24 / 23 |
 
 Reading: no clear speed difference on this light UI workload; run-to-run noise is as large as the gap. Gfxstream boots about 14 s slower. The GPU is demonstrably used (about 23% vs 0%). Earlier numbers taken with RAM on disk (boot 262-394 s, 3.3 s frames) were an I/O artefact and are invalid. A heavy GL workload and a native-Windows run are still needed before claiming a speed benefit.
+
+## Root
+
+- Built-in (userdebug image): `adb root` gives uid 0 (`u:r:su:s0`); `/system/xbin/su` works for the shell user (`su 0 id`). Development only.
+- KernelSU v3.3.1, LKM mode, no kernel build: `phase0/tools/ksu-patch.sh` patches `init_boot.img` with `lkm-x86_64-android16-6.12_kernelsu.ko` and `ksuinit-x86_64` (files from the v3.3.1 GitHub release into `phase0/.work/kernelsu`, sizes checked, SHA256SUMS kept). Boot it with `launch_cvd ... -init_boot_image=<path>/init_boot_ksu.img`; the stock image stays untouched, so rollback is just not passing the flag.
+- Verified 2026-11-08 (software graphics, our QEMU): `ksuinit` loads `kernelsu.ko` at ~4 s (kernel log "KernelSU: welcome to KernelSU version 32680"), `/proc/modules` lists `kernelsu`, `ksud debug version` = 32680, the manager APK shows **Working, 32680-5, LKM** on kernel 6.12.74-android16-6, boot completes, SELinux stays Enforcing.
+- Caveats: the module was built for 6.12.76 and loads on 6.12.74 only because the loader ignores vermagic (kernel notes it is unsigned and taints). On x86_64 the module patches `x64_sys_call` and installs its syscall dispatcher in slot 134, which weakens a syscall-hardening mitigation: keep this profile opt-in. `ksud` is only installed into `/data/adb` when the manager first launches, so the first boot logs `Cannot find '/data/adb/ksud'` for its init hooks; the installer should pre-install it. Per-app grant/deny through the manager UI, reboot persistence and graphics regression with this profile are **not yet tested**.
