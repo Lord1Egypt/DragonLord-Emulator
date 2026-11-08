@@ -76,3 +76,15 @@ Reading: no clear speed difference on this light UI workload; run-to-run noise i
 | grant, immediate `stop_cvd` (power cut, no sync) | grant **lost**: data not flushed. Launcher must shut instances down gracefully |
 
 The image's own debug `/system/xbin/su` stays available regardless (userdebug build), so a real "root off" instance needs a base image without it.
+
+## GPU benchmark with a real GL workload (`tools/glbench`, `tools/dl-glbench.py`, 2026-11-08)
+
+`tools/glbench/glbench.c` (built with the NDK: `x86_64-linux-android30-clang -O2 -o glbench glbench.c -lEGL -lGLESv3 -llog`) renders 30 frames of a heavy fragment shader at 1280x720 into an offscreen FBO inside the guest. 2 boots per mode, 3 runs per boot per size, stock init_boot, 4 vCPU:
+
+| Shader loop | Software (SwiftShader), median ms/frame | GPU (Gfxstream, RTX 2060 GL via d3d12), median ms/frame | Speedup |
+|---|---|---|---|
+| 8 iterations | 29.7 (range 22.1-32.1) | 3.7 (range 3.4-5.8) | 8.1x |
+| 32 iterations | 76.1 (range 63.0-115.6) | 5.6 (range 4.9-9.4) | 13.6x |
+
+Renderer strings confirm the path (`ANGLE (SwiftShader)` vs `Android Emulator OpenGL ES Translator (D3D12 (NVIDIA GeForce RTX 2060))`). Image checksum identical at 8 iterations (9632) and within 1 count at 32 (9951 vs 9952, floating-point difference). The light Settings-scroll benchmark above could not show this gap because the CPU renderer keeps up with a simple UI; heavy 3D is where the GPU pays off.
+Caveats: GL only (no hardware Vulkan on WSL); the GPU time is dominated by per-frame round trips at these sizes, not GPU load (nvidia-smi sampling at 1 s is too coarse for such short runs and is not used as evidence); the native test program must `_exit()` because the gfxstream EGL stack aborts in static destructors at normal exit (`pthread_mutex_lock called on a destroyed mutex`), which an ordinary app does not hit in the same way but is worth a regression test.
