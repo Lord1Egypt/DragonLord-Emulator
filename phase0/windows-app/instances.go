@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -24,6 +25,10 @@ type Instance struct {
 	Disk   int    `json:"disk"`
 	Res    string `json:"res"`
 	DPI    int    `json:"dpi"`
+	Image  string `json:"image"`
+	Root   bool   `json:"root"`
+	// Profile only records which preset the form used (light, balanced, power); the values themselves are stored above.
+	Profile string `json:"profile"`
 	// filled in for the panel
 	Running bool   `json:"running"`
 	Busy    string `json:"busy,omitempty"`
@@ -52,8 +57,13 @@ func emuEnv() []string {
 		"ANDROID_ADB_SERVER_PORT="+adbPort)
 }
 
-func adb(args ...string) (string, error) {
-	cmd := exec.Command(adbExe(), args...)
+func adb(args ...string) (string, error) { return adbTimeout(60*time.Second, args...) }
+
+// adbTimeout bounds an adb call: a hung adb server must never block the panel.
+func adbTimeout(d time.Duration, args ...string) (string, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), d)
+	defer cancel()
+	cmd := exec.CommandContext(ctx, adbExe(), args...)
 	cmd.Env = emuEnv()
 	out, err := cmd.CombinedOutput()
 	return strings.TrimSpace(string(out)), err
@@ -89,7 +99,10 @@ func list() []*Instance {
 	for _, p := range paths {
 		name := strings.TrimSuffix(filepath.Base(filepath.Dir(p)), ".avd")
 		if in, err := load(name); err == nil {
-			in.Running, in.Adb, in.Gapps = running(in), serial(in.Number), true
+			if in.Image == "" {
+				in.Image = "play" // instances made by 0.1.x
+			}
+			in.Running, in.Adb, in.Gapps = running(in), serial(in.Number), images[in.Image].playstore
 			mu.Lock()
 			in.Busy = busy[name]
 			mu.Unlock()
@@ -102,6 +115,7 @@ func list() []*Instance {
 
 // writeAVD writes a new instance's emulator definition.
 func writeAVD(in *Instance) error {
+	im := images[in.Image]
 	m := resOK.FindStringSubmatch(in.Res)
 	w, _ := strconv.Atoi(m[1])
 	h, _ := strconv.Atoi(m[2])
@@ -111,10 +125,10 @@ func writeAVD(in *Instance) error {
 	}
 	cfg := strings.Join([]string{
 		"AvdId=" + in.Name, "avd.ini.displayname=" + in.Name, "avd.ini.encoding=UTF-8",
-		"PlayStore.enabled=true", "abi.type=x86_64", "hw.cpu.arch=x86_64",
+		fmt.Sprintf("PlayStore.enabled=%t", im.playstore), "abi.type=x86_64", "hw.cpu.arch=x86_64",
 		fmt.Sprintf("hw.cpu.ncore=%d", in.CPUs), fmt.Sprintf("hw.ramSize=%d", in.RAM), "vm.heapSize=512",
 		fmt.Sprintf("disk.dataPartition.size=%dM", in.Disk),
-		"image.sysdir.1=" + sysImageRel, "tag.id=google_apis_playstore", "tag.display=Google Play",
+		"image.sysdir.1=" + im.rel, "tag.id=" + im.tag, "tag.display=" + im.tagDisplay,
 		"hw.gpu.enabled=yes", "hw.gpu.mode=host",
 		fmt.Sprintf("hw.lcd.width=%d", w), fmt.Sprintf("hw.lcd.height=%d", h), fmt.Sprintf("hw.lcd.density=%d", in.DPI),
 		"hw.initialOrientation=" + orient, "hw.keyboard=yes", "hw.mainKeys=no", "hw.accelerometer=yes",
@@ -145,14 +159,29 @@ func create(in *Instance) error {
 	if m := resOK.FindStringSubmatch(in.Res); m == nil {
 		return errors.New("screen must look like 1280x800")
 	}
+	if in.Image == "" {
+		in.Image = defaultImage
+	}
+	if _, ok := images[in.Image]; !ok {
+		return errors.New("unknown image")
+	}
+	if in.Root && images[in.Image].playstore {
+		return errors.New("root needs the Light image (the Google Play image is a locked build)")
+	}
+	if in.Profile != "light" && in.Profile != "balanced" && in.Profile != "power" {
+		in.Profile = "light"
+	}
 	mu.Lock()
 	defer mu.Unlock()
 	if _, err := os.Stat(avdDir(in.Name)); err == nil {
 		return fmt.Errorf("instance exists: %s", in.Name)
 	}
 	used := map[int]bool{}
-	for _, o := range list() {
-		used[o.Number] = true
+	paths, _ := filepath.Glob(dir("instances", "*.avd", "dragonlord.json"))
+	for _, p := range paths { // read the files directly: list() takes the same lock
+		if o, err := load(strings.TrimSuffix(filepath.Base(filepath.Dir(p)), ".avd")); err == nil {
+			used[o.Number] = true
+		}
 	}
 	for n := 1; n <= 16; n++ {
 		if !used[n] {
@@ -166,7 +195,7 @@ func create(in *Instance) error {
 	if err := os.MkdirAll(avdDir(in.Name), 0o755); err != nil {
 		return err
 	}
-	b, _ := json.MarshalIndent(Instance{Name: in.Name, Number: in.Number, RAM: in.RAM, CPUs: in.CPUs, Disk: in.Disk, Res: in.Res, DPI: in.DPI}, "", "  ")
+	b, _ := json.MarshalIndent(Instance{Name: in.Name, Number: in.Number, RAM: in.RAM, CPUs: in.CPUs, Disk: in.Disk, Res: in.Res, DPI: in.DPI, Image: in.Image, Profile: in.Profile, Root: in.Root}, "", "  ")
 	if err := os.WriteFile(filepath.Join(avdDir(in.Name), "dragonlord.json"), b, 0o644); err != nil {
 		return err
 	}
@@ -191,6 +220,12 @@ func start(in *Instance) error {
 	if running(in) {
 		return errors.New("already running")
 	}
+	if in.Image == "" {
+		in.Image = "play"
+	}
+	if !ensureImage(in.Image) {
+		return errors.New("the " + images[in.Image].label + " image is still downloading; wait for the progress bar to finish")
+	}
 	if err := writeIni(in); err != nil {
 		return err
 	}
@@ -202,8 +237,10 @@ func start(in *Instance) error {
 		setBusy(in.Name, "")
 		return err
 	}
-	cmd := exec.Command(dir("engine", "emulator", "emulator.exe"), "-avd", in.Name, "-port", strconv.Itoa(consolePort(in.Number)),
-		"-gpu", "host", "-accel", "on", "-no-boot-anim", "-netdelay", "none", "-netspeed", "full")
+	args := []string{"-avd", in.Name, "-port", strconv.Itoa(consolePort(in.Number)),
+		"-gpu", "host", "-accel", "on", "-no-boot-anim", "-netdelay", "none", "-netspeed", "full"}
+	args = append(args, strings.Fields(os.Getenv("DRAGONLORD_EMU_ARGS"))...) // benchmarking only
+	cmd := exec.Command(dir("engine", "emulator", "emulator.exe"), args...)
 	cmd.Env, cmd.Stdout, cmd.Stderr = emuEnv(), log, log
 	if err := cmd.Start(); err != nil {
 		log.Close()
@@ -215,15 +252,26 @@ func start(in *Instance) error {
 		defer log.Close()
 		done := make(chan struct{})
 		go func() { cmd.Wait(); close(done) }()
+		logPath := filepath.Join(avdDir(in.Name), "emulator-log.txt")
 		deadline := time.Now().Add(15 * time.Minute)
 		for time.Now().Before(deadline) {
 			select {
 			case <-done:
 				setBusy(in.Name, "")
 				return
-			case <-time.After(3 * time.Second):
+			case <-time.After(1500 * time.Millisecond):
 			}
-			if out, _ := adb("-s", serial(in.Number), "shell", "getprop", "sys.boot_completed"); out == "1" {
+			// booted = the emulator says so in its log, or the guest says so over adb (either one is enough)
+			b, _ := os.ReadFile(logPath)
+			up := strings.Contains(string(b), "Boot completed in")
+			if !up {
+				out, _ := adbTimeout(4*time.Second, "-s", serial(in.Number), "shell", "getprop", "sys.boot_completed")
+				up = out == "1"
+			}
+			if up {
+				if in.Root && !images[in.Image].playstore {
+					adb("-s", serial(in.Number), "root") // the AOSP image is a debug build: adbd can restart as root
+				}
 				break
 			}
 		}

@@ -17,6 +17,7 @@ import (
 	"regexp"
 	"strings"
 	"syscall"
+	"time"
 )
 
 //go:embed panel.html
@@ -100,9 +101,29 @@ func (a *api) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		io.WriteString(w, strings.ReplaceAll(panelHTML, "__TOKEN__", a.token))
 	case r.Method == http.MethodGet && r.URL.Path == "/api/instances":
 		setup.Lock()
-		st := map[string]any{"done": setup.done, "step": setup.step, "error": setup.err}
+		st := map[string]any{"done": setup.jobs == 0 && setup.ready, "step": setup.step, "pct": setup.pct, "error": setup.err, "ready": setup.ready}
 		setup.Unlock()
-		reply(w, http.StatusOK, map[string]any{"setup": st, "instances": list(), "version": version})
+		var imgs []map[string]any
+		for _, k := range []string{"light", "play"} {
+			imgs = append(imgs, map[string]any{"key": k, "label": images[k].label, "ready": imageReady(k), "mb": images[k].p.mb})
+		}
+		reply(w, http.StatusOK, map[string]any{"setup": st, "instances": list(), "images": imgs, "version": version})
+	case r.Method == http.MethodGet && r.URL.Path == "/term":
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		w.Header().Set("Cache-Control", "no-store")
+		w.Header().Set("Content-Security-Policy", fmt.Sprintf("default-src 'self' 'unsafe-inline'; connect-src 'self' ws://127.0.0.1:%d ws://localhost:%d", port, port))
+		io.WriteString(w, strings.ReplaceAll(terminalHTML, "__TOKEN__", a.token))
+	case r.Method == http.MethodGet && r.URL.Path == "/assets/xterm.js":
+		w.Header().Set("Content-Type", "text/javascript")
+		w.Write(xtermJS)
+	case r.Method == http.MethodGet && r.URL.Path == "/assets/xterm.css":
+		w.Header().Set("Content-Type", "text/css")
+		w.Write(xtermCSS)
+	case r.Method == http.MethodGet && r.URL.Path == "/api/term":
+		a.terminal(w, r)
+	case r.Method == http.MethodPost && r.URL.Path == "/api/quit":
+		reply(w, http.StatusOK, map[string]any{"ok": true})
+		go func() { time.Sleep(300 * time.Millisecond); os.Exit(0) }()
 	case r.Method == http.MethodPost && r.URL.Path == "/api/upload":
 		a.upload(w, r)
 	case r.Method == http.MethodPost:
@@ -114,32 +135,36 @@ func (a *api) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 func (a *api) action(w http.ResponseWriter, r *http.Request) {
 	var d struct {
-		Name  string `json:"name"`
-		RAM   int    `json:"ram"`
-		CPUs  int    `json:"cpus"`
-		Disk  int    `json:"disk"`
-		Res   string `json:"res"`
-		DPI   int    `json:"dpi"`
-		Start bool   `json:"start"`
+		Root    bool   `json:"root"`
+		Image   string `json:"image"`
+		Profile string `json:"profile"`
+		Name    string `json:"name"`
+		RAM     int    `json:"ram"`
+		CPUs    int    `json:"cpus"`
+		Disk    int    `json:"disk"`
+		Res     string `json:"res"`
+		DPI     int    `json:"dpi"`
+		Start   bool   `json:"start"`
 	}
 	if err := json.NewDecoder(io.LimitReader(r.Body, 10000)).Decode(&d); err != nil {
 		fail(w, errors.New("bad request body"))
 		return
 	}
 	setup.Lock()
-	ready := setup.done
+	ready := setup.ready
 	setup.Unlock()
 	if !ready && r.URL.Path != "/api/open-shared" {
 		fail(w, errors.New("still installing the engine; wait until the page says ready"))
 		return
 	}
 	if r.URL.Path == "/api/create" {
-		in := &Instance{Name: d.Name, RAM: d.RAM, CPUs: d.CPUs, Disk: d.Disk, Res: d.Res, DPI: d.DPI}
+		in := &Instance{Name: d.Name, RAM: d.RAM, CPUs: d.CPUs, Disk: d.Disk, Res: d.Res, DPI: d.DPI, Image: d.Image, Profile: d.Profile, Root: d.Root}
 		if err := create(in); err != nil {
 			fail(w, err)
 			return
 		}
-		if d.Start {
+		ensureImage(in.Image) // begins the download now if the chosen image is not installed yet
+		if d.Start && imageReady(in.Image) {
 			if err := start(in); err != nil {
 				fail(w, err)
 				return

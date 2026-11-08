@@ -18,9 +18,10 @@ label{display:block;margin:10px 0 3px;font-weight:600}input,select{font:inherit;
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}@media(max-width:600px){.grid{grid-template-columns:1fr}}
 .hint{color:var(--mut);font-size:13px;margin-top:2px}#err{color:var(--acc);margin:8px 0;min-height:1.2em}
 #setup{border-color:var(--acc)}
+progress{width:100%;height:14px;accent-color:var(--acc)}
 </style></head><body><main>
 <h1>DragonLord</h1><p class="sub" id="sub">Android emulator for Windows</p>
-<div id="setup" class="card" hidden></div>
+<div id="setup" class="card" hidden><strong id="stitle">Setting up</strong><progress id="sbar" max="100" value="0"></progress><div class="hint" id="sline"></div></div>
 <div id="err" role="alert"></div>
 <section id="list"></section>
 <section id="form" class="card" hidden>
@@ -35,11 +36,16 @@ label{display:block;margin:10px 0 3px;font-weight:600}input,select{font:inherit;
    <option value="1280x800" selected>Wide 1280x800 (tablet)</option><option value="1600x900">Wide 1600x900</option>
    <option value="1920x1080">Wide 1920x1080</option><option value="720x1280">Phone 720x1280</option><option value="1080x1920">Phone 1080x1920</option></select></div>
   <div><label for="dpi">Density (dpi)</label><input id="dpi" type="number" value="213" min="120" max="640"></div>
+  <div><label for="image">Android image</label><select id="image"></select><div class="hint" id="imghint"></div></div>
+  <div><label for="root">Root</label><select id="root"><option value="off" selected>Off</option><option value="on">On (Light image only)</option></select></div>
+  <div><label for="profile">Performance</label><select id="profile">
+   <option value="light" selected>Light: 2 GB, 2 cores (fastest, least load)</option>
+   <option value="balanced">Balanced: 3 GB, 4 cores</option>
+   <option value="power">Power: 4 GB, 6 cores (games)</option></select></div>
  </div>
- <div class="hint">Android 16 with Google Play. Root and IMEI options come later for Windows.</div>
  <div class="row" style="margin-top:16px"><button class="p" id="create">Create and start</button><button id="createonly">Create only</button><button id="cancel">Cancel</button></div>
 </section>
-<div class="row"><button id="add" class="p">+ New emulator</button><button id="shared">Open shared folder</button></div>
+<div class="row"><button id="add" class="p">+ New emulator</button><button id="shared">Open shared folder</button><button id="quit">Quit DragonLord</button></div>
 <p class="hint">Drop an .apk on a running emulator's card to install it; drop any other file to copy it into Android's Shared folder.</p>
 </main>
 <script>
@@ -63,8 +69,12 @@ let formOpen=false;
 async function refresh(){
   let d;try{d=await api("/api/instances")}catch(e){return showErr(e)}
   const s=d.setup,box=$("setup");
-  box.hidden=s.done;box.textContent=s.error?"Setup failed: "+s.error:"First start: installing the engine. "+(s.step||"")+" (about 2.9 GB from Google, checked)";
-  $("add").disabled=!s.done;
+  box.hidden=s.done&&!s.error;
+  $("stitle").textContent=s.error?"Setup failed":(s.ready?"Downloading Android image":"First start: installing the engine");
+  $("sbar").value=s.pct||0;$("sline").textContent=s.error||s.step||"";
+  $("add").disabled=!s.ready;
+  const sel=$("image");if(!sel.options.length||sel.dataset.v!==JSON.stringify(d.images)){sel.dataset.v=JSON.stringify(d.images);const cur=sel.value;sel.replaceChildren();
+    for(const im of d.images){const o=el("option","",im.label+(im.ready?"":" (downloads "+im.mb+" MB)"));o.value=im.key;sel.append(o)}if(cur)sel.value=cur}
   const list=$("list");list.replaceChildren();
   if(s.done&&!d.instances.length&&!formOpen)openForm(true);
   for(const c of d.instances){
@@ -72,12 +82,12 @@ async function refresh(){
     info.append(el("strong","",c.name));
     info.append(el("span","state"+(c.running&&!c.busy?" on":""),"  "+(c.busy?c.busy+"...":c.running?"running":"stopped")));
     const tags=el("div");
-    for(const t of [c.ram+" MB",c.cpus+" CPU",c.disk+" MB drive",c.res+"@"+c.dpi,"GPU","Google Play","adb "+c.adb])tags.append(el("span","tag",t));
+    for(const t of [c.ram+" MB",c.cpus+" CPU",c.disk+" MB drive",c.res+"@"+c.dpi,c.image==="play"?"Google Play":"Light",c.root?"root":"","adb "+c.adb])tags.append(el("span","tag",t));
     info.append(tags);card.append(info);
     const run=c.running,b=c.busy;
-    for(const [label,path,off] of [["Start","/api/start",run||b],["Stop","/api/stop",!run||(b&&b!=="starting")],["Copy shared folder","/api/sync-shared",!run||b],["Delete","/api/delete",b]]){
+    for(const [label,path,off] of [["Start","/api/start",run||b],["Stop","/api/stop",!run||(b&&b!=="starting")],["Terminal","term",!run||b],["Copy shared folder","/api/sync-shared",!run||b],["Delete","/api/delete",b]]){
       const btn=el("button","",label);btn.disabled=!!off;
-      btn.onclick=()=>{if(path==="/api/delete"&&!confirm("Delete "+c.name+" and its drive?"))return;act(path,c.name)};card.append(btn);
+      btn.onclick=()=>{if(path==="term"){window.open("/term?name="+encodeURIComponent(c.name)+"&t="+TOKEN,"_blank");return}if(path==="/api/delete"&&!confirm("Delete "+c.name+" and its drive?"))return;act(path,c.name)};card.append(btn);
     }
     const pick=el("label","btn","Install APK"),inp=el("input");inp.type="file";inp.accept=".apk";inp.hidden=true;inp.multiple=true;
     inp.onchange=async()=>{for(const f of inp.files)await upload(c.name,f);inp.value=""};pick.append(inp);
@@ -91,9 +101,13 @@ function openForm(first){formOpen=true;$("form").hidden=false;$("cancel").hidden
 $("add").onclick=()=>openForm(false);
 $("cancel").onclick=()=>{formOpen=false;$("form").hidden=true;$("add").hidden=false;showErr()};
 $("shared").onclick=()=>api("/api/open-shared",{}).catch(showErr);
+$("quit").onclick=async()=>{if(confirm("Quit DragonLord? Running emulators keep running."))try{await api("/api/quit",{});document.body.textContent="DragonLord has quit. You can close this tab."}catch(e){showErr(e)}};
+const PROFILES={light:[2048,2],balanced:[3072,4],power:[4096,6]};
+$("profile").onchange=()=>{const p=PROFILES[$("profile").value];$("ram").value=p[0];$("cpus").value=p[1]};
+$("ram").value=PROFILES.light[0];$("cpus").value=PROFILES.light[1];
 async function create(start){
   showErr();const n=id=>Number($(id).value);
-  try{await api("/api/create",{name:$("name").value,ram:n("ram"),cpus:n("cpus"),disk:n("disk"),res:$("res").value,dpi:n("dpi"),start});
+  try{await api("/api/create",{name:$("name").value,ram:n("ram"),cpus:n("cpus"),disk:n("disk"),res:$("res").value,dpi:n("dpi"),image:$("image").value,profile:$("profile").value,root:$("root").value==="on",start});
     formOpen=false;$("form").hidden=true;$("add").hidden=false;refresh()}catch(e){showErr(e)}
 }
 $("create").onclick=()=>create(true);$("createonly").onclick=()=>create(false);

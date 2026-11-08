@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DragonLord terminal</title>
+<link rel="stylesheet" href="/assets/xterm.css?t=__TOKEN__">
+<style>
+:root{--bg:#161616;--ink:#eee;--mut:#9a9a9a}
+@media(prefers-color-scheme:light){:root{--bg:#f6f6f4;--ink:#1b1b1b;--mut:#666}}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font:14px system-ui,sans-serif}
+body{display:flex;flex-direction:column}
+header{padding:8px 12px;display:flex;gap:12px;align-items:center}
+#t{flex:1;padding:0 8px 8px}
+#msg{color:var(--mut)}
+</style></head><body>
+<header><strong id="title"></strong><span id="msg">connecting...</span></header>
+<div id="t"></div>
+<script src="/assets/xterm.js?t=__TOKEN__"></script>
+<script>
+const TOKEN="__TOKEN__",NAME=new URLSearchParams(location.search).get("name")||"";
+document.getElementById("title").textContent="Terminal: "+NAME;
+const dark=!matchMedia("(prefers-color-scheme: light)").matches;
+const term=new Terminal({cursorBlink:true,fontSize:14,fontFamily:"Consolas, 'Cascadia Mono', monospace",
+  theme:dark?{background:"#161616",foreground:"#eeeeee"}:{background:"#f6f6f4",foreground:"#1b1b1b",cursor:"#1b1b1b"}});
+term.open(document.getElementById("t"));
+const cols=Math.max(40,Math.floor((innerWidth-24)/8.4)),rows=Math.max(10,Math.floor((innerHeight-60)/17));
+term.resize(cols,rows);
+const ws=new WebSocket("ws://"+location.host+"/api/term?name="+encodeURIComponent(NAME)+"&cols="+cols+"&rows="+rows+"&t="+TOKEN);
+ws.binaryType="arraybuffer";
+ws.onopen=()=>{document.getElementById("msg").textContent="connected";term.focus()};
+ws.onmessage=e=>term.write(new Uint8Array(e.data));
+ws.onclose=()=>{document.getElementById("msg").textContent="disconnected"};
+term.onData(d=>{if(ws.readyState===1)ws.send(new TextEncoder().encode(d))});
+</script></body></html>
