@@ -344,6 +344,7 @@ class H(BaseHTTPRequestHandler):
         up.settimeout(None)
         for sock in (up, self.connection):  # small RFB requests must not wait for Nagle's algorithm
             sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+        self.protocol_version = "HTTP/1.1"  # browsers reject a WebSocket upgrade answered as HTTP/1.0
         self.send_response(101)
         self.send_header("Upgrade", "websocket")
         self.send_header("Connection", "Upgrade")
@@ -398,6 +399,10 @@ class H(BaseHTTPRequestHandler):
         except OSError:
             pass
         finally:
+            try:
+                up.shutdown(socket.SHUT_RDWR)  # wakes the pump thread; close() alone leaves it blocked and the link open
+            except OSError:
+                pass
             up.close()
             self.close_connection = True
 
