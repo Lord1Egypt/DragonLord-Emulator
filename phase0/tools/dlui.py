@@ -64,7 +64,8 @@ def do_create(d):
 
 def background(name, verb, fn):
     with LOCK:
-        if name in BUSY:
+        # a boot in progress can always be cancelled by stop/delete; everything else waits for the current action
+        if name in BUSY and not (BUSY[name] == "starting" and verb == "stopping"):
             raise ValueError(f"{name} is {BUSY[name]}")
         BUSY[name] = verb
 
@@ -74,7 +75,8 @@ def background(name, verb, fn):
         except SystemExit as e:
             print(f"{name}: {verb} failed: {e}", file=sys.stderr)
         finally:
-            BUSY.pop(name, None)
+            if BUSY.get(name) == verb:
+                BUSY.pop(name, None)
     threading.Thread(target=run, daemon=True).start()
 
 

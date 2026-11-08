@@ -63,7 +63,7 @@ async function refresh(){
     for(const t of [c.ram+" MB",c.cpus+" CPU",c.disk+" MB drive",c.res+"@"+c.dpi,c.gpu==="gfxstream"?"GPU":"software",c.root==="ksu"?"root":"no root",c.imei?"IMEI "+c.imei:"","adb "+c.adb])if(t)tags.append(el("span","tag",t));
     info.append(tags);card.append(info);
     const run=c.running;
-    for(const [label,path,off] of [["Start","/api/start",run||c.busy],["Stop","/api/stop",!run||c.busy],["Delete","/api/delete",c.busy]]){
+    for(const [label,path,off] of [["Start","/api/start",run||c.busy],["Stop","/api/stop",!run||(c.busy&&c.busy!=="starting")],["Delete","/api/delete",c.busy&&c.busy!=="starting"]]){
       const b=el("button","",label);b.disabled=!!off;
       b.onclick=()=>{if(path==="/api/delete"&&!confirm("Delete "+c.name+" and its drive?"))return;act(path,c.name)};card.append(b);
     }

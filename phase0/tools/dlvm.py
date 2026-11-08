@@ -148,7 +148,8 @@ def build_cmd(cfg):
            f"-dpi={cfg['dpi']}", f"-x_res={w}", f"-y_res={h}", "-start_webrtc=false", "-daemon=false",
            "-report_anonymous_usage_stats=n", "-use_allocd=false", "-console=true"]
     # first start creates the data disk at the requested size; later starts keep the existing disk
-    cmd.append("-data_policy=" + ("use_existing" if cfg.get("data_created", True) else "always_create"))
+    has_disk = cfg.get("data_created", True) or any(inst_dir(cfg["name"]).glob("cuttlefish/instances/cvd-*/userdata.img"))
+    cmd.append("-data_policy=" + ("use_existing" if has_disk else "always_create"))
     if cfg.get("serial"):
         cmd.append(f"-serial_number={cfg['serial']}")
     if cfg["root"] == "ksu":
