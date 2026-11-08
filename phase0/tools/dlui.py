@@ -7,6 +7,7 @@ Thin layer over dlvm.py: every action calls the same functions as the CLI, so li
 """
 import argparse
 import json
+import os
 import secrets
 import socket
 import subprocess
@@ -19,7 +20,26 @@ from urllib.parse import parse_qs, urlparse
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import dlvm  # noqa: E402
 
-TOKEN = secrets.token_urlsafe(24)
+
+
+def load_token():
+    """Reuse one token across restarts so bookmarked links keep working; the file is private to the user."""
+    f = dlvm.ROOT.parent / "ui-token"
+    try:
+        t = f.read_text().strip()
+        if len(t) >= 32:
+            return t
+    except OSError:
+        pass
+    t = secrets.token_urlsafe(24)
+    f.parent.mkdir(parents=True, exist_ok=True)
+    fd = os.open(f, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
+    with os.fdopen(fd, "w") as fh:
+        fh.write(t + "\n")
+    return t
+
+
+TOKEN = load_token()
 BUSY = {}  # instance name -> "starting" | "stopping"
 LOCK = threading.Lock()
 PAGE = (Path(__file__).resolve().parent / "dlui.html").read_text()
