@@ -109,7 +109,8 @@ def cmd_start(a):
     if running(cfg):
         sys.exit("already running")
     d = inst_dir(a.name)
-    env = {**os.environ, "HOME": str(d), "ANDROID_HOST_OUT": str(CVD), "DL_MEM_PATH": mem_path(cfg)}
+    env = {**os.environ, "HOME": str(d), "ANDROID_HOST_OUT": str(CVD), "DL_MEM_PATH": mem_path(cfg),
+           "DL_NET": "user"}  # user-mode networking: no root-created TAP devices
     if cfg["gpu"] == "gfxstream":
         env["GALLIUM_DRIVER"] = "d3d12"
     log = d / "logs/launch.stderr"
