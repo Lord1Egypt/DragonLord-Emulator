@@ -48,6 +48,14 @@ FINDINGS = re.compile(
     r"avc:\s+denied|anr in|fatal exception|tombstone|crash|killed|timeout|timed out|"
     r"lost device|device lost|gpu hang|tdr)\b")
 IGNORE = re.compile(r"(?i)(error_report_once|0 errors|no errors|errors=0|fail_count=0|command line:)")
+# virglrenderer probes host texture formats / context versions at start-up and the debug env makes
+# Mesa print every refusal. Counted per kind in scan.json so they stay visible, but not findings.
+NOISE = {
+    "virgl format probe (glTexImage/glTexStorage)": re.compile(r"Mesa: error: GL_INVALID_(VALUE|ENUM|OPERATION) in glTex(Image|Storage)\w*\("),
+    "EGL config probe (BAD_CONFIG)": re.compile(r"EGL_BAD_CONFIG\) in eglGetConfigAttrib"),
+    "EGL context version fallback (BAD_MATCH)": re.compile(r"EGL_BAD_MATCH\) in eglCreateContext"),
+    "DRI3 unavailable on WSLg": re.compile(r"DRI3 error: Could not get DRI3 device"),
+}
 
 
 def sha256(path):
@@ -200,20 +208,25 @@ def cmd_run(a, extra):
 
 def scan(run, show=40):
     findings = []
+    noise = {k: 0 for k in NOISE}
     for name in ("qemu.log", "qemu.stderr", "qemu.stdout", "serial.log", "harness-error.txt",
                  "android/logcat.txt", "android/dmesg.txt"):
         p = run / name
         if not p.exists():
             continue
         for n, line in enumerate(p.read_text(errors="replace").splitlines(), 1):
-            if FINDINGS.search(line) and not IGNORE.search(line):
+            known = next((k for k, rx in NOISE.items() if rx.search(line)), None)
+            if known:
+                noise[known] += 1
+            elif FINDINGS.search(line) and not IGNORE.search(line):
                 findings.append({"file": name, "line": n, "text": line.strip()[:300]})
     res = json.loads((run / "result.json").read_text()) if (run / "result.json").exists() else {}
     abnormal = res.get("signal") or res.get("exit_code") not in (0, None)
-    summary = {"abnormal_exit": bool(abnormal), "finding_count": len(findings), "findings": findings}
+    summary = {"abnormal_exit": bool(abnormal), "finding_count": len(findings),
+               "known_noise_counts": {k: v for k, v in noise.items() if v}, "findings": findings}
     (run / "scan.json").write_text(json.dumps(summary, indent=2) + "\n")
     print(f"\nscan {run.name}: exit={res.get('exit_code')} signal={res.get('signal')} "
-          f"findings={len(findings)}")
+          f"findings={len(findings)} known_noise={sum(noise.values())}")
     for f in findings[:show]:
         print(f"  {f['file']}:{f['line']}: {f['text']}")
     if len(findings) > show:
