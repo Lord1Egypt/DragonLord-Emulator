@@ -88,3 +88,10 @@ The image's own debug `/system/xbin/su` stays available regardless (userdebug bu
 
 Renderer strings confirm the path (`ANGLE (SwiftShader)` vs `Android Emulator OpenGL ES Translator (D3D12 (NVIDIA GeForce RTX 2060))`). Image checksum identical at 8 iterations (9632) and within 1 count at 32 (9951 vs 9952, floating-point difference). The light Settings-scroll benchmark above could not show this gap because the CPU renderer keeps up with a simple UI; heavy 3D is where the GPU pays off.
 Caveats: GL only (no hardware Vulkan on WSL); the GPU time is dominated by per-frame round trips at these sizes, not GPU load (nvidia-smi sampling at 1 s is too coarse for such short runs and is not used as evidence); the native test program must `_exit()` because the gfxstream EGL stack aborts in static destructors at normal exit (`pthread_mutex_lock called on a destroyed mutex`), which an ordinary app does not hit in the same way but is worth a regression test.
+
+## Guest internet (fixed 2026-11-08, WSL, user-mode networking)
+
+Cause: without host bridges `assemble_cvd` leaves `ril_ipaddr/gateway/dns/broadcast` empty, so the simulated modem gives the guest no data-call address, `buried_eth0` stays down and Android has no default network.
+Fix: `tools/run-cvd-wrapper.sh` is installed as `cvd/bin/run_cvd` (real binary renamed `run_cvd.real`). With `DL_NET=user` it writes 10.0.2.15/24, gateway 10.0.2.2, DNS 10.0.2.3 into the instance's `cuttlefish_config.json` before the real `run_cvd` starts. `dlvm.py` already sets `DL_NET=user`.
+Evidence: after boot `buried_eth0` has 10.0.2.15/24, `dumpsys connectivity` shows MOBILE CONNECTED + IS_VALIDATED, DNS resolves, TCP connects. ICMP ping does not work (slirp does not relay it); that is expected.
+Install: `mv cvd/bin/run_cvd cvd/bin/run_cvd.real && cp tools/run-cvd-wrapper.sh cvd/bin/run_cvd`.
