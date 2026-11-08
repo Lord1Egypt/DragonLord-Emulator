@@ -96,7 +96,7 @@ def show_screen(cfg):
     if not exe.exists():
         raise ValueError(f"scrcpy not found at {SCRCPY}")
     win = subprocess.run(["wslpath", "-w", str(exe)], capture_output=True, text=True, check=True).stdout.strip()
-    args = (f"'--tcpip={dlvm.adb_serial(cfg)}','--window-title={cfg['name']}','--no-audio',"
+    args = (f"'--tcpip={dlvm.adb_serial(cfg)}','--window-title={cfg['name']}','--no-audio','--force-adb-forward',"
             "'--video-encoder=c2.android.avc.encoder'")  # name is [A-Za-z0-9_-] only; no audio capture on the virtual device
     subprocess.Popen(["powershell.exe", "-NoProfile", "-Command", f"Start-Process -FilePath '{win}' -ArgumentList {args}"],
                      stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
