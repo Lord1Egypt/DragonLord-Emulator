@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DragonLord</title>
+<style>
+:root{--bg:#f6f6f4;--card:#fff;--ink:#1b1b1b;--mut:#666;--line:#dcdcd6;--acc:#b3261e;--ok:#1b7f3b}
+@media(prefers-color-scheme:dark){:root{--bg:#161616;--card:#202020;--ink:#eee;--mut:#9a9a9a;--line:#333;--acc:#ff6b60;--ok:#4cc26f}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,sans-serif}
+main{max-width:860px;margin:0 auto;padding:20px 16px}
+h1{font-size:22px;margin:0 0 4px}.sub{color:var(--mut);margin:0 0 20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:12px}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.grow{flex:1;min-width:200px}
+.tag{font-size:12px;border:1px solid var(--line);border-radius:99px;padding:1px 8px;color:var(--mut);margin-right:4px}
+.state{font-weight:600}.state.on{color:var(--ok)}
+button{font:inherit;padding:7px 14px;border-radius:7px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button.p{background:var(--acc);border-color:var(--acc);color:#fff}button:disabled{opacity:.5;cursor:default}
+label{display:block;margin:10px 0 3px;font-weight:600}input,select{font:inherit;width:100%;padding:7px;border-radius:7px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}@media(max-width:600px){.grid{grid-template-columns:1fr}}
+.hint{color:var(--mut);font-size:13px;margin-top:2px}#err{color:var(--acc);margin:8px 0;min-height:1.2em}
+</style></head><body><main>
+<h1>DragonLord</h1><p class="sub" id="sub">Android emulator instances</p>
+<div id="err" role="alert"></div>
+<section id="list"></section>
+<section id="form" class="card" hidden>
+ <h2 id="ftitle" style="margin-top:0">New emulator</h2>
+ <label for="name">Name</label><input id="name" value="Phone1" maxlength="32" autocomplete="off">
+ <div class="hint">Letters, digits, - and _ (up to 32).</div>
+ <div class="grid">
+  <div><label for="ram">Memory (MB)</label><input id="ram" type="number" value="4096" min="1024" max="16384" step="512"></div>
+  <div><label for="cpus">CPU cores</label><input id="cpus" type="number" value="4" min="1" max="16"></div>
+  <div><label for="disk">Drive size (MB)</label><input id="disk" type="number" value="8192" min="2048" step="1024"></div>
+  <div><label for="res">Screen</label><select id="res"><option>720x1280</option><option>1080x1920</option><option>1080x2400</option></select></div>
+  <div><label for="dpi">Density (dpi)</label><input id="dpi" type="number" value="320" min="120" max="640"></div>
+  <div><label for="serial">Device serial (optional)</label><input id="serial" maxlength="32" autocomplete="off"></div>
+  <div><label for="gpu">Graphics</label><select id="gpu"><option value="gfxstream">Host GPU (fast)</option><option value="software">Software (no GPU)</option></select></div>
+  <div><label for="root">Root</label><select id="root"><option value="off">Off</option><option value="ksu">On (KernelSU)</option></select></div>
+ </div>
+ <div class="row" style="margin-top:16px"><button class="p" id="create">Create and start</button><button id="createonly">Create only</button><button id="cancel">Cancel</button></div>
+ <div class="hint">The first start of a new drive takes several minutes.</div>
+</section>
+<p><button id="add" class="p">+ New emulator</button></p>
+</main>
+<script>
+const TOKEN="__TOKEN__";
+const $=id=>document.getElementById(id);
+async function api(path,body){
+  const r=await fetch(path,{method:body?"POST":"GET",headers:{"X-DL-Token":TOKEN,"Content-Type":"application/json"},body:body?JSON.stringify(body):undefined});
+  const j=await r.json();if(!r.ok)throw new Error(j.error||r.statusText);return j;
+}
+function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e}
+function showErr(e){$("err").textContent=e?e.message||String(e):""}
+async function act(path,name){showErr();try{await api(path,{name});refresh()}catch(e){showErr(e)}}
+async function refresh(){
+  let items;try{items=await api("/api/instances")}catch(e){return showErr(e)}
+  const list=$("list");list.replaceChildren();
+  $("sub").textContent=items.length?"Android emulator instances":"Welcome. Create your first emulator to get started.";
+  if(!items.length&&$("form").hidden)openForm(true);
+  for(const c of items){
+    const card=el("div","card row");const info=el("div","grow");
+    info.append(el("strong","",c.name));
+    const st=el("span","state"+(c.running&&!c.busy?" on":""),"  "+(c.busy?c.busy+"...":c.running?"running":"stopped"));info.append(st);
+    const tags=el("div");
+    for(const t of [c.ram+" MB",c.cpus+" CPU",c.disk+" MB drive",c.res+"@"+c.dpi,c.gpu==="gfxstream"?"GPU":"software",c.root==="ksu"?"root":"no root","adb "+c.adb])tags.append(el("span","tag",t));
+    info.append(tags);card.append(info);
+    const run=c.running;
+    for(const [label,path,off] of [["Start","/api/start",run||c.busy],["Stop","/api/stop",!run||c.busy],["Delete","/api/delete",c.busy]]){
+      const b=el("button","",label);b.disabled=!!off;
+      b.onclick=()=>{if(path==="/api/delete"&&!confirm("Delete "+c.name+" and its drive?"))return;act(path,c.name)};card.append(b);
+    }
+    list.append(card);
+  }
+}
+function openForm(first){$("form").hidden=false;$("cancel").hidden=!!first;$("add").hidden=true;
+  $("ftitle").textContent=first?"Set up your first emulator":"New emulator"}
+$("add").onclick=()=>openForm(false);
+$("cancel").onclick=()=>{$("form").hidden=true;$("add").hidden=false;showErr()};
+async function create(start){
+  showErr();
+  const num=id=>Number($(id).value);
+  try{
+    await api("/api/create",{name:$("name").value,ram:num("ram"),cpus:num("cpus"),disk:num("disk"),res:$("res").value,dpi:num("dpi"),
+      serial:$("serial").value,gpu:$("gpu").value,root:$("root").value,start});
+    $("form").hidden=true;$("add").hidden=false;refresh();
+  }catch(e){showErr(e)}
+}
+$("create").onclick=()=>create(true);$("createonly").onclick=()=>create(false);
+refresh();setInterval(refresh,4000);
+</script></body></html>
